@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Url {
@@ -20,11 +19,6 @@ public class Url {
 
     private static Scanner scan1;
     private static Scanner scan2;
-
-
-    LinkedList<String> strCol1 = new LinkedList<>();
-    LinkedList<String> strCol2 = new LinkedList<>();
-
 
     public void St() {
 
@@ -37,28 +31,38 @@ public class Url {
 
 
         try {
-            scan1 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\Megatrans\\src\\main\\resources\\Url1.txt"));
+            scan1 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url1.txt"),"UTF-8");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
 
         try {
-            scan2 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\Megatrans\\src\\main\\resources\\Url2.txt"));
+            scan2 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url2.txt"),"UTF-8");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
 
 
+        ArrayList<String> strCol1 = new ArrayList<>();
+        ArrayList<String> strCol2 = new ArrayList<>();
+
         while (scan1.hasNextLine() && scan2.hasNextLine()) {
 
             strCol1.add(scan1.nextLine());
-            System.out.println(strCol1.toString());
             strCol2.add(scan2.nextLine());
-            // System.out.println(strCol2.toString());
+
 
         }
+
+        System.out.println(scan1.toString());
+        System.out.println(scan2.toString());
+
+        System.out.println(strCol1.toString());
+        System.out.println(strCol2.toString());
+
         scan1.close();
         scan2.close();
+
 
 
         for (int i=0; i!= strCol1.size(); i++) {
@@ -89,8 +93,8 @@ public class Url {
             }
 
 
-            Date date = new Date();
 
+            Date date = new Date();
             finalNode.setModeName(dslStatusNode.modeName(""));
 
             if (finalNode.getModeName() != "") {
@@ -169,6 +173,8 @@ public class Url {
             } else {
 
                 //     intermediateNode.setIpNode(handlerNode.getDslStatusNode().nameNode(""));
+
+                intermediateNode.setDate(date);
 
                 intermediateNode.setSyncName(dslStatusNode.syncName(""));
                 intermediateNode.setSyncValueSide1(dslStatusNode.syncValueSide1(0));

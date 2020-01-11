@@ -388,7 +388,7 @@ public class DslStatusNode {
         while (matcher.find()) {
             name = (table.substring(matcher.start(1), matcher.end(1)));
         }
-        System.out.println(name);
+
         return name;
     }
 
@@ -398,7 +398,7 @@ public class DslStatusNode {
             while (matcher.find()) {
                 value = (table.substring(matcher.start(2), matcher.end(2)));
             }
-        System.out.println(value);
+
             return value;
         }
 
@@ -407,12 +407,9 @@ public class DslStatusNode {
         while (matcher.find()) {
             value = (table.substring(matcher.start(3), matcher.end(3)));
         }
-        System.out.println(value);
+
         return value;
     }
-
-
-
 
 
 
