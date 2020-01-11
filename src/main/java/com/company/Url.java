@@ -17,10 +17,9 @@ import java.util.Scanner;
 public class Url {
 
 
-    private static Scanner scan1;
-    private static Scanner scan2;
+    private static Scanner scanner;
 
-    public void St() {
+    public void start() {
 
 
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
@@ -29,51 +28,40 @@ public class Url {
 
 
 
-
+        /*
+        входной файл содержит URLки через точку с запятой как в CSV файле
+        пример:
+        url статуса;url статистики
+        url статуса;url статистики
+         */
         try {
-            scan1 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url1.txt"),"UTF-8");
+            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url.txt"),"UTF-8");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
 
-        try {
-            scan2 = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url2.txt"),"UTF-8");
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Фаил не найден");
+
+        ArrayList<String> urls = new ArrayList<>();
+
+        while (scanner.hasNextLine()) {
+            urls.add(scanner.nextLine());
         }
 
 
-        ArrayList<String> strCol1 = new ArrayList<>();
-        ArrayList<String> strCol2 = new ArrayList<>();
+        System.out.println(urls.toString());
 
-        while (scan1.hasNextLine() && scan2.hasNextLine()) {
-
-            strCol1.add(scan1.nextLine());
-            strCol2.add(scan2.nextLine());
-
-
-        }
-
-        System.out.println(scan1.toString());
-        System.out.println(scan2.toString());
-
-        System.out.println(strCol1.toString());
-        System.out.println(strCol2.toString());
-
-        scan1.close();
-        scan2.close();
+        scanner.close();
 
 
 
-        for (int i=0; i!= strCol1.size(); i++) {
-            FinalNode finalNode = new FinalNode();
-            IntermediateNode intermediateNode = new IntermediateNode();
+        for (String currentUrls: urls) {
+            String[] url = currentUrls.split(";");
             {
 
                 try {
-                    Document tableBody1 = Jsoup.connect(strCol1.get(i)).get();
-                    String str1 = tableBody1.body().getElementsByTag("td").text();
-                    dslStatusNode.setTable(str1);
+                    Document resultStatus = Jsoup.connect(url[0]).get();
+                    String status = resultStatus.body().getElementsByTag("td").text();
+                    dslStatusNode.setTable(status);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "Cсылка1 не найдена");
                 }
@@ -83,9 +71,9 @@ public class Url {
 
             {
                 try {
-                    Document tableBody2 = Jsoup.connect(strCol2.get(i)).get();
-                    String str2 = tableBody2.body().getElementsByTag("td").text();
-                    dslStatisticsNode.setTable(str2);
+                    Document resultStatistics = Jsoup.connect(url[1]).get();
+                    String statistics = resultStatistics.body().getElementsByTag("td").text();
+                    dslStatisticsNode.setTable(statistics);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "Cсылка2 не найдена");
                 }
@@ -95,9 +83,10 @@ public class Url {
 
 
             Date date = new Date();
-            finalNode.setModeName(dslStatusNode.modeName(""));
 
-            if (finalNode.getModeName() != "") {
+            if (dslStatusNode.modeName("") != "") {
+                FinalNode finalNode = new FinalNode();
+                finalNode.setModeName(dslStatusNode.modeName(""));
                 finalNode.setDate(date);
 
                 //  finalNode.setIpNode(handlerNode.getDslStatusNode().nameNode("default"));
@@ -174,6 +163,7 @@ public class Url {
 
                 //     intermediateNode.setIpNode(handlerNode.getDslStatusNode().nameNode(""));
 
+                IntermediateNode intermediateNode = new IntermediateNode();
                 intermediateNode.setDate(date);
 
                 intermediateNode.setSyncName(dslStatusNode.syncName(""));
