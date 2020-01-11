@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Url {
@@ -21,17 +22,18 @@ public class Url {
     private static Scanner scan2;
 
 
+    LinkedList<String> strCol1 = new LinkedList<>();
+    LinkedList<String> strCol2 = new LinkedList<>();
+
+
     public void St() {
 
 
-        FinalNode finalNode = new FinalNode();
-        IntermediateNode intermediateNode = new IntermediateNode();
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
         DslStatusNode dslStatusNode = new DslStatusNode();
         DslStatisticsNode dslStatisticsNode = new DslStatisticsNode();
 
-        ArrayList<String> strCol1 = new ArrayList<>();
-        ArrayList<String> strCol2 = new ArrayList<>();
+
 
 
         try {
@@ -50,14 +52,18 @@ public class Url {
         while (scan1.hasNextLine() && scan2.hasNextLine()) {
 
             strCol1.add(scan1.nextLine());
+            //System.out.println(strCol1.toString());
             strCol2.add(scan2.nextLine());
+            // System.out.println(strCol2.toString());
 
         }
         scan1.close();
         scan2.close();
 
 
-        for (int i = 0; i < strCol1.size(); i++) {
+        for (int i=0; i!= strCol1.size(); i++) {
+            FinalNode finalNode = new FinalNode();
+            IntermediateNode intermediateNode = new IntermediateNode();
             {
 
                 try {
@@ -71,12 +77,23 @@ public class Url {
             }
 
 
+            {
+                try {
+                    Document tableBody2 = Jsoup.connect(strCol2.get(i)).get();
+                    String str2 = tableBody2.body().getElementsByTag("td").text();
+                    dslStatisticsNode.setTable(str2);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Cсылка2 не найдена");
+                }
+
+            }
+
+
             Date date = new Date();
 
             finalNode.setModeName(dslStatusNode.modeName(""));
 
             if (finalNode.getModeName() != "") {
-
                 finalNode.setDate(date);
 
                 //  finalNode.setIpNode(handlerNode.getDslStatusNode().nameNode("default"));
@@ -120,11 +137,36 @@ public class Url {
                 finalNode.setBertName(dslStatusNode.bertName(""));
                 finalNode.setBertValue(dslStatusNode.bertValue(""));
 
-              //  nodeBuildDAO.saveFinalNode(finalNode);
+                finalNode.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+                finalNode.setErroredBlocksValue(dslStatisticsNode.erroredBlocksValueSide1(0L));
+
+                finalNode.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+                finalNode.setErroredSecondValue(dslStatisticsNode.erroredSecondValueSide1(0L));
+
+                finalNode.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+                finalNode.setSeverelyErroredSecondsValue(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+
+                finalNode.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+                finalNode.setBackgroundBlockErrorsValue(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+
+                finalNode.setEsrName(dslStatisticsNode.esrName(""));
+                finalNode.setEsrValue(dslStatisticsNode.esrValueSide1(0.0));
+
+                finalNode.setSersName(dslStatisticsNode.sersName(""));
+                finalNode.setSersValue(dslStatisticsNode.sersValueSide1(0.0));
+
+                finalNode.setBberName(dslStatisticsNode.bberName(""));
+                finalNode.setBberValue(dslStatisticsNode.bberValueSide1(0.0));
+
+                finalNode.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+                finalNode.setAvailableTimeValue(dslStatisticsNode.availableTimeValueSide1(0L));
+
+                finalNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+                finalNode.setUnavailableTimeValue(dslStatisticsNode.unavailableTimeValueSide1(0L));
+
+                nodeBuildDAO.saveFinalNode(finalNode);
 
             } else {
-
-                intermediateNode.setDate(date);
 
                 //     intermediateNode.setIpNode(handlerNode.getDslStatusNode().nameNode(""));
 
@@ -176,106 +218,57 @@ public class Url {
                 intermediateNode.setTemperatureValue(dslStatusNode.temperatureValue(0.0));
                 intermediateNode.setTemperatureParametr(dslStatusNode.temperatureParametr(""));
 
-               // nodeBuildDAO.saveIntermediateNode(intermediateNode);
+
+                intermediateNode.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+                intermediateNode.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+                intermediateNode.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
+
+                intermediateNode.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+                intermediateNode.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+                intermediateNode.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
+
+                intermediateNode.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+                intermediateNode.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+                intermediateNode.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
+
+                intermediateNode.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+                intermediateNode.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+                intermediateNode.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
+
+                intermediateNode.setEsrName(dslStatisticsNode.esrName(""));
+                intermediateNode.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+                intermediateNode.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
+
+                intermediateNode.setSersName(dslStatisticsNode.sersName(""));
+                intermediateNode.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+                intermediateNode.setSersValueSide2(dslStatisticsNode.sersValueSide2(0.0));
+
+                intermediateNode.setBberName(dslStatisticsNode.bberName(""));
+                intermediateNode.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+                intermediateNode.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
+
+                intermediateNode.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+                intermediateNode.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
+                intermediateNode.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
+
+                intermediateNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+                intermediateNode.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+                intermediateNode.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
+
+                nodeBuildDAO.saveIntermediateNode(intermediateNode);
+
 
             }
-
-
-        }
-
-
-        for (int k = 0; k < strCol2.size(); k++) {
-
-            {
-                try {
-                    Document tableBody2 = Jsoup.connect(strCol2.get(k)).get();
-                    String str2 = tableBody2.body().getElementsByTag("td").text();
-                    dslStatisticsNode.setTable(str2);
-                    System.out.println("Object" + " " + "№" + " " + k + " " + str2);
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Cсылка2 не найдена");
-                }
-
-            }
-
-            finalNode.setModeName(dslStatusNode.modeName(""));
-
-            if (finalNode.getModeName() != "") {
-
-                finalNode.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-                finalNode.setErroredBlocksValue(dslStatisticsNode.erroredBlocksValueSide1(0L));
-
-                finalNode.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-                finalNode.setErroredSecondValue(dslStatisticsNode.erroredSecondValueSide1(0L));
-
-                finalNode.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-                finalNode.setSeverelyErroredSecondsValue(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
-
-                finalNode.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-                finalNode.setBackgroundBlockErrorsValue(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
-
-                finalNode.setEsrName(dslStatisticsNode.esrName(""));
-                finalNode.setEsrValue(dslStatisticsNode.esrValueSide1(0.0));
-
-                finalNode.setSersName(dslStatisticsNode.sersName(""));
-                finalNode.setSersValue(dslStatisticsNode.sersValueSide1(0.0));
-
-                finalNode.setBberName(dslStatisticsNode.bberName(""));
-                finalNode.setBberValue(dslStatisticsNode.bberValueSide1(0.0));
-
-                finalNode.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-                finalNode.setAvailableTimeValue(dslStatisticsNode.availableTimeValueSide1(0L));
-
-                finalNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-                finalNode.setUnavailableTimeValue(dslStatisticsNode.unavailableTimeValueSide1(0L));
-
-                nodeBuildDAO.saveFinalNode(finalNode);
-
-            }else {
-
-                        intermediateNode.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-                        intermediateNode.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
-                        intermediateNode.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
-
-                        intermediateNode.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-                        intermediateNode.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
-                        intermediateNode.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
-
-                        intermediateNode.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-                        intermediateNode.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
-                        intermediateNode.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
-
-                        intermediateNode.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-                        intermediateNode.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
-                        intermediateNode.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
-
-                        intermediateNode.setEsrName(dslStatisticsNode.esrName(""));
-                        intermediateNode.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
-                        intermediateNode.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
-
-                        intermediateNode.setSersName(dslStatisticsNode.sersName(""));
-                        intermediateNode.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
-                        intermediateNode.setSersValueSide2(dslStatisticsNode.sersValueSide2(0.0));
-
-                        intermediateNode.setBberName(dslStatisticsNode.bberName(""));
-                        intermediateNode.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
-                        intermediateNode.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
-
-                        intermediateNode.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-                        intermediateNode.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
-                        intermediateNode.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
-
-                        intermediateNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-                        intermediateNode.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
-                        intermediateNode.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
-
-                        nodeBuildDAO.saveIntermediateNode(intermediateNode);
-
-
-
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
         }
 
+
+
+        }
     }
-}
+

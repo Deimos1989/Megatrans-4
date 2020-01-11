@@ -17,14 +17,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-
         Url url=new Url();
         url.St();
-
-      /*  SendData sendData = new SendData();
-        sendData.rn();
-*/
 
     }
 
