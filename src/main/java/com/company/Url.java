@@ -52,7 +52,7 @@ public class Url {
         while (scan1.hasNextLine() && scan2.hasNextLine()) {
 
             strCol1.add(scan1.nextLine());
-            //System.out.println(strCol1.toString());
+            System.out.println(strCol1.toString());
             strCol2.add(scan2.nextLine());
             // System.out.println(strCol2.toString());
 
@@ -192,11 +192,9 @@ public class Url {
                 intermediateNode.setLoopAttenuationValueSide1(dslStatusNode.loopAttenuationValueSide1(0.0));
                 intermediateNode.setLoopAttenuationValueSide2(dslStatusNode.loopAttenuationValueSide2(0.0));
 
-
                 intermediateNode.setNmrName(dslStatusNode.nmrName(""));
                 intermediateNode.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
                 intermediateNode.setNmrValueSide2(dslStatusNode.nmrValueSide2(0.0));
-
 
                 intermediateNode.setBitrateName(dslStatusNode.bitrateName(""));
                 intermediateNode.setBitrateValueSide1(dslStatusNode.bitrateValueSide1(0));
