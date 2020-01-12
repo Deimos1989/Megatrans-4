@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -47,9 +48,6 @@ public class Url {
             urls.add(scanner.nextLine());
         }
 
-
-        System.out.println(urls.toString());
-
         scanner.close();
 
 
@@ -57,13 +55,14 @@ public class Url {
         for (String currentUrls: urls) {
             String[] url = currentUrls.split(";");
             {
+                System.out.println(Arrays.asList(url));
 
                 try {
                     Document resultStatus = Jsoup.connect(url[0]).get();
                     String status = resultStatus.body().getElementsByTag("td").text();
                     dslStatusNode.setTable(status);
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Cсылка1 не найдена");
+                    JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
                 }
 
             }
@@ -75,7 +74,7 @@ public class Url {
                     String statistics = resultStatistics.body().getElementsByTag("td").text();
                     dslStatisticsNode.setTable(statistics);
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Cсылка2 не найдена");
+                    JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
                 }
 
             }
