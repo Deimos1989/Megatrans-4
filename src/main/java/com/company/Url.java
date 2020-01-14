@@ -18,7 +18,9 @@ import java.util.Scanner;
 public class Url {
 
 
+
     private static Scanner scanner;
+
 
     public void start() {
 
@@ -41,8 +43,10 @@ public class Url {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
 
-
         ArrayList<String> urls = new ArrayList<>();
+
+
+
 
         while (scanner.hasNextLine()) {
             urls.add(scanner.nextLine());
@@ -80,15 +84,15 @@ public class Url {
             }
 
 
-
             Date date = new Date();
 
             if (dslStatusNode.modeName("") != "") {
                 FinalNode finalNode = new FinalNode();
+
                 finalNode.setModeName(dslStatusNode.modeName(""));
                 finalNode.setDate(date);
 
-                //  finalNode.setIpNode(handlerNode.getDslStatusNode().nameNode("default"));
+                finalNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
                 finalNode.setModeValue(dslStatusNode.modeValue(""));
 
@@ -160,10 +164,12 @@ public class Url {
 
             } else {
 
-                //     intermediateNode.setIpNode(handlerNode.getDslStatusNode().nameNode(""));
+
 
                 IntermediateNode intermediateNode = new IntermediateNode();
                 intermediateNode.setDate(date);
+
+                intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
                 intermediateNode.setSyncName(dslStatusNode.syncName(""));
                 intermediateNode.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
@@ -263,5 +269,6 @@ public class Url {
 
 
         }
-    }
+
+}
 

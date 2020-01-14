@@ -7,9 +7,7 @@ import java.util.regex.Pattern;
 public class DslStatusNode {
 
 
-
     private String table;
-
     public void setTable(String table) {
         this.table = table;
     }
@@ -38,15 +36,14 @@ public class DslStatusNode {
 
 
 
-  /*  public String nameNode(String name) {
-        name = linkData.linkUrl("");
+    public String nameNode(String name) {
         Matcher matcher1 = pattern17.matcher(name);
         while (matcher1.find()) {
             name = (name.substring(matcher1.start(2), matcher1.end(2)));
         }
         System.out.println(name);
         return name;
-    }*/
+    }
 
     public String modeName(String name) {
         Matcher matcher1 = pattern1.matcher(table);
