@@ -21,14 +21,11 @@ public class Url {
 
     private static Scanner scanner;
 
-
-    public void start() {
-
+   public void start(){
 
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
         DslStatusNode dslStatusNode = new DslStatusNode();
         DslStatisticsNode dslStatisticsNode = new DslStatisticsNode();
-
 
 
         /*
@@ -56,31 +53,28 @@ public class Url {
 
 
 
-        for (String currentUrls: urls) {
-            String[] url = currentUrls.split(";");
-            {
-                System.out.println(Arrays.asList(url));
-
-                try {
-                    Document resultStatus = Jsoup.connect(url[0]).get();
-                    String status = resultStatus.body().getElementsByTag("td").text();
-                    dslStatusNode.setTable(status);
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
-                }
-
-            }
+        for (int k=0;k!=urls.size();k++) {
+           String[] url = urls.get(k).split(";");
 
 
             {
-                try {
-                    Document resultStatistics = Jsoup.connect(url[1]).get();
-                    String statistics = resultStatistics.body().getElementsByTag("td").text();
-                    dslStatisticsNode.setTable(statistics);
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
-                }
+                System.out.println( Arrays.asList(urls.get(k)));
 
+                for (int i =0; i!=url.length;i++) {
+
+                    try {
+
+                        Document resultStatus = Jsoup.connect(url[i]).get();
+                        String status = resultStatus.body().getElementsByTag("td").text();
+                        if(i==0) {
+                            dslStatusNode.setTable(status);
+                        }else {
+                            dslStatisticsNode.setTable(status);
+                        }
+                        } catch(IOException e){
+                            JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
+                        }
+                }
             }
 
 
@@ -89,10 +83,16 @@ public class Url {
             if (dslStatusNode.modeName("") != "") {
                 FinalNode finalNode = new FinalNode();
 
+
+
+
                 finalNode.setModeName(dslStatusNode.modeName(""));
                 finalNode.setDate(date);
 
                 finalNode.setIpNode(dslStatusNode.nameNode(url[0]));
+
+
+
 
                 finalNode.setModeValue(dslStatusNode.modeValue(""));
 
@@ -167,6 +167,7 @@ public class Url {
 
 
                 IntermediateNode intermediateNode = new IntermediateNode();
+
                 intermediateNode.setDate(date);
 
                 intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));
@@ -258,6 +259,8 @@ public class Url {
 
 
             }
+
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -265,6 +268,7 @@ public class Url {
             }
 
         }
+
 
 
 

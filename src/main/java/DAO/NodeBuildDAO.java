@@ -10,6 +10,15 @@ public class NodeBuildDAO {
 
 
 
+    public FinalNode findById(int id) {
+        Session session = SessionFactory.getSessionFactory();
+        session.getSessionFactory().openSession().get(FinalNode.class, id);
+
+        return (FinalNode) session.getSessionFactory().openSession().get(FinalNode.class, id);
+
+    }
+
+
     public void saveFinalNode(FinalNode finalNode) {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
@@ -33,5 +42,6 @@ public class NodeBuildDAO {
         ;
 
     }
+
 }
 
