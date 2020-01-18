@@ -6,20 +6,21 @@
 </head>
 <body>
 <!--/*@thymesVar id="name" type=""*/-->
-<p th:text="'Megatrans4, ' + ${name} + '!'" />
-</body>
 
-<head>
-    <meta charset="utf-8">
-    <title>Start</title>
-</head>
-<head>
-    <title>Кнопка button в коде HTML формы</title>
-</head>
-<body>
-<form action="/Agent">
-    <button type="submit" name="submit_button" value="main_button">Отправить</button>
+
+
+
+
+<form action="/View">
+    <td>
+        <p th:text="'Megatrans4, ' + ${name} + '!'" />
+        <input type="text" th:value="${name}" id="quantity">
+        <input type="submit" name="submit_button" value="Отправить">
+    </td>
+
 </form>
+
+
 </body>
 
 </html>

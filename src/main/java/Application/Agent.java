@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Agent {
 
-    @GetMapping("/main")
+    @GetMapping("/Agent")
     public String start(@RequestParam(name="name", required=false, defaultValue="World")String name, Model model) {
         DslStatusNode dslStatusNode =new DslStatusNode();
         NodeBuildDAO nodeBuildDAO =new NodeBuildDAO();
@@ -22,6 +22,7 @@ public class Agent {
 
         Url url =new Url();
         url.start();
+
         model.addAttribute("name", name);
         return "main";
     }
