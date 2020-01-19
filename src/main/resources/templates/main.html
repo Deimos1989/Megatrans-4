@@ -3,24 +3,44 @@
 <head>
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>table th, table td {padding: 5px;}</style>
 </head>
 <body>
-<!--/*@thymesVar id="name" type=""*/-->
-
-
-
-
 
 <form action="/View">
     <td>
-        <p th:text="'Megatrans4, ' + ${name} + '!'" />
         <input type="text" th:value="${name}" id="quantity">
         <input type="submit" name="submit_button" value="Отправить">
     </td>
+</form>
 
+<form action="/Agent">
+    <td>
+        <input type="submit" name="submit_button" value="Опрос">
+    </td>
 </form>
 
 
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>IpNode</th>
+    </tr>
+
+    <tr th:block th:each="node:${nodes}">
+    <td th:utext="${node}">Id</td>
+    <td th:utext="${node}">Date</td>
+    <td th:utext="${node}">IpNode</td>
+
+    </tr>
+
+
+</table>
+
+
 </body>
+
+
 
 </html>
