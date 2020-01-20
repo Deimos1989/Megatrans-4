@@ -18,7 +18,7 @@ public class NodeBuildDAO {
 
         Session session = SessionFactory.getSessionFactory();
         Criteria criteria;
-        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode","127.0.0.1"));
+        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode","127.0.0.2"));
         List<FinalNode> finalNodeList=criteria.list();
 
         /*for (int i=0;i!=finalNodeList.size();i++){

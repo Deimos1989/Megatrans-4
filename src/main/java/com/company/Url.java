@@ -10,18 +10,19 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Url {
+public class Url implements Runnable {
 
 
 
     private static Scanner scanner;
 
-   public void start(){
+   public void run(){
 
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
         DslStatusNode dslStatusNode = new DslStatusNode();
@@ -80,6 +81,9 @@ public class Url {
 
 
             Date date = new Date();
+
+
+           // Date date = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 
             if (dslStatusNode.modeName("") != "") {
                 FinalNode finalNode = new FinalNode();

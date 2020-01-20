@@ -7,15 +7,16 @@
 </head>
 <body>
 
-<form action="/View">
+<form action="/View/start">
     <td>
-        <input type="text" th:value="${name}" id="quantity">
+
         <input type="submit" name="submit_button" value="Отправить">
     </td>
 </form>
 
 <form action="/Agent">
     <td>
+        <input type="text" cols="45" size="40" th:value="${name}" id="quantity">
         <input type="submit" name="submit_button" value="Опрос">
     </td>
 </form>
