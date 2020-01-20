@@ -24,16 +24,30 @@
 <table border="1">
     <tr>
         <th>Id</th>
+
         <th>Date</th>
+
         <th>IpNode</th>
+
+        <th>modeName</th>
+        <th>modeValue</th>
+
+        <th>syncName</th>
+        <th>syncValue</th>
     </tr>
 
-    
     <tr th:block th:each="map:${maps}">
 
         <td th:utext="${map.getKey()}">Id</td>
         <td th:utext="${map.getValue().date}">Date</td>
-        <td th:utext="${map.getValue().ipNode}">Date</td>
+
+        <td th:utext="${map.getValue().ipNode}">IpNode</td>
+
+        <td th:utext="${map.getValue().modeName}">Id</td>
+        <td th:utext="${map.getValue().modeValue}">Date</td>
+
+        <td th:utext="${map.getValue().syncName}">Id</td>
+        <td th:utext="${map.getValue().syncValue}">Date</td>
 
     </tr>
 
