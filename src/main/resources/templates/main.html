@@ -28,19 +28,17 @@
         <th>IpNode</th>
     </tr>
 
-    <tr th:block th:each="node:${nodes}">
-    <td th:utext="${node}">Id</td>
-    <td th:utext="${node}">Date</td>
-    <td th:utext="${node}">IpNode</td>
+    
+    <tr th:block th:each="map:${maps}">
+
+        <td th:utext="${map.getKey()}">Id</td>
+        <td th:utext="${map.getValue().date}">Date</td>
+        <td th:utext="${map.getValue().ipNode}">Date</td>
 
     </tr>
 
 
+
 </table>
-
-
 </body>
-
-
-
 </html>

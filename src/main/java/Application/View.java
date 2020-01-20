@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
 
 @Controller
@@ -22,18 +21,21 @@ public class View {
 @GetMapping("/View")
 public String start(Model model) {
     NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
-    /*ArrayList<Object>  idCol = new ArrayList<>();
-    ArrayList<Object>  dateCol = new ArrayList<>();
-    ArrayList<Object>  ipNodeCol= new ArrayList<>();*/
 
-    ArrayList<Object> nodes =new ArrayList<>();
+
+    LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
+
+
 
     for (int i = 0; i != nodeBuildDAO.findByIpNode().size(); i++) {
-        nodes.add(nodeBuildDAO.findByIpNode().get(i).getId());
-        nodes.add(nodeBuildDAO.findByIpNode().get(i).getDate());
-        nodes.add(nodeBuildDAO.findByIpNode().get(i).getIpNode());
+        Integer id = nodeBuildDAO.findByIpNode().get(i).getId();
+        Object node= nodeBuildDAO.findByIpNode().get(i);
+        maps.put(id,node);
 
-        model.addAttribute("nodes", nodes);
+
+
+        model.addAttribute("maps", maps);
+
 
 
 
