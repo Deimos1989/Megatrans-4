@@ -3,7 +3,6 @@
 <head>
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>table th, table td {padding: 5px;}</style>
 </head>
 <body>
 
@@ -21,6 +20,17 @@
     </td>
 </form>
 
+<style>
+    table {width: 50%; text-align: center; border-bottom: 2px solid #dfdfdf; border-radius: 6px; border-collapse: separate; border-spacing: 0px;}
+    table thead tr {color: #ffffff; font-weight: bold; background: #c83240;}
+    table tr td {border-right: 1px solid #dfdfdf;}
+    table tr td:last-child {border-right: 0px;}
+    table tbody tr:nth-child(1n) {background: #f6f6f6;}
+    table tbody tr:nth-child(2n) {background: #e6e6e6;}
+    table tbody tr:hover {background: #ffe8e8; transition-duration: 0.6s;}
+</style>
+
+
 
 <table border="1">
     <tr>
@@ -30,39 +40,39 @@
 
         <th>IpNode</th>
 
-        <th>erroredBlocksName</th>
-        <th>erroredBlocksValue</th>
+        <th>
+            errored
+            Blocks</th>
 
-        <th>erroredSecondsName</th>
-        <th>erroredSecondValue</th>
+        <th>
+            errored
+            Seconds</th>
 
-        <th>severelyErroredSecondsName</th>
-        <th>severelyErroredSecondsValue</th>
+        <th>
+            severely
+            Errored
+            Seconds</th>
 
-        <th>severelyErroredSecondsName</th>
-        <th>severelyErroredSecondsValue</th>
+        <th>
+            background
+            Block
+            Errors</th>
 
-        <th>backgroundBlockErrorsName</th>
-        <th>backgroundBlockErrorsValue</th>
+        <th>esr[%]</th>
 
-        <th>esrName</th>
-        <th>esrValue</th>
 
-        <th>sersName</th>
-        <th>sersValue</th>
+        <th>sers[%]</th>
 
-        <th>bberName</th>
-        <th>bberValue</th>
 
-        <th>availableTimeName</th>
-        <th>availableTimeValue</th>
+        <th>bber[%]</th>
 
-        <th>unavailableTimeName</th>
-        <th>unavailableTimeValue</th>
 
-        <th>nmrName</th>
-        <th>nmrValue</th>
-        <th>nmrParametr</th>
+        <th>availableTime</th>
+
+        <th>unavailableTime</th>
+
+        <th>nmr dB</th>
+
     </tr>
 
     <tr th:block th:each="map:${maps}">
@@ -72,44 +82,28 @@
 
         <td th:utext="${map.getValue().ipNode}">IpNode</td>
 
-        <td th:utext="${map.getValue().erroredBlocksName}">Id</td>
-        <td th:utext="${map.getValue().erroredBlocksValue}">Date</td>
+        <td th:utext="${map.getValue().erroredBlocksValue}">erroredBlocks</td>
 
-        <td th:utext="${map.getValue().erroredSecondsName}">Id</td>
-        <td th:utext="${map.getValue().erroredSecondValue}">Date</td>
+        <td th:utext="${map.getValue().erroredSecondValue}">erroredSeconds</td>
 
-        <td th:utext="${map.getValue().severelyErroredSecondsName}">Id</td>
-        <td th:utext="${map.getValue().severelyErroredSecondsValue}">Date</td>
+        <td th:utext="${map.getValue().severelyErroredSecondsValue}">severelyErroredSeconds</td>
 
-        <td th:utext="${map.getValue().backgroundBlockErrorsName}">Id</td>
-        <td th:utext="${map.getValue().backgroundBlockErrorsValue}">Date</td>
+        <td th:utext="${map.getValue().backgroundBlockErrorsValue}">backgroundBlockErrors</td>
 
-        <td th:utext="${map.getValue().esrName}">Id</td>
-        <td th:utext="${map.getValue().esrValue}">Date</td>
+        <td th:utext="${map.getValue().esrValue}">esr[%]</td>
 
-        <td th:utext="${map.getValue().sersName}">Id</td>
-        <td th:utext="${map.getValue().sersValue}">Date</td>
+        <td th:utext="${map.getValue().sersValue}">sers[%]</td>
 
-        <td th:utext="${map.getValue().bberName}">Id</td>
-        <td th:utext="${map.getValue().bberValue}">Date</td>
+        <td th:utext="${map.getValue().bberValue}">bber[%]</td>
 
-        <td th:utext="${map.getValue().sersName}">Id</td>
-        <td th:utext="${map.getValue().sersValue}">Date</td>
+        <td th:utext="${map.getValue().availableTimeValue}">availableTime</td>
 
-        <td th:utext="${map.getValue().availableTimeName}">Id</td>
-        <td th:utext="${map.getValue().availableTimeValue}">Date</td>
+        <td th:utext="${map.getValue().unavailableTimeValue}">unavailableTime</td>
 
-        <td th:utext="${map.getValue().unavailableTimeName}">Id</td>
-        <td th:utext="${map.getValue().unavailableTimeValue}">Date</td>
+        <td th:utext="${map.getValue().nmrValue}">nmr dB</td>
 
-        <td th:utext="${map.getValue().nmrName}">Id</td>
-        <td th:utext="${map.getValue().nmrValue}">Date</td>
-        <td th:utext="${map.getValue().nmrParametr}">Date</td>
 
     </tr>
-
-
-
 </table>
 </body>
 </html>
