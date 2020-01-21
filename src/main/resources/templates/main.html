@@ -30,11 +30,39 @@
 
         <th>IpNode</th>
 
-        <th>modeName</th>
-        <th>modeValue</th>
+        <th>erroredBlocksName</th>
+        <th>erroredBlocksValue</th>
 
-        <th>syncName</th>
-        <th>syncValue</th>
+        <th>erroredSecondsName</th>
+        <th>erroredSecondValue</th>
+
+        <th>severelyErroredSecondsName</th>
+        <th>severelyErroredSecondsValue</th>
+
+        <th>severelyErroredSecondsName</th>
+        <th>severelyErroredSecondsValue</th>
+
+        <th>backgroundBlockErrorsName</th>
+        <th>backgroundBlockErrorsValue</th>
+
+        <th>esrName</th>
+        <th>esrValue</th>
+
+        <th>sersName</th>
+        <th>sersValue</th>
+
+        <th>bberName</th>
+        <th>bberValue</th>
+
+        <th>availableTimeName</th>
+        <th>availableTimeValue</th>
+
+        <th>unavailableTimeName</th>
+        <th>unavailableTimeValue</th>
+
+        <th>nmrName</th>
+        <th>nmrValue</th>
+        <th>nmrParametr</th>
     </tr>
 
     <tr th:block th:each="map:${maps}">
@@ -44,11 +72,39 @@
 
         <td th:utext="${map.getValue().ipNode}">IpNode</td>
 
-        <td th:utext="${map.getValue().modeName}">Id</td>
-        <td th:utext="${map.getValue().modeValue}">Date</td>
+        <td th:utext="${map.getValue().erroredBlocksName}">Id</td>
+        <td th:utext="${map.getValue().erroredBlocksValue}">Date</td>
 
-        <td th:utext="${map.getValue().syncName}">Id</td>
-        <td th:utext="${map.getValue().syncValue}">Date</td>
+        <td th:utext="${map.getValue().erroredSecondsName}">Id</td>
+        <td th:utext="${map.getValue().erroredSecondValue}">Date</td>
+
+        <td th:utext="${map.getValue().severelyErroredSecondsName}">Id</td>
+        <td th:utext="${map.getValue().severelyErroredSecondsValue}">Date</td>
+
+        <td th:utext="${map.getValue().backgroundBlockErrorsName}">Id</td>
+        <td th:utext="${map.getValue().backgroundBlockErrorsValue}">Date</td>
+
+        <td th:utext="${map.getValue().esrName}">Id</td>
+        <td th:utext="${map.getValue().esrValue}">Date</td>
+
+        <td th:utext="${map.getValue().sersName}">Id</td>
+        <td th:utext="${map.getValue().sersValue}">Date</td>
+
+        <td th:utext="${map.getValue().bberName}">Id</td>
+        <td th:utext="${map.getValue().bberValue}">Date</td>
+
+        <td th:utext="${map.getValue().sersName}">Id</td>
+        <td th:utext="${map.getValue().sersValue}">Date</td>
+
+        <td th:utext="${map.getValue().availableTimeName}">Id</td>
+        <td th:utext="${map.getValue().availableTimeValue}">Date</td>
+
+        <td th:utext="${map.getValue().unavailableTimeName}">Id</td>
+        <td th:utext="${map.getValue().unavailableTimeValue}">Date</td>
+
+        <td th:utext="${map.getValue().nmrName}">Id</td>
+        <td th:utext="${map.getValue().nmrValue}">Date</td>
+        <td th:utext="${map.getValue().nmrParametr}">Date</td>
 
     </tr>
 
