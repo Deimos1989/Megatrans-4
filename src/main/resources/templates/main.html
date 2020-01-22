@@ -3,6 +3,7 @@
 <head>
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
 </head>
 <body>
 
@@ -19,16 +20,6 @@
         <input type="submit" name="submit_button" value="Опрос">
     </td>
 </form>
-
-<style>
-    table {width: 50%; text-align: center; border-bottom: 2px solid #dfdfdf; border-radius: 6px; border-collapse: separate; border-spacing: 0px;}
-    table thead tr {color: #ffffff; font-weight: bold; background: #c83240;}
-    table tr td {border-right: 1px solid #dfdfdf;}
-    table tr td:last-child {border-right: 0px;}
-    table tbody tr:nth-child(1n) {background: #f6f6f6;}
-    table tbody tr:nth-child(2n) {background: #e6e6e6;}
-    table tbody tr:hover {background: #ffe8e8; transition-duration: 0.6s;}
-</style>
 
 
 
@@ -104,6 +95,52 @@
 
 
     </tr>
+
+    <table border="1" cellpadding="4" cellspacing="0">
+        <tr>
+            <th >Parametr</th>
+
+            <th>Date</th>
+
+            <th>IpNode</th>
+
+            <th>
+                errored
+                Blocks</th>
+
+            <th>
+                errored
+                Seconds</th>
+
+            <th>
+                severely
+                Errored
+                Seconds</th>
+
+            <th>
+                background
+                Block
+                Errors</th>
+
+            <th>esr[%]</th>
+
+
+            <th>sers[%]</th>
+
+
+            <th>bber[%]</th>
+
+
+            <th>availableTime</th>
+
+            <th>unavailableTime</th>
+
+            <th>nmr dB</th>
+
+        </tr>
+
+
+
 </table>
 </body>
 </html>
