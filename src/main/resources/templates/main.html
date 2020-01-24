@@ -4,6 +4,10 @@
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/margen.css}" rel="stylesheet" media="screen" />
+
+
+
 </head>
 <body>
 
@@ -11,6 +15,13 @@
     <td>
 
         <input type="submit" name="submit_button" value="Отправить">
+    </td>
+</form>
+
+<form action="/View/start2">
+    <td>
+
+        <input type="submit" name="submit_button" value="Отчет">
     </td>
 </form>
 
@@ -22,7 +33,7 @@
 </form>
 
 
-
+<div>
 <table border="1">
     <tr>
         <th>Id</th>
@@ -95,52 +106,8 @@
 
 
     </tr>
-
-    <table border="1" cellpadding="4" cellspacing="0">
-        <tr>
-            <th >Parametr</th>
-
-            <th>Date</th>
-
-            <th>IpNode</th>
-
-            <th>
-                errored
-                Blocks</th>
-
-            <th>
-                errored
-                Seconds</th>
-
-            <th>
-                severely
-                Errored
-                Seconds</th>
-
-            <th>
-                background
-                Block
-                Errors</th>
-
-            <th>esr[%]</th>
-
-
-            <th>sers[%]</th>
-
-
-            <th>bber[%]</th>
-
-
-            <th>availableTime</th>
-
-            <th>unavailableTime</th>
-
-            <th>nmr dB</th>
-
-        </tr>
-
-
-
 </table>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,7 @@
+div{
+    margin-top: 30px; /* отступ сверху */
+    margin-left: 25px; /* отступ слева */
+    margin-right: 20px; /* отступ справа */
+    margin-bottom: 15px; /* отступ снизу */
+   /* border: 3px solid red; !* граница *!*/
+}

@@ -28,7 +28,7 @@ public class Agent {
 
 
         };
-        timer.scheduleAtFixedRate(task, 1000, 20000);
+        timer.scheduleAtFixedRate(task, 1000, 5000);
         model.addAttribute("name", name = "Запуск сбора статистики системы Megatrans-4");
         return "main";
 
