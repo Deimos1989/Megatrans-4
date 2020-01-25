@@ -42,6 +42,7 @@ public String main(Model model) {
     @GetMapping("/View/start2")
     public String start2(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+        nodeBuildDAO.findByIp();
 /*
         LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
 

@@ -10,10 +10,9 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class Url implements Runnable {
@@ -80,10 +79,8 @@ public class Url implements Runnable {
             }
 
 
-            Date date = new Date();
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-
-           // Date date = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 
             if (dslStatusNode.modeName("") != "") {
                 FinalNode finalNode = new FinalNode();
@@ -92,7 +89,7 @@ public class Url implements Runnable {
 
 
                 finalNode.setModeName(dslStatusNode.modeName(""));
-                finalNode.setDate(date);
+                finalNode.setDate(timestamp);
 
                 finalNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
@@ -173,7 +170,7 @@ public class Url implements Runnable {
 
                 IntermediateNode intermediateNode = new IntermediateNode();
 
-                intermediateNode.setDate(date);
+                intermediateNode.setDate(timestamp);
 
                 intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
@@ -263,13 +260,6 @@ public class Url implements Runnable {
                 nodeBuildDAO.saveIntermediateNode(intermediateNode);
 
 
-            }
-
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
 
         }
