@@ -20,15 +20,14 @@ import java.util.Scanner;
 public class NodeBuildDAO {
 
 
-
     public List<FinalNode> findByIpNode() {
 
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
         Criteria criteria;
-        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode","127.0.0.2"));
-        List<FinalNode> finalNodeList=criteria.list();
+        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode", "127.0.0.2"));
+        List<FinalNode> finalNodeList = criteria.list();
 
         session.getTransaction().commit();
         session.clear();
@@ -38,7 +37,7 @@ public class NodeBuildDAO {
     }
 
 
-    public void findByIp() {
+    public List<FinalNode> findByIp1() {
         Scanner scanner = null;
 
         try {
@@ -59,28 +58,27 @@ public class NodeBuildDAO {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
-         for (int k = 0; k != urls.size(); k++) {
-         String[] ip = urls.get(k).split(";");
-             System.out.println(Arrays.asList(ip).toString());
-        Query query1 = session.createQuery("FROM FinalNode where ipNode = :paramName");
-        Query query2 = session.createQuery("FROM IntermediateNode where ipNode = :paramName");
-        query1.setParameter("paramName", ip[1]);
-        query2.setParameter("paramName", ip[2]);
-        List<FinalNode> findByIp1 = query1.list();
-        List<FinalNode> findByIp2 = query2.list();
-        System.out.println(findByIp1.size());
-        System.out.println(findByIp2.size());
-
-         }
+        for (int k = 0; k != urls.size(); k++) {
+            String[] ip = urls.get(k).split(";");
+            System.out.println(Arrays.asList(ip).toString());
+            Query query1 = session.createQuery("FROM FinalNode where ipNode = :paramName");
+            Query query2 = session.createQuery("FROM IntermediateNode where ipNode = :paramName");
+            query1.setParameter("paramName", ip[1]);
+            query2.setParameter("paramName", ip[2]);
+            List<FinalNode> findByIp1 = query1.list();
+            List<FinalNode> findByIp2 = query2.list();
+            System.out.println(findByIp1.size());
+            System.out.println(findByIp2.size());
 
 
-        session.getTransaction().commit();
-        session.clear();
-        session.close();
-        session.getSessionFactory().close();
+            session.getTransaction().commit();
+            session.clear();
+            session.close();
+            session.getSessionFactory().close();
+            return findByIp1;
+        }
+        return null;
     }
-       // return findByIp();
-
 
 
 
