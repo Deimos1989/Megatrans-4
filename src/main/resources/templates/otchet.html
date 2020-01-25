@@ -24,6 +24,9 @@
         <caption>UAVR</caption>
 
         <tr>
+
+            <th>IpNode</th>
+
             <th >Parametr</th>
 
             <th>ОП Георгиевск</th>
@@ -38,35 +41,57 @@
 
         </tr>
 
-        <tr th:block th:each="map:${maps}">
-
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
             <td th:utext="${map.getKey()}">Id</td>
-            <td th:utext="${map.getValue().date}">Parametr</td>
-
-            <td th:utext="${map.getValue().}">Parametr</td>
-
-            <td th:utext="${map.getValue().erroredBlocksValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().erroredSecondValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().severelyErroredSecondsValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().backgroundBlockErrorsValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().esrValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().sersValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().bberValue}">Parametr</td>
-
-            <td th:utext="${map.getValue().availableTimeValue}">availableTime</td>
-
-            <td th:utext="${map.getValue().unavailableTimeValue}">unavailableTime</td>
-
-            <td th:utext="${map.getValue().nmrValue}">nmr dB</td>
-
-
+            <td>IpNode</td>
+            <td th:utext="${map.getValue().ipNode}">IpNode</td>
         </tr>
+
+
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>ErroredBlocks</td>
+            <td th:utext="${map.getValue().erroredBlocksValue}"></td>
+        </tr>
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>ErroredSecond</td>
+            <td th:utext="${map.getValue().erroredSecondValue}"></td>
+        </tr>
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>SeverelyErrored</td>
+            <td th:utext="${map.getValue().severelyErroredSecondsValue}"></td>
+        </tr>
+
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>BackgroundBlockErrors</td>
+            <td th:utext="${map.getValue().backgroundBlockErrorsValue}"></td>
+        </tr>
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>Esr[%]</td>
+            <td th:utext="${map.getValue().esrValue}"></td>
+        </tr>
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>Sers[%]</td>
+            <td th:utext="${map.getValue().sersValue}"></td>
+        </tr>
+
+        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td>Bber[%]</td>
+            <td th:utext="${map.getValue().bberValue}"></td>
+        </tr>
+
 
 
 

@@ -45,13 +45,16 @@ public String main(Model model) {
         LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
 
         for (int i = 0; i != nodeBuildDAO.findByIp1().size(); i++) {
-            Integer id = nodeBuildDAO.findByIpNode().get(i).getId();
-            Object node= nodeBuildDAO.findByIpNode().get(i);
-            maps.put(id,node);
-            model.addAttribute("maps", maps);
+
+                Integer id1 = nodeBuildDAO.findByIp1().get(i).getId();
+                Object node1 = nodeBuildDAO.findByIp1().get(i);
+
+                maps.put(id1,node1);
+
+
 
         }
-
+        model.addAttribute("maps", maps);
 
         return "otchet";
     }
