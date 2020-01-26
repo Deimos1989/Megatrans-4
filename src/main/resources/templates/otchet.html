@@ -31,24 +31,25 @@
 
             <th>ОП Георгиевск</th>
 
-            <th colspan="2">НУП7</th>
+            <th >НУП7</th>
 
 
-            <th colspan="2">НУП6</th>
+            <th>НУП6</th>
 
 
             <th>ОП УАВР</th>
 
         </tr>
 
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>IpNode</td>
+        <tr th:block th:each="map:${maps}">
+        <td th:utext="${map.getKey()}">Id</td>
+        <td>IpNode</td>
             <td th:utext="${map.getValue().ipNode}">IpNode</td>
 
-            <td th:each="map:${maps2.entrySet().toArray()[maps2.size() -1]}"></td>
-            <td th:utext="${map.getValue().ipNode}">IpNode</td>
         </tr>
+
+
+
 
 
 
@@ -56,6 +57,7 @@
             <td th:utext="${map.getKey()}">Id</td>
             <td>ErroredBlocks</td>
             <td th:utext="${map.getValue().erroredBlocksValue}"></td>
+
         </tr>
 
         <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">

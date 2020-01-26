@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
 import org.hibernate.Criteria;
@@ -34,11 +35,11 @@ public class NodeBuildDAO {
     }
 
 
-    public List<FinalNode> findByIp1() {
+    public List<FinalNode> findByNodeIpFinal() {
         Scanner scanner = null;
 
         try {
-            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Ip.txt"), "UTF-8");
+            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test2\\src\\main\\resources\\Ip.txt"), "UTF-8");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
@@ -58,26 +59,26 @@ public class NodeBuildDAO {
         for (int k = 0; k != urls.size(); k++) {
             String[] ip = urls.get(k).split(";");
             System.out.println(Arrays.asList(ip).toString());
-                Query query1 = session.createQuery("FROM FinalNode where ipNode = :paramName");
-                query1.setParameter("paramName", ip[1]);
+                Query query1 = session.createQuery("FROM FinalNode fn where fn.ipNode = :paramName");
+                query1.setParameter("paramName", ip[0]);
                 List<FinalNode> findByIp1 = query1.list();
-
-            session.getTransaction().commit();
-            session.clear();
-            session.close();
-            session.getSessionFactory().close();
-            return findByIp1;
-
-
-        }
+                System.out.println(findByIp1.toString());
+                session.getTransaction().commit();
+                session.clear();
+                session.close();
+                session.getSessionFactory().close();
+                return findByIp1;
+            }
         return null;
     }
 
-    public List<IntermediateNode> findByIp2() {
+
+
+   /* public List<IntermediateNode> findByNodeIpIntermediate() {
         Scanner scanner = null;
 
         try {
-            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Ip.txt"), "UTF-8");
+            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test2\\src\\main\\resources\\Ip.txt"), "UTF-8");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Фаил не найден");
         }
@@ -97,27 +98,25 @@ public class NodeBuildDAO {
         for (int k = 0; k != urls.size(); k++) {
             String[] ip = urls.get(k).split(";");
             System.out.println(Arrays.asList(ip).toString());
-            Query query1 = session.createQuery("FROM IntermediateNode where ipNode = :paramName");
-            query1.setParameter("paramName", ip[2]);
+            Query query1 = session.createQuery("SELECT *FROM IntermediateNode where ipNode = :paramName ORDER BY id LIMIT 3");
+            query1.setParameter("paramName", ip[1]);
             List<IntermediateNode> findByIp2 = query1.list();
-
+            System.out.println(findByIp2.toString());
             session.getTransaction().commit();
             session.clear();
             session.close();
             session.getSessionFactory().close();
-            return findByIp2();
-
-
+            return findByIp2;
         }
         return null;
-    }
+    }*/
 
 
-
-    public void saveFinalNode(FinalNode finalNode) {
+    public void saveFinalNode(FinalNode finalNode,DateTime dateTime) {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         session.save(finalNode);
+        session.save(dateTime);
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -137,6 +136,18 @@ public class NodeBuildDAO {
         ;
 
     }
+
+   /* public void saveDateTime(DateTime dateTime) {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        session.save(dateTime);
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+
+
+    }*/
 
 }
 

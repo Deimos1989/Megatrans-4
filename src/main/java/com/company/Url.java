@@ -1,6 +1,7 @@
 package com.company;
 
 import DAO.NodeBuildDAO;
+import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
 import org.jsoup.Jsoup;
@@ -82,11 +83,15 @@ public class Url implements Runnable {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 
+
+
             if (dslStatusNode.modeName("") != "") {
+
+                DateTime dateTime =new DateTime();
+
                 FinalNode finalNode = new FinalNode();
 
-
-
+                dateTime.setDate(timestamp);
 
                 finalNode.setModeName(dslStatusNode.modeName(""));
                 finalNode.setDate(timestamp);
@@ -162,7 +167,7 @@ public class Url implements Runnable {
                 finalNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
                 finalNode.setUnavailableTimeValue(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
-                nodeBuildDAO.saveFinalNode(finalNode);
+                nodeBuildDAO.saveFinalNode(finalNode,dateTime);
 
             } else {
 
@@ -258,6 +263,7 @@ public class Url implements Runnable {
                 intermediateNode.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
                 nodeBuildDAO.saveIntermediateNode(intermediateNode);
+
 
 
             }
