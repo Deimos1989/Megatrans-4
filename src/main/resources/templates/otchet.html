@@ -45,6 +45,9 @@
             <td th:utext="${map.getKey()}">Id</td>
             <td>IpNode</td>
             <td th:utext="${map.getValue().ipNode}">IpNode</td>
+
+            <td th:each="map:${maps2.entrySet().toArray()[maps2.size() -1]}"></td>
+            <td th:utext="${map.getValue().ipNode}">IpNode</td>
         </tr>
 
 

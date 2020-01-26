@@ -42,19 +42,25 @@ public String main(Model model) {
     @GetMapping("/View/start2")
     public String start2(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
-        LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
+        LinkedHashMap< Integer , Object> maps1 =new LinkedHashMap<Integer, Object>();
+        LinkedHashMap< Integer , Object> maps2 =new LinkedHashMap<Integer, Object>();
 
         for (int i = 0; i != nodeBuildDAO.findByIp1().size(); i++) {
 
                 Integer id1 = nodeBuildDAO.findByIp1().get(i).getId();
                 Object node1 = nodeBuildDAO.findByIp1().get(i);
+            Integer id2 = nodeBuildDAO.findByIp2().get(i).getId();
+            Object node2 = nodeBuildDAO.findByIp2().get(i);
 
-                maps.put(id1,node1);
+
+            maps1.put(id1,node1);
+            maps1.put(id2,node2);
 
 
 
         }
-        model.addAttribute("maps", maps);
+        model.addAttribute("maps", maps1);
+        model.addAttribute("maps2", maps2);
 
         return "otchet";
     }

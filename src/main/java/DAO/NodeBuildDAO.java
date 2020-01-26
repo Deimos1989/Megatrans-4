@@ -73,7 +73,7 @@ public class NodeBuildDAO {
         return null;
     }
 
- /*   public List<FinalNode> findByIp1() {
+    public List<IntermediateNode> findByIp2() {
         Scanner scanner = null;
 
         try {
@@ -97,21 +97,20 @@ public class NodeBuildDAO {
         for (int k = 0; k != urls.size(); k++) {
             String[] ip = urls.get(k).split(";");
             System.out.println(Arrays.asList(ip).toString());
-            Query query1 = session.createQuery("FROM FinalNode where ipNode = :paramName");
-            query1.setParameter("paramName", ip[1]);
-            List<FinalNode> findByIp1 = query1.list();
+            Query query1 = session.createQuery("FROM IntermediateNode where ipNode = :paramName");
+            query1.setParameter("paramName", ip[2]);
+            List<IntermediateNode> findByIp2 = query1.list();
 
             session.getTransaction().commit();
             session.clear();
             session.close();
             session.getSessionFactory().close();
-            return findByIp1;
+            return findByIp2();
 
 
         }
         return null;
     }
-*/
 
 
 
