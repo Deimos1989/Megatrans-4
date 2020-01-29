@@ -84,14 +84,11 @@ public class Url implements Runnable {
 
 
 
-
             if (dslStatusNode.modeName("") != "") {
 
-                DateTime dateTime =new DateTime();
+
 
                 FinalNode finalNode = new FinalNode();
-
-                dateTime.setDate(timestamp);
 
                 finalNode.setModeName(dslStatusNode.modeName(""));
                 finalNode.setDate(timestamp);
@@ -167,7 +164,7 @@ public class Url implements Runnable {
                 finalNode.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
                 finalNode.setUnavailableTimeValue(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
-                nodeBuildDAO.saveFinalNode(finalNode,dateTime);
+                nodeBuildDAO.saveFinalNode(finalNode);
 
             } else {
 

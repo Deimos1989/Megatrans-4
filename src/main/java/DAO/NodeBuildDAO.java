@@ -24,7 +24,8 @@ public class NodeBuildDAO {
         session.beginTransaction();
 
         Criteria criteria;
-        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode", "127.0.0.2"));
+        String ars ="127.0.0.2";
+        criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode", ars));
         List<FinalNode> finalNodeList = criteria.list();
 
         session.getTransaction().commit();
@@ -112,11 +113,10 @@ public class NodeBuildDAO {
     }*/
 
 
-    public void saveFinalNode(FinalNode finalNode,DateTime dateTime) {
+    public void saveFinalNode(FinalNode finalNode) {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         session.save(finalNode);
-        session.save(dateTime);
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -137,7 +137,7 @@ public class NodeBuildDAO {
 
     }
 
-   /* public void saveDateTime(DateTime dateTime) {
+    public void saveDateTime(DateTime dateTime) {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         session.save(dateTime);
@@ -147,7 +147,7 @@ public class NodeBuildDAO {
         session.getSessionFactory().close();
 
 
-    }*/
+    }
 
 }
 

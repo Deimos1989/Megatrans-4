@@ -1,8 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
-import java.util.Date;
-
+import java.sql.Timestamp;
 
 
 @Entity
@@ -19,7 +18,11 @@ public class DateTime {
     private Integer id;
 
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
+
+
+
+
 
 
     public Integer getId() {
@@ -30,11 +33,11 @@ public class DateTime {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

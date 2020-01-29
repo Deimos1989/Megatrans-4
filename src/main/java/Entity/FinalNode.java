@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -16,7 +17,7 @@ public class FinalNode {
 
 
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
 
     @Column(name = "ipNode")
     private String ipNode;
@@ -153,11 +154,11 @@ public class FinalNode {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

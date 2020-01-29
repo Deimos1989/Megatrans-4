@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Timestamp;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,13 +17,17 @@ public class Agent {
 
     @GetMapping("/Agent")
     public String start(@RequestParam(name="name", required=false, defaultValue="World")String name, Model model) {
-
+NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
 
 
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                DateTime dateTime =new DateTime();
+                dateTime.setDate(timestamp);
+                nodeBuildDAO.saveDateTime(dateTime);
 
                 Url url = new Url();
                 Thread thread = new Thread(url);
