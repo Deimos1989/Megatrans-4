@@ -27,6 +27,7 @@ NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 DateTime dateTime =new DateTime();
                 dateTime.setDate(timestamp);
+                System.out.println(timestamp.toString());
                 nodeBuildDAO.saveDateTime(dateTime);
 
                 Url url = new Url();

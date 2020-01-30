@@ -14,8 +14,9 @@ public class IntermediateNode {
     @Column(name = "id")
     private Integer id;
 
+
         @Column(name = "date")
-         private Timestamp date;
+        private Timestamp date;
 
         @Column(name="ipNode")
         private String ipNode;
