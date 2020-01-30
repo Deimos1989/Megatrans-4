@@ -82,7 +82,7 @@ public class Url implements Runnable {
 
 
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+           // String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
 
 
 
@@ -176,7 +176,7 @@ public class Url implements Runnable {
 
                 IntermediateNode intermediateNode = new IntermediateNode();
 
-                intermediateNode.setHash(hash);
+
                 intermediateNode.setDate(timestamp);
 
                 intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));

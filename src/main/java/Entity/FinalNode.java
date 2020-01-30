@@ -20,16 +20,7 @@ public class FinalNode {
     @JoinColumn (name="hash1", referencedColumnName = "hash1")
     private DateTime dateTime =new DateTime();
 
-    public String getHash() {
-        return hash;
-    }
 
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    @Column(name="hash")
-    private  String hash;
 
     @Column(name = "date")
     private Timestamp date;

@@ -27,7 +27,7 @@ NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
 
                 DateTime dateTime =new DateTime();
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                //String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+               // String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
                // dateTime.setHash(hash);
                 dateTime.setDate(timestamp);
                 System.out.println(timestamp.toString());
