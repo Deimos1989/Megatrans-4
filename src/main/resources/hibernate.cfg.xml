@@ -16,6 +16,8 @@
         <mapping class="Entity.DateTime"></mapping>
         <mapping class="Entity.FinalNode"></mapping>
         <mapping class="Entity.IntermediateNode"></mapping>
+        <mapping class="Entity.DateTime"></mapping>
+
     </session-factory>
 
 </hibernate-configuration>

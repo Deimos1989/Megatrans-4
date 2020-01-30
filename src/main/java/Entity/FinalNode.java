@@ -2,7 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 
 @Entity
@@ -14,7 +14,22 @@ public class FinalNode {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    
+
+
+    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn (name="hash1", referencedColumnName = "hash1")
+    private DateTime dateTime =new DateTime();
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    @Column(name="hash")
+    private  String hash;
 
     @Column(name = "date")
     private Timestamp date;
@@ -154,6 +169,15 @@ public class FinalNode {
         this.id = id;
     }
 
+
+   /* public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+*/
     public Timestamp getDate() {
         return date;
     }

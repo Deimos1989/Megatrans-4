@@ -15,6 +15,16 @@ public class IntermediateNode {
     private Integer id;
 
 
+
+    /*@ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn (name="hash")
+    private DateTime dateTime;*/
+
+    @Column(name = "hash")
+    private String hash;
+
+
+
         @Column(name = "date")
         private Timestamp date;
 
@@ -190,6 +200,14 @@ public IntermediateNode(){
 
     public Timestamp getDate() {
         return date;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public void setDate(Timestamp date) {

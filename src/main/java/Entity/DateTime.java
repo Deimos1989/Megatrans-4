@@ -2,6 +2,9 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -19,12 +22,35 @@ public class DateTime {
 
 
     @Column(name = "date")
-    private Timestamp date;
+    private Timestamp timestamp;
+
+
+
+    @Column(name = "hash1")
+    private String hash1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
 
 
 
 
+    /*@OneToMany
+private Set<FinalNode> finalNodes=new HashSet<FinalNode>();
 
+
+    public Set<FinalNode> getFinalNodes() {
+        return finalNodes;
+    }
+
+    public void setFinalNodes(Set<FinalNode> finalNodes) {
+        this.finalNodes = finalNodes;
+    }*/
+
+    public String getHash() {
+        return hash1;
+    }
+
+    public void setHash(String hash) {
+        this.hash1 = hash;
+    }
 
     public Integer getId() {
         return id;
@@ -35,11 +61,11 @@ public class DateTime {
     }
 
     public Timestamp getDate() {
-        return date;
+        return timestamp;
     }
 
     public void setDate(Timestamp date) {
-        this.date = date;
+        this.timestamp = date;
     }
 
 

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
 @Controller
 public class Agent {
+
 
     @GetMapping("/Agent")
     public String start(@RequestParam(name="name", required=false, defaultValue="World")String name, Model model) {
@@ -23,9 +25,10 @@ NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
             @Override
             public void run() {
 
-
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 DateTime dateTime =new DateTime();
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                //String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+               // dateTime.setHash(hash);
                 dateTime.setDate(timestamp);
                 System.out.println(timestamp.toString());
                 nodeBuildDAO.saveDateTime(dateTime);
