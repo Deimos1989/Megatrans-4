@@ -43,66 +43,17 @@
 
         <tr th:block th:each="map:${maps}">
         <td th:utext="${map.getKey()}">Id</td>
-        <td>IpNode</td>
-            <td th:utext="${map.getValue().ipNode}">IpNode</td>
+        <td th:utext="${map.getValue().date}">IpNode</td>
+
 
         </tr>
-
-
-
-
-
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>ErroredBlocks</td>
-            <td th:utext="${map.getValue().erroredBlocksValue}"></td>
-
-        </tr>
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>ErroredSecond</td>
-            <td th:utext="${map.getValue().erroredSecondValue}"></td>
-        </tr>
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>SeverelyErrored</td>
-            <td th:utext="${map.getValue().severelyErroredSecondsValue}"></td>
-        </tr>
-
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>BackgroundBlockErrors</td>
-            <td th:utext="${map.getValue().backgroundBlockErrorsValue}"></td>
-        </tr>
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>Esr[%]</td>
-            <td th:utext="${map.getValue().esrValue}"></td>
-        </tr>
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>Sers[%]</td>
-            <td th:utext="${map.getValue().sersValue}"></td>
-        </tr>
-
-        <tr th:block th:each="map:${maps.entrySet().toArray()[maps.size() -1]}">
-            <td th:utext="${map.getKey()}">Id</td>
-            <td>Bber[%]</td>
-            <td th:utext="${map.getValue().bberValue}"></td>
-        </tr>
-
-
 
 
 </table>
 
 </div>
+
+
 
 <div>
 
@@ -128,6 +79,15 @@
 
 </div>
 
+
+
+
+
+
+
+
+
+
 <div>
 <table border="1" cellpadding="4" cellspacing="0" >
     <caption>System №6</caption>
@@ -149,6 +109,12 @@
 </table>
 
 </div>
+
+
+
+
+
+
 
 
 <div>

@@ -3,6 +3,7 @@ package Entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,21 +29,14 @@ public class DateTime {
 
     @Column(name = "hash1")
     private String hash1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+/*
+    @OneToMany(mappedBy = "dateTime", fetch = FetchType.EAGER)
+    private Collection<FinalNode> finalNodes;
+
+    @OneToMany(mappedBy = "dateTime", fetch = FetchType.LAZY)
+    private Collection<IntermediateNode> intermediateNodes;*/
 
 
-
-
-    /*@OneToMany
-private Set<FinalNode> finalNodes=new HashSet<FinalNode>();
-
-
-    public Set<FinalNode> getFinalNodes() {
-        return finalNodes;
-    }
-
-    public void setFinalNodes(Set<FinalNode> finalNodes) {
-        this.finalNodes = finalNodes;
-    }*/
 
     public String getHash() {
         return hash1;
