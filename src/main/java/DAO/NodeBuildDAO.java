@@ -39,7 +39,7 @@ public class NodeBuildDAO {
     }
 
 
-    public List<Object> findByDataTime() {
+    public List findByDataTime() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
@@ -48,16 +48,16 @@ public class NodeBuildDAO {
         query1.setParameter("paramName", "2020.02.01.19.50.30.030");*/
 
 
-        Query query2=session.createSQLQuery("SELECT date FROM DateTime where TIMESTAMP('2020-02-01 19:50:30')");
+        //Query query2=session.createSQLQuery("SELECT date FROM DateTime where TIMESTAMP('2020-02-01 19:50:30')");
+            Query query2=session.createSQLQuery("SELECT finalNode.*, datetime.hash1 FROM finalnode INNER JOIN datetime ON finalnode.hash1 =datetime.hash1 where datetime.id =1 ");
 //Query query2=session.createQuery("SELECT hash1 FROM DateTime dt inner join dt.hash1 as hash1 ");
-        List<Object> findByIp2 = query2.list();
-        System.out.println(findByIp2.size());
-        System.out.println(findByIp2.get(0));
+
+        List<Query> list =query2.list();
         session.getTransaction().commit();
         session.clear();
         session.close();
         session.getSessionFactory().close();
-        return findByIp2;
+        return list;
     }
 
 

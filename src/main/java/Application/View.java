@@ -44,22 +44,19 @@ public String main(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
         LinkedHashMap< Integer , Object> maps1 =new LinkedHashMap<Integer, Object>();
 
-        for (int i = 0; i != nodeBuildDAO.findByDataTime().size(); i++) {
-
-            //Integer id = nodeBuildDAO.findByDataTime().get(i).getId();
-            //Object date= nodeBuildDAO.findByDataTime().get(i);
-            //maps1.put(id,date);
-            model.addAttribute("maps", maps1);
 
 
+            Integer id =1;
+
+        System.out.println(nodeBuildDAO.findByDataTime().get(1));
 
 
-
-        }
-
+        //System.out.println( nodeBuildDAO.findByDataTime().list().get(0).toString());
 
 
-        model.addAttribute("maps", maps1);
+     //   maps1.put(id, list);
+      //   model.addAttribute("maps", maps1);
+
 
         return "otchet";
     }
