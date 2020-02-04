@@ -3,6 +3,7 @@ package Entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 
 @Entity
 @Table(name = "dateTime")
@@ -26,11 +27,14 @@ public class DateTime {
     @Column(name = "hash1")
     private String hash1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
 
- /*   @OneToMany(mappedBy = "dateTime", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dateTime", fetch = FetchType.EAGER)
     private Collection<FinalNode> finalNodes;
 
     @OneToMany(mappedBy = "dateTime", fetch = FetchType.LAZY)
-    private Collection<IntermediateNode> intermediateNodes;*/
+    private Collection<IntermediateNode> intermediateNodes;
+
+    @OneToMany(mappedBy = "dateTime", fetch = FetchType.LAZY)
+    private Collection<Node> node;
 
 
 

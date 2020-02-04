@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "Base")
+@Table(name = "nodeBase")
 public class Node {
 
     public Node() {
@@ -16,6 +16,10 @@ public class Node {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
+    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn (name="hash1", referencedColumnName = "hash1")
+    private DateTime dateTime =new DateTime();
 
     @Column(name = "date")
     private Timestamp date;
