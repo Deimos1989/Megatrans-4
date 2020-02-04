@@ -17,6 +17,7 @@
         <mapping class="Entity.FinalNode"></mapping>
         <mapping class="Entity.IntermediateNode"></mapping>
         <mapping class="Entity.DateTime"></mapping>
+        <mapping class="Entity.Node"></mapping>
 
     </session-factory>
 

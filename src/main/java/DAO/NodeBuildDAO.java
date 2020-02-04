@@ -4,6 +4,7 @@ package DAO;
 import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
+import Entity.Node;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -44,20 +45,23 @@ public class NodeBuildDAO {
         session.beginTransaction();
 
 
-      /*  Query query1 = session.createQuery("FROM DateTime where hash1 = :paramName");
-        query1.setParameter("paramName", "2020.02.01.19.50.30.030");*/
+        //Query query1 = session.createQuery("FROM DateTime where hash1 = :paramName");
+        //query1.setParameter("paramName", "2020.02.01.19.50.30.030");
+
 
 
         //Query query2=session.createSQLQuery("SELECT date FROM DateTime where TIMESTAMP('2020-02-01 19:50:30')");
-            Query query2=session.createSQLQuery("SELECT finalNode.*, datetime.hash1 FROM finalnode INNER JOIN datetime ON finalnode.hash1 =datetime.hash1 where datetime.id =1 ");
-//Query query2=session.createQuery("SELECT hash1 FROM DateTime dt inner join dt.hash1 as hash1 ");
+        List<FinalNode> persons=session.createSQLQuery("SELECT finalnode.id as id, datetime.hash1 as hash1 FROM finalnode INNER JOIN datetime ON finalnode.hash1 =datetime.hash1 where datetime.hash1='2020.02.04.00.40.42.314'").list();
 
-        List<Query> list =query2.list();
+
+       System.out.println(persons.get(0).getDate());
+        System.out.println();
+        System.out.println(Arrays.asList(persons).toString());
         session.getTransaction().commit();
         session.clear();
         session.close();
         session.getSessionFactory().close();
-        return list;
+        return persons;
     }
 
 
@@ -116,6 +120,17 @@ public class NodeBuildDAO {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         session.save(intermediateNode);
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+
+    }
+
+    public void saveNode(Node node) {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        session.save(node);
         session.getTransaction().commit();
         session.clear();
         session.close();

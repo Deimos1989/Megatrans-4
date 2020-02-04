@@ -42,20 +42,20 @@ public String main(Model model) {
     @GetMapping("/View/start2")
     public String start2(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
-        LinkedHashMap< Integer , Object> maps1 =new LinkedHashMap<Integer, Object>();
+     //   LinkedHashMap< Integer , Object> maps1 =new LinkedHashMap<Integer, Object>();
 
 
 
             Integer id =1;
 
-        System.out.println(nodeBuildDAO.findByDataTime().get(1));
+            Object date =nodeBuildDAO.findByDataTime();
 
 
         //System.out.println( nodeBuildDAO.findByDataTime().list().get(0).toString());
 
 
-     //   maps1.put(id, list);
-      //   model.addAttribute("maps", maps1);
+     //   maps1.put(id, date);
+        // model.addAttribute("maps", maps1);
 
 
         return "otchet";
