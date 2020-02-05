@@ -4,18 +4,12 @@ package DAO;
 import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
-import Entity.Node;
+import Entity.NodeBase;
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import javax.persistence.criteria.Root;
-import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.sql.Timestamp;
 import java.util.*;
 
 
@@ -40,28 +34,37 @@ public class NodeBuildDAO {
     }
 
 
-    public List findByDataTime() {
+    public List<NodeBase> findByDataTime() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
 
         //Query query1 = session.createQuery("FROM DateTime where hash1 = :paramName");
         //query1.setParameter("paramName", "2020.02.01.19.50.30.030");
+        //List<NodeBase> nodeList=session.createSQLQuery("SELECT nodebase.* FROM NodeBase where TIMESTAMP('2020-02-01 19:50:30')").addEntity(NodeBase.class).list();
+        //List<Object[]> nodeList=session.createSQLQuery("SELECT nodebase.id as id, datetime.hash1 as hash1 FROM nodebase INNER JOIN datetime ON nodebase.hash1 =datetime.hash1 where datetime.hash1='2020.02.04.12.32.43.473'").list();
+        //List<Object[]> nodeList=session.createSQLQuery("SELECT nodebase.id, nodebase.hash1 FROM nodebase").list();
+        //nodeList.forEach(p-> System.out.println("node.id"+p[0]+"datetime.hash1"+p[1]));
+        /*Query query=session.createQuery("FROM DateTime where hash1 =:paramName" );
+       query.setParameter("paramName","2020.02.04.12.28.47.456");*/
+
+
+        Criteria criteria;
+        String ars ="2020-02-04 12:32:43";
+        criteria = session.getSessionFactory().openSession().createCriteria(NodeBase.class).add(Restrictions.eq("date", ars));
+        List<NodeBase> nodeList = criteria.list();
 
 
 
-        //Query query2=session.createSQLQuery("SELECT date FROM DateTime where TIMESTAMP('2020-02-01 19:50:30')");
-        List<FinalNode> persons=session.createSQLQuery("SELECT finalnode.id as id, datetime.hash1 as hash1 FROM finalnode INNER JOIN datetime ON finalnode.hash1 =datetime.hash1 where datetime.hash1='2020.02.04.00.40.42.314'").list();
 
 
-       System.out.println(persons.get(0).getDate());
-        System.out.println();
-        System.out.println(Arrays.asList(persons).toString());
+//       System.out.println(query.list());
+//        System.out.println(Arrays.asList(query.list()).toString());
         session.getTransaction().commit();
         session.clear();
         session.close();
         session.getSessionFactory().close();
-        return persons;
+        return nodeList;
     }
 
 
@@ -127,10 +130,10 @@ public class NodeBuildDAO {
 
     }
 
-    public void saveNode(Node node) {
+    public void saveNode(NodeBase nodeBase) {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        session.save(node);
+        session.save(nodeBase);
         session.getTransaction().commit();
         session.clear();
         session.close();

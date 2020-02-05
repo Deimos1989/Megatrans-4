@@ -16,14 +16,28 @@ public class FinalNode {
     private Integer id;
 
 
-    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+   /* @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="hash1", referencedColumnName = "hash1")
-    private DateTime dateTime =new DateTime();
+    private DateTime dateTime =new DateTime();*/
+
+    @Column(name = "hash")
+    private String hash;
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 
 
+
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
 
     @Column(name = "date")
-    private Timestamp date;
+    private String date;
 
     @Column(name = "ipNode")
     private String ipNode;
@@ -161,19 +175,11 @@ public class FinalNode {
     }
 
 
-   /* public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-*/
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -567,6 +573,15 @@ public class FinalNode {
 
     public void setUnavailableTimeValue(Long unavailableTimeValue) {
         this.unavailableTimeValue = unavailableTimeValue;
+    }
+
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 }
 

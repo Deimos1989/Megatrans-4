@@ -1,10 +1,10 @@
 package com.company;
 
 import DAO.NodeBuildDAO;
-import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
-import Entity.Node;
+import Entity.NodeBase;
+import Service.ServiceDateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -12,7 +12,6 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.sql.Timestamp;
@@ -78,8 +77,8 @@ public class Url implements Runnable {
            }
 
 
-           Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-           // String hash = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+
+           ServiceDateTime serviceDateTime =new ServiceDateTime();
 
 
            if (dslStatusNode.modeName("") != "") {
@@ -87,9 +86,12 @@ public class Url implements Runnable {
 
                FinalNode finalNode = new FinalNode();
 
-               //finalNode.setHash(hash);
+               finalNode.setTimestamp(serviceDateTime.getTimestampStatic());
+               finalNode.setDate(serviceDateTime.getDateTimeStatic());
+               finalNode.setHash(serviceDateTime.getHashStatic());
+
+
                finalNode.setModeName(dslStatusNode.modeName(""));
-               finalNode.setDate(timestamp);
 
                finalNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
@@ -163,13 +165,16 @@ public class Url implements Runnable {
 
                nodeBuildDAO.saveFinalNode(finalNode);
 
+
            } else {
 
 
                IntermediateNode intermediateNode = new IntermediateNode();
 
 
-               intermediateNode.setDate(timestamp);
+               intermediateNode.setTimestamp(serviceDateTime.getTimestampStatic());
+               intermediateNode.setDate(serviceDateTime.getDateTimeStatic());
+               intermediateNode.setHash(serviceDateTime.getHashStatic());
 
                intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));
 
@@ -263,98 +268,105 @@ public class Url implements Runnable {
 
 
            if (dslStatusNode.modeName("") != "") {
-               Node node = new Node();
-
-               node.setDate(timestamp);
-               node.setIpNode(dslStatusNode.nameNode(url[0]));
-
-               node.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-               node.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+               NodeBase nodeBase = new NodeBase();
 
 
-               node.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-               node.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+               nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
+               nodeBase.setDate(serviceDateTime.getDateTimeStatic());
+               nodeBase.setHash(serviceDateTime.getHashStatic());
+
+               nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
+
+               nodeBase.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+               nodeBase.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
 
 
-               node.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-               node.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+               nodeBase.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+               nodeBase.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
 
 
-               node.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-               node.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
-
-               node.setEsrName(dslStatisticsNode.esrName(""));
-               node.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
-
-               node.setSersName(dslStatisticsNode.sersName(""));
-               node.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+               nodeBase.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+               nodeBase.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
 
 
-               node.setBberName(dslStatisticsNode.bberName(""));
-               node.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+               nodeBase.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+               nodeBase.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+
+               nodeBase.setEsrName(dslStatisticsNode.esrName(""));
+               nodeBase.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+
+               nodeBase.setSersName(dslStatisticsNode.sersName(""));
+               nodeBase.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
 
 
-               node.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-               node.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
+               nodeBase.setBberName(dslStatisticsNode.bberName(""));
+               nodeBase.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
 
 
-               node.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-               node.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+               nodeBase.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+               nodeBase.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
 
 
-               node.setNmrName(dslStatusNode.nmrName(""));
-               node.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
+               nodeBase.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+               nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
-               nodeBuildDAO.saveNode(node);
+
+               nodeBase.setNmrName(dslStatusNode.nmrName(""));
+               nodeBase.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
+
+               nodeBuildDAO.saveNode(nodeBase);
 
 
            } else {
 
-               Node node = new Node();
+               NodeBase nodeBase = new NodeBase();
 
-               node.setDate(timestamp);
-               node.setIpNode(dslStatusNode.nameNode(url[0]));
+               nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
+               nodeBase.setDate(serviceDateTime.getDateTimeStatic());
+               nodeBase.setHash(serviceDateTime.getHashStatic());
 
-               node.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-               node.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
-               node.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
+               nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
 
-               node.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-               node.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
-               node.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
+               nodeBase.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+               nodeBase.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+               nodeBase.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
 
-               node.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-               node.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
-               node.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
+               nodeBase.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+               nodeBase.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+               nodeBase.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
 
-               node.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-               node.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
-               node.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
+               nodeBase.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+               nodeBase.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+               nodeBase.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
 
-               node.setEsrName(dslStatisticsNode.esrName(""));
-               node.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
-               node.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
+               nodeBase.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+               nodeBase.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+               nodeBase.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
 
-               node.setSersName(dslStatisticsNode.sersName(""));
-               node.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
-               node.setSersValueSide2(dslStatisticsNode.sersValueSide2(0.0));
+               nodeBase.setEsrName(dslStatisticsNode.esrName(""));
+               nodeBase.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+               nodeBase.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
 
-               node.setBberName(dslStatisticsNode.bberName(""));
-               node.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
-               node.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
+               nodeBase.setSersName(dslStatisticsNode.sersName(""));
+               nodeBase.setSersValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+               nodeBase.setSersValueSide2(dslStatisticsNode.sersValueSide2(0.0));
 
-               node.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-               node.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
-               node.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
+               nodeBase.setBberName(dslStatisticsNode.bberName(""));
+               nodeBase.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+               nodeBase.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
 
-               node.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-               node.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
-               node.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
+               nodeBase.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+               nodeBase.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
+               nodeBase.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
 
-               node.setNmrName(dslStatusNode.nmrName(""));
-               node.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
-               node.setNmrValueSide2(dslStatusNode.nmrValueSide2(0.0));
-               nodeBuildDAO.saveNode(node);
+               nodeBase.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+               nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+               nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
+
+               nodeBase.setNmrName(dslStatusNode.nmrName(""));
+               nodeBase.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
+               nodeBase.setNmrValueSide2(dslStatusNode.nmrValueSide2(0.0));
+               nodeBuildDAO.saveNode(nodeBase);
            }
 
 

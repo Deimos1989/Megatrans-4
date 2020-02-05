@@ -15,13 +15,26 @@ public class IntermediateNode {
     private Integer id;
 
 
-    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+   /* @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="hash1", referencedColumnName = "hash1")
-    private DateTime dateTime =new DateTime();
+    private DateTime dateTime =new DateTime();*/
 
+    @Column(name = "hash")
+    private String hash;
 
-        @Column(name = "date")
-        private Timestamp date;
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
+
+    @Column(name = "date")
+    private String date;
 
         @Column(name="ipNode")
         private String ipNode;
@@ -193,11 +206,11 @@ public IntermediateNode(){
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -728,4 +741,13 @@ public IntermediateNode(){
     public void setUnavailableTimeValueSide2(Long unavailableTimeValueSide2) {
         this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
     }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 }
+

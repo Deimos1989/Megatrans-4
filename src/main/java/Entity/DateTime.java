@@ -2,8 +2,6 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
 
 @Entity
 @Table(name = "dateTime")
@@ -19,31 +17,23 @@ public class DateTime {
     private Integer id;
 
 
-    @Column(name = "date")
+    @Column(name = "timestamp")
     private Timestamp timestamp;
 
+    @Column(name = "date")
+    private String date;
 
 
     @Column(name = "hash1")
-    private String hash1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
-
-    @OneToMany(mappedBy = "dateTime", fetch = FetchType.EAGER)
-    private Collection<FinalNode> finalNodes;
-
-    @OneToMany(mappedBy = "dateTime", fetch = FetchType.LAZY)
-    private Collection<IntermediateNode> intermediateNodes;
-
-    @OneToMany(mappedBy = "dateTime", fetch = FetchType.LAZY)
-    private Collection<Node> node;
-
+    private String hash;
 
 
     public String getHash() {
-        return hash1;
+        return hash;
     }
 
     public void setHash(String hash) {
-        this.hash1 = hash;
+        this.hash = hash;
     }
 
     public Integer getId() {
@@ -54,13 +44,19 @@ public class DateTime {
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setDate(Timestamp date) {
-        this.timestamp = date;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
-
-
 }

@@ -6,9 +6,9 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "nodeBase")
-public class Node {
+public class NodeBase {
 
-    public Node() {
+    public NodeBase() {
 
     }
 
@@ -17,12 +17,26 @@ public class Node {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+  /*  @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="hash1", referencedColumnName = "hash1")
-    private DateTime dateTime =new DateTime();
+    private DateTime dateTime =new DateTime();*/
+
+    @Column(name = "hash")
+    private String hash;
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
 
     @Column(name = "date")
-    private Timestamp date;
+    private String date;
 
     @Column(name = "ipNode")
     private String ipNode;
@@ -108,11 +122,11 @@ public class Node {
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -370,5 +384,13 @@ public class Node {
 
     public void setNmrParametr(String nmrParametr) {
         this.nmrParametr = nmrParametr;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 }
