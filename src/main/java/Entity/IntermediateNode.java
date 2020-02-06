@@ -12,7 +12,7 @@ public class IntermediateNode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
 
    /* @ManyToOne (optional=false, cascade=CascadeType.ALL)
@@ -198,11 +198,11 @@ public IntermediateNode(){
 
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

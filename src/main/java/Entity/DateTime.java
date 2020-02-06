@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 @Table(name = "dateTime")
 public class DateTime {
 
+
+
     public DateTime(){
 
     }
@@ -14,7 +16,7 @@ public class DateTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
 
     @Column(name = "timestamp")
@@ -23,9 +25,12 @@ public class DateTime {
     @Column(name = "date")
     private String date;
 
+   /* @Column(name = "hash2")
+    private  String hash2;*/
 
     @Column(name = "hash1")
     private String hash;
+
 
 
     public String getHash() {
@@ -36,11 +41,11 @@ public class DateTime {
         this.hash = hash;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

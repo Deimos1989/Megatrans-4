@@ -3,6 +3,8 @@ package Application;
 import DAO.NodeBuildDAO;
 
 import Entity.DateTime;
+import Entity.FinalNode;
+import TableDisplay.TableDispleyUAVR;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +30,11 @@ public String main(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
 
         LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
+        List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
 
-        for (int i = 0; i != nodeBuildDAO.findByIpNode().size(); i++) {
-            Integer id = nodeBuildDAO.findByIpNode().get(i).getId();
-            Object node= nodeBuildDAO.findByIpNode().get(i);
+        for (int i = 0; i != finalNodeList.size(); i++) {
+            Integer id = finalNodeList.get(i).getId();
+            Object node= finalNodeList.get(i);
             maps.put(id,node);
             model.addAttribute("maps", maps);
 
@@ -41,17 +44,15 @@ public String main(Model model) {
 
     @GetMapping("/View/start2")
     public String start2(Model model) {
-        NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+
         LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
+        TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
 
-
-       // for (int i = 0; i != nodeBuildDAO.findByDataTime().size(); i++) {
-            Integer id = nodeBuildDAO.findByDataTime().get(0).getId();
-            Object node = nodeBuildDAO.findByDataTime().get(0);
+            Integer id = 1;
+            Object node = tableDispleyUAVR;
             maps1.put(id, node);
             model.addAttribute("maps", maps1);
 
-      //  }
             return "otchet";
         }
 

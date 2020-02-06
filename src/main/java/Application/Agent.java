@@ -40,6 +40,7 @@ public class Agent {
                 Thread thread = new Thread(url);
                 thread.start();
 
+
                 serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
                 serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());
                 serviceDateTime.setDateTimeStatic(serviceDateTime.getDateTimeDinamic());

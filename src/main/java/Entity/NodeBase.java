@@ -15,11 +15,15 @@ public class NodeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
   /*  @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="hash1", referencedColumnName = "hash1")
-    private DateTime dateTime =new DateTime();*/
+    @JoinColumn (name="nodeBase_hash2", referencedColumnName = "hash2")
+    private DateTime dateTime=new DateTime();
+*/
+
+
+
 
     @Column(name = "hash")
     private String hash;
@@ -114,11 +118,11 @@ public class NodeBase {
     @Column(name = "nmrParametr")
     private String nmrParametr = "dB";
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
