@@ -2,7 +2,6 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 
 
 @Entity

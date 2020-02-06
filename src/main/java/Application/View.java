@@ -29,11 +29,11 @@ public String main(Model model) {
     public String start(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
 
-        LinkedHashMap< Integer , Object> maps =new LinkedHashMap<Integer, Object>();
+        LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
 
         for (int i = 0; i != finalNodeList.size(); i++) {
-            Integer id = finalNodeList.get(i).getId();
+            Long id = finalNodeList.get(i).getId();
             Object node= finalNodeList.get(i);
             maps.put(id,node);
             model.addAttribute("maps", maps);
