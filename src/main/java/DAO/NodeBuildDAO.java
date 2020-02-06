@@ -10,6 +10,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 
@@ -26,6 +27,8 @@ public class NodeBuildDAO {
         criteria = session.getSessionFactory().openSession().createCriteria(FinalNode.class).add(Restrictions.eq("ipNode", ars));
         List<FinalNode> finalNodeList = criteria.list();
 
+
+
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -41,7 +44,16 @@ public class NodeBuildDAO {
 
         //Query query1 = session.createQuery("FROM DateTime where hash1 = :paramName");
         //query1.setParameter("paramName", "2020.02.01.19.50.30.030");
-        //List<NodeBase> nodeList=session.createSQLQuery("SELECT nodebase.* FROM NodeBase where TIMESTAMP('2020-02-01 19:50:30')").addEntity(NodeBase.class).list();
+
+
+
+
+        Query query1 = session.createQuery("FROM NodeBase where date=:paramName");
+        query1.setParameter("paramName", "2020/02/06 01:57:20");
+     //   System.out.println(query1.list());
+        List<NodeBase>nodeList=query1.list();
+
+        System.out.println(nodeList.size());
         //List<Object[]> nodeList=session.createSQLQuery("SELECT nodebase.id as id, datetime.hash1 as hash1 FROM nodebase INNER JOIN datetime ON nodebase.hash1 =datetime.hash1 where datetime.hash1='2020.02.04.12.32.43.473'").list();
         //List<Object[]> nodeList=session.createSQLQuery("SELECT nodebase.id, nodebase.hash1 FROM nodebase").list();
         //nodeList.forEach(p-> System.out.println("node.id"+p[0]+"datetime.hash1"+p[1]));
@@ -49,11 +61,13 @@ public class NodeBuildDAO {
        query.setParameter("paramName","2020.02.04.12.28.47.456");*/
 
 
-        Criteria criteria;
-        String ars ="2020-02-04 12:32:43";
+     /*   Criteria criteria;
+        String ars ="2020/02/06 01:58:00";
         criteria = session.getSessionFactory().openSession().createCriteria(NodeBase.class).add(Restrictions.eq("date", ars));
         List<NodeBase> nodeList = criteria.list();
 
+        System.out.println(nodeList.size());
+*/
 
 
 

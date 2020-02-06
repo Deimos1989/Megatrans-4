@@ -42,11 +42,14 @@
         </tr>
 
         <tr th:block th:each="map:${maps}">
-        <td th:utext="${map.getKey()}">Id</td>
-        <td th:utext="${map.getValue().ipNode}">IpNode</td>
+
+            <td th:utext="${map.getKey()}">Id</td>
+            <td th:utext="${map.getValue().erroredBlocksName}">Date</td>
+            <td th:utext="${map.getValue().ipNode}">Date</td>
 
 
         </tr>
+        
 
 
 </table>
