@@ -4,110 +4,162 @@
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/margen.css}" rel="stylesheet" media="screen" />
-
-
-
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 </head>
+
 <body>
+<div id="container">
 
-<form action="/View/start">
-    <td>
-
-        <input type="submit" name="submit_button" value="Отправить">
-    </td>
-</form>
-
-<form action="/View/start2">
-    <td>
-
-        <input type="submit" name="submit_button" value="Отчет">
-    </td>
-</form>
-
-<form action="/Agent">
-    <td>
-        <input type="text" cols="45" size="40" th:value="${name}" id="quantity">
-        <input type="submit" name="submit_button" value="Опрос">
-    </td>
-</form>
+    <div id="header">
+        <h2>Система сбора статистики системы передачи Megatrans-4</h2>
+    </div>
 
 
-<div>
-<table border="1">
-    <tr>
-        <th>Id</th>
+    <div id="navigation", >
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Назад" >
+            </td>
+        </form1>
 
-        <th>Date</th>
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Вперед">
+            </td>
+        </form1>
 
-        <th>IpNode</th>
-
-        <th>
-            errored
-            Blocks</th>
-
-        <th>
-            errored
-            Seconds</th>
-
-        <th>
-            severely
-            Errored
-            Seconds</th>
-
-        <th>
-            background
-            Block
-            Errors</th>
-
-        <th>esr[%]</th>
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Обновить">
+            </td>
+        </form1>
 
 
-        <th>sers[%]</th>
 
 
-        <th>bber[%]</th>
 
 
-        <th>availableTime</th>
-
-        <th>unavailableTime</th>
-
-        <th>nmr dB</th>
-
-    </tr>
-
-    <tr th:block th:each="map:${maps}">
-
-        <td th:utext="${map.getKey()}">Id</td>
-        <td th:utext="${map.getValue().date}">Date</td>
-
-        <td th:utext="${map.getValue().ipNode}">IpNode</td>
-
-        <td th:utext="${map.getValue().erroredBlocksValue}">erroredBlocks</td>
-
-        <td th:utext="${map.getValue().erroredSecondValue}">erroredSeconds</td>
-
-        <td th:utext="${map.getValue().severelyErroredSecondsValue}">severelyErroredSeconds</td>
-
-        <td th:utext="${map.getValue().backgroundBlockErrorsValue}">backgroundBlockErrors</td>
-
-        <td th:utext="${map.getValue().esrValue}">esr[%]</td>
-
-        <td th:utext="${map.getValue().sersValue}">sers[%]</td>
-
-        <td th:utext="${map.getValue().bberValue}">bber[%]</td>
-
-        <td th:utext="${map.getValue().availableTimeValue}">availableTime</td>
-
-        <td th:utext="${map.getValue().unavailableTimeValue}">unavailableTime</td>
-
-        <td th:utext="${map.getValue().nmrValue}">nmr dB</td>
+    </div>
 
 
-    </tr>
-</table>
+
+
+
+    <div id="sidebar">
+
+        <h2>Панель управления системы</h2>
+
+        <form action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Отправить">
+            </td>
+        </form>
+
+        <form action="/View/start2">
+            <td>
+                <input type="submit" name="submit_button" value="Отчет">
+            </td>
+        </form>
+
+        <form action="/Agent">
+            <td>
+                <input type="text" cols="45" size="40" th:value="${name}" id="quantity">
+                <input type="submit" name="submit_button" value="Опрос">
+            </td>
+
+        </form>
+
+    </div>
+
+
+    <div id="content">
+        <h2>Анализ данных узла</h2>
+
+        <table border="1">
+            <tr>
+                <th>Id</th>
+
+                <th>Date</th>
+
+                <th>IpNode</th>
+
+                <th>
+                    errored
+                    Blocks</th>
+
+                <th>
+                    errored
+                    Seconds</th>
+
+                <th>
+                    severely
+                    Errored
+                    Seconds</th>
+
+                <th>
+                    background
+                    Block
+                    Errors</th>
+
+                <th>esr[%]</th>
+
+
+                <th>sers[%]</th>
+
+
+                <th>bber[%]</th>
+
+
+                <th>availableTime</th>
+
+                <th>unavailableTime</th>
+
+                <th>nmr dB</th>
+
+            </tr>
+
+            <tr th:block th:each="map:${maps}">
+
+                <td th:utext="${map.getKey()}">Id</td>
+                <td th:utext="${map.getValue().date}">Date</td>
+
+                <td th:utext="${map.getValue().ipNode}">IpNode</td>
+
+                <td th:utext="${map.getValue().erroredBlocksValue}">erroredBlocks</td>
+
+                <td th:utext="${map.getValue().erroredSecondValue}">erroredSeconds</td>
+
+                <td th:utext="${map.getValue().severelyErroredSecondsValue}">severelyErroredSeconds</td>
+
+                <td th:utext="${map.getValue().backgroundBlockErrorsValue}">backgroundBlockErrors</td>
+
+                <td th:utext="${map.getValue().esrValue}">esr[%]</td>
+
+                <td th:utext="${map.getValue().sersValue}">sers[%]</td>
+
+                <td th:utext="${map.getValue().bberValue}">bber[%]</td>
+
+                <td th:utext="${map.getValue().availableTimeValue}">availableTime</td>
+
+                <td th:utext="${map.getValue().unavailableTimeValue}">unavailableTime</td>
+
+                <td th:utext="${map.getValue().nmrValue}">nmr dB</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="clear">
+
+    </div>
+
+
+    <div id="footer">
+        <h2>footer (низ сайта)</h2>
+    </div>
+
+
 </div>
-
 </body>
 </html>
