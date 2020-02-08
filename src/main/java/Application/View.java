@@ -53,7 +53,7 @@ public String main(Model model) {
             maps1.put(id, node);
             model.addAttribute("maps", maps1);
 
-            return "otchet";
+            return "reportSystem";
         }
 
 

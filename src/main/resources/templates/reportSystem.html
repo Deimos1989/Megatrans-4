@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Megatrans-4 System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+        <h2>Система передачи данных Megatrans-4</h2>
+    </div>
+
+
+    <div id="navigation", >
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Назад" >
+            </td>
+        </form1>
+
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Вперед">
+            </td>
+        </form1>
+
+        <form1 action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Обновить">
+            </td>
+        </form1>
+
+    </div>
+
+
+    <div id="sidebar1">
+
+        <h2>Мониторинг состояния системы</h2>
+
+        <form action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Отправить">
+            </td>
+        </form>
+
+        <form action="/View/start2">
+            <td>
+                <input type="submit" name="submit_button" value="Отчет">
+            </td>
+        </form>
+
+        <form action="/Agent">
+            <td>
+                <input type="text" cols="40" size="30" th:value="${name}" id="quantity">
+                <input type="submit" name="submit_button" value="Опрос">
+            </td>
+
+        </form>
+
+    </div>
+
+    <div id="sidebar2">
+
+        <h2>Анализ статистики системы</h2>
+
+        <form action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Отправить">
+            </td>
+        </form>
+
+        <form action="/View/start2">
+            <td>
+                <input type="submit" name="submit_button" value="Отчет">
+            </td>
+        </form>
+
+        <form action="/Agent">
+            <td>
+                <input type="text" cols="40" size="30" th:value="${name}" id="quantity">
+                <input type="submit" name="submit_button" value="Опрос">
+            </td>
+
+        </form>
+
+    </div>
+
+
+
+
+    <div id="content">
+        <h2>Анализ данных узла</h2>
+
+        <div>
+
+            <table border="1" cellpadding="4" cellspacing="0" width="100%">
+                <caption>UAVR</caption>
+
+                <tr>
+
+                    <th width="2%">Id</th>
+
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th >НУП7</th>
+
+
+                    <th>НУП6</th>
+
+
+                    <th>ОП УАВР</th>
+
+                </tr>
+
+
+
+
+
+            </table>
+
+        </div>
+
+
+
+        <div>
+
+            <table border="1" cellpadding="4" cellspacing="0" width="100%" >
+                <caption>System №5</caption>
+
+                <tr>
+
+                    <th width="2%">Id</th>
+
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th colspan="2" >НУП7</th>
+
+                    <th colspan="2">НУП6</th>
+
+
+                    <th colspan="2">НУП5</th>
+
+
+                </tr>
+
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+                    <td th:utext="${map.getValue().name}"></td>
+                    <td th:utext="${map.getValue().ipNode0}"></td>
+                    <td colspan="2" th:utext="${map.getValue().ipNode1}"></td>
+                    <td colspan="2" th:utext="${map.getValue().ipNode2}"></td>
+                    <td colspan="2" th:utext="${map.getValue().ipNode3}"></td>
+
+                </tr>
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().erroredBlocksName0_0}"></td>
+
+                    <td th:utext="${map.getValue().erroredBlocksValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().erroredBlocksValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().erroredBlocksValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().erroredBlocksValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().erroredBlocksValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().erroredBlocksValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().erroredBlocksValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().erroredSecondsName0_0}"></td>
+
+                    <td th:utext="${map.getValue().erroredSecondValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().erroredSecondValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().erroredSecondValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().erroredSecondValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().erroredSecondValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().erroredSecondValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().erroredSecondValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().severelyErroredSecondsName0_0}"></td>
+
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().severelyErroredSecondsValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().backgroundBlockErrorsName0_0}"></td>
+
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().backgroundBlockErrorsValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().esrName0_0}"></td>
+
+                    <td th:utext="${map.getValue().esrValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().esrValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().esrValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().esrValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().esrValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().esrValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().esrValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().sersName0_0}"></td>
+
+                    <td th:utext="${map.getValue().sersValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().sersValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().sersValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().sersValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().sersValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().sersValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().sersValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().bberName0_0}"></td>
+
+                    <td th:utext="${map.getValue().bberValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().bberValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().bberValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().bberValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().bberValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().bberValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().bberValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().availableTimeName0_0}"></td>
+
+                    <td th:utext="${map.getValue().availableTimeValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().availableTimeValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().availableTimeValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().availableTimeValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().availableTimeValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().availableTimeValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().availableTimeValueSide1_3}"></td>
+
+                </tr>
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().unavailableTimeName0_0}"></td>
+
+                    <td th:utext="${map.getValue().unavailableTimeValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().unavailableTimeValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().unavailableTimeValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().unavailableTimeValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().unavailableTimeValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().unavailableTimeValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().unavailableTimeValueSide1_3}"></td>
+
+                </tr>
+
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().nmrName0_0}"></td>
+
+                    <td th:utext="${map.getValue().nmrValueSide1_0}"></td>
+
+                    <td th:utext="${map.getValue().nmrValueSide2_1}"></td>
+                    <td th:utext="${map.getValue().nmrValueSide1_1}"></td>
+
+                    <td th:utext="${map.getValue().nmrValueSide2_2}"></td>
+                    <td th:utext="${map.getValue().nmrValueSide1_2}"></td>
+
+                    <td th:utext="${map.getValue().nmrValueSide2_3}"></td>
+                    <td th:utext="${map.getValue().nmrValueSide1_3}"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div>
+            <table border="1" cellpadding="4" cellspacing="0"  width="100%" >
+                <caption>System №6</caption>
+                <tr>
+
+                    <th width="2%">Id</th>
+
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th colspan="2">НУП7</th>
+
+
+                    <th colspan="2">НУП6</th>
+
+                    <th colspan="2">НУП5</th>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+
+        <div>
+            <table border="1" cellpadding="4" cellspacing="0"  width="100%" >
+                <caption>System №7</caption>
+                <tr>
+                    
+                    <th width="2%">Id</th>
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th colspan="2">НУП7</th>
+
+
+                    <th colspan="2">НУП6</th>
+
+                    <th colspan="2">НУП5</th>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div id="clear">
+
+    </div>
+
+
+    <div id="footer">
+        <h2>footer (низ сайта)</h2>
+    </div>
+
+
+</div>
+</body>
+</html>

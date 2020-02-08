@@ -18,7 +18,7 @@ public class NodeBuildDAO {
 
    private String ipNode ="127.0.0.2";
 
-   private String dateTime ="2020/02/07 02:26:54";
+   private String dateTime ="2020/02/08 10:53:34";
 
 
 

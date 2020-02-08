@@ -12,7 +12,7 @@
 <div id="container">
 
     <div id="header">
-        <h2>Система сбора статистики системы передачи Megatrans-4</h2>
+        <h2>Система передачи данных Megatrans-4</h2>
     </div>
 
 
@@ -46,9 +46,9 @@
 
 
 
-    <div id="sidebar">
+    <div id="sidebar1">
 
-        <h2>Панель управления системы</h2>
+        <h2>Мониторинг состояния системы</h2>
 
         <form action="/View/start">
             <td>
@@ -64,13 +64,41 @@
 
         <form action="/Agent">
             <td>
-                <input type="text" cols="45" size="40" th:value="${name}" id="quantity">
+                <input type="text" cols="40" size="30" th:value="${name}" id="quantity">
                 <input type="submit" name="submit_button" value="Опрос">
             </td>
 
         </form>
 
     </div>
+
+    <div id="sidebar2">
+
+        <h2>Анализ статистики системы</h2>
+
+        <form action="/View/start">
+            <td>
+                <input type="submit" name="submit_button" value="Отправить">
+            </td>
+        </form>
+
+        <form action="/View/start2">
+            <td>
+                <input type="submit" name="submit_button" value="Отчет">
+            </td>
+        </form>
+
+        <form action="/Agent">
+            <td>
+                <input type="text" cols="40" size="30" th:value="${name}" id="quantity">
+                <input type="submit" name="submit_button" value="Опрос">
+            </td>
+
+        </form>
+
+    </div>
+
+
 
 
     <div id="content">
@@ -111,9 +139,11 @@
                 <th>bber[%]</th>
 
 
-                <th>availableTime</th>
+                <th>available
+                    Time</th>
 
-                <th>unavailableTime</th>
+                <th>unavailable
+                    Time</th>
 
                 <th>nmr dB</th>
 
