@@ -2,6 +2,9 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @Entity
@@ -18,6 +21,18 @@ public class IntermediateNode {
     @JoinColumn (name="hash1", referencedColumnName = "hash1")
     private DateTime dateTime =new DateTime();*/
 
+
+    @Column(name = "Date",columnDefinition = "DATE")
+    private LocalDate localDate;
+
+    @Column(name = "Time", columnDefinition = "TIME")
+    private LocalTime localTime;
+
+    @Column(name = "DateTime", columnDefinition = "DATETIME")
+    private LocalDateTime localDateTime;
+
+
+
     @Column(name = "hash")
     private String hash;
 
@@ -32,8 +47,7 @@ public class IntermediateNode {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @Column(name = "date")
-    private String date;
+
 
         @Column(name="ipNode")
         private String ipNode;
@@ -205,13 +219,6 @@ public IntermediateNode(){
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getIpNode() {
         return ipNode;
@@ -747,6 +754,30 @@ public IntermediateNode(){
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 }
 

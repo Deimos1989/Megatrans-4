@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TableDispleyUAVR {
     NodeBuildDAO nodeBuildDAO=new NodeBuildDAO();
-List<NodeBase> nodeBases=nodeBuildDAO.setDataTime();
+List<NodeBase> nodeBases=nodeBuildDAO.localDateTimeReport();
 
 
     private String name ="IP_Address";

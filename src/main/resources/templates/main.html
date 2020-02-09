@@ -17,7 +17,7 @@
 
 
     <div id="navigation", >
-        <form1 action="/View/start">
+        <form1 action="/View/analizNodeData">
             <td>
                 <input type="submit" name="submit_button" value="Назад" >
             </td>
@@ -50,7 +50,7 @@
 
         <h2>Мониторинг состояния системы</h2>
 
-        <form action="/View/start">
+        <form action="/View/analizNodeData">
             <td>
                 <input type="submit" name="submit_button" value="Отправить">
             </td>
@@ -61,6 +61,8 @@
                 <input type="submit" name="submit_button" value="Отчет">
             </td>
         </form>
+
+
 
         <form action="/Agent">
             <td>
@@ -82,11 +84,15 @@
             </td>
         </form>
 
-        <form action="/View/start2">
+
+
+
+        <form action="/View/analizNodeDateTimeReport">
             <td>
-                <input type="submit" name="submit_button" value="Отчет">
+                <input type="submit" name="submit_button" value="ОтборПоДате">
             </td>
         </form>
+
 
         <form action="/Agent">
             <td>
@@ -152,7 +158,7 @@
             <tr th:block th:each="map:${maps}">
 
                 <td th:utext="${map.getKey()}">Id</td>
-                <td th:utext="${map.getValue().date}">Date</td>
+                <td th:utext="${map.getValue().localDateTime}">Date</td>
 
                 <td th:utext="${map.getValue().ipNode}">IpNode</td>
 

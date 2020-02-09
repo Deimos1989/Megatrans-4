@@ -86,8 +86,12 @@ public class Url implements Runnable {
 
                FinalNode finalNode = new FinalNode();
 
+               finalNode.setLocalDate(serviceDateTime.getLocalDateStatic());
+               finalNode.setLocalTime(serviceDateTime.getLocalTimeStatic());
+               finalNode.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+
+
                finalNode.setTimestamp(serviceDateTime.getTimestampStatic());
-               finalNode.setDate(serviceDateTime.getDateTimeStatic());
                finalNode.setHash(serviceDateTime.getHashStatic());
 
 
@@ -171,9 +175,12 @@ public class Url implements Runnable {
 
                IntermediateNode intermediateNode = new IntermediateNode();
 
+               intermediateNode.setLocalDate(serviceDateTime.getLocalDateStatic());
+               intermediateNode.setLocalTime(serviceDateTime.getLocalTimeStatic());
+               intermediateNode.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+
 
                intermediateNode.setTimestamp(serviceDateTime.getTimestampStatic());
-               intermediateNode.setDate(serviceDateTime.getDateTimeStatic());
                intermediateNode.setHash(serviceDateTime.getHashStatic());
 
                intermediateNode.setIpNode(dslStatusNode.nameNode(url[0]));
@@ -271,8 +278,11 @@ public class Url implements Runnable {
                NodeBase nodeBase = new NodeBase();
 
 
+               nodeBase.setLocalDate(serviceDateTime.getLocalDateStatic());
+               nodeBase.setLocalTime(serviceDateTime.getLocalTimeStatic());
+               nodeBase.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+
                nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
-               nodeBase.setDate(serviceDateTime.getDateTimeStatic());
                nodeBase.setHash(serviceDateTime.getHashStatic());
 
                nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
@@ -321,8 +331,11 @@ public class Url implements Runnable {
 
                NodeBase nodeBase = new NodeBase();
 
+               nodeBase.setLocalDate(serviceDateTime.getLocalDateStatic());
+               nodeBase.setLocalTime(serviceDateTime.getLocalTimeStatic());
+               nodeBase.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+
                nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
-               nodeBase.setDate(serviceDateTime.getDateTimeStatic());
                nodeBase.setHash(serviceDateTime.getHashStatic());
 
                nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));

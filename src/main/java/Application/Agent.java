@@ -33,7 +33,13 @@ public class Agent {
 
                 dateTime.setHash(serviceDateTime.getHashStatic());
                 dateTime.setTimestamp(serviceDateTime.getTimestampStatic());
-                dateTime.setDate(serviceDateTime.getDateTimeStatic());
+
+                dateTime.setLocalDate(serviceDateTime.getLocalDateStatic());
+                dateTime.setLocalTime(serviceDateTime.getLocalTimeStatic());
+                dateTime.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+
+
+
                 nodeBuildDAO.saveDateTime(dateTime);
 
                 Url url = new Url();
@@ -43,7 +49,10 @@ public class Agent {
 
                 serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
                 serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());
-                serviceDateTime.setDateTimeStatic(serviceDateTime.getDateTimeDinamic());
+
+                serviceDateTime.setLocalDateStatic(serviceDateTime.getLocalDateDinamic());
+                serviceDateTime.setLocalTimeStatic(serviceDateTime.getLocalTimeDinamic());
+                serviceDateTime.setLocalDateTimeStatic(serviceDateTime.getLocalDateTimeDinamic());
 
             }
 
@@ -54,7 +63,7 @@ public class Agent {
 
 
         timer.scheduleAtFixedRate(task, 1000, 20000);
-        model.addAttribute("name", name = "Запуск сбора статистики системы Megatrans-4");
+        model.addAttribute("name", name = "Cбор статистики системы Megatrans-4");
         return "main";
 
 

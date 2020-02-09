@@ -4,6 +4,7 @@ import DAO.NodeBuildDAO;
 
 import Entity.DateTime;
 import Entity.FinalNode;
+import Entity.NodeBase;
 import TableDisplay.TableDispleyUAVR;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +26,8 @@ public String main(Model model) {
     return "main";
 }
 
-    @GetMapping("/View/start")
-    public String start(Model model) {
+    @GetMapping("/View/analizNodeData")
+    public String analizNodeData(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
@@ -41,6 +42,31 @@ public String main(Model model) {
         }
         return "main";
     }
+
+
+
+    @GetMapping("/View/analizNodeDateTimeReport")
+    public String analizNodeDateTimeReport(Model model) {
+        NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+
+        LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
+        List<NodeBase>nodeBases=nodeBuildDAO.localDateTimeReport();
+
+        for (int i = 0; i != nodeBases.size(); i++) {
+            Long id =nodeBases.get(i).getId();
+            Object node= nodeBases.get(i);
+            maps.put(id,node);
+            model.addAttribute("maps", maps);
+
+        }
+        return "reportSystem";
+    }
+
+
+
+
+
+
 
     @GetMapping("/View/start2")
     public String start2(Model model) {

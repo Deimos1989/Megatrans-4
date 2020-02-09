@@ -2,6 +2,9 @@ package Service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 public class ServiceDateTime {
@@ -10,11 +13,20 @@ public class ServiceDateTime {
    private static Timestamp timestampStatic = new Timestamp(System.currentTimeMillis());
     private  Timestamp timestampDinamic = new Timestamp(System.currentTimeMillis());
 
-    String hashDinamic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
-    String dateTimeDinamic = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new java.util.Date());
+
+        private static LocalDate localDateStatic=LocalDate.now();
+        private static LocalTime localTimeStatic=LocalTime.now();
+        private static LocalDateTime localDateTimeStatic=LocalDateTime.now();
+
+
+         private LocalDate localDateDinamic=LocalDate.now();
+         private LocalTime localTimeDinamic=LocalTime.now();
+         private LocalDateTime localDateTimeDinamic=LocalDateTime.now();
 
     private static String hashStatic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
-    private static String dateTimeStatic = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new java.util.Date());
+    private String hashDinamic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
+
+
 
 
     public String getHashDinamic() {
@@ -25,13 +37,7 @@ public class ServiceDateTime {
         this.hashDinamic = hashDinamic;
     }
 
-    public String getDateTimeDinamic() {
-        return dateTimeDinamic;
-    }
 
-    public void setDateTimeDinamic(String dateTimeDinamic) {
-        this.dateTimeDinamic = dateTimeDinamic;
-    }
 
     public String getHashStatic() {
         return hashStatic;
@@ -42,14 +48,6 @@ public class ServiceDateTime {
     }
 
 
-
-    public String getDateTimeStatic() {
-        return dateTimeStatic;
-    }
-
-    public void setDateTimeStatic(String dateTimeStatic) {
-        ServiceDateTime.dateTimeStatic = dateTimeStatic;
-    }
 
     public Timestamp getTimestampStatic() {
         return timestampStatic;
@@ -65,5 +63,53 @@ public class ServiceDateTime {
 
     public void setTimestampDinamic(Timestamp timestampDinamic) {
         this.timestampDinamic = timestampDinamic;
+    }
+
+    public  LocalDate getLocalDateStatic() {
+        return localDateStatic;
+    }
+
+    public  void setLocalDateStatic(LocalDate localDateStatic) {
+        ServiceDateTime.localDateStatic = localDateStatic;
+    }
+
+    public  LocalTime getLocalTimeStatic() {
+        return localTimeStatic;
+    }
+
+    public  void setLocalTimeStatic(LocalTime localTimeStatic) {
+        ServiceDateTime.localTimeStatic = localTimeStatic;
+    }
+
+    public  LocalDateTime getLocalDateTimeStatic() {
+        return localDateTimeStatic;
+    }
+
+    public  void setLocalDateTimeStatic(LocalDateTime localDateTimeStatic) {
+        ServiceDateTime.localDateTimeStatic = localDateTimeStatic;
+    }
+
+    public LocalDate getLocalDateDinamic() {
+        return localDateDinamic;
+    }
+
+    public void setLocalDateDinamic(LocalDate localDateDinamic) {
+        this.localDateDinamic = localDateDinamic;
+    }
+
+    public LocalTime getLocalTimeDinamic() {
+        return localTimeDinamic;
+    }
+
+    public void setLocalTimeDinamic(LocalTime localTimeDinamic) {
+        this.localTimeDinamic = localTimeDinamic;
+    }
+
+    public LocalDateTime getLocalDateTimeDinamic() {
+        return localDateTimeDinamic;
+    }
+
+    public void setLocalDateTimeDinamic(LocalDateTime localDateTimeDinamic) {
+        this.localDateTimeDinamic = localDateTimeDinamic;
     }
 }

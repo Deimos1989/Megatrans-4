@@ -8,9 +8,9 @@ import Entity.NodeBase;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -18,7 +18,8 @@ public class NodeBuildDAO {
 
    private String ipNode ="127.0.0.2";
 
-   private String dateTime ="2020/02/08 10:53:34";
+
+
 
 
 
@@ -27,10 +28,8 @@ public class NodeBuildDAO {
 
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-
-
         Query query1 = session.createQuery("FROM FinalNode where ipNode=:paramName");
-        query1.setParameter("paramName", ipNode);
+        query1.setParameter("paramName", "127.0.0.2");
         List<FinalNode>finalNodeList=query1.list();
 
         session.getTransaction().commit();
@@ -41,12 +40,12 @@ public class NodeBuildDAO {
     }
 
 
-        public List<NodeBase> setDataTime() {
+      /*  public List<NodeBase> setDataTime() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
         Query query1 = session.createQuery("FROM NodeBase where date=:paramName");
-        query1.setParameter("paramName", dateTime);
+        query1.setParameter("paramName", "2020/02/07 02:26:01");
         List<NodeBase>nodeList=query1.list();
 
         System.out.println(nodeList.size());
@@ -55,7 +54,30 @@ public class NodeBuildDAO {
         session.close();
         session.getSessionFactory().close();
         return nodeList;
+    }*/
+
+
+    public List<NodeBase> localDateTimeReport() {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+
+        LocalDateTime datetime= LocalDateTime.of(2020,02,9,17,20,5);
+        Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
+        query1.setParameter("paramName", datetime);
+        List<NodeBase>nodeList=query1.list();
+
+
+
+        System.out.println(datetime.toString());
+        System.out.println(nodeList.size());
+        System.out.println(nodeList.toString());
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+        return nodeList;
     }
+
 
 
 
@@ -151,12 +173,5 @@ public class NodeBuildDAO {
         this.ipNode = ipNode;
     }
 
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
 }
 
