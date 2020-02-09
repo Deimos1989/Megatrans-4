@@ -61,7 +61,7 @@ public class NodeBuildDAO {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
 
-        LocalDateTime datetime= LocalDateTime.of(2020,02,9,17,20,5);
+        LocalDateTime datetime= LocalDateTime.of(2020,02,9,20,14);
         Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
         query1.setParameter("paramName", datetime);
         List<NodeBase>nodeList=query1.list();

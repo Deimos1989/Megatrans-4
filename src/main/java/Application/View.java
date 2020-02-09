@@ -47,18 +47,14 @@ public String main(Model model) {
 
     @GetMapping("/View/analizNodeDateTimeReport")
     public String analizNodeDateTimeReport(Model model) {
-        NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+        LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
+        TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
 
-        LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
-        List<NodeBase>nodeBases=nodeBuildDAO.localDateTimeReport();
+        Integer id = 1;
+        Object node = tableDispleyUAVR;
+        maps1.put(id, node);
+        model.addAttribute("maps", maps1);
 
-        for (int i = 0; i != nodeBases.size(); i++) {
-            Long id =nodeBases.get(i).getId();
-            Object node= nodeBases.get(i);
-            maps.put(id,node);
-            model.addAttribute("maps", maps);
-
-        }
         return "reportSystem";
     }
 
