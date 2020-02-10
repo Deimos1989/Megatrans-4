@@ -56,13 +56,6 @@
             </td>
         </form>
 
-        <form action="/View/start2">
-            <td>
-                <input type="submit" name="submit_button" value="Отчет">
-            </td>
-        </form>
-
-
 
         <form action="/Agent">
             <td>
@@ -76,11 +69,16 @@
 
     <div id="sidebar2">
 
+
         <h2>Анализ статистики системы</h2>
+
+
+
 
         <form action="/View/analizNodeData">
             <td>
-                <input type="submit" name="submit_button" value="Отправить">
+                <input type="text" cols="40" size="30" name="Анализ_Узла"  id="Start">
+                <input type="submit" name="submit_button" value="Анализ_Узла">
             </td>
         </form>
 
@@ -89,14 +87,15 @@
 
         <form action="/View/analizNodeDateTimeReport">
             <td>
-                <input type="submit" name="submit_button" value="ОтборПоДате">
+                <input type="submit" name="submit_button" value="ReportSystem">
             </td>
         </form>
 
 
-        <form action="/Agent">
+
+        <form action="">
             <td>
-                <input type="text" cols="40" size="30" th:value="${name}" id="quantity">
+
                 <input type="submit" name="submit_button" value="Опрос">
             </td>
 
