@@ -15,44 +15,29 @@ import java.util.*;
 @Controller
 public class View {
 
-String args;
+String ip;
 
-
-    public String getArgs() {
-        return args;
+    public String getIp() {
+        return ip;
     }
 
-    public void setArgs(String args) {
-        this.args = args;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
-
-    @GetMapping("/")
-public String main(Model model) {
-    return "main";
-}
-
-   /* @RequestMapping(value="/View", method=RequestMethod.GET)
-    public String greetingForm(Model model) {
-        model.addAttribute("view", new View());
-        return "main";
-
-    }
-
-    @RequestMapping(value="/View", method=RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute View view, Model model) {
-        model.addAttribute("view", view );
-        return "result";
-
-    }*/
-
 
     @GetMapping("/View/analizNodeData")
     public String analizNodeData(Model model) {
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+
+        nodeBuildDAO.setIpNode(ip);
+
+
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
+
         List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
 
         for (int i = 0; i != finalNodeList.size(); i++) {
+
             Long id = finalNodeList.get(i).getId();
             Object node= finalNodeList.get(i);
             maps.put(id,node);

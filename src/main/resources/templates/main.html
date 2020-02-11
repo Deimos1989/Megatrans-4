@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+
+
+
 <div id="container">
 
     <div id="header">
@@ -17,27 +21,6 @@
 
 
     <div id="navigation", >
-        <form1 action="/View/analizNodeData">
-            <td>
-                <input type="submit" name="submit_button" value="Назад" >
-            </td>
-        </form1>
-
-        <form1 action="/View/start">
-            <td>
-                <input type="submit" name="submit_button" value="Вперед">
-            </td>
-        </form1>
-
-        <form1 action="/View/start">
-            <td>
-                <input type="submit" name="submit_button" value="Обновить">
-            </td>
-        </form1>
-
-
-
-
 
 
     </div>
@@ -72,13 +55,16 @@
 
         <h2>Анализ статистики системы</h2>
 
-
+        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchange}">
+            <p>Id: <input type="text" th:fields="*{ip}" /></p>
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
 
 
         <form action="/View/analizNodeData">
             <td>
-                <input type="text" cols="40" size="30" name="Анализ_Узла"  id="Start">
-                <input type="submit" name="submit_button" value="Анализ_Узла">
+                Node_Ip:<input type="text" cols="40" size="25"   id="ReportNodeIp">
+                <input type="submit" name="submit_button" value="Report">
             </td>
         </form>
 
@@ -87,7 +73,8 @@
 
         <form action="/View/analizNodeDateTimeReport">
             <td>
-                <input type="submit" name="submit_button" value="ReportSystem">
+                System_Time:<input type="text" cols="40" size="25"   id="ReportSystem">
+                <input type="submit" name="submit_button" value="Report">
             </td>
         </form>
 

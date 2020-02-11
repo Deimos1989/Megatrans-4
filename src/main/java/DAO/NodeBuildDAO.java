@@ -30,13 +30,11 @@ private String ipNode;
     }
 
     public List<FinalNode> findByIpNode() {
-
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         Query query1 = session.createQuery("FROM FinalNode where ipNode=:paramName");
         query1.setParameter("paramName", ipNode);
         List<FinalNode>finalNodeList=query1.list();
-
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -49,8 +47,7 @@ private String ipNode;
     public List<NodeBase> localDateTimeReport() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-
-        LocalDateTime datetime= LocalDateTime.of(2020,02,9,20,14);
+        LocalDateTime datetime= LocalDateTime.of(2020,02,9,17,20,5);
         Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
         query1.setParameter("paramName", datetime);
         List<NodeBase>nodeList=query1.list();
@@ -65,44 +62,6 @@ private String ipNode;
     }
 
 
-
-
-   /* public List<IntermediateNode> findByNodeIpIntermediate() {
-        Scanner scanner = null;
-
-        try {
-            scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test2\\src\\main\\resources\\Ip.txt"), "UTF-8");
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Фаил не найден");
-        }
-
-        ArrayList<String> urls = new ArrayList<>();
-
-
-        while (scanner.hasNextLine()) {
-            urls.add(scanner.nextLine());
-        }
-
-        scanner.close();
-
-        Session session = SessionFactory.getSessionFactory();
-        session.beginTransaction();
-
-        for (int k = 0; k != urls.size(); k++) {
-            String[] ip = urls.get(k).split(";");
-            System.out.println(Arrays.asList(ip).toString());
-            Query query1 = session.createQuery("SELECT *FROM IntermediateNode where ipNode = :paramName ORDER BY id LIMIT 3");
-            query1.setParameter("paramName", ip[1]);
-            List<IntermediateNode> findByIp2 = query1.list();
-            System.out.println(findByIp2.toString());
-            session.getTransaction().commit();
-            session.clear();
-            session.close();
-            session.getSessionFactory().close();
-            return findByIp2;
-        }
-        return null;
-    }*/
 
 
     public void saveFinalNode(FinalNode finalNode) {
