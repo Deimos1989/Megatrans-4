@@ -4,38 +4,33 @@ import DAO.NodeBuildDAO;
 
 import Entity.FinalNode;
 
+import Service.ExchangeService;
 import TableDisplay.TableDispleyUAVR;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 
 @Controller
 public class View {
 
-String ip;
 
-    public String getIp() {
-        return ip;
+
+    @RequestMapping(value="/", method=RequestMethod.GET)
+    public String greetingForm(Model model) {
+        model.addAttribute("exchangeService", new ExchangeService());
+        return "main";
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    @GetMapping("/View/analizNodeData")
-    public String analizNodeData(Model model) {
-        NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
-
-        nodeBuildDAO.setIpNode(ip);
-
+    @RequestMapping(value="/View/analizNodeData", method=RequestMethod.POST)
+    public String analizNodeData(@ModelAttribute ExchangeService exchangeService,Model model, NodeBuildDAO nodeBuildDAO) {
+       nodeBuildDAO.setIp(exchangeService.getIpAddress());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
-
         List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
-
         for (int i = 0; i != finalNodeList.size(); i++) {
 
             Long id = finalNodeList.get(i).getId();

@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Application.View;
 import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
@@ -18,22 +19,21 @@ import java.util.*;
 
 public class NodeBuildDAO {
 
+String ip;
 
-private String ipNode;
-
-    public String getIpNode() {
-        return ipNode;
+    public String getIp() {
+        return ip;
     }
 
-    public void setIpNode(String ipNode) {
-        this.ipNode = ipNode;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public List<FinalNode> findByIpNode() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         Query query1 = session.createQuery("FROM FinalNode where ipNode=:paramName");
-        query1.setParameter("paramName", ipNode);
+        query1.setParameter("paramName",ip);
         List<FinalNode>finalNodeList=query1.list();
         session.getTransaction().commit();
         session.clear();

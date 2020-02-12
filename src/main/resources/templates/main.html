@@ -55,10 +55,11 @@
 
         <h2>Анализ статистики системы</h2>
 
-        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchange}">
-            <p>Id: <input type="text" th:fields="*{ip}" /></p>
-            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchangeService}" method="post">
+            <p>Id: <input type="text" th:field="*{ipAddress}" /></p>
+            <p><input type="submit" value="Submit" /></p>
         </form>
+
 
 
         <form action="/View/analizNodeData">
