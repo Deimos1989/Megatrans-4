@@ -61,29 +61,15 @@
         </form>
 
 
-
-        <form action="/View/analizNodeData">
-            <td>
-                Node_Ip:<input type="text" cols="40" size="25"   id="ReportNodeIp">
-                <input type="submit" name="submit_button" value="Report">
-            </td>
-        </form>
-
-
-
-
-        <form action="/View/analizNodeDateTimeReport">
-            <td>
-                System_Time:<input type="text" cols="40" size="25"   id="ReportSystem">
-                <input type="submit" name="submit_button" value="Report">
-            </td>
+        <form action="#" th:action="@{/View/analizDateTimeSystemReport}" th:object="${exchangeService}" method="post">
+            <p>Id: <input type="text" th:field="*{dateTime}" /></p>
+            <p><input type="submit" value="Submit" /></p>
         </form>
 
 
 
         <form action="">
             <td>
-
                 <input type="submit" name="submit_button" value="Опрос">
             </td>
 

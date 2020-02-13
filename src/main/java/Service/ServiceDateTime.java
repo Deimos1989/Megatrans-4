@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class ServiceDateTime {
@@ -13,15 +14,14 @@ public class ServiceDateTime {
    private static Timestamp timestampStatic = new Timestamp(System.currentTimeMillis());
     private  Timestamp timestampDinamic = new Timestamp(System.currentTimeMillis());
 
-
         private static LocalDate localDateStatic=LocalDate.now();
-        private static LocalTime localTimeStatic=LocalTime.now();
-        private static LocalDateTime localDateTimeStatic=LocalDateTime.now();
+        private static LocalTime localTimeStatic=LocalTime.now().withNano(0);
+        private static LocalDateTime localDateTimeStatic=LocalDateTime.now().withNano(0);
 
 
          private LocalDate localDateDinamic=LocalDate.now();
-         private LocalTime localTimeDinamic=LocalTime.now();
-         private LocalDateTime localDateTimeDinamic=LocalDateTime.now();
+         private LocalTime localTimeDinamic=LocalTime.now().withNano(0);
+         private LocalDateTime localDateTimeDinamic=LocalDateTime.now().withNano(0);
 
     private static String hashStatic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
     private String hashDinamic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());

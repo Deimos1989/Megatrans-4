@@ -46,8 +46,27 @@ public class View {
     }
 
 
+    @RequestMapping(value="/View/analizDateTimeSystemReport", method=RequestMethod.POST)
+    public String analizDateTimeSystemReport(@ModelAttribute ExchangeService exchangeService,Model model, NodeBuildDAO nodeBuildDAO) {
+        nodeBuildDAO.setDateTime(exchangeService.getDateTime());
 
-    @GetMapping("/View/analizNodeDateTimeReport")
+        LinkedHashMap< Integer , Object> maps1 =new LinkedHashMap<Integer, Object>();
+        TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
+
+        Integer id = 1;
+        Object node = tableDispleyUAVR;
+        maps1.put(id, node);
+        model.addAttribute("maps", maps1);
+
+        return "reportSystem";
+
+
+    }
+
+
+
+
+  /*  @GetMapping("/View/analizNodeDateTimeReport")
     public String analizNodeDateTimeReport(Model model) {
         LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
         TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
@@ -58,7 +77,7 @@ public class View {
         model.addAttribute("maps", maps1);
 
         return "reportSystem";
-    }
+    }*/
 
 
 
