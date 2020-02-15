@@ -22,6 +22,15 @@ public class NodeBuildDAO {
 
 String ip;
 
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    String dateTime;
 
 
 
