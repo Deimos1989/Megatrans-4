@@ -14,12 +14,25 @@ import org.jsoup.nodes.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
 public class NodeBuildDAO {
 
 String ip;
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    String dateTime;
+
+
 
     public String getIp() {
         return ip;
@@ -47,11 +60,12 @@ String ip;
     public List<NodeBase> localDateTimeReport() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        LocalDateTime datetime= LocalDateTime.of(2020,02,9,17,20,5);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(getDateTime(), formatter);
         Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
-        query1.setParameter("paramName", datetime);
+        query1.setParameter("paramName", dateTime);
         List<NodeBase>nodeList=query1.list();
-        System.out.println(datetime.toString());
+        System.out.println(dateTime.toString());
         System.out.println(nodeList.size());
         System.out.println(nodeList.toString());
         session.getTransaction().commit();

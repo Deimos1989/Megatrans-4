@@ -27,12 +27,14 @@
 
 
 
+
+
     <div id="sidebar1">
 
-        <h2>Мониторинг состояния системы</h2>
-
+        <h2>Мониторинг состояния системы</h2>  <form action="/Agent/start/">
 
         <form action="/Agent/start/">
+
             <td>
                 <input type="text" cols="40" size="10" th:value="${name}" id="quantity">
                 <input type="submit" name="submit_button" value="Старт">
@@ -41,11 +43,8 @@
         </form>
 
         <form action="/Agent/interrupt/">
-                <input type="submit" name="submit_button" value="Стоп">
+            <input type="submit" name="submit_button" value="Стоп">
         </form>
-
-
-
 
     </div>
 
@@ -54,19 +53,34 @@
 
         <h2>Анализ статистики системы</h2>
 
-        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchangeService}" method="post">
-            Node_Ip: <input type="text" th:field="*{ipAddress}" /><
-            <input type="submit" value="Report" />
+
+
+        <form action="/View/analizNodeData">
+            <td>
+                Node_Ip:<input type="text" cols="40" size="25"   id="ReportNodeIp">
+                <input type="submit" name="submit_button" value="Report">
+            </td>
         </form>
 
 
 
 
-        <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeService}" method="post">
-            System: <input type="text" th:field="*{dateTime}" /><
-            <input type="submit" value="Report" />
+        <form action="/View/analizNodeDateTimeReport">
+            <td>
+                System_Time:<input type="text" cols="40" size="25"   id="ReportSystem">
+                <input type="submit" name="submit_button" value="Report">
+            </td>
         </form>
 
+
+
+        <form action="">
+            <td>
+
+                <input type="submit" name="submit_button" value="Опрос">
+            </td>
+
+        </form>
 
     </div>
 

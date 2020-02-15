@@ -4,13 +4,12 @@ import DAO.NodeBuildDAO;
 
 import Entity.FinalNode;
 
+import Entity.NodeBase;
 import Service.ExchangeService;
 import TableDisplay.TableDispleyUAVR;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.*;
 
 
@@ -47,15 +46,26 @@ public class View {
 
 
 
-    @GetMapping("/View/analizNodeDateTimeReport")
-    public String analizNodeDateTimeReport(Model model) {
-        LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
+    @GetMapping("/View/main")
+    public String main() {
+        return "main";
+    }
+
+
+
+
+    @RequestMapping(value = "/View/analizNodeDateTimeReport" , method=RequestMethod.POST)
+    public String analizNodeDateTimeReport(@ModelAttribute ExchangeService exchangeService,Model model) {
+        NodeBuildDAO nodeBuildDAO =new NodeBuildDAO();
+        nodeBuildDAO.setDateTime(exchangeService.getDateTime());
+        List<NodeBase>nodeBases=nodeBuildDAO.localDateTimeReport();
         TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
 
-        Integer id = 1;
-        Object node = tableDispleyUAVR;
-        maps1.put(id, node);
-        model.addAttribute("maps", maps1);
+        /*LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
+       Integer id = 1;
+       Object node = tableDispleyUAVR;
+       maps1.put(id, node);
+       model.addAttribute("maps", maps1);*/
 
         return "reportSystem";
     }
@@ -65,20 +75,6 @@ public class View {
 
 
 
-
-    @GetMapping("/View/start2")
-    public String start2(Model model) {
-
-        LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
-        TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
-
-            Integer id = 1;
-            Object node = tableDispleyUAVR;
-            maps1.put(id, node);
-            model.addAttribute("maps", maps1);
-
-            return "reportSystem";
-        }
 
 
 }

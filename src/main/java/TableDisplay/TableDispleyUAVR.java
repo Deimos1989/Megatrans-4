@@ -1,13 +1,22 @@
 package TableDisplay;
 
+import Application.View;
 import DAO.NodeBuildDAO;
 import Entity.NodeBase;
 
 import java.util.List;
 
 public class TableDispleyUAVR {
-    NodeBuildDAO nodeBuildDAO=new NodeBuildDAO();
-List<NodeBase> nodeBases=nodeBuildDAO.localDateTimeReport();
+
+    public List<NodeBase> getNodeBases() {
+        return nodeBases;
+    }
+
+    public void setNodeBases(List<NodeBase> nodeBases) {
+        this.nodeBases = nodeBases;
+    }
+
+    List<NodeBase> nodeBases;
 
 
     private String name ="IP_Address";

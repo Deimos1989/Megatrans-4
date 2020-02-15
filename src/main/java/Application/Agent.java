@@ -17,19 +17,20 @@ import java.util.TimerTask;
 public class Agent {
 
 
-    @GetMapping("/Agent")
-    public String start(@RequestParam(name="name", required=false, defaultValue="World")String name, Model model) {
+
+
+    @GetMapping("/Agent/start")
+    public String start(String name, Model model) {
 
         NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
-
-
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
+
             @Override
             public void run() {
 
-                DateTime dateTime =new DateTime();
-                ServiceDateTime serviceDateTime =new ServiceDateTime();
+                DateTime dateTime = new DateTime();
+                ServiceDateTime serviceDateTime = new ServiceDateTime();
 
                 dateTime.setHash(serviceDateTime.getHashStatic());
                 dateTime.setTimestamp(serviceDateTime.getTimestampStatic());
@@ -38,14 +39,10 @@ public class Agent {
                 dateTime.setLocalTime(serviceDateTime.getLocalTimeStatic());
                 dateTime.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
 
-
-
-                nodeBuildDAO.saveDateTime(dateTime);
-
                 Url url = new Url();
                 Thread thread = new Thread(url);
                 thread.start();
-
+                nodeBuildDAO.saveDateTime(dateTime);
 
                 serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
                 serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());
@@ -57,16 +54,20 @@ public class Agent {
             }
 
 
-
         };
-
 
 
         timer.scheduleAtFixedRate(task, 1000, 20000);
         model.addAttribute("name", name = "Cбор статистики системы Megatrans-4");
-        return "main";
-
-
-
+        return "test";
     }
+
+
+
+    @GetMapping("/Agent/interrupt")
+    public String interrupt() {
+
+            return "test";
+        }
+
 }
