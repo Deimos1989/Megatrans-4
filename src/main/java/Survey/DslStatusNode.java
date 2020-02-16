@@ -13,24 +13,23 @@ public class DslStatusNode {
     }
 
 
-
-    Pattern pattern1 = Pattern.compile("(I/F\\smode)\\s(\\w*)");
-    Pattern pattern2 = Pattern.compile("(SYNC)\\s(\\d*)\\s(\\d*)");
-    Pattern pattern3 = Pattern.compile("(SEGD)\\s(\\d*)\\s(\\d*)");
-    Pattern pattern4 = Pattern.compile("(Tx\\spower)\\s(\\d*\\W\\d*)\\s(\\d*\\W\\d*)\\s(\\w*)");
-    Pattern pattern5 = Pattern.compile("(Rx\\spower)\\s(\\d*\\W\\d*)\\s(\\d*\\W\\d*)\\s(\\w*)");
-    Pattern pattern6 = Pattern.compile("(Power\\sbackoff)\\s(\\d*\\W\\d*)\\s(\\w*)");
-    Pattern pattern7 = Pattern.compile("(Far\\send\\spower\\sbackoff)\\s(\\d*.\\d*)\\s(\\w*)");
-    Pattern pattern8 = Pattern.compile("(Loop\\sattenuation)\\s(\\d*.\\d*)\\s(\\d*.\\d*)");
-    Pattern pattern9 = Pattern.compile("(NMR)\\s(\\d*.\\d*)\\s(\\d*.\\d*)");
-    Pattern pattern10 = Pattern.compile("(Bitrate)\\s(\\d*)\\s(\\d*)");
-    Pattern pattern11 = Pattern.compile("(SRU)\\s(\\d*)");
-    Pattern pattern12 = Pattern.compile("(Active\\ssync.\\ssource)\\s(\\w*\\d*\\W*\\d*)\\s(\\w*\\d*\\W*\\d*)");
-    Pattern pattern13 = Pattern.compile("(RP\\svoltage)\\s(\\d*)\\s(\\d*)\\s(\\w*)");
-    Pattern pattern14 = Pattern.compile("(RP\\sstatus)\\s(\\w*)");
-    Pattern pattern15 = Pattern.compile("(Temperature)\\s(\\d*\\W\\d*)\\s(=B0C)");
-    Pattern pattern16 = Pattern.compile("(BERT)\\s(\\w*)");
-    Pattern pattern17 = Pattern.compile("(http://)(\\d*\\W\\d*\\W\\d*\\W\\d*)");
+    private    Pattern pattern1 = Pattern.compile("(I/F\\smode)\\s(\\w*)");
+    private    Pattern pattern2 = Pattern.compile("(SYNC)\\s(\\d*)\\s(\\d*)");
+    private    Pattern pattern3 = Pattern.compile("(SEGD)\\s(\\d*)\\s(\\d*)");
+    private    Pattern pattern4 = Pattern.compile("(Tx\\spower)\\s(\\d*\\W\\d*)\\s(\\d*\\W\\d*)\\s(\\w*)");
+    private    Pattern pattern5 = Pattern.compile("(Rx\\spower)\\s(\\d*\\W\\d*)\\s(\\d*\\W\\d*)\\s(\\w*)");
+    private    Pattern pattern6 = Pattern.compile("(Power\\sbackoff)\\s(\\d*\\W\\d*)\\s(\\w*)");
+    private    Pattern pattern7 = Pattern.compile("(Far\\send\\spower\\sbackoff)\\s(\\d*.\\d*)\\s(\\w*)");
+    private    Pattern pattern8 = Pattern.compile("(Loop\\sattenuation)\\s(\\d*.\\d*)\\s(\\d*.\\d*)");
+    private    Pattern pattern9 = Pattern.compile("(NMR)\\s(\\d*.\\d*)\\s(\\d*.\\d*)");
+    private    Pattern pattern10 = Pattern.compile("(Bitrate)\\s(\\d*)\\s(\\d*)");
+    private    Pattern pattern11 = Pattern.compile("(SRU)\\s(\\d*)");
+    private    Pattern pattern12 = Pattern.compile("(Active\\ssync.\\ssource)\\s(\\w*\\d*\\W*\\d*)\\s(\\w*\\d*\\W*\\d*)");
+    private    Pattern pattern13 = Pattern.compile("(RP\\svoltage)\\s(\\d*)\\s(\\d*)\\s(\\w*)");
+    private    Pattern pattern14 = Pattern.compile("(RP\\sstatus)\\s(\\w*)");
+    private    Pattern pattern15 = Pattern.compile("(Temperature)\\s(\\d*\\W\\d*)\\s(=B0C)");
+    private    Pattern pattern16 = Pattern.compile("(BERT)\\s(\\w*)");
+    private    Pattern pattern17 = Pattern.compile("(http://)(\\d*\\W\\d*\\W\\d*\\W\\d*)");
 
 
 
@@ -233,10 +232,6 @@ public class DslStatusNode {
         }
         return parametr;
 }
-
-
-
-
 
 
 
