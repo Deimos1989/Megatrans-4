@@ -1,161 +1,146 @@
 package TableDisplay;
 
-import Application.View;
-import DAO.NodeBuildDAO;
-import Entity.NodeBase;
-
-import java.util.List;
-
 public class TableDispleyUAVR {
-
-    public List<NodeBase> getNodeBases() {
-        return nodeBases;
-    }
-
-    public void setNodeBases(List<NodeBase> nodeBases) {
-        this.nodeBases = nodeBases;
-    }
-
-    List<NodeBase> nodeBases;
-
 
     private String name ="IP_Address";
 
-    private String ipNode0 =nodeBases.get(0).getIpNode();
-    private String ipNode1 =nodeBases.get(1).getIpNode();
-    private String ipNode2 =nodeBases.get(2).getIpNode();
-    private String ipNode3 =nodeBases.get(3).getIpNode();
+    private String ipNode0;
+    private String ipNode1;
+    private String ipNode2;
+    private String ipNode3;
 
 
-    private String erroredBlocksName0_0=nodeBases.get(0).getErroredBlocksName();
+    private String erroredBlocksName0_0;
 
-    private Long erroredBlocksValueSide1_0=nodeBases.get(0).getErroredBlocksValueSide1();
-    private Long erroredBlocksValueSide1_1=nodeBases.get(1).getErroredBlocksValueSide1();
-    private Long erroredBlocksValueSide1_2=nodeBases.get(2).getErroredBlocksValueSide1();
-    private Long erroredBlocksValueSide1_3=nodeBases.get(3).getErroredBlocksValueSide1();
+    private Long erroredBlocksValueSide1_0;
+    private Long erroredBlocksValueSide1_1;
+    private Long erroredBlocksValueSide1_2;
+    private Long erroredBlocksValueSide1_3;
 
-    private Long erroredBlocksValueSide2_0=nodeBases.get(0).getErroredBlocksValueSide2();
-    private Long erroredBlocksValueSide2_1=nodeBases.get(1).getErroredBlocksValueSide2();
-    private Long erroredBlocksValueSide2_2=nodeBases.get(2).getErroredBlocksValueSide2();
-    private Long erroredBlocksValueSide2_3=nodeBases.get(3).getErroredBlocksValueSide2();
-
-
-    private String erroredSecondsName0_0=nodeBases.get(0).getErroredSecondsName();
-
-    private Long erroredSecondValueSide1_0=nodeBases.get(0).getSeverelyErroredSecondsValueSide1();
-    private Long erroredSecondValueSide1_1=nodeBases.get(1).getSeverelyErroredSecondsValueSide1();;
-    private Long erroredSecondValueSide1_2=nodeBases.get(2).getSeverelyErroredSecondsValueSide1();;
-    private Long erroredSecondValueSide1_3=nodeBases.get(3).getSeverelyErroredSecondsValueSide1();;
-
-    private Long erroredSecondValueSide2_0=nodeBases.get(0).getSeverelyErroredSecondsValueSide2();
-    private Long erroredSecondValueSide2_1=nodeBases.get(1).getSeverelyErroredSecondsValueSide2();;
-    private Long erroredSecondValueSide2_2=nodeBases.get(2).getSeverelyErroredSecondsValueSide2();;
-    private Long erroredSecondValueSide2_3=nodeBases.get(3).getSeverelyErroredSecondsValueSide2();;
+    private Long erroredBlocksValueSide2_0;
+    private Long erroredBlocksValueSide2_1;
+    private Long erroredBlocksValueSide2_2;
+    private Long erroredBlocksValueSide2_3;
 
 
-    private String severelyErroredSecondsName0_0=nodeBases.get(0).getSeverelyErroredSecondsName();
+    private String erroredSecondsName0_0;
 
-    private Long severelyErroredSecondsValueSide1_0=nodeBases.get(0).getSeverelyErroredSecondsValueSide1();
-    private Long severelyErroredSecondsValueSide1_1=nodeBases.get(1).getSeverelyErroredSecondsValueSide1();
-    private Long severelyErroredSecondsValueSide1_2=nodeBases.get(2).getSeverelyErroredSecondsValueSide1();
-    private Long severelyErroredSecondsValueSide1_3=nodeBases.get(3).getSeverelyErroredSecondsValueSide1();
+    private Long erroredSecondValueSide1_0;
+    private Long erroredSecondValueSide1_1;
+    private Long erroredSecondValueSide1_2;
+    private Long erroredSecondValueSide1_3;
 
-    private Long severelyErroredSecondsValueSide2_0=nodeBases.get(0).getSeverelyErroredSecondsValueSide2();
-    private Long severelyErroredSecondsValueSide2_1=nodeBases.get(1).getSeverelyErroredSecondsValueSide2();
-    private Long severelyErroredSecondsValueSide2_2=nodeBases.get(2).getSeverelyErroredSecondsValueSide2();
-    private Long severelyErroredSecondsValueSide2_3=nodeBases.get(3).getSeverelyErroredSecondsValueSide2();
-
-
-    private String backgroundBlockErrorsName0_0=nodeBases.get(0).getBackgroundBlockErrorsName();
-
-    private Long backgroundBlockErrorsValueSide1_0=nodeBases.get(0).getBackgroundBlockErrorsValueSide1();
-    private Long backgroundBlockErrorsValueSide1_1=nodeBases.get(1).getBackgroundBlockErrorsValueSide1();
-    private Long backgroundBlockErrorsValueSide1_2=nodeBases.get(2).getBackgroundBlockErrorsValueSide1();
-    private Long backgroundBlockErrorsValueSide1_3=nodeBases.get(3).getBackgroundBlockErrorsValueSide1();
-
-    private Long backgroundBlockErrorsValueSide2_0=nodeBases.get(0).getBackgroundBlockErrorsValueSide2();
-    private Long backgroundBlockErrorsValueSide2_1=nodeBases.get(1).getBackgroundBlockErrorsValueSide2();
-    private Long backgroundBlockErrorsValueSide2_2=nodeBases.get(2).getBackgroundBlockErrorsValueSide2();
-    private Long backgroundBlockErrorsValueSide2_3=nodeBases.get(3).getBackgroundBlockErrorsValueSide2();
+    private Long erroredSecondValueSide2_0;
+    private Long erroredSecondValueSide2_1;
+    private Long erroredSecondValueSide2_2;
+    private Long erroredSecondValueSide2_3;
 
 
-    private String esrName0_0=nodeBases.get(0).getEsrName();
+    private String severelyErroredSecondsName0_0;
 
-    private Double esrValueSide1_0=nodeBases.get(0).getEsrValueSide1();
-    private Double esrValueSide1_1=nodeBases.get(1).getEsrValueSide1();
-    private Double esrValueSide1_2=nodeBases.get(2).getEsrValueSide1();
-    private Double esrValueSide1_3=nodeBases.get(3).getEsrValueSide1();
+    private Long severelyErroredSecondsValueSide1_0;
+    private Long severelyErroredSecondsValueSide1_1;
+    private Long severelyErroredSecondsValueSide1_2;
+    private Long severelyErroredSecondsValueSide1_3;
 
-    private Double esrValueSide2_0=nodeBases.get(0).getEsrValueSide2();
-    private Double esrValueSide2_1=nodeBases.get(1).getEsrValueSide2();
-    private Double esrValueSide2_2=nodeBases.get(2).getEsrValueSide2();
-    private Double esrValueSide2_3=nodeBases.get(3).getEsrValueSide2();
-
-
-    private String sersName0_0=nodeBases.get(0).getSersName();
-
-    private Double sersValueSide1_0=nodeBases.get(0).getSersValueSide1();
-    private Double sersValueSide1_1=nodeBases.get(1).getSersValueSide1();
-    private Double sersValueSide1_2=nodeBases.get(2).getSersValueSide1();
-    private Double sersValueSide1_3=nodeBases.get(3).getSersValueSide1();
-
-    private Double sersValueSide2_0=nodeBases.get(0).getSersValueSide2();
-    private Double sersValueSide2_1=nodeBases.get(1).getSersValueSide2();
-    private Double sersValueSide2_2=nodeBases.get(2).getSersValueSide2();
-    private Double sersValueSide2_3=nodeBases.get(3).getSersValueSide2();
+    private Long severelyErroredSecondsValueSide2_0;
+    private Long severelyErroredSecondsValueSide2_1;
+    private Long severelyErroredSecondsValueSide2_2;
+    private Long severelyErroredSecondsValueSide2_3;
 
 
-    private String bberName0_0=nodeBases.get(0).getBberName();
+    private String backgroundBlockErrorsName0_0;
 
-    private Double bberValueSide1_0=nodeBases.get(0).getBberValueSide1();
-    private Double bberValueSide1_1=nodeBases.get(1).getBberValueSide1();
-    private Double bberValueSide1_2=nodeBases.get(2).getBberValueSide1();
-    private Double bberValueSide1_3=nodeBases.get(3).getBberValueSide1();
+    private Long backgroundBlockErrorsValueSide1_0;
+    private Long backgroundBlockErrorsValueSide1_1;
+    private Long backgroundBlockErrorsValueSide1_2;
+    private Long backgroundBlockErrorsValueSide1_3;
 
-
-    private Double bberValueSide2_0=nodeBases.get(0).getBberValueSide2();
-    private Double bberValueSide2_1=nodeBases.get(1).getBberValueSide2();
-    private Double bberValueSide2_2=nodeBases.get(2).getBberValueSide2();
-    private Double bberValueSide2_3=nodeBases.get(3).getBberValueSide2();
-
-
-    private String availableTimeName0_0=nodeBases.get(0).getAvailableTimeName();
-
-    private Long availableTimeValueSide1_0=nodeBases.get(0).getAvailableTimeValueSide1();
-    private Long availableTimeValueSide1_1=nodeBases.get(1).getAvailableTimeValueSide1();
-    private Long availableTimeValueSide1_2=nodeBases.get(2).getAvailableTimeValueSide1();
-    private Long availableTimeValueSide1_3=nodeBases.get(3).getAvailableTimeValueSide1();
-
-    private Long availableTimeValueSide2_0=nodeBases.get(0).getAvailableTimeValueSide2();
-    private Long availableTimeValueSide2_1=nodeBases.get(1).getAvailableTimeValueSide2();
-    private Long availableTimeValueSide2_2=nodeBases.get(2).getAvailableTimeValueSide2();
-    private Long availableTimeValueSide2_3=nodeBases.get(3).getAvailableTimeValueSide2();
+    private Long backgroundBlockErrorsValueSide2_0;
+    private Long backgroundBlockErrorsValueSide2_1;
+    private Long backgroundBlockErrorsValueSide2_2;
+    private Long backgroundBlockErrorsValueSide2_3;
 
 
-    private String unavailableTimeName0_0=nodeBases.get(0).getUnavailableTimeName();
+    private String esrName0_0;
 
-    private Long unavailableTimeValueSide1_0=nodeBases.get(0).getUnavailableTimeValueSide1();
-    private Long unavailableTimeValueSide1_1=nodeBases.get(1).getUnavailableTimeValueSide1();
-    private Long unavailableTimeValueSide1_2=nodeBases.get(2).getUnavailableTimeValueSide1();
-    private Long unavailableTimeValueSide1_3=nodeBases.get(3).getUnavailableTimeValueSide1();
+    private Double esrValueSide1_0;
+    private Double esrValueSide1_1;
+    private Double esrValueSide1_2;
+    private Double esrValueSide1_3;
 
-    private Long unavailableTimeValueSide2_0=nodeBases.get(0).getUnavailableTimeValueSide2();
-    private Long unavailableTimeValueSide2_1=nodeBases.get(1).getUnavailableTimeValueSide2();
-    private Long unavailableTimeValueSide2_2=nodeBases.get(2).getUnavailableTimeValueSide2();
-    private Long unavailableTimeValueSide2_3=nodeBases.get(3).getUnavailableTimeValueSide2();
+    private Double esrValueSide2_0;
+    private Double esrValueSide2_1;
+    private Double esrValueSide2_2;
+    private Double esrValueSide2_3;
 
 
-    private String nmrName0_0=nodeBases.get(0).getNmrName();
+    private String sersName0_0;
 
-    private Double nmrValueSide1_0=nodeBases.get(0).getNmrValueSide1();
-    private Double nmrValueSide1_1=nodeBases.get(1).getNmrValueSide1();
-    private Double nmrValueSide1_2=nodeBases.get(2).getNmrValueSide1();
-    private Double nmrValueSide1_3=nodeBases.get(3).getNmrValueSide1();
+    private Double sersValueSide1_0;
+    private Double sersValueSide1_1;
+    private Double sersValueSide1_2;
+    private Double sersValueSide1_3;
 
-    private Double nmrValueSide2_0=nodeBases.get(0).getNmrValueSide2();
-    private Double nmrValueSide2_1=nodeBases.get(1).getNmrValueSide2();
-    private Double nmrValueSide2_2=nodeBases.get(2).getNmrValueSide2();
-    private Double nmrValueSide2_3=nodeBases.get(3).getNmrValueSide2();
+    private Double sersValueSide2_0;
+    private Double sersValueSide2_1;
+    private Double sersValueSide2_2;
+    private Double sersValueSide2_3;
+
+
+    private String bberName0_0;
+
+    private Double bberValueSide1_0;
+    private Double bberValueSide1_1;
+    private Double bberValueSide1_2;
+    private Double bberValueSide1_3;
+
+
+    private Double bberValueSide2_0;
+    private Double bberValueSide2_1;
+    private Double bberValueSide2_2;
+    private Double bberValueSide2_3;
+
+
+    private String availableTimeName0_0;
+
+    private Long availableTimeValueSide1_0;
+    private Long availableTimeValueSide1_1;
+    private Long availableTimeValueSide1_2;
+    private Long availableTimeValueSide1_3;
+
+    private Long availableTimeValueSide2_0;
+    private Long availableTimeValueSide2_1;
+    private Long availableTimeValueSide2_2;
+    private Long availableTimeValueSide2_3;
+
+
+    private String unavailableTimeName0_0;
+
+    private Long unavailableTimeValueSide1_0;
+    private Long unavailableTimeValueSide1_1;
+    private Long unavailableTimeValueSide1_2;
+    private Long unavailableTimeValueSide1_3;
+
+    private Long unavailableTimeValueSide2_0;
+    private Long unavailableTimeValueSide2_1;
+    private Long unavailableTimeValueSide2_2;
+    private Long unavailableTimeValueSide2_3;
+
+
+    private String nmrName0_0;
+
+    private Double nmrValueSide1_0;
+    private Double nmrValueSide1_1;
+    private Double nmrValueSide1_2;
+    private Double nmrValueSide1_3;
+
+    private Double nmrValueSide2_0;
+    private Double nmrValueSide2_1;
+    private Double nmrValueSide2_2;
+    private Double nmrValueSide2_3;
+
+
 
 
     public String getName() {
@@ -164,6 +149,14 @@ public class TableDispleyUAVR {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIpNode0() {
+        return ipNode0;
+    }
+
+    public void setIpNode0(String ipNode0) {
+        this.ipNode0 = ipNode0;
     }
 
     public String getIpNode1() {
@@ -189,17 +182,6 @@ public class TableDispleyUAVR {
     public void setIpNode3(String ipNode3) {
         this.ipNode3 = ipNode3;
     }
-
-
-
-    public String getIpNode0() {
-        return ipNode0;
-    }
-
-    public void setIpNode0(String ipNode0) {
-        this.ipNode0 = ipNode0;
-    }
-
 
     public String getErroredBlocksName0_0() {
         return erroredBlocksName0_0;
@@ -240,8 +222,6 @@ public class TableDispleyUAVR {
     public void setErroredBlocksValueSide1_3(Long erroredBlocksValueSide1_3) {
         this.erroredBlocksValueSide1_3 = erroredBlocksValueSide1_3;
     }
-
-
 
     public Long getErroredBlocksValueSide2_0() {
         return erroredBlocksValueSide2_0;

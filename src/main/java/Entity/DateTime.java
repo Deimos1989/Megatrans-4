@@ -1,7 +1,4 @@
 package Entity;
-
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;

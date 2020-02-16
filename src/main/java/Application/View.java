@@ -5,8 +5,8 @@ import DAO.NodeBuildDAO;
 import Entity.FinalNode;
 
 import Entity.NodeBase;
-import Service.ExchangeService;
-import TableDisplay.TableDispleyUAVR;
+import Service.ExchangeServiceObject;
+import Service.ExchangeServiceTable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,13 @@ public class View {
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String greetingForm(Model model) {
-        model.addAttribute("exchangeService", new ExchangeService());
+        model.addAttribute("exchangeServiceObject", new ExchangeServiceObject());
         return "main";
     }
 
     @RequestMapping(value="/View/analizNodeData", method=RequestMethod.POST)
-    public String analizNodeData(@ModelAttribute ExchangeService exchangeService,Model model, NodeBuildDAO nodeBuildDAO) {
-       nodeBuildDAO.setIp(exchangeService.getIpAddress());
+    public String analizNodeData(@ModelAttribute ExchangeServiceObject exchangeServiceObject, Model model, NodeBuildDAO nodeBuildDAO) {
+       nodeBuildDAO.setIp(exchangeServiceObject.getIpAddress());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
@@ -55,17 +55,16 @@ public class View {
 
 
     @RequestMapping(value = "/View/analizNodeDateTimeReport" , method=RequestMethod.POST)
-    public String analizNodeDateTimeReport(@ModelAttribute ExchangeService exchangeService,Model model) {
-        NodeBuildDAO nodeBuildDAO =new NodeBuildDAO();
-        nodeBuildDAO.setDateTime(exchangeService.getDateTime());
-        List<NodeBase>nodeBases=nodeBuildDAO.localDateTimeReport();
-        TableDispleyUAVR tableDispleyUAVR =new TableDispleyUAVR();
+    public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObject exchangeServiceObject, ExchangeServiceTable exchangeServiceTable, NodeBuildDAO nodeBuildDAO, Model model) {
+        nodeBuildDAO.setDateTime(exchangeServiceObject.getDateTime());
+        List<NodeBase> nodeBases = nodeBuildDAO.localDateTimeReport();
+        exchangeServiceTable.setNodeBases(nodeBases);
 
-        /*LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
+        LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
        Integer id = 1;
-       Object node = tableDispleyUAVR;
+       Object node = exchangeServiceTable.setTable();
        maps1.put(id, node);
-       model.addAttribute("maps", maps1);*/
+       model.addAttribute("maps", maps1);
 
         return "reportSystem";
     }

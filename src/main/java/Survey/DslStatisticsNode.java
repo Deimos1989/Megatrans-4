@@ -1,4 +1,4 @@
-package com.company;
+package Survey;
 
 
 import java.util.regex.Matcher;

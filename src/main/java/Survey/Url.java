@@ -1,4 +1,4 @@
-package com.company;
+package Survey;
 
 import DAO.NodeBuildDAO;
 import Entity.FinalNode;
@@ -14,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class Url implements Runnable {

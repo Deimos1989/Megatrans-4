@@ -34,7 +34,7 @@
 
         <form action="/Agent/start/">
             <td>
-                <input type="text" cols="40" size="10" th:value="${name}" id="quantity">
+                <input type="text" cols="40" size="10" id="quantity">
                 <input type="submit" name="submit_button" value="Старт">
             </td>
 
@@ -54,15 +54,14 @@
 
         <h2>Анализ статистики системы</h2>
 
-        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchangeService}" method="post">
+        <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchangeServiceObject}" method="post">
             Node_Ip: <input type="text" th:field="*{ipAddress}" /><
             <input type="submit" value="Report" />
         </form>
 
 
 
-
-        <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeService}" method="post">
+        <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}" method="post">
             System: <input type="text" th:field="*{dateTime}" /><
             <input type="submit" value="Report" />
         </form>

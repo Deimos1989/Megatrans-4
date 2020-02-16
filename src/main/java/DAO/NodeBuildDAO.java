@@ -1,18 +1,12 @@
 package DAO;
 
 
-import Application.View;
 import Entity.DateTime;
 import Entity.FinalNode;
 import Entity.IntermediateNode;
 import Entity.NodeBase;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
