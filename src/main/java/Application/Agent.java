@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,15 +58,10 @@ public class Agent {
 
         timer.scheduleAtFixedRate(task, 1000, 20000);
         model.addAttribute("name", name = "Cбор статистики системы Megatrans-4");
-        return "test";
+
+
+        return "Survey";
     }
 
-
-
-    @GetMapping("/Agent/interrupt")
-    public String interrupt() {
-
-            return "test";
-        }
 
 }
