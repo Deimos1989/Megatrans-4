@@ -7,8 +7,6 @@ import Survey.Url;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
