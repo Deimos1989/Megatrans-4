@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
     <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 </head>
 
 <body>
@@ -15,6 +17,19 @@
         <h2>Система передачи данных Megatrans-4</h2>
     </div>
 
+    <div id="sidebar1">
+
+        <h2>Анализ статистики системы</h2>
+
+
+
+            <td>
+                <input type="button" name="submit_button1" value="StartEX" id="ReportEX">
+            </td>
+
+
+
+    </div>
 
     <div id="content">
         <h2>Анализ данных Трассы</h2>
@@ -366,8 +381,21 @@
     <div id="footer">
         <h2>footer (низ сайта)</h2>
     </div>
-
-
 </div>
+
+<script>
+
+        buttonex=document.getElementById('ReportEX');
+        buttonex.addEventListener('click', function ()
+        {
+            $("#content").table2excel(
+                {
+                    filename: "new.xls"
+                })
+        });
+
+
+
+</script>
 </body>
 </html>
