@@ -4,7 +4,7 @@
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/styleReportSystem.css}" rel="stylesheet" media="screen" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 </head>
@@ -80,12 +80,14 @@
 
                     <th>ОП Георгиевск</th>
 
-                    <th colspan="2" >НУП7</th>
+                    <th>НУП7(RX)</th>
+                    <th>НУП7(TX)</th>
 
-                    <th colspan="2">НУП6</th>
+                    <th>НУП6(RX)</th>
+                    <th>НУП6(TX)</th>
 
-
-                    <th colspan="2">НУП5</th>
+                    <th>НУП5(RX)</th>
+                    <th>НУП5(TX)</th>
 
 
                 </tr>
@@ -97,9 +99,12 @@
                     <td th:utext="${map.getKey()}">Id</td>
                     <td th:utext="${map.getValue().name}"></td>
                     <td th:utext="${map.getValue().ipNode0}"></td>
-                    <td colspan="2" th:utext="${map.getValue().ipNode1}"></td>
-                    <td colspan="2" th:utext="${map.getValue().ipNode2}"></td>
-                    <td colspan="2" th:utext="${map.getValue().ipNode3}"></td>
+                    <td th:utext="${map.getValue().ipNode1}"></td>
+                    <td th:utext="${map.getValue().ipNode1}"></td>
+                    <td th:utext="${map.getValue().ipNode2}"></td>
+                    <td th:utext="${map.getValue().ipNode2}"></td>
+                    <td th:utext="${map.getValue().ipNode3}"></td>
+                    <td th:utext="${map.getValue().ipNode3}"></td>
 
                 </tr>
 
