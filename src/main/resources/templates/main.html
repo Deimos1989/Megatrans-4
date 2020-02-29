@@ -46,12 +46,16 @@
                 <input type="submit" value="Report" />
             </form>
 
+        <form action="#" th:action="@{/View/reportSystem}" th:object="${exchangeServiceObject}"   method="post">
+            SaveEx: <input type="text" size="20" th:field="*{dateTime}" /><
+            <input type="submit" value="Report" />
+        </form>
 
-            <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}"  method="post" id="ReportExel">
+
+            <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}"  method="post">
                 System: <input type="text" size="20" th:field="*{dateTime}" /><
                 <input type="submit" value="Report" />
             </form>
-        </form>
 
 
 
@@ -143,6 +147,7 @@
                 <td th:utext="${map.getValue().unavailableTimeValue}">unavailableTime</td>
 
                 <td th:utext="${map.getValue().nmrValue}">nmr dB</td>
+
             </tr>
         </table>
 
