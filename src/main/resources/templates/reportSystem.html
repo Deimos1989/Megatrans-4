@@ -69,7 +69,7 @@
 
         <div>
 
-            <table border="1" cellpadding="4" cellspacing="0" width="100%" >
+            <table border="1" cellpadding="4" cellspacing="0" width="100%" id="stq" >
                 <caption>System №5</caption>
 
                 <tr>
@@ -381,11 +381,6 @@
     <div id="clear">
 
     </div>
-
-
-    <div id="footer">
-        <h2>footer (низ сайта)</h2>
-    </div>
 </div>
 
 <script>
@@ -393,10 +388,9 @@
         buttonex=document.getElementById('ReportEX');
         buttonex.addEventListener('click', function ()
         {
-            $("#content").table2excel(
-                {
-                    filename: "new.xls"
-                })
+            let blob = new Blob( [ $stq.innerhtml()], { type: "text/html"} );
+
+            window.navigator.msSaveOrOpenBlob( blob, "output.xls" );
         });
 
 

@@ -5,17 +5,37 @@ import DAO.NodeBuildDAO;
 import Entity.FinalNode;
 
 import Entity.NodeBase;
+import Report.ReportSystem;
 import Service.ExchangeServiceObject;
 import Service.ExchangeServiceTable;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+
+import static org.apache.commons.compress.archivers.dump.DumpArchiveEntry.TYPE.DIRECTORY;
 
 
 @Controller
 public class View {
 
+
+    @GetMapping("/View/main")
+    public String main() {
+        return "main";
+    }
 
 
     @RequestMapping(value="/", method=RequestMethod.GET)
@@ -35,22 +55,11 @@ public class View {
             Long id = finalNodeList.get(i).getId();
             Object node= finalNodeList.get(i);
             maps.put(id,node);
-
             model.addAttribute("maps", maps);
         }
 
         return "main";
-
-
     }
-
-
-
-    @GetMapping("/View/main")
-    public String main() {
-        return "main";
-    }
-
 
 
 
@@ -65,15 +74,35 @@ public class View {
        Object node = exchangeServiceTable.setTable();
        maps1.put(id, node);
        model.addAttribute("maps", maps1);
-
         return "reportSystem";
     }
 
 
+    @RequestMapping(value = "/View/reportSystem" , method=RequestMethod.POST)
+    public ResponseEntity<Object> reportSystem(ExchangeServiceObject exchangeServiceObject, NodeBuildDAO nodeBuildDAO, ReportSystem reportSystem) {
+
+        nodeBuildDAO.setDateTime(exchangeServiceObject.getDateTime());
+        List<NodeBase> nodeBases = nodeBuildDAO.localDateTimeReport();
+
+        reportSystem.setNodeBaseList(nodeBases);
+        reportSystem.setDataTime(exchangeServiceObject.getDateTime());
+        
+        String DIRECTORY = "C:/Users/Denis/IdeaProjects/Test";
+        String DEFAULT_FILE_NAME = reportSystem.getDataTime().replace(':','-')+".xls";
+
+        File file = new File(DIRECTORY + "/" +DEFAULT_FILE_NAME);
+        InputStreamResource resource = null;
+        try {
+             resource = new InputStreamResource(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return  ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
+                .body(resource);
 
 
-
-
-
+    }
 
 }
