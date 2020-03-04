@@ -263,7 +263,7 @@ public class NodeBase {
         this.sersName = sersName;
     }
 
-    public Double getSersValueSide1() {
+    public Double getSesrValueSide1() {
         return sersValueSide1;
     }
 
@@ -271,7 +271,7 @@ public class NodeBase {
         this.sersValueSide1 = sersValueSide1;
     }
 
-    public Double getSersValueSide2() {
+    public Double getSesrValueSide2() {
         return sersValueSide2;
     }
 

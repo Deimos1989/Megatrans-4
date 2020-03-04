@@ -98,15 +98,15 @@ public class ExchangeServiceTable {
 
         tableDispleyUAVR.setSersName0_0(nodeBases.get(0).getSersName());
 
-        tableDispleyUAVR.setSersValueSide1_0(nodeBases.get(0).getSersValueSide1());
-        tableDispleyUAVR.setSersValueSide1_1(nodeBases.get(1).getSersValueSide1());
-        tableDispleyUAVR.setSersValueSide1_2(nodeBases.get(2).getSersValueSide1());
-        tableDispleyUAVR.setSersValueSide1_3(nodeBases.get(3).getSersValueSide1());
+        tableDispleyUAVR.setSersValueSide1_0(nodeBases.get(0).getSesrValueSide1());
+        tableDispleyUAVR.setSersValueSide1_1(nodeBases.get(1).getSesrValueSide1());
+        tableDispleyUAVR.setSersValueSide1_2(nodeBases.get(2).getSesrValueSide1());
+        tableDispleyUAVR.setSersValueSide1_3(nodeBases.get(3).getSesrValueSide1());
 
-        tableDispleyUAVR.setSersValueSide2_0(nodeBases.get(0).getSersValueSide2());
-        tableDispleyUAVR.setSersValueSide2_1(nodeBases.get(1).getSersValueSide2());
-        tableDispleyUAVR.setSersValueSide2_2(nodeBases.get(2).getSersValueSide2());
-        tableDispleyUAVR.setSersValueSide2_3(nodeBases.get(3).getSersValueSide2());
+        tableDispleyUAVR.setSersValueSide2_0(nodeBases.get(0).getSesrValueSide2());
+        tableDispleyUAVR.setSersValueSide2_1(nodeBases.get(1).getSesrValueSide2());
+        tableDispleyUAVR.setSersValueSide2_2(nodeBases.get(2).getSesrValueSide2());
+        tableDispleyUAVR.setSersValueSide2_3(nodeBases.get(3).getSesrValueSide2());
 
         tableDispleyUAVR.setBberName0_0(nodeBases.get(0).getBberName());
 
