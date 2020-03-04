@@ -86,6 +86,7 @@ public class View {
 
         reportSystem.setNodeBaseList(nodeBases);
         reportSystem.setDataTime(exchangeServiceObject.getDateTime());
+        reportSystem.reportSystem();
         
         String DIRECTORY = "C:/Users/Denis/IdeaProjects/Test";
         String DEFAULT_FILE_NAME = reportSystem.getDataTime().replace(':','-')+".xls";
