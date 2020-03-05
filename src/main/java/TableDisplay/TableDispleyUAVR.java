@@ -1,147 +1,76 @@
 package TableDisplay;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TableDispleyUAVR {
 
-    private String name ="IP_Address";
-
-    private String ipNode0;
-    private String ipNode1;
-    private String ipNode2;
-    private String ipNode3;
+    private String name = "IP_Address";
 
 
-    private String erroredBlocksName0_0;
+    private String ipNode;
 
-    private Long erroredBlocksValueSide1_0;
-    private Long erroredBlocksValueSide1_1;
-    private Long erroredBlocksValueSide1_2;
-    private Long erroredBlocksValueSide1_3;
+    private String erroredBlocksName;
 
-    private Long erroredBlocksValueSide2_0;
-    private Long erroredBlocksValueSide2_1;
-    private Long erroredBlocksValueSide2_2;
-    private Long erroredBlocksValueSide2_3;
+    private Long erroredBlocksValueSide1;
+    private Long erroredBlocksValueSide2;
+
+    private String erroredSecondsName;
 
 
-    private String erroredSecondsName0_0;
-
-    private Long erroredSecondValueSide1_0;
-    private Long erroredSecondValueSide1_1;
-    private Long erroredSecondValueSide1_2;
-    private Long erroredSecondValueSide1_3;
-
-    private Long erroredSecondValueSide2_0;
-    private Long erroredSecondValueSide2_1;
-    private Long erroredSecondValueSide2_2;
-    private Long erroredSecondValueSide2_3;
+    private Long erroredSecondValueSide1;
+    private Long erroredSecondValueSide2;
 
 
-    private String severelyErroredSecondsName0_0;
+    private String severelyErroredSecondsName;
 
-    private Long severelyErroredSecondsValueSide1_0;
-    private Long severelyErroredSecondsValueSide1_1;
-    private Long severelyErroredSecondsValueSide1_2;
-    private Long severelyErroredSecondsValueSide1_3;
-
-    private Long severelyErroredSecondsValueSide2_0;
-    private Long severelyErroredSecondsValueSide2_1;
-    private Long severelyErroredSecondsValueSide2_2;
-    private Long severelyErroredSecondsValueSide2_3;
+    private Long severelyErroredSecondsValueSide1;
+    private Long severelyErroredSecondsValueSide2;
 
 
-    private String backgroundBlockErrorsName0_0;
+    private String backgroundBlockErrorsName;
 
-    private Long backgroundBlockErrorsValueSide1_0;
-    private Long backgroundBlockErrorsValueSide1_1;
-    private Long backgroundBlockErrorsValueSide1_2;
-    private Long backgroundBlockErrorsValueSide1_3;
-
-    private Long backgroundBlockErrorsValueSide2_0;
-    private Long backgroundBlockErrorsValueSide2_1;
-    private Long backgroundBlockErrorsValueSide2_2;
-    private Long backgroundBlockErrorsValueSide2_3;
+    private Long backgroundBlockErrorsValueSide1;
+    private Long backgroundBlockErrorsValueSide2;
 
 
-    private String esrName0_0;
-
-    private Double esrValueSide1_0;
-    private Double esrValueSide1_1;
-    private Double esrValueSide1_2;
-    private Double esrValueSide1_3;
-
-    private Double esrValueSide2_0;
-    private Double esrValueSide2_1;
-    private Double esrValueSide2_2;
-    private Double esrValueSide2_3;
+    private String esrName;
 
 
-    private String sersName0_0;
-
-    private Double sersValueSide1_0;
-    private Double sersValueSide1_1;
-    private Double sersValueSide1_2;
-    private Double sersValueSide1_3;
-
-    private Double sersValueSide2_0;
-    private Double sersValueSide2_1;
-    private Double sersValueSide2_2;
-    private Double sersValueSide2_3;
+    private Double esrValueSide1;
+    private Double esrValueSide2;
 
 
-    private String bberName0_0;
+    private String sersName;
 
-    private Double bberValueSide1_0;
-    private Double bberValueSide1_1;
-    private Double bberValueSide1_2;
-    private Double bberValueSide1_3;
+    private Double sersValueSide1;
+    private Double sersValueSide2;
 
 
-    private Double bberValueSide2_0;
-    private Double bberValueSide2_1;
-    private Double bberValueSide2_2;
-    private Double bberValueSide2_3;
+    private String bberName;
+
+    private Double bberValueSide1;
+    private Double bberValueSide2;
 
 
-    private String availableTimeName0_0;
-
-    private Long availableTimeValueSide1_0;
-    private Long availableTimeValueSide1_1;
-    private Long availableTimeValueSide1_2;
-    private Long availableTimeValueSide1_3;
-
-    private Long availableTimeValueSide2_0;
-    private Long availableTimeValueSide2_1;
-    private Long availableTimeValueSide2_2;
-    private Long availableTimeValueSide2_3;
+    private String availableTimeName;
 
 
-    private String unavailableTimeName0_0;
-
-    private Long unavailableTimeValueSide1_0;
-    private Long unavailableTimeValueSide1_1;
-    private Long unavailableTimeValueSide1_2;
-    private Long unavailableTimeValueSide1_3;
-
-    private Long unavailableTimeValueSide2_0;
-    private Long unavailableTimeValueSide2_1;
-    private Long unavailableTimeValueSide2_2;
-    private Long unavailableTimeValueSide2_3;
+    private Long availableTimeValueSide1;
+    private Long availableTimeValueSide2;
 
 
-    private String nmrName0_0;
-
-    private Double nmrValueSide1_0;
-    private Double nmrValueSide1_1;
-    private Double nmrValueSide1_2;
-    private Double nmrValueSide1_3;
-
-    private Double nmrValueSide2_0;
-    private Double nmrValueSide2_1;
-    private Double nmrValueSide2_2;
-    private Double nmrValueSide2_3;
+    private String unavailableTimeName;
 
 
+    private Long unavailableTimeValueSide1;
+    private Long unavailableTimeValueSide2;
 
+
+    private String nmrName;
+
+    private Double nmrValueSide1;
+    private Double nmrValueSide2;
 
     public String getName() {
         return name;
@@ -151,755 +80,251 @@ public class TableDispleyUAVR {
         this.name = name;
     }
 
-    public String getIpNode0() {
-        return ipNode0;
+    public String getIpNode() {
+        return ipNode;
     }
 
-    public void setIpNode0(String ipNode0) {
-        this.ipNode0 = ipNode0;
+    public void setIpNode(String ipNode) {
+        this.ipNode = ipNode;
     }
 
-    public String getIpNode1() {
-        return ipNode1;
+    public String getErroredBlocksName() {
+        return erroredBlocksName;
     }
 
-    public void setIpNode1(String ipNode1) {
-        this.ipNode1 = ipNode1;
+    public void setErroredBlocksName(String erroredBlocksName) {
+        this.erroredBlocksName = erroredBlocksName;
     }
 
-    public String getIpNode2() {
-        return ipNode2;
+    public Long getErroredBlocksValueSide1() {
+        return erroredBlocksValueSide1;
     }
 
-    public void setIpNode2(String ipNode2) {
-        this.ipNode2 = ipNode2;
+    public void setErroredBlocksValueSide1(Long erroredBlocksValueSide1) {
+        this.erroredBlocksValueSide1 = erroredBlocksValueSide1;
     }
 
-    public String getIpNode3() {
-        return ipNode3;
+    public Long getErroredBlocksValueSide2() {
+        return erroredBlocksValueSide2;
     }
 
-    public void setIpNode3(String ipNode3) {
-        this.ipNode3 = ipNode3;
+    public void setErroredBlocksValueSide2(Long erroredBlocksValueSide2) {
+        this.erroredBlocksValueSide2 = erroredBlocksValueSide2;
     }
 
-    public String getErroredBlocksName0_0() {
-        return erroredBlocksName0_0;
+    public String getErroredSecondsName() {
+        return erroredSecondsName;
     }
 
-    public void setErroredBlocksName0_0(String erroredBlocksName0_0) {
-        this.erroredBlocksName0_0 = erroredBlocksName0_0;
+    public void setErroredSecondsName(String erroredSecondsName) {
+        this.erroredSecondsName = erroredSecondsName;
     }
 
-    public Long getErroredBlocksValueSide1_0() {
-        return erroredBlocksValueSide1_0;
+    public Long getErroredSecondValueSide1() {
+        return erroredSecondValueSide1;
     }
 
-    public void setErroredBlocksValueSide1_0(Long erroredBlocksValueSide1_0) {
-        this.erroredBlocksValueSide1_0 = erroredBlocksValueSide1_0;
+    public void setErroredSecondValueSide1(Long erroredSecondValueSide1) {
+        this.erroredSecondValueSide1 = erroredSecondValueSide1;
     }
 
-    public Long getErroredBlocksValueSide1_1() {
-        return erroredBlocksValueSide1_1;
+    public Long getErroredSecondValueSide2() {
+        return erroredSecondValueSide2;
     }
 
-    public void setErroredBlocksValueSide1_1(Long erroredBlocksValueSide1_1) {
-        this.erroredBlocksValueSide1_1 = erroredBlocksValueSide1_1;
+    public void setErroredSecondValueSide2(Long erroredSecondValueSide2) {
+        this.erroredSecondValueSide2 = erroredSecondValueSide2;
     }
 
-    public Long getErroredBlocksValueSide1_2() {
-        return erroredBlocksValueSide1_2;
+    public String getSeverelyErroredSecondsName() {
+        return severelyErroredSecondsName;
     }
 
-    public void setErroredBlocksValueSide1_2(Long erroredBlocksValueSide1_2) {
-        this.erroredBlocksValueSide1_2 = erroredBlocksValueSide1_2;
+    public void setSeverelyErroredSecondsName(String severelyErroredSecondsName) {
+        this.severelyErroredSecondsName = severelyErroredSecondsName;
     }
 
-    public Long getErroredBlocksValueSide1_3() {
-        return erroredBlocksValueSide1_3;
+    public Long getSeverelyErroredSecondsValueSide1() {
+        return severelyErroredSecondsValueSide1;
     }
 
-    public void setErroredBlocksValueSide1_3(Long erroredBlocksValueSide1_3) {
-        this.erroredBlocksValueSide1_3 = erroredBlocksValueSide1_3;
+    public void setSeverelyErroredSecondsValueSide1(Long severelyErroredSecondsValueSide1) {
+        this.severelyErroredSecondsValueSide1 = severelyErroredSecondsValueSide1;
     }
 
-    public Long getErroredBlocksValueSide2_0() {
-        return erroredBlocksValueSide2_0;
+    public Long getSeverelyErroredSecondsValueSide2() {
+        return severelyErroredSecondsValueSide2;
     }
 
-    public void setErroredBlocksValueSide2_0(Long erroredBlocksValueSide2_0) {
-        this.erroredBlocksValueSide2_0 = erroredBlocksValueSide2_0;
+    public void setSeverelyErroredSecondsValueSide2(Long severelyErroredSecondsValueSide2) {
+        this.severelyErroredSecondsValueSide2 = severelyErroredSecondsValueSide2;
     }
 
-    public Long getErroredBlocksValueSide2_1() {
-        return erroredBlocksValueSide2_1;
+    public String getBackgroundBlockErrorsName() {
+        return backgroundBlockErrorsName;
     }
 
-    public void setErroredBlocksValueSide2_1(Long erroredBlocksValueSide2_1) {
-        this.erroredBlocksValueSide2_1 = erroredBlocksValueSide2_1;
+    public void setBackgroundBlockErrorsName(String backgroundBlockErrorsName) {
+        this.backgroundBlockErrorsName = backgroundBlockErrorsName;
     }
 
-    public Long getErroredBlocksValueSide2_2() {
-        return erroredBlocksValueSide2_2;
+    public Long getBackgroundBlockErrorsValueSide1() {
+        return backgroundBlockErrorsValueSide1;
     }
 
-    public void setErroredBlocksValueSide2_2(Long erroredBlocksValueSide2_2) {
-        this.erroredBlocksValueSide2_2 = erroredBlocksValueSide2_2;
+    public void setBackgroundBlockErrorsValueSide1(Long backgroundBlockErrorsValueSide1) {
+        this.backgroundBlockErrorsValueSide1 = backgroundBlockErrorsValueSide1;
     }
 
-    public Long getErroredBlocksValueSide2_3() {
-        return erroredBlocksValueSide2_3;
+    public Long getBackgroundBlockErrorsValueSide2() {
+        return backgroundBlockErrorsValueSide2;
     }
 
-    public void setErroredBlocksValueSide2_3(Long erroredBlocksValueSide2_3) {
-        this.erroredBlocksValueSide2_3 = erroredBlocksValueSide2_3;
+    public void setBackgroundBlockErrorsValueSide2(Long backgroundBlockErrorsValueSide2) {
+        this.backgroundBlockErrorsValueSide2 = backgroundBlockErrorsValueSide2;
     }
 
-    public String getErroredSecondsName0_0() {
-        return erroredSecondsName0_0;
+    public String getEsrName() {
+        return esrName;
     }
 
-    public void setErroredSecondsName0_0(String erroredSecondsName0_0) {
-        this.erroredSecondsName0_0 = erroredSecondsName0_0;
+    public void setEsrName(String esrName) {
+        this.esrName = esrName;
     }
 
-    public Long getErroredSecondValueSide1_0() {
-        return erroredSecondValueSide1_0;
+    public Double getEsrValueSide1() {
+        return esrValueSide1;
     }
 
-    public void setErroredSecondValueSide1_0(Long erroredSecondValueSide1_0) {
-        this.erroredSecondValueSide1_0 = erroredSecondValueSide1_0;
+    public void setEsrValueSide1(Double esrValueSide1) {
+        this.esrValueSide1 = esrValueSide1;
     }
 
-    public Long getErroredSecondValueSide1_1() {
-        return erroredSecondValueSide1_1;
+    public Double getEsrValueSide2() {
+        return esrValueSide2;
     }
 
-    public void setErroredSecondValueSide1_1(Long erroredSecondValueSide1_1) {
-        this.erroredSecondValueSide1_1 = erroredSecondValueSide1_1;
+    public void setEsrValueSide2(Double esrValueSide2) {
+        this.esrValueSide2 = esrValueSide2;
     }
 
-    public Long getErroredSecondValueSide1_2() {
-        return erroredSecondValueSide1_2;
+    public String getSersName() {
+        return sersName;
     }
 
-    public void setErroredSecondValueSide1_2(Long erroredSecondValueSide1_2) {
-        this.erroredSecondValueSide1_2 = erroredSecondValueSide1_2;
+    public void setSersName(String sersName) {
+        this.sersName = sersName;
     }
 
-    public Long getErroredSecondValueSide1_3() {
-        return erroredSecondValueSide1_3;
+    public Double getSersValueSide1() {
+        return sersValueSide1;
     }
 
-    public void setErroredSecondValueSide1_3(Long erroredSecondValueSide1_3) {
-        this.erroredSecondValueSide1_3 = erroredSecondValueSide1_3;
+    public void setSersValueSide1(Double sersValueSide1) {
+        this.sersValueSide1 = sersValueSide1;
     }
 
-    public Long getErroredSecondValueSide2_0() {
-        return erroredSecondValueSide2_0;
+    public Double getSersValueSide2() {
+        return sersValueSide2;
     }
 
-    public void setErroredSecondValueSide2_0(Long erroredSecondValueSide2_0) {
-        this.erroredSecondValueSide2_0 = erroredSecondValueSide2_0;
+    public void setSersValueSide2(Double sersValueSide2) {
+        this.sersValueSide2 = sersValueSide2;
     }
 
-    public Long getErroredSecondValueSide2_1() {
-        return erroredSecondValueSide2_1;
+    public String getBberName() {
+        return bberName;
     }
 
-    public void setErroredSecondValueSide2_1(Long erroredSecondValueSide2_1) {
-        this.erroredSecondValueSide2_1 = erroredSecondValueSide2_1;
+    public void setBberName(String bberName) {
+        this.bberName = bberName;
     }
 
-    public Long getErroredSecondValueSide2_2() {
-        return erroredSecondValueSide2_2;
+    public Double getBberValueSide1() {
+        return bberValueSide1;
     }
 
-    public void setErroredSecondValueSide2_2(Long erroredSecondValueSide2_2) {
-        this.erroredSecondValueSide2_2 = erroredSecondValueSide2_2;
+    public void setBberValueSide1(Double bberValueSide1) {
+        this.bberValueSide1 = bberValueSide1;
     }
 
-    public Long getErroredSecondValueSide2_3() {
-        return erroredSecondValueSide2_3;
+    public Double getBberValueSide2() {
+        return bberValueSide2;
     }
 
-    public void setErroredSecondValueSide2_3(Long erroredSecondValueSide2_3) {
-        this.erroredSecondValueSide2_3 = erroredSecondValueSide2_3;
+    public void setBberValueSide2(Double bberValueSide2) {
+        this.bberValueSide2 = bberValueSide2;
     }
 
-    public String getSeverelyErroredSecondsName0_0() {
-        return severelyErroredSecondsName0_0;
+    public String getAvailableTimeName() {
+        return availableTimeName;
     }
 
-    public void setSeverelyErroredSecondsName0_0(String severelyErroredSecondsName0_0) {
-        this.severelyErroredSecondsName0_0 = severelyErroredSecondsName0_0;
+    public void setAvailableTimeName(String availableTimeName) {
+        this.availableTimeName = availableTimeName;
     }
 
-    public Long getSeverelyErroredSecondsValueSide1_0() {
-        return severelyErroredSecondsValueSide1_0;
+    public Long getAvailableTimeValueSide1() {
+        return availableTimeValueSide1;
     }
 
-    public void setSeverelyErroredSecondsValueSide1_0(Long severelyErroredSecondsValueSide1_0) {
-        this.severelyErroredSecondsValueSide1_0 = severelyErroredSecondsValueSide1_0;
+    public void setAvailableTimeValueSide1(Long availableTimeValueSide1) {
+        this.availableTimeValueSide1 = availableTimeValueSide1;
     }
 
-    public Long getSeverelyErroredSecondsValueSide1_1() {
-        return severelyErroredSecondsValueSide1_1;
+    public Long getAvailableTimeValueSide2() {
+        return availableTimeValueSide2;
     }
 
-    public void setSeverelyErroredSecondsValueSide1_1(Long severelyErroredSecondsValueSide1_1) {
-        this.severelyErroredSecondsValueSide1_1 = severelyErroredSecondsValueSide1_1;
+    public void setAvailableTimeValueSide2(Long availableTimeValueSide2) {
+        this.availableTimeValueSide2 = availableTimeValueSide2;
     }
 
-    public Long getSeverelyErroredSecondsValueSide1_2() {
-        return severelyErroredSecondsValueSide1_2;
+    public String getUnavailableTimeName() {
+        return unavailableTimeName;
     }
 
-    public void setSeverelyErroredSecondsValueSide1_2(Long severelyErroredSecondsValueSide1_2) {
-        this.severelyErroredSecondsValueSide1_2 = severelyErroredSecondsValueSide1_2;
+    public void setUnavailableTimeName(String unavailableTimeName) {
+        this.unavailableTimeName = unavailableTimeName;
     }
 
-    public Long getSeverelyErroredSecondsValueSide1_3() {
-        return severelyErroredSecondsValueSide1_3;
+    public Long getUnavailableTimeValueSide1() {
+        return unavailableTimeValueSide1;
     }
 
-    public void setSeverelyErroredSecondsValueSide1_3(Long severelyErroredSecondsValueSide1_3) {
-        this.severelyErroredSecondsValueSide1_3 = severelyErroredSecondsValueSide1_3;
+    public void setUnavailableTimeValueSide1(Long unavailableTimeValueSide1) {
+        this.unavailableTimeValueSide1 = unavailableTimeValueSide1;
     }
 
-    public Long getSeverelyErroredSecondsValueSide2_0() {
-        return severelyErroredSecondsValueSide2_0;
+    public Long getUnavailableTimeValueSide2() {
+        return unavailableTimeValueSide2;
     }
 
-    public void setSeverelyErroredSecondsValueSide2_0(Long severelyErroredSecondsValueSide2_0) {
-        this.severelyErroredSecondsValueSide2_0 = severelyErroredSecondsValueSide2_0;
+    public void setUnavailableTimeValueSide2(Long unavailableTimeValueSide2) {
+        this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
     }
 
-    public Long getSeverelyErroredSecondsValueSide2_1() {
-        return severelyErroredSecondsValueSide2_1;
+    public String getNmrName() {
+        return nmrName;
     }
 
-    public void setSeverelyErroredSecondsValueSide2_1(Long severelyErroredSecondsValueSide2_1) {
-        this.severelyErroredSecondsValueSide2_1 = severelyErroredSecondsValueSide2_1;
+    public void setNmrName(String nmrName) {
+        this.nmrName = nmrName;
     }
 
-    public Long getSeverelyErroredSecondsValueSide2_2() {
-        return severelyErroredSecondsValueSide2_2;
+    public Double getNmrValueSide1() {
+        return nmrValueSide1;
     }
 
-    public void setSeverelyErroredSecondsValueSide2_2(Long severelyErroredSecondsValueSide2_2) {
-        this.severelyErroredSecondsValueSide2_2 = severelyErroredSecondsValueSide2_2;
+    public void setNmrValueSide1(Double nmrValueSide1) {
+        this.nmrValueSide1 = nmrValueSide1;
     }
 
-    public Long getSeverelyErroredSecondsValueSide2_3() {
-        return severelyErroredSecondsValueSide2_3;
+    public Double getNmrValueSide2() {
+        return nmrValueSide2;
     }
 
-    public void setSeverelyErroredSecondsValueSide2_3(Long severelyErroredSecondsValueSide2_3) {
-        this.severelyErroredSecondsValueSide2_3 = severelyErroredSecondsValueSide2_3;
-    }
-
-    public String getBackgroundBlockErrorsName0_0() {
-        return backgroundBlockErrorsName0_0;
-    }
-
-    public void setBackgroundBlockErrorsName0_0(String backgroundBlockErrorsName0_0) {
-        this.backgroundBlockErrorsName0_0 = backgroundBlockErrorsName0_0;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide1_0() {
-        return backgroundBlockErrorsValueSide1_0;
-    }
-
-    public void setBackgroundBlockErrorsValueSide1_0(Long backgroundBlockErrorsValueSide1_0) {
-        this.backgroundBlockErrorsValueSide1_0 = backgroundBlockErrorsValueSide1_0;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide1_1() {
-        return backgroundBlockErrorsValueSide1_1;
-    }
-
-    public void setBackgroundBlockErrorsValueSide1_1(Long backgroundBlockErrorsValueSide1_1) {
-        this.backgroundBlockErrorsValueSide1_1 = backgroundBlockErrorsValueSide1_1;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide1_2() {
-        return backgroundBlockErrorsValueSide1_2;
-    }
-
-    public void setBackgroundBlockErrorsValueSide1_2(Long backgroundBlockErrorsValueSide1_2) {
-        this.backgroundBlockErrorsValueSide1_2 = backgroundBlockErrorsValueSide1_2;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide1_3() {
-        return backgroundBlockErrorsValueSide1_3;
-    }
-
-    public void setBackgroundBlockErrorsValueSide1_3(Long backgroundBlockErrorsValueSide1_3) {
-        this.backgroundBlockErrorsValueSide1_3 = backgroundBlockErrorsValueSide1_3;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide2_0() {
-        return backgroundBlockErrorsValueSide2_0;
-    }
-
-    public void setBackgroundBlockErrorsValueSide2_0(Long backgroundBlockErrorsValueSide2_0) {
-        this.backgroundBlockErrorsValueSide2_0 = backgroundBlockErrorsValueSide2_0;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide2_1() {
-        return backgroundBlockErrorsValueSide2_1;
-    }
-
-    public void setBackgroundBlockErrorsValueSide2_1(Long backgroundBlockErrorsValueSide2_1) {
-        this.backgroundBlockErrorsValueSide2_1 = backgroundBlockErrorsValueSide2_1;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide2_2() {
-        return backgroundBlockErrorsValueSide2_2;
-    }
-
-    public void setBackgroundBlockErrorsValueSide2_2(Long backgroundBlockErrorsValueSide2_2) {
-        this.backgroundBlockErrorsValueSide2_2 = backgroundBlockErrorsValueSide2_2;
-    }
-
-    public Long getBackgroundBlockErrorsValueSide2_3() {
-        return backgroundBlockErrorsValueSide2_3;
-    }
-
-    public void setBackgroundBlockErrorsValueSide2_3(Long backgroundBlockErrorsValueSide2_3) {
-        this.backgroundBlockErrorsValueSide2_3 = backgroundBlockErrorsValueSide2_3;
-    }
-
-    public String getEsrName0_0() {
-        return esrName0_0;
-    }
-
-    public void setEsrName0_0(String esrName0_0) {
-        this.esrName0_0 = esrName0_0;
-    }
-
-    public Double getEsrValueSide1_0() {
-        return esrValueSide1_0;
-    }
-
-    public void setEsrValueSide1_0(Double esrValueSide1_0) {
-        this.esrValueSide1_0 = esrValueSide1_0;
-    }
-
-    public Double getEsrValueSide1_1() {
-        return esrValueSide1_1;
-    }
-
-    public void setEsrValueSide1_1(Double esrValueSide1_1) {
-        this.esrValueSide1_1 = esrValueSide1_1;
-    }
-
-    public Double getEsrValueSide1_2() {
-        return esrValueSide1_2;
-    }
-
-    public void setEsrValueSide1_2(Double esrValueSide1_2) {
-        this.esrValueSide1_2 = esrValueSide1_2;
-    }
-
-    public Double getEsrValueSide1_3() {
-        return esrValueSide1_3;
-    }
-
-    public void setEsrValueSide1_3(Double esrValueSide1_3) {
-        this.esrValueSide1_3 = esrValueSide1_3;
-    }
-
-    public Double getEsrValueSide2_0() {
-        return esrValueSide2_0;
-    }
-
-    public void setEsrValueSide2_0(Double esrValueSide2_0) {
-        this.esrValueSide2_0 = esrValueSide2_0;
-    }
-
-    public Double getEsrValueSide2_1() {
-        return esrValueSide2_1;
-    }
-
-    public void setEsrValueSide2_1(Double esrValueSide2_1) {
-        this.esrValueSide2_1 = esrValueSide2_1;
-    }
-
-    public Double getEsrValueSide2_2() {
-        return esrValueSide2_2;
-    }
-
-    public void setEsrValueSide2_2(Double esrValueSide2_2) {
-        this.esrValueSide2_2 = esrValueSide2_2;
-    }
-
-    public Double getEsrValueSide2_3() {
-        return esrValueSide2_3;
-    }
-
-    public void setEsrValueSide2_3(Double esrValueSide2_3) {
-        this.esrValueSide2_3 = esrValueSide2_3;
-    }
-
-    public String getSersName0_0() {
-        return sersName0_0;
-    }
-
-    public void setSersName0_0(String sersName0_0) {
-        this.sersName0_0 = sersName0_0;
-    }
-
-    public Double getSersValueSide1_0() {
-        return sersValueSide1_0;
-    }
-
-    public void setSersValueSide1_0(Double sersValueSide1_0) {
-        this.sersValueSide1_0 = sersValueSide1_0;
-    }
-
-    public Double getSersValueSide1_1() {
-        return sersValueSide1_1;
-    }
-
-    public void setSersValueSide1_1(Double sersValueSide1_1) {
-        this.sersValueSide1_1 = sersValueSide1_1;
-    }
-
-    public Double getSersValueSide1_2() {
-        return sersValueSide1_2;
-    }
-
-    public void setSersValueSide1_2(Double sersValueSide1_2) {
-        this.sersValueSide1_2 = sersValueSide1_2;
-    }
-
-    public Double getSersValueSide1_3() {
-        return sersValueSide1_3;
-    }
-
-    public void setSersValueSide1_3(Double sersValueSide1_3) {
-        this.sersValueSide1_3 = sersValueSide1_3;
-    }
-
-    public Double getSersValueSide2_0() {
-        return sersValueSide2_0;
-    }
-
-    public void setSersValueSide2_0(Double sersValueSide2_0) {
-        this.sersValueSide2_0 = sersValueSide2_0;
-    }
-
-    public Double getSersValueSide2_1() {
-        return sersValueSide2_1;
-    }
-
-    public void setSersValueSide2_1(Double sersValueSide2_1) {
-        this.sersValueSide2_1 = sersValueSide2_1;
-    }
-
-    public Double getSersValueSide2_2() {
-        return sersValueSide2_2;
-    }
-
-    public void setSersValueSide2_2(Double sersValueSide2_2) {
-        this.sersValueSide2_2 = sersValueSide2_2;
-    }
-
-    public Double getSersValueSide2_3() {
-        return sersValueSide2_3;
-    }
-
-    public void setSersValueSide2_3(Double sersValueSide2_3) {
-        this.sersValueSide2_3 = sersValueSide2_3;
-    }
-
-    public String getBberName0_0() {
-        return bberName0_0;
-    }
-
-    public void setBberName0_0(String bberName0_0) {
-        this.bberName0_0 = bberName0_0;
-    }
-
-    public Double getBberValueSide1_0() {
-        return bberValueSide1_0;
-    }
-
-    public void setBberValueSide1_0(Double bberValueSide1_0) {
-        this.bberValueSide1_0 = bberValueSide1_0;
-    }
-
-    public Double getBberValueSide1_1() {
-        return bberValueSide1_1;
-    }
-
-    public void setBberValueSide1_1(Double bberValueSide1_1) {
-        this.bberValueSide1_1 = bberValueSide1_1;
-    }
-
-    public Double getBberValueSide1_2() {
-        return bberValueSide1_2;
-    }
-
-    public void setBberValueSide1_2(Double bberValueSide1_2) {
-        this.bberValueSide1_2 = bberValueSide1_2;
-    }
-
-    public Double getBberValueSide1_3() {
-        return bberValueSide1_3;
-    }
-
-    public void setBberValueSide1_3(Double bberValueSide1_3) {
-        this.bberValueSide1_3 = bberValueSide1_3;
-    }
-
-    public Double getBberValueSide2_0() {
-        return bberValueSide2_0;
-    }
-
-    public void setBberValueSide2_0(Double bberValueSide2_0) {
-        this.bberValueSide2_0 = bberValueSide2_0;
-    }
-
-    public Double getBberValueSide2_1() {
-        return bberValueSide2_1;
-    }
-
-    public void setBberValueSide2_1(Double bberValueSide2_1) {
-        this.bberValueSide2_1 = bberValueSide2_1;
-    }
-
-    public Double getBberValueSide2_2() {
-        return bberValueSide2_2;
-    }
-
-    public void setBberValueSide2_2(Double bberValueSide2_2) {
-        this.bberValueSide2_2 = bberValueSide2_2;
-    }
-
-    public Double getBberValueSide2_3() {
-        return bberValueSide2_3;
-    }
-
-    public void setBberValueSide2_3(Double bberValueSide2_3) {
-        this.bberValueSide2_3 = bberValueSide2_3;
-    }
-
-    public String getAvailableTimeName0_0() {
-        return availableTimeName0_0;
-    }
-
-    public void setAvailableTimeName0_0(String availableTimeName0_0) {
-        this.availableTimeName0_0 = availableTimeName0_0;
-    }
-
-    public Long getAvailableTimeValueSide1_0() {
-        return availableTimeValueSide1_0;
-    }
-
-    public void setAvailableTimeValueSide1_0(Long availableTimeValueSide1_0) {
-        this.availableTimeValueSide1_0 = availableTimeValueSide1_0;
-    }
-
-    public Long getAvailableTimeValueSide1_1() {
-        return availableTimeValueSide1_1;
-    }
-
-    public void setAvailableTimeValueSide1_1(Long availableTimeValueSide1_1) {
-        this.availableTimeValueSide1_1 = availableTimeValueSide1_1;
-    }
-
-    public Long getAvailableTimeValueSide1_2() {
-        return availableTimeValueSide1_2;
-    }
-
-    public void setAvailableTimeValueSide1_2(Long availableTimeValueSide1_2) {
-        this.availableTimeValueSide1_2 = availableTimeValueSide1_2;
-    }
-
-    public Long getAvailableTimeValueSide1_3() {
-        return availableTimeValueSide1_3;
-    }
-
-    public void setAvailableTimeValueSide1_3(Long availableTimeValueSide1_3) {
-        this.availableTimeValueSide1_3 = availableTimeValueSide1_3;
-    }
-
-    public Long getAvailableTimeValueSide2_0() {
-        return availableTimeValueSide2_0;
-    }
-
-    public void setAvailableTimeValueSide2_0(Long availableTimeValueSide2_0) {
-        this.availableTimeValueSide2_0 = availableTimeValueSide2_0;
-    }
-
-    public Long getAvailableTimeValueSide2_1() {
-        return availableTimeValueSide2_1;
-    }
-
-    public void setAvailableTimeValueSide2_1(Long availableTimeValueSide2_1) {
-        this.availableTimeValueSide2_1 = availableTimeValueSide2_1;
-    }
-
-    public Long getAvailableTimeValueSide2_2() {
-        return availableTimeValueSide2_2;
-    }
-
-    public void setAvailableTimeValueSide2_2(Long availableTimeValueSide2_2) {
-        this.availableTimeValueSide2_2 = availableTimeValueSide2_2;
-    }
-
-    public Long getAvailableTimeValueSide2_3() {
-        return availableTimeValueSide2_3;
-    }
-
-    public void setAvailableTimeValueSide2_3(Long availableTimeValueSide2_3) {
-        this.availableTimeValueSide2_3 = availableTimeValueSide2_3;
-    }
-
-    public String getUnavailableTimeName0_0() {
-        return unavailableTimeName0_0;
-    }
-
-    public void setUnavailableTimeName0_0(String unavailableTimeName0_0) {
-        this.unavailableTimeName0_0 = unavailableTimeName0_0;
-    }
-
-    public Long getUnavailableTimeValueSide1_0() {
-        return unavailableTimeValueSide1_0;
-    }
-
-    public void setUnavailableTimeValueSide1_0(Long unavailableTimeValueSide1_0) {
-        this.unavailableTimeValueSide1_0 = unavailableTimeValueSide1_0;
-    }
-
-    public Long getUnavailableTimeValueSide1_1() {
-        return unavailableTimeValueSide1_1;
-    }
-
-    public void setUnavailableTimeValueSide1_1(Long unavailableTimeValueSide1_1) {
-        this.unavailableTimeValueSide1_1 = unavailableTimeValueSide1_1;
-    }
-
-    public Long getUnavailableTimeValueSide1_2() {
-        return unavailableTimeValueSide1_2;
-    }
-
-    public void setUnavailableTimeValueSide1_2(Long unavailableTimeValueSide1_2) {
-        this.unavailableTimeValueSide1_2 = unavailableTimeValueSide1_2;
-    }
-
-    public Long getUnavailableTimeValueSide1_3() {
-        return unavailableTimeValueSide1_3;
-    }
-
-    public void setUnavailableTimeValueSide1_3(Long unavailableTimeValueSide1_3) {
-        this.unavailableTimeValueSide1_3 = unavailableTimeValueSide1_3;
-    }
-
-    public Long getUnavailableTimeValueSide2_0() {
-        return unavailableTimeValueSide2_0;
-    }
-
-    public void setUnavailableTimeValueSide2_0(Long unavailableTimeValueSide2_0) {
-        this.unavailableTimeValueSide2_0 = unavailableTimeValueSide2_0;
-    }
-
-    public Long getUnavailableTimeValueSide2_1() {
-        return unavailableTimeValueSide2_1;
-    }
-
-    public void setUnavailableTimeValueSide2_1(Long unavailableTimeValueSide2_1) {
-        this.unavailableTimeValueSide2_1 = unavailableTimeValueSide2_1;
-    }
-
-    public Long getUnavailableTimeValueSide2_2() {
-        return unavailableTimeValueSide2_2;
-    }
-
-    public void setUnavailableTimeValueSide2_2(Long unavailableTimeValueSide2_2) {
-        this.unavailableTimeValueSide2_2 = unavailableTimeValueSide2_2;
-    }
-
-    public Long getUnavailableTimeValueSide2_3() {
-        return unavailableTimeValueSide2_3;
-    }
-
-    public void setUnavailableTimeValueSide2_3(Long unavailableTimeValueSide2_3) {
-        this.unavailableTimeValueSide2_3 = unavailableTimeValueSide2_3;
-    }
-
-    public String getNmrName0_0() {
-        return nmrName0_0;
-    }
-
-    public void setNmrName0_0(String nmrName0_0) {
-        this.nmrName0_0 = nmrName0_0;
-    }
-
-    public Double getNmrValueSide1_0() {
-        return nmrValueSide1_0;
-    }
-
-    public void setNmrValueSide1_0(Double nmrValueSide1_0) {
-        this.nmrValueSide1_0 = nmrValueSide1_0;
-    }
-
-    public Double getNmrValueSide1_1() {
-        return nmrValueSide1_1;
-    }
-
-    public void setNmrValueSide1_1(Double nmrValueSide1_1) {
-        this.nmrValueSide1_1 = nmrValueSide1_1;
-    }
-
-    public Double getNmrValueSide1_2() {
-        return nmrValueSide1_2;
-    }
-
-    public void setNmrValueSide1_2(Double nmrValueSide1_2) {
-        this.nmrValueSide1_2 = nmrValueSide1_2;
-    }
-
-    public Double getNmrValueSide1_3() {
-        return nmrValueSide1_3;
-    }
-
-    public void setNmrValueSide1_3(Double nmrValueSide1_3) {
-        this.nmrValueSide1_3 = nmrValueSide1_3;
-    }
-
-    public Double getNmrValueSide2_0() {
-        return nmrValueSide2_0;
-    }
-
-    public void setNmrValueSide2_0(Double nmrValueSide2_0) {
-        this.nmrValueSide2_0 = nmrValueSide2_0;
-    }
-
-    public Double getNmrValueSide2_1() {
-        return nmrValueSide2_1;
-    }
-
-    public void setNmrValueSide2_1(Double nmrValueSide2_1) {
-        this.nmrValueSide2_1 = nmrValueSide2_1;
-    }
-
-    public Double getNmrValueSide2_2() {
-        return nmrValueSide2_2;
-    }
-
-    public void setNmrValueSide2_2(Double nmrValueSide2_2) {
-        this.nmrValueSide2_2 = nmrValueSide2_2;
-    }
-
-    public Double getNmrValueSide2_3() {
-        return nmrValueSide2_3;
-    }
-
-    public void setNmrValueSide2_3(Double nmrValueSide2_3) {
-        this.nmrValueSide2_3 = nmrValueSide2_3;
+    public void setNmrValueSide2(Double nmrValueSide2) {
+        this.nmrValueSide2 = nmrValueSide2;
     }
 }

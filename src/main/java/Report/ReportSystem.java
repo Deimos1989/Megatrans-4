@@ -3,14 +3,17 @@ package Report;
 import Entity.NodeBase;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import org.apache.poi.ss.usermodel.*;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
-import static java.lang.String.format;
+
 
 public class ReportSystem {
 
@@ -48,95 +51,175 @@ public class ReportSystem {
 
     public Object reportSystem() {
 
-
+        Date date =new Date();
         Workbook wb = new HSSFWorkbook();
         Sheet sheet = wb.createSheet("Report");
 
         Row row1 = sheet.createRow(1);
-        HSSFCellStyle style =((HSSFWorkbook) wb).createCellStyle();
+        Row row2 = sheet.createRow(2);
+        Row row3 = sheet.createRow(3);
+        Row row4 = sheet.createRow(4);
+        Row row5 = sheet.createRow(5);
+        Row row6 = sheet.createRow(6);
+        Row row7 = sheet.createRow(7);
+        Row row8 = sheet.createRow(8);
+        Row row9 = sheet.createRow(9);
+        Row row10 = sheet.createRow(10);
+        Row row11 = sheet.createRow(11);
+        Row row12 = sheet.createRow(12);
+        Row row13 = sheet.createRow(13);
+        Row row14 = sheet.createRow(14);
+        Row row15 = sheet.createRow(15);
+        Row row16 = sheet.createRow(16);
+        Row row17 = sheet.createRow(17);
 
+
+        HSSFCellStyle style = ((HSSFWorkbook) wb).createCellStyle();
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setBorderTop(BorderStyle.MEDIUM);
         style.setBorderBottom(BorderStyle.MEDIUM);
         style.setBorderLeft(BorderStyle.MEDIUM);
         style.setBorderRight(BorderStyle.MEDIUM);
 
-            Cell cell1 = row1.createCell(1);
-            cell1.setCellValue("Parametr");
+
+        for (int i = 0; i != nodeBaseList.size(); i++) {
+
+            Cell cell1 = row1.createCell(i);
+            cell1.setCellValue(nodeBaseList.get(i).getId());
             cell1.setCellStyle(style);
 
-
-            Cell cell2 = row1.createCell(2);
-            cell2.setCellValue("ОП Георгиевск");
+            Cell cell2 = row2.createCell(i);
+            cell2.setCellValue(nodeBaseList.get(i).getLocalDateTime().toString());
             cell2.setCellStyle(style);
 
-            Cell cell3 = row1.createCell(3);
-            cell3.setCellValue("НУП7(Side2)");
+            Cell cell3 = row3.createCell(i);
+            cell3.setCellValue(nodeBaseList.get(i).getIpNode());
             cell3.setCellStyle(style);
 
-            Cell cell4 = row1.createCell(4);
-            cell4.setCellValue("НУП7(Side1)");
+
+            Cell cell4 = row4.createCell(i);
+            cell4.setCellValue(nodeBaseList.get(i).getErroredBlocksValueSide1());
             cell4.setCellStyle(style);
 
-            Cell cell5 = row1.createCell(5);
-            cell5.setCellValue("НУП6(Side2)");
-            cell5.setCellStyle(style);
 
-            Cell cell6 = row1.createCell(6);
-            cell6.setCellValue("НУП6(Side1)");
+            Cell cell5 = row5.createCell(i);
+            if(nodeBaseList.get(i).getErroredBlocksValueSide2()==null){
+                cell5.setCellValue("default");
+                cell5.setCellStyle(style);
+            }else {
+                cell5.setCellValue(nodeBaseList.get(i).getErroredBlocksValueSide2());
+                cell5.setCellStyle(style);
+            }
+
+
+
+            Cell cell6 = row6.createCell(i);
+            cell6.setCellValue(nodeBaseList.get(i).getErroredSecondValueSide1());
             cell6.setCellStyle(style);
 
-            Cell cell7 = row1.createCell(7);
-            cell7.setCellValue("НУП5(Side2)");
-            cell7.setCellStyle(style);
 
-            Cell cell8 = row1.createCell(8);
-            cell8.setCellValue("НУП5(Side1)");
+            Cell cell7 = row7.createCell(i);
+            if(nodeBaseList.get(i).getErroredSecondValueSide2()==null){
+                cell7.setCellValue("default");
+                cell7.setCellStyle(style);
+            }else {
+                cell7.setCellValue(nodeBaseList.get(i).getErroredSecondValueSide2());
+                cell7.setCellStyle(style);
+            }
+
+
+            Cell cell8 = row8.createCell(i);
+            cell8.setCellValue(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide1());
             cell8.setCellStyle(style);
 
-        for (int i=0; i<sheet.getRow(1).getPhysicalNumberOfCells();i++) {
-            sheet.autoSizeColumn(i);
+
+
+            Cell cell9 = row9.createCell(i);
+            if(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide2()==null){
+                cell9.setCellValue("default");
+                cell9.setCellStyle(style);
+            }else {
+                cell9.setCellValue(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide2());
+                cell9.setCellStyle(style);
+            }
+
+
+            Cell cell10 = row10.createCell(i);
+            cell10.setCellValue(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide1());
+            cell10.setCellStyle(style);
+
+
+            Cell cell11 = row11.createCell(i);
+            if(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide2()==null){
+                cell11.setCellValue("default");
+                cell11.setCellStyle(style);
+            }else {
+                cell11.setCellValue(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide2());
+                cell11.setCellStyle(style);
+            }
+
+
+            Cell cell12 = row12.createCell(i);
+            cell12.setCellValue(nodeBaseList.get(i).getEsrValueSide1());
+            cell12.setCellStyle(style);
+
+
+            Cell cell13 = row13.createCell(i);
+            if(nodeBaseList.get(i).getEsrValueSide2()==null){
+                cell13.setCellValue("default");
+                cell13.setCellStyle(style);
+            }else {
+                cell13.setCellValue(nodeBaseList.get(i).getEsrValueSide2());
+                cell13.setCellStyle(style);
+            }
+
+
+            Cell cell14 = row14.createCell(i);
+            cell14.setCellValue(nodeBaseList.get(i).getSesrValueSide1());
+            cell14.setCellStyle(style);
+
+
+            Cell cell15 = row15.createCell(i);
+            if(nodeBaseList.get(i).getSesrValueSide2()==null){
+                cell15.setCellValue("default");
+                cell15.setCellStyle(style);
+            }else {
+                cell15.setCellValue(nodeBaseList.get(i).getSesrValueSide2());
+                cell15.setCellStyle(style);
+            }
+
+
+            Cell cell16 = row16.createCell(i);
+            cell16.setCellValue(nodeBaseList.get(i).getBberValueSide1());
+            cell16.setCellStyle(style);
+
+
+            Cell cell17 = row17.createCell(i);
+            if(nodeBaseList.get(i).getBberValueSide2()==null){
+                cell17.setCellValue("default");
+                cell17.setCellStyle(style);
+            }else {
+                cell17.setCellValue(nodeBaseList.get(i).getBberValueSide2());
+                cell17.setCellStyle(style);
+            }
+
         }
 
 
 
-        Row row2 = sheet.createRow(2);
 
-        Cell cell21 = row2.createCell(1);
-        cell21.setCellValue("IP_Address");
-        cell21.setCellStyle(style);
 
-        Cell cell22 = row2.createCell(2);
-        cell22.setCellValue(nodeBaseList.get(0).getIpNode());
-        cell22.setCellStyle(style);
 
-        Cell cell23 = row2.createCell(3);
-        cell23.setCellValue(nodeBaseList.get(1).getIpNode());
-        cell23.setCellStyle(style);
+            for (int i = 0; i < sheet.getRow(1).getPhysicalNumberOfCells(); i++) {
+                sheet.autoSizeColumn(i);
+            }
 
-        Cell cell24 = row2.createCell(4);
-        cell24.setCellValue(nodeBaseList.get(1).getIpNode());
-        cell24.setCellStyle(style);
 
-        Cell cell25 = row2.createCell(5);
-        cell25.setCellValue(nodeBaseList.get(2).getIpNode());
-        cell25.setCellStyle(style);
+/*
 
-        Cell cell26 = row2.createCell(6);
-        cell26.setCellValue(nodeBaseList.get(2).getIpNode());
-        cell26.setCellStyle(style);
 
-        Cell cell27 = row2.createCell(7);
-        cell27.setCellValue(nodeBaseList.get(3).getIpNode());
-        cell27.setCellStyle(style);
 
-        Cell cell28 = row2.createCell(8);
-        cell28.setCellValue(nodeBaseList.get(3).getIpNode());
-        cell28.setCellStyle(style);
 
-        for (int i=0; i<sheet.getRow(2).getPhysicalNumberOfCells();i++) {
-            sheet.autoSizeColumn(i);
-        }
 
 
 
@@ -528,29 +611,27 @@ public class ReportSystem {
         for (int i=0; i<sheet.getRow(12).getPhysicalNumberOfCells();i++) {
             sheet.autoSizeColumn(i);
         }
+*/
 
 
+            try {
+                fos = new FileOutputStream(dataTime.replace(':', '-') + ".xls");
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            try {
+                ((HSSFWorkbook) wb).write(fos);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
-
-        try {
-            fos = new FileOutputStream( dataTime.replace(':','-')+".xls");
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
+            return fos;
         }
-        try {
-            ((HSSFWorkbook) wb).write(fos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-
-        return fos;
     }
-
-}

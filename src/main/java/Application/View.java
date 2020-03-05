@@ -8,6 +8,7 @@ import Entity.NodeBase;
 import Report.ReportSystem;
 import Service.ExchangeServiceObject;
 import Service.ExchangeServiceTable;
+import TableDisplay.TableDispleyUAVR;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -66,14 +67,17 @@ public class View {
     @RequestMapping(value = "/View/analizNodeDateTimeReport" , method=RequestMethod.POST)
     public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObject exchangeServiceObject, ExchangeServiceTable exchangeServiceTable, NodeBuildDAO nodeBuildDAO, Model model) {
         nodeBuildDAO.setDateTime(exchangeServiceObject.getDateTime());
-        List<NodeBase> nodeBases = nodeBuildDAO.localDateTimeReport();
-        exchangeServiceTable.setNodeBases(nodeBases);
 
-        LinkedHashMap<Integer, Object> maps1 = new LinkedHashMap<Integer, Object>();
-       Integer id = 1;
-       Object node = exchangeServiceTable.setTable();
-       maps1.put(id, node);
-       model.addAttribute("maps", maps1);
+        LinkedHashMap<Long, Object> maps1 = new LinkedHashMap<Long, Object>();
+        List<NodeBase> nodeBases = nodeBuildDAO.localDateTimeReport();
+
+
+        for (int i = 0; i<nodeBases.size(); i++) {
+            Long id = nodeBases.get(i).getId();
+            Object node = nodeBases.get(i);
+            maps1.put(id, node);
+            model.addAttribute("maps", maps1);
+        }
         return "reportSystem";
     }
 
