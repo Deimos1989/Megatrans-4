@@ -81,6 +81,24 @@ public class View {
         return "reportSystem";
     }
 
+    @RequestMapping(value = "/View/analizNodeDateTimeReport2" , method=RequestMethod.POST)
+    public String analizNodeDateTimeReport2(@ModelAttribute ExchangeServiceObject exchangeServiceObject, ExchangeServiceTable exchangeServiceTable, NodeBuildDAO nodeBuildDAO, Model model) {
+        nodeBuildDAO.setDateTime(exchangeServiceObject.getDateTime());
+
+        LinkedHashMap<Long, Object> maps1 = new LinkedHashMap<Long, Object>();
+        List<NodeBase> nodeBases = nodeBuildDAO.localDateTimeReport();
+
+
+        for (int i = 0; i<nodeBases.size(); i++) {
+            Long id = nodeBases.get(i).getId();
+            Object IpNode = nodeBases.get(i).getIpNode();
+            maps1.put(id, IpNode);
+            model.addAttribute("maps", maps1);
+        }
+
+        return "reportSystem2";
+    }
+
 
     @RequestMapping(value = "/View/reportSystem" , method=RequestMethod.POST)
     public ResponseEntity<Object> reportSystem(ExchangeServiceObject exchangeServiceObject, NodeBuildDAO nodeBuildDAO, ReportSystem reportSystem) {

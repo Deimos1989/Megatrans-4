@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Megatrans-4 System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/styleReportSystem.css}" rel="stylesheet" media="screen" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+        <h2>Система передачи данных Megatrans-4</h2>
+    </div>
+
+    <div id="sidebar1">
+
+        <h2>Анализ статистики системы</h2>
+
+
+
+            <td>
+                <input type="button" name="submit_button1" value="StartEX" id="ReportEX">
+            </td>
+
+
+
+    </div>
+
+    <div id="content">
+        <h2>Анализ данных Трассы</h2>
+
+        <div>
+
+            <table border="1" cellpadding="4" cellspacing="0" width="100%">
+                <caption>UAVR</caption>
+
+                <tr>
+
+                    <th width="2%">Id</th>
+
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th >НУП7</th>
+
+
+                    <th>НУП6</th>
+
+
+                    <th>ОП УАВР</th>
+
+                </tr>
+
+
+
+
+
+            </table>
+
+        </div>
+
+
+
+        <div>
+
+            <table border="1" cellpadding="4" cellspacing="0" width="100%" id="stq" class='pq-grid-summary' >
+                <caption>System №5</caption>
+
+                <tr>
+                    <th >Id</th>
+
+                    <th width="70">IpNode</th>
+
+                    <th colspan="2">
+                        errored
+                        Blocks</th>
+
+                    <th colspan="2">
+                        errored
+                        Seconds</th>
+
+                    <th colspan="2">
+                        severely
+                        Errored
+                        Seconds</th>
+
+                    <th colspan="2">
+                        background
+                        Block
+                        Errors</th>
+
+
+                    <th colspan="2">esr[%]</th>
+
+
+                    <th colspan="2">sesr[%]</th>
+
+
+                    <th colspan="2">bber[%]</th>
+
+
+                    <th colspan="2">available
+                        Time</th>
+
+                    <th colspan="2">unavailable
+                        Time</th>
+
+                    <th colspan="2">nmr dB</th>
+
+                </tr>
+
+
+
+                <tr th:block th:each="map:${maps}">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+                    <td th:utext="${map.getValue()}"></td>
+
+
+
+
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div>
+            <table border="1" cellpadding="4" cellspacing="0"  width="100%" >
+                <caption>System №6</caption>
+                <tr>
+
+                    <th width="2%">Id</th>
+
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th colspan="2">НУП7</th>
+
+
+                    <th colspan="2">НУП6</th>
+
+                    <th colspan="2">НУП5</th>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+
+        <div>
+            <table border="1" cellpadding="4" cellspacing="0"  width="100%" >
+                <caption>System №7</caption>
+                <tr>
+                    
+                    <th width="2%">Id</th>
+                    <th >Parametr</th>
+
+                    <th>ОП Георгиевск</th>
+
+                    <th colspan="2">НУП7</th>
+
+
+                    <th colspan="2">НУП6</th>
+
+                    <th colspan="2">НУП5</th>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div id="clear">
+
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+        buttonex=document.getElementById('ReportEX');
+        buttonex.addEventListener('click', function ()
+        {
+            let blob = new Blob( [ $stq.innerhtml()], { type: "text/html"} );
+
+            window.navigator.msSaveOrOpenBlob( blob, "output.xls" );
+        });
+
+
+
+</script>
+</body>
+</html>
