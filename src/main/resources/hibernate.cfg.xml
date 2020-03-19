@@ -13,11 +13,9 @@
         <!-- DB schema will be updated if needed -->
 
         <property name="hbm2ddl.auto">update </property>
-        <mapping class="Entity.DateTime"></mapping>
-        <mapping class="Entity.FinalNode"></mapping>
-        <mapping class="Entity.IntermediateNode"></mapping>
-        <mapping class="Entity.DateTime"></mapping>
         <mapping class="Entity.NodeBase"></mapping>
+        <mapping class="Entity.DateTime"></mapping>
+
 
     </session-factory>
 

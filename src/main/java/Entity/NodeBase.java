@@ -11,41 +11,167 @@ import java.time.LocalTime;
 @Table(name = "nodeBase")
 public class NodeBase {
 
-    public NodeBase() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-  /*  @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="nodeBase_hash2", referencedColumnName = "hash2")
-    private DateTime dateTime=new DateTime();
-*/
+
+   /* @ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn (name="hash1", referencedColumnName = "hash1")
+    private DateTime dateTime =new DateTime();*/
 
 
-    @Column(name = "Date")
+    @Column(name = "Date",columnDefinition = "DATE")
     private LocalDate localDate;
 
-    @Column(name = "Time")
+    @Column(name = "Time", columnDefinition = "TIME")
     private LocalTime localTime;
 
-    @Column(name = "DateTime")
+    @Column(name = "DateTime", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
+
 
 
     @Column(name = "hash")
     private String hash;
 
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @Column(name = "ipNode")
-    private String ipNode;
 
+
+        @Column(name="ipNode")
+        private String ipNode;
+
+
+    @Column(name = "modeName")
+    private String modeName;
+    @Column(name = "modeValue")
+    private String modeValue;
+
+
+        @Column (name = "syncName")
+        private String syncName;
+        @Column (name = "syncValueSide1")
+        private Integer syncValueSide1;
+        @Column (name = "syncValueSide2")
+        private Integer syncValueSide2;
+
+        @Column (name = "segdName")
+        private String segdName;
+        @Column (name = "segdValueSide1")
+        private Integer segdValueSide1;
+        @Column (name = "segdValueSide2")
+        private Integer segdValueSide2;
+
+    @Column(name = "powerBackOffName")
+    private String powerBackOffName;
+    @Column(name = "powerBackOffValue")
+    private Double powerBackOffValue;
+    @Column(name = "powerBackOffParametr")
+    private String powerBackOffParametr;
+
+    @Column(name = "farEndPowerBackOffName")
+    private String farEndPowerBackOffName;
+    @Column(name = "farEndPowerBackOffValue")
+    private Double farEndPowerBackOffValue;
+    @Column(name = "farEndPowerBackOffParametr")
+    private String farEndPowerBackOffParametr;
+
+        @Column (name = "txPowerName")
+        private String txPowerName;
+        @Column (name = "txPowerValueSide1")
+        private Double txPowerValueSide1;
+        @Column (name = "txPowerValueSide2")
+        private Double txPowerValueSide2;
+        @Column (name = "txPowerParametr")
+        private String txPowerParametr;
+
+        @Column (name = "rxPowerName")
+        private String rxPowerName;
+        @Column (name = "rxPowerValueSide1")
+        private Double rxPowerValueSide1;
+        @Column (name = "rxPowerValueSide2")
+        private Double rxPowerValueSide2;
+        @Column (name = "rxPowerParametr")
+        private String rxPowerParametr;
+
+        @Column (name = "loopAttenuationName")
+        private String loopAttenuationName;
+        @Column (name = "loopAttenuationValueSide1")
+        private Double loopAttenuationValueSide1;
+        @Column (name = "loopAttenuationValueSide2")
+        private Double loopAttenuationValueSide2;
+        @Column (name = "loopAttenuationParametr")
+        private String loopAttenuationParametr="dB";
+
+        @Column (name = "nmrName")
+        private String nmrName;
+        @Column (name = "nmrValueSide1")
+        private Double nmrValueSide1;
+        @Column (name = "nmrValueSide2")
+        private Double nmrValueSide2;
+        @Column (name = "nmrParametr")
+        private String nmrParametr="dB";
+
+        @Column (name = "bitrateName")
+        private String bitrateName;
+        @Column (name = "bitrateValueSide1")
+        private Integer bitrateValueSide1;
+        @Column (name = "bitrateValueSide2")
+        private Integer bitrateValueSide2;
+        @Column (name = "bitrateParametr")
+        private String bitrateParametr="kbit/s";
+
+    @Column(name = "sruName")
+    private String sruName;
+    @Column(name = "sruValue")
+    private Integer sruValue;
+
+
+        @Column (name = "activeSyncSourceName")
+        private String activeSyncSourceName;
+        @Column (name = "activeSyncSourceValueSide1")
+        private String activeSyncSourceValueSide1;
+        @Column (name = "activeSyncSourceValueSide2")
+        private String activeSyncSourceValueSide2;
+
+        @Column (name = "rpVoltageName")
+        private  String rpVoltageName;
+        @Column(name = "rpVoltageValueSide1")
+        private Integer rpVoltageValueSide1;
+        @Column(name = "rpVoltageValueSide2")
+        private Integer rpVoltageValueSide2;
+        @Column(name = "rpVoltageParametr")
+        private String rpVoltageParametr;
+
+        @Column(name = "rpStatusName")
+        private String rpStatusName;
+        @Column(name = "rpStatusValue")
+        private String rpStatusValue;
+
+        @Column (name = "temperatureName")
+        private String temperatureName;
+        @Column (name = "temperatureValue")
+        private Double temperatureValue;
+        @Column (name = "temperatureParametr")
+        private String temperatureParametr;
+
+
+
+    @Column(name = "bertName")
+    private String bertName;
+    @Column(name = "bertValue")
+    private String bertValue;
 
     @Column(name = "erroredBlocksName")
     private String erroredBlocksName;
@@ -82,12 +208,12 @@ public class NodeBase {
     @Column(name = "esrValueSide2")
     private Double esrValueSide2;
 
-    @Column(name = "sersName")
-    private String sersName;
-    @Column(name = "sersValueSide1")
-    private Double sersValueSide1;
-    @Column(name = "sersValueSide2")
-    private Double sersValueSide2;
+    @Column(name = "sesrName")
+    private String sesrName;
+    @Column(name = "sesrValueSide1")
+    private Double sesrValueSide1;
+    @Column(name = "sesrValueSide2")
+    private Double sesrValueSide2;
 
     @Column(name = "bberName")
     private String bberName;
@@ -110,14 +236,12 @@ public class NodeBase {
     @Column(name = "unavailableTimeValueSide2")
     private Long unavailableTimeValueSide2;
 
-    @Column(name = "nmrName")
-    private String nmrName;
-    @Column(name = "nmrValueSide1")
-    private Double nmrValueSide1;
-    @Column(name = "nmrValueSide2")
-    private Double nmrValueSide2;
-    @Column(name = "nmrParametr")
-    private String nmrParametr = "dB";
+
+
+public NodeBase(){
+
+    }
+
 
     public Long getId() {
         return id;
@@ -127,12 +251,444 @@ public class NodeBase {
         this.id = id;
     }
 
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public String getIpNode() {
         return ipNode;
     }
 
     public void setIpNode(String ipNode) {
         this.ipNode = ipNode;
+    }
+
+    public String getModeName() {
+        return modeName;
+    }
+
+    public void setModeName(String modeName) {
+        this.modeName = modeName;
+    }
+
+    public String getModeValue() {
+        return modeValue;
+    }
+
+    public void setModeValue(String modeValue) {
+        this.modeValue = modeValue;
+    }
+
+    public String getSyncName() {
+        return syncName;
+    }
+
+    public void setSyncName(String syncName) {
+        this.syncName = syncName;
+    }
+
+    public Integer getSyncValueSide1() {
+        return syncValueSide1;
+    }
+
+    public void setSyncValueSide1(Integer syncValueSide1) {
+        this.syncValueSide1 = syncValueSide1;
+    }
+
+    public Integer getSyncValueSide2() {
+        return syncValueSide2;
+    }
+
+    public void setSyncValueSide2(Integer syncValueSide2) {
+        this.syncValueSide2 = syncValueSide2;
+    }
+
+    public String getSegdName() {
+        return segdName;
+    }
+
+    public void setSegdName(String segdName) {
+        this.segdName = segdName;
+    }
+
+    public Integer getSegdValueSide1() {
+        return segdValueSide1;
+    }
+
+    public void setSegdValueSide1(Integer segdValueSide1) {
+        this.segdValueSide1 = segdValueSide1;
+    }
+
+    public Integer getSegdValueSide2() {
+        return segdValueSide2;
+    }
+
+    public void setSegdValueSide2(Integer segdValueSide2) {
+        this.segdValueSide2 = segdValueSide2;
+    }
+
+    public String getPowerBackOffName() {
+        return powerBackOffName;
+    }
+
+    public void setPowerBackOffName(String powerBackOffName) {
+        this.powerBackOffName = powerBackOffName;
+    }
+
+    public Double getPowerBackOffValue() {
+        return powerBackOffValue;
+    }
+
+    public void setPowerBackOffValue(Double powerBackOffValue) {
+        this.powerBackOffValue = powerBackOffValue;
+    }
+
+    public String getPowerBackOffParametr() {
+        return powerBackOffParametr;
+    }
+
+    public void setPowerBackOffParametr(String powerBackOffParametr) {
+        this.powerBackOffParametr = powerBackOffParametr;
+    }
+
+    public String getFarEndPowerBackOffName() {
+        return farEndPowerBackOffName;
+    }
+
+    public void setFarEndPowerBackOffName(String farEndPowerBackOffName) {
+        this.farEndPowerBackOffName = farEndPowerBackOffName;
+    }
+
+    public Double getFarEndPowerBackOffValue() {
+        return farEndPowerBackOffValue;
+    }
+
+    public void setFarEndPowerBackOffValue(Double farEndPowerBackOffValue) {
+        this.farEndPowerBackOffValue = farEndPowerBackOffValue;
+    }
+
+    public String getFarEndPowerBackOffParametr() {
+        return farEndPowerBackOffParametr;
+    }
+
+    public void setFarEndPowerBackOffParametr(String farEndPowerBackOffParametr) {
+        this.farEndPowerBackOffParametr = farEndPowerBackOffParametr;
+    }
+
+    public String getTxPowerName() {
+        return txPowerName;
+    }
+
+    public void setTxPowerName(String txPowerName) {
+        this.txPowerName = txPowerName;
+    }
+
+    public Double getTxPowerValueSide1() {
+        return txPowerValueSide1;
+    }
+
+    public void setTxPowerValueSide1(Double txPowerValueSide1) {
+        this.txPowerValueSide1 = txPowerValueSide1;
+    }
+
+    public Double getTxPowerValueSide2() {
+        return txPowerValueSide2;
+    }
+
+    public void setTxPowerValueSide2(Double txPowerValueSide2) {
+        this.txPowerValueSide2 = txPowerValueSide2;
+    }
+
+    public String getTxPowerParametr() {
+        return txPowerParametr;
+    }
+
+    public void setTxPowerParametr(String txPowerParametr) {
+        this.txPowerParametr = txPowerParametr;
+    }
+
+    public String getRxPowerName() {
+        return rxPowerName;
+    }
+
+    public void setRxPowerName(String rxPowerName) {
+        this.rxPowerName = rxPowerName;
+    }
+
+    public Double getRxPowerValueSide1() {
+        return rxPowerValueSide1;
+    }
+
+    public void setRxPowerValueSide1(Double rxPowerValueSide1) {
+        this.rxPowerValueSide1 = rxPowerValueSide1;
+    }
+
+    public Double getRxPowerValueSide2() {
+        return rxPowerValueSide2;
+    }
+
+    public void setRxPowerValueSide2(Double rxPowerValueSide2) {
+        this.rxPowerValueSide2 = rxPowerValueSide2;
+    }
+
+    public String getRxPowerParametr() {
+        return rxPowerParametr;
+    }
+
+    public void setRxPowerParametr(String rxPowerParametr) {
+        this.rxPowerParametr = rxPowerParametr;
+    }
+
+    public String getLoopAttenuationName() {
+        return loopAttenuationName;
+    }
+
+    public void setLoopAttenuationName(String loopAttenuationName) {
+        this.loopAttenuationName = loopAttenuationName;
+    }
+
+    public Double getLoopAttenuationValueSide1() {
+        return loopAttenuationValueSide1;
+    }
+
+    public void setLoopAttenuationValueSide1(Double loopAttenuationValueSide1) {
+        this.loopAttenuationValueSide1 = loopAttenuationValueSide1;
+    }
+
+    public Double getLoopAttenuationValueSide2() {
+        return loopAttenuationValueSide2;
+    }
+
+    public void setLoopAttenuationValueSide2(Double loopAttenuationValueSide2) {
+        this.loopAttenuationValueSide2 = loopAttenuationValueSide2;
+    }
+
+    public String getLoopAttenuationParametr() {
+        return loopAttenuationParametr;
+    }
+
+    public void setLoopAttenuationParametr(String loopAttenuationParametr) {
+        this.loopAttenuationParametr = loopAttenuationParametr;
+    }
+
+    public String getNmrName() {
+        return nmrName;
+    }
+
+    public void setNmrName(String nmrName) {
+        this.nmrName = nmrName;
+    }
+
+    public Double getNmrValueSide1() {
+        return nmrValueSide1;
+    }
+
+    public void setNmrValueSide1(Double nmrValueSide1) {
+        this.nmrValueSide1 = nmrValueSide1;
+    }
+
+    public Double getNmrValueSide2() {
+        return nmrValueSide2;
+    }
+
+    public void setNmrValueSide2(Double nmrValueSide2) {
+        this.nmrValueSide2 = nmrValueSide2;
+    }
+
+    public String getNmrParametr() {
+        return nmrParametr;
+    }
+
+    public void setNmrParametr(String nmrParametr) {
+        this.nmrParametr = nmrParametr;
+    }
+
+    public String getBitrateName() {
+        return bitrateName;
+    }
+
+    public void setBitrateName(String bitrateName) {
+        this.bitrateName = bitrateName;
+    }
+
+    public Integer getBitrateValueSide1() {
+        return bitrateValueSide1;
+    }
+
+    public void setBitrateValueSide1(Integer bitrateValueSide1) {
+        this.bitrateValueSide1 = bitrateValueSide1;
+    }
+
+    public Integer getBitrateValueSide2() {
+        return bitrateValueSide2;
+    }
+
+    public void setBitrateValueSide2(Integer bitrateValueSide2) {
+        this.bitrateValueSide2 = bitrateValueSide2;
+    }
+
+    public String getBitrateParametr() {
+        return bitrateParametr;
+    }
+
+    public void setBitrateParametr(String bitrateParametr) {
+        this.bitrateParametr = bitrateParametr;
+    }
+
+    public String getSruName() {
+        return sruName;
+    }
+
+    public void setSruName(String sruName) {
+        this.sruName = sruName;
+    }
+
+    public Integer getSruValue() {
+        return sruValue;
+    }
+
+    public void setSruValue(Integer sruValue) {
+        this.sruValue = sruValue;
+    }
+
+    public String getActiveSyncSourceName() {
+        return activeSyncSourceName;
+    }
+
+    public void setActiveSyncSourceName(String activeSyncSourceName) {
+        this.activeSyncSourceName = activeSyncSourceName;
+    }
+
+    public String getActiveSyncSourceValueSide1() {
+        return activeSyncSourceValueSide1;
+    }
+
+    public void setActiveSyncSourceValueSide1(String activeSyncSourceValueSide1) {
+        this.activeSyncSourceValueSide1 = activeSyncSourceValueSide1;
+    }
+
+    public String getActiveSyncSourceValueSide2() {
+        return activeSyncSourceValueSide2;
+    }
+
+    public void setActiveSyncSourceValueSide2(String activeSyncSourceValueSide2) {
+        this.activeSyncSourceValueSide2 = activeSyncSourceValueSide2;
+    }
+
+    public String getRpVoltageName() {
+        return rpVoltageName;
+    }
+
+    public void setRpVoltageName(String rpVoltageName) {
+        this.rpVoltageName = rpVoltageName;
+    }
+
+    public Integer getRpVoltageValueSide1() {
+        return rpVoltageValueSide1;
+    }
+
+    public void setRpVoltageValueSide1(Integer rpVoltageValueSide1) {
+        this.rpVoltageValueSide1 = rpVoltageValueSide1;
+    }
+
+    public Integer getRpVoltageValueSide2() {
+        return rpVoltageValueSide2;
+    }
+
+    public void setRpVoltageValueSide2(Integer rpVoltageValueSide2) {
+        this.rpVoltageValueSide2 = rpVoltageValueSide2;
+    }
+
+    public String getRpVoltageParametr() {
+        return rpVoltageParametr;
+    }
+
+    public void setRpVoltageParametr(String rpVoltageParametr) {
+        this.rpVoltageParametr = rpVoltageParametr;
+    }
+
+    public String getRpStatusName() {
+        return rpStatusName;
+    }
+
+    public void setRpStatusName(String rpStatusName) {
+        this.rpStatusName = rpStatusName;
+    }
+
+    public String getRpStatusValue() {
+        return rpStatusValue;
+    }
+
+    public void setRpStatusValue(String rpStatusValue) {
+        this.rpStatusValue = rpStatusValue;
+    }
+
+    public String getTemperatureName() {
+        return temperatureName;
+    }
+
+    public void setTemperatureName(String temperatureName) {
+        this.temperatureName = temperatureName;
+    }
+
+    public Double getTemperatureValue() {
+        return temperatureValue;
+    }
+
+    public void setTemperatureValue(Double temperatureValue) {
+        this.temperatureValue = temperatureValue;
+    }
+
+    public String getTemperatureParametr() {
+        return temperatureParametr;
+    }
+
+    public void setTemperatureParametr(String temperatureParametr) {
+        this.temperatureParametr = temperatureParametr;
+    }
+
+    public String getBertName() {
+        return bertName;
+    }
+
+    public void setBertName(String bertName) {
+        this.bertName = bertName;
+    }
+
+    public String getBertValue() {
+        return bertValue;
+    }
+
+    public void setBertValue(String bertValue) {
+        this.bertValue = bertValue;
     }
 
     public String getErroredBlocksName() {
@@ -255,28 +811,28 @@ public class NodeBase {
         this.esrValueSide2 = esrValueSide2;
     }
 
-    public String getSersName() {
-        return sersName;
+    public String getSesrName() {
+        return sesrName;
     }
 
-    public void setSersName(String sersName) {
-        this.sersName = sersName;
+    public void setSesrName(String sesrName) {
+        this.sesrName = sesrName;
     }
 
     public Double getSesrValueSide1() {
-        return sersValueSide1;
+        return sesrValueSide1;
     }
 
-    public void setSersValueSide1(Double sersValueSide1) {
-        this.sersValueSide1 = sersValueSide1;
+    public void setSesrValueSide1(Double sesrValueSide1) {
+        this.sesrValueSide1 = sesrValueSide1;
     }
 
     public Double getSesrValueSide2() {
-        return sersValueSide2;
+        return sesrValueSide2;
     }
 
-    public void setSersValueSide2(Double sersValueSide2) {
-        this.sersValueSide2 = sersValueSide2;
+    public void setSesrValueSide2(Double sesrValueSide2) {
+        this.sesrValueSide2 = sesrValueSide2;
     }
 
     public String getBberName() {
@@ -350,77 +906,5 @@ public class NodeBase {
     public void setUnavailableTimeValueSide2(Long unavailableTimeValueSide2) {
         this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
     }
-
-    public String getNmrName() {
-        return nmrName;
-    }
-
-    public void setNmrName(String nmrName) {
-        this.nmrName = nmrName;
-    }
-
-    public Double getNmrValueSide1() {
-        return nmrValueSide1;
-    }
-
-    public void setNmrValueSide1(Double nmrValueSide1) {
-        this.nmrValueSide1 = nmrValueSide1;
-    }
-
-    public Double getNmrValueSide2() {
-        return nmrValueSide2;
-    }
-
-    public void setNmrValueSide2(Double nmrValueSide2) {
-        this.nmrValueSide2 = nmrValueSide2;
-    }
-
-    public String getNmrParametr() {
-        return nmrParametr;
-    }
-
-    public void setNmrParametr(String nmrParametr) {
-        this.nmrParametr = nmrParametr;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-
-    public LocalDate getLocalDate() {
-        return localDate;
-    }
-
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
-    }
-
-    public LocalTime getLocalTime() {
-        return localTime;
-    }
-
-    public void setLocalTime(LocalTime localTime) {
-        this.localTime = localTime;
-    }
-
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
 }
+

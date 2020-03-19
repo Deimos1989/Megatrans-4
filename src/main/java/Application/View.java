@@ -2,13 +2,10 @@ package Application;
 
 import DAO.NodeBuildDAO;
 
-import Entity.FinalNode;
-
 import Entity.NodeBase;
 import Report.ReportSystem;
 import Service.ExchangeServiceObject;
 import Service.ExchangeServiceTable;
-import TableDisplay.TableDispleyUAVR;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-
-import static org.apache.commons.compress.archivers.dump.DumpArchiveEntry.TYPE.DIRECTORY;
 
 
 @Controller
@@ -50,11 +40,11 @@ public class View {
        nodeBuildDAO.setIp(exchangeServiceObject.getIpAddress());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
-        List<FinalNode>finalNodeList=nodeBuildDAO.findByIpNode();
-        for (int i = 0; i != finalNodeList.size(); i++) {
+        List<NodeBase>nodeBaseList=nodeBuildDAO.findByIpNode();
+        for (int i = 0; i != nodeBaseList.size(); i++) {
 
-            Long id = finalNodeList.get(i).getId();
-            Object node= finalNodeList.get(i);
+            Long id = nodeBaseList.get(i).getId();
+            Object node= nodeBaseList.get(i);
             maps.put(id,node);
             model.addAttribute("maps", maps);
         }

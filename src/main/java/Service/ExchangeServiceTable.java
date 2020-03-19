@@ -54,7 +54,7 @@ public class ExchangeServiceTable {
 
 
 
-            tableDispleyUAVR.setSersName(nodeBases.get(i).getSersName());
+            tableDispleyUAVR.setSersName(nodeBases.get(i).getSesrName());
             tableDispleyUAVR.setSersValueSide1(nodeBases.get(i).getSesrValueSide1());
             tableDispleyUAVR.setSersValueSide2(nodeBases.get(i).getSesrValueSide2());
 

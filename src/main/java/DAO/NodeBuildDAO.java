@@ -2,8 +2,6 @@ package DAO;
 
 
 import Entity.DateTime;
-import Entity.FinalNode;
-import Entity.IntermediateNode;
 import Entity.NodeBase;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -36,17 +34,17 @@ String ip;
         this.ip = ip;
     }
 
-    public List<FinalNode> findByIpNode() {
+    public List<NodeBase> findByIpNode() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        Query query1 = session.createQuery("FROM FinalNode where ipNode=:paramName");
+        Query query1 = session.createQuery("FROM NodeBase where ipNode=:paramName");
         query1.setParameter("paramName",ip);
-        List<FinalNode>finalNodeList=query1.list();
+        List<NodeBase>nodeBaseList=query1.list();
         session.getTransaction().commit();
         session.clear();
         session.close();
         session.getSessionFactory().close();
-        return finalNodeList;
+        return nodeBaseList;
     }
 
 
@@ -59,9 +57,6 @@ String ip;
         Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
         query1.setParameter("paramName", dateTime);
         List<NodeBase>nodeList=query1.list();
-        System.out.println(dateTime.toString());
-        System.out.println(nodeList.size());
-        System.out.println(nodeList.toString());
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -71,29 +66,6 @@ String ip;
 
 
 
-
-    public void saveFinalNode(FinalNode finalNode) {
-        Session session = SessionFactory.getSessionFactory();
-        session.beginTransaction();
-        session.save(finalNode);
-        session.getTransaction().commit();
-        session.clear();
-        session.close();
-        session.getSessionFactory().close();
-
-
-    }
-
-    public void saveIntermediateNode(IntermediateNode intermediateNode) {
-        Session session = SessionFactory.getSessionFactory();
-        session.beginTransaction();
-        session.save(intermediateNode);
-        session.getTransaction().commit();
-        session.clear();
-        session.close();
-        session.getSessionFactory().close();
-
-    }
 
     public void saveNode(NodeBase nodeBase) {
         Session session = SessionFactory.getSessionFactory();
