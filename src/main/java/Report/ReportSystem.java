@@ -273,8 +273,14 @@ public class ReportSystem {
 
 
             Cell cell14 = row14.createCell(i+1);
-            cell14.setCellValue(nodeBaseList.get(i).getSesrValueSide1());
-            cell14.setCellStyle(style);
+            if(nodeBaseList.get(i).getSesrValueSide1()==null) {
+                cell14.setCellValue("default");
+                cell14.setCellStyle(style);
+
+            }else {
+                cell14.setCellValue(nodeBaseList.get(i).getSesrValueSide1());
+                cell14.setCellStyle(style);
+            }
 
 
             Cell cell15 = row15.createCell(i+1);
