@@ -1,6 +1,6 @@
 package Application;
 
-import DAO.NodeBuildDAO;
+import DAO.Repository;
 import Entity.DateTime;
 import Service.ServiceDateTime;
 import Survey.Url;
@@ -19,7 +19,7 @@ public class Agent {
     @GetMapping("/Agent/start")
     public String start(String name, Model model) {
 
-        NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+        Repository repository = new Repository();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
@@ -39,7 +39,7 @@ public class Agent {
                 Url url = new Url();
                 Thread thread = new Thread(url);
                 thread.start();
-                nodeBuildDAO.saveDateTime(dateTime);
+                repository.saveDateTime(dateTime);
 
                 serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
                 serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());

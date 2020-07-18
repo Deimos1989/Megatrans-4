@@ -39,23 +39,17 @@
         </form>
 
 
-            <form action="#" th:action="@{/View/analizNodeData}" th:object="${exchangeServiceObject}"   method="post">
+            <form action="#" th:action="@{/ControllerOne/analizNodeData}" th:object="${exchangeServiceObject}"   method="post">
                 Node_Ip: <input type="text" size="20" th:field="*{ipAddress}" /><
                 <input type="submit" value="Report" />
             </form>
 
-        <form action="#" th:action="@{/View/reportSystem}" th:object="${exchangeServiceObject}"   method="post">
-            SaveEx: <input type="text" size="20" th:field="*{dateTime}"   /><
+
+
+        <form action="#" th:action="@{/ControllerOne/analizNodeDataToDay}" th:object="${exchangeServiceObject}"  method="post">
+            Date: <input type="text" size="20" th:field="*{date}" /><
             <input type="submit" value="Report" />
         </form>
-
-
-            <form action="#" th:action="@{/View/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}"  method="post">
-                System: <input type="text" size="20" th:field="*{dateTime}" /><
-                <input type="submit" value="Report" />
-            </form>
-
-      
 
 
 
@@ -63,6 +57,17 @@
 
     <div id="sidebar2">
 
+
+        <form action="#" th:action="@{/ControllerOne/reportSystem}" th:object="${exchangeServiceObject}"   method="post">
+            SaveEx: <input type="text" size="20" th:field="*{dateTime}" /><
+            <input type="submit" value="Report" />
+        </form>
+
+
+        <form action="#" th:action="@{/ControllerOne/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}"  method="post">
+            System: <input type="text" size="20" th:field="*{dateTime}" /><
+            <input type="submit" value="Report" />
+        </form>
 
 
 
@@ -73,79 +78,40 @@
 
 
     <div id="content">
-        <h2>Анализ данных узла</h2>
+        <h2>Анализ данных</h2>
 
         <table border="1">
             <tr>
-                <th>Id</th>
+                <th width="2%">Id</th>
 
                 <th>Date</th>
 
+                <th>DateTime</th>
+
                 <th>IpNode</th>
 
-                <th>
-                    errored
-                    Blocks</th>
-
-                <th>
-                    errored
-                    Seconds</th>
-
-                <th>
-                    severely
-                    Errored
-                    Seconds</th>
-
-                <th>
-                    background
-                    Block
-                    Errors</th>
-
-                <th>esr[%]</th>
+                <th>Hash</th>
 
 
-                <th>sers[%]</th>
 
-
-                <th>bber[%]</th>
-
-
-                <th>available
-                    Time</th>
-
-                <th>unavailable
-                    Time</th>
-
-                <th>nmr dB</th>
 
             </tr>
 
             <tr th:block th:each="map:${maps}">
 
                 <td th:utext="${map.getKey()}">Id</td>
-                <td th:utext="${map.getValue().localDateTime}">Date</td>
+
+                <td th:utext="${map.getValue().localDate}">Date</td>
+
+                <td th:utext="${map.getValue().localDateTime}">DateTime</td>
 
                 <td th:utext="${map.getValue().ipNode}">IpNode</td>
 
-                <td th:utext="${map.getValue().erroredBlocksValueSide1}">erroredBlocks</td>
+                <td th:utext="${map.getValue().hash}">Hash</td>
 
-                <td th:utext="${map.getValue().erroredSecondValueSide1}">erroredSeconds</td>
 
-                <td th:utext="${map.getValue().severelyErroredSecondsValueSide1}">severelyErroredSeconds</td>
 
-                <td th:utext="${map.getValue().backgroundBlockErrorsValueSide1}">backgroundBlockErrors</td>
 
-                <td th:utext="${map.getValue().esrValueSide1}">esr[%]</td>
-
-                <td th:utext="${map.getValue().sesrValueSide1}">sers[%]</td>
-
-                <td th:utext="${map.getValue().bberValueSide1}">bber[%]</td>
-
-                <td th:utext="${map.getValue().availableTimeValueSide1}">availableTime</td>
-
-                <td th:utext="${map.getValue().unavailableTimeValueSide1}">unavailableTime</td>
-
-                <td th:utext="${map.getValue().nmrValueSide1}">nmr dB</td>
 
             </tr>
         </table>

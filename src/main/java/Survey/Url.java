@@ -1,6 +1,6 @@
 package Survey;
 
-import DAO.NodeBuildDAO;
+import DAO.Repository;
 import Entity.NodeBase;
 import Service.ServiceDateTime;
 import org.jsoup.Jsoup;
@@ -22,7 +22,7 @@ public class Url implements Runnable {
 
    public void run() {
 
-       NodeBuildDAO nodeBuildDAO = new NodeBuildDAO();
+       Repository repository = new Repository();
        DslStatusNode dslStatusNode = new DslStatusNode();
        DslStatisticsNode dslStatisticsNode = new DslStatisticsNode();
 
@@ -164,7 +164,7 @@ public class Url implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
 
-               nodeBuildDAO.saveNode(nodeBase);
+               repository.saveNode(nodeBase);
 
 
            } else {
@@ -265,7 +265,7 @@ public class Url implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
                nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
-               nodeBuildDAO.saveNode(nodeBase);
+               repository.saveNode(nodeBase);
 
 
            }

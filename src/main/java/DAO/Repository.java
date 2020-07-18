@@ -6,13 +6,29 @@ import Entity.NodeBase;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-public class NodeBuildDAO {
+public class Repository {
 
-String ip;
+private String ip;
+private String date;
+private String dateTime;
+private String hash;
+
+
+
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getDateTime() {
         return dateTime;
@@ -22,16 +38,20 @@ String ip;
         this.dateTime = dateTime;
     }
 
-    String dateTime;
-
-
-
     public String getIp() {
         return ip;
     }
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public List<NodeBase> findByIpNode() {
@@ -48,14 +68,30 @@ String ip;
     }
 
 
+    public List<NodeBase> selectDate() {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(getDate(), formatter);
+        Query query1 = session.createQuery("FROM NodeBase where localDate=:paramName");
+        query1.setParameter("paramName",date);
+        List<NodeBase>nodeBaseList=query1.list();
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+        return nodeBaseList;
+    }
+
+
 
     public List<NodeBase> localDateTimeReport() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse(getDateTime(), formatter);
-        Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
-        query1.setParameter("paramName", dateTime);
+       /* DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(getHash(), formatter);*/
+        Query query1 = session.createQuery("FROM  NodeBase nb where nb.hash =:paramName");
+        query1.setParameter("paramName", hash);
         List<NodeBase>nodeList=query1.list();
         session.getTransaction().commit();
         session.clear();
@@ -63,7 +99,6 @@ String ip;
         session.getSessionFactory().close();
         return nodeList;
     }
-
 
 
 
