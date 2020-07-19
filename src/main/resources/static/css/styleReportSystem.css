@@ -29,23 +29,26 @@ body {
     margin-left: 1px;
 }
 
-#sidebar1 {
+#navigation {
     background: #F5F5F5;
-    float: left;
+    text-align: left;
     width: 99%;
-    height: 100px;
+    height: 20px;
     border: 4px double black;
-
+    margin-right: 1px;
+    margin-left: 1px;
 
 }
 
 
+
 #content {
     background: #DCDCDC;
-    float: left;
+    float: right;
     width: 99%;
     height: 1200px;
     border: 4px double black;
+    margin-left: 3px;
 }
 
 #clear {
