@@ -164,7 +164,8 @@ public class Url implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
 
-               repository.saveNode(nodeBase);
+               repository.setObT(nodeBase);
+               repository.save();
 
 
            } else {
@@ -265,8 +266,8 @@ public class Url implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
                nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
-               repository.saveNode(nodeBase);
-
+               repository.setObT(nodeBase);
+               repository.save();
 
            }
 

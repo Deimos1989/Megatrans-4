@@ -39,7 +39,8 @@ public class Agent {
                 Url url = new Url();
                 Thread thread = new Thread(url);
                 thread.start();
-                repository.saveDateTime(dateTime);
+                repository.setObT(dateTime);
+                repository.save();
 
                 serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
                 serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());

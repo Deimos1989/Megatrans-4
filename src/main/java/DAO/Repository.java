@@ -11,16 +11,31 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-public class Repository {
+public class Repository<T,V> {
 
 private String ip;
 private String date;
 private String dateTime;
 private String hash;
+private T obT;
+private V obV;
+
+    public T getObT() {
+        return obT;
+    }
+
+    public void setObT(T obT) {
+        this.obT = obT;
+    }
 
 
+    public V getObV() {
+        return obV;
+    }
 
-
+    public void setObV(V obV) {
+        this.obV = obV;
+    }
 
     public String getDate() {
         return date;
@@ -100,23 +115,24 @@ private String hash;
         return nodeList;
     }
 
-
-
-    public void saveNode(NodeBase nodeBase) {
+    public void setTimeZona() {
         Session session = SessionFactory.getSessionFactory();
-        session.beginTransaction();
-        session.save(nodeBase);
-        session.getTransaction().commit();
+       // session.beginTransaction();
+        Query query1 = session.createNamedQuery("SET LOBAL time_zone = '+4:00'");
+       // session.getTransaction().commit();
         session.clear();
         session.close();
         session.getSessionFactory().close();
 
     }
 
-    public void saveDateTime(DateTime dateTime) {
+
+
+
+    public void save(){
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        session.save(dateTime);
+        session.save(getObT());
         session.getTransaction().commit();
         session.clear();
         session.close();

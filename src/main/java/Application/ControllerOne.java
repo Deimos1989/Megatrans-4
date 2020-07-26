@@ -52,6 +52,13 @@ public class ControllerOne {
         return "main";
     }
 
+    @RequestMapping(value="/ControllerOne/setTimeZona", method=RequestMethod.POST)
+    public void setTimeZona(Repository repository) {
+        repository.setTimeZona();
+
+    }
+
+
 
     @RequestMapping(value="/ControllerOne/analizNodeDataToDay", method=RequestMethod.POST)
     public String analizNodeDataToDay(@ModelAttribute ExchangeServiceObject exchangeServiceObject, Model model, Repository repository) {
