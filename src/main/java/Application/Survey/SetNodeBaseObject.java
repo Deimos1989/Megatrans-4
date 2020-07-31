@@ -1,10 +1,12 @@
-package Survey;
+package Application.Survey;
 
-import DAO.Repository;
-import Entity.NodeBase;
-import Service.ServiceDateTime;
+import Application.DAO.Repository;
+import Application.Entity.NodeBase;
+import Application.Service.ServiceDateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import Application.processing.DslStatisticsNode;
+import Application.processing.DslStatusNode;
 
 import javax.swing.*;
 import java.io.File;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Url implements Runnable {
+public class SetNodeBaseObject implements Runnable {
 
 
 

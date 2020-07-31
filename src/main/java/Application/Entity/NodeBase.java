@@ -1,4 +1,4 @@
-package Entity;
+package Application.Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

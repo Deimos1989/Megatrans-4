@@ -1,7 +1,4 @@
-package DAO;
-
-
-import Entity.NodeBase;
+package Application.DAO;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
@@ -12,7 +9,6 @@ public class SessionFactory {
 
     public static Session getSessionFactory() {
         Configuration configuration = new Configuration().configure();
-        configuration.addAnnotatedClass(NodeBase.class);
         sessionFactory = configuration.buildSessionFactory();
         return sessionFactory.openSession();
     }

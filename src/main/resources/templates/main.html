@@ -39,21 +39,23 @@
         </form>
 
 
-            <form action="#" th:action="@{/ControllerOne/analizNodeData}" th:object="${exchangeServiceObject}"   method="post">
-                Node_Ip: <input type="text" size="20" th:field="*{ipAddress}" /><
+            <form action="#" th:action="@{/ControllerOne/analizNodeData}" th:object="${exchangeServiceObjectView}"   method="post">
+                Node_Ip:<input type="text" size="20" th:field="*{ipAddress}"/>
                 <input type="submit" value="Report" />
             </form>
 
 
 
-        <form action="#" th:action="@{/ControllerOne/analizNodeDataToDay}" th:object="${exchangeServiceObject}"  method="post">
-            Date: <input type="text" size="20" th:field="*{date}" /><
+        <form action="#" th:action="@{/ControllerOne/analizNodeDataToDay}" th:object="${exchangeServiceObjectView}"  method="post">
+            Date:<input type="text" size="20" th:field="*{date}"/>
             <input type="submit" value="Report" />
         </form>
 
 
-        <form action="#" th:action="@{/ControllerOne/setTimeZona}"  method="post">
-            <input type="submit" value="TimeZone" />
+        <form action="#" th:action="@{/ControllerOne/save}" th:object="${exchangeServiceObjectView}"   method="post">
+            NumSystem:<input type="text" size="1" th:field="*{number}"/>
+            saveIp:<input type="text" size="15" th:field="*{ipAddress}"/>
+            <input type="submit" value="Report" />
         </form>
 
 
@@ -63,14 +65,14 @@
     <div id="sidebar2">
 
 
-        <form action="#" th:action="@{/ControllerOne/reportSystem}" th:object="${exchangeServiceObject}"   method="post">
-            SaveEx: <input type="text" size="20" th:field="*{dateTime}" /><
+        <form action="#" th:action="@{/ControllerOne/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
+            SaveEx: <input type="text" size="20" th:field="*{dateTime}" />
             <input type="submit" value="Report" />
         </form>
 
 
-        <form action="#" th:action="@{/ControllerOne/analizNodeDateTimeReport}" th:object="${exchangeServiceObject}"  method="post">
-            System: <input type="text" size="20" th:field="*{dateTime}" /><
+        <form action="#" th:action="@{/ControllerOne/analizNodeDateTimeReport}" th:object="${exchangeServiceObjectView}"  method="post">
+            System: <input type="text" size="20" th:field="*{dateTime}" />
             <input type="submit" value="Report" />
         </form>
 

@@ -1,11 +1,12 @@
-package Application;
+package Application.Controller;
 
-import DAO.Repository;
+import Application.DAO.Repository;
 
-import Entity.NodeBase;
-import Report.ReportSystem;
-import Service.ExchangeServiceObject;
-import Service.ExchangeServiceTable;
+import Application.Entity.NodeBase;
+import Application.Entity.NodeUrl;
+import Application.Report.ReportSystem;
+import Application.exchangeObject.ExchangeServiceObjectView;
+import Application.exchangeObject.ExchangeSetNodeBaseObjectView;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,26 +24,20 @@ import java.util.*;
 public class ControllerOne {
 
 
-    @GetMapping("/ControllerOne/main")
-    public String main() {
+    @GetMapping(value="/")
+    public String main(Model model) {
+        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
+        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
         return "main";
     }
 
-
-   /* @RequestMapping(value="/", method=RequestMethod.GET)
-    public String greetingForm(Model model) {
-        model.addAttribute("exchangeServiceObject", new ExchangeServiceObject());
-        return "main";
-    }*/
-
     @RequestMapping(value="/ControllerOne/analizNodeData", method=RequestMethod.POST)
-    public String analizNodeData(@ModelAttribute ExchangeServiceObject exchangeServiceObject, Model model, Repository repository) {
-        repository.setIp(exchangeServiceObject.getIpAddress());
+    public String analizNodeData(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository) {
+        repository.setIp(exchangeServiceObjectView.getIpAddress());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeBase>nodeBaseList= repository.findByIpNode();
         for (int i = 0; i != nodeBaseList.size(); i++) {
-
             Long id = nodeBaseList.get(i).getId();
             Object node= nodeBaseList.get(i);
             maps.put(id,node);
@@ -52,22 +47,24 @@ public class ControllerOne {
         return "main";
     }
 
-    @RequestMapping(value="/ControllerOne/setTimeZona", method=RequestMethod.POST)
-    public void setTimeZona(Repository repository) {
-        repository.setTimeZona();
-
+    @RequestMapping(value="/ControllerOne/save", method=RequestMethod.POST)
+    public String save(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository, NodeUrl nodeUrl) {
+        nodeUrl.setNumber(exchangeServiceObjectView.getNumber());
+        nodeUrl.setIp(exchangeServiceObjectView.getIpAddress());
+        repository.setObT(nodeUrl);
+        repository.save();
+        return "main";
     }
 
 
 
     @RequestMapping(value="/ControllerOne/analizNodeDataToDay", method=RequestMethod.POST)
-    public String analizNodeDataToDay(@ModelAttribute ExchangeServiceObject exchangeServiceObject, Model model, Repository repository) {
-        repository.setDate(exchangeServiceObject.getDate());
+    public String analizNodeDataToDay(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository) {
+        repository.setDate(exchangeServiceObjectView.getDate());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeBase>nodeBaseList= repository.selectDate();
         for (int i = 0; i != nodeBaseList.size(); i++) {
-
             Long id = nodeBaseList.get(i).getId();
             Object node= nodeBaseList.get(i);
             maps.put(id,node);
@@ -80,13 +77,11 @@ public class ControllerOne {
 
 
     @RequestMapping(value = "/ControllerOne/analizNodeDateTimeReport" , method=RequestMethod.POST)
-    public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObject exchangeServiceObject, ExchangeServiceTable exchangeServiceTable, Repository repository, Model model) {
-        repository.setHash(exchangeServiceObject.getDateTime());
+    public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, ExchangeSetNodeBaseObjectView ExchangeSetNodeBaseObjectView, Repository repository, Model model) {
+        repository.setHash(exchangeServiceObjectView.getDateTime());
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<NodeBase> nodeBases = repository.localDateTimeReport();
-
-
         for (int i = 0; i<nodeBases.size(); i++) {
             Long id = nodeBases.get(i).getId();
             Object node = nodeBases.get(i);
@@ -100,13 +95,13 @@ public class ControllerOne {
 
 
     @RequestMapping(value = "/ControllerOne/reportSystem" , method=RequestMethod.POST)
-    public ResponseEntity<Object> reportSystem(ExchangeServiceObject exchangeServiceObject, Repository repository, ReportSystem reportSystem) {
+    public ResponseEntity<Object> reportSystem(ExchangeServiceObjectView exchangeServiceObjectView, Repository repository, ReportSystem reportSystem) {
 
-        repository.setDateTime(exchangeServiceObject.getDateTime());
+        repository.setDateTime(exchangeServiceObjectView.getDateTime());
         List<NodeBase> nodeBases = repository.localDateTimeReport();
 
         reportSystem.setNodeBaseList(nodeBases);
-        reportSystem.setDataTime(exchangeServiceObject.getDateTime());
+        reportSystem.setDataTime(exchangeServiceObjectView.getDateTime());
         reportSystem.reportSystem();
         
         String DIRECTORY = "C:/Users/Denis/IdeaProjects/Test";

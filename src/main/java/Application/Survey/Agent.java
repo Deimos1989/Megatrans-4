@@ -1,9 +1,8 @@
-package Application;
+package Application.Survey;
 
-import DAO.Repository;
-import Entity.DateTime;
-import Service.ServiceDateTime;
-import Survey.Url;
+import Application.DAO.Repository;
+import Application.Entity.DateTime;
+import Application.Service.ServiceDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +11,6 @@ import java.util.TimerTask;
 
 @Controller
 public class Agent {
-
-
-
-
     @GetMapping("/Agent/start")
     public String start(String name, Model model) {
 
@@ -36,8 +31,8 @@ public class Agent {
                 dateTime.setLocalTime(serviceDateTime.getLocalTimeStatic());
                 dateTime.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
 
-                Url url = new Url();
-                Thread thread = new Thread(url);
+                SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject();
+                Thread thread = new Thread(setNodeBaseObject);
                 thread.start();
                 repository.setObT(dateTime);
                 repository.save();
@@ -59,7 +54,7 @@ public class Agent {
         model.addAttribute("name", name = "Cбор статистики системы Megatrans-4");
 
 
-        return "Survey";
+        return "main";
     }
 
 

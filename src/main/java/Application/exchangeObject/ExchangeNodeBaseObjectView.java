@@ -1,9 +1,8 @@
-package TableDisplay;
+package Application.exchangeObject;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class TableDispleyUAVR {
+
+public class ExchangeNodeBaseObjectView {
 
     private String name = "IP_Address";
 

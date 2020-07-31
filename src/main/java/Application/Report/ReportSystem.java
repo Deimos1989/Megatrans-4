@@ -1,6 +1,6 @@
-package Report;
+package Application.Report;
 
-import Entity.NodeBase;
+import Application.Entity.NodeBase;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -48,7 +48,7 @@ public class ReportSystem {
     public Object reportSystem() {
 
         Workbook wb = new HSSFWorkbook();
-        Sheet sheet = wb.createSheet("Report");
+        Sheet sheet = wb.createSheet("Application/Report");
 
         Row row1 = sheet.createRow(1);
         Row row2 = sheet.createRow(2);
