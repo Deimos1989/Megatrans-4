@@ -3,6 +3,7 @@ package Application.Survey;
 import Application.DAO.Repository;
 import Application.Entity.DateTime;
 import Application.Service.ServiceDateTime;
+import Application.exchangeObject.ExchangeServiceObjectView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +12,8 @@ import java.util.TimerTask;
 
 @Controller
 public class Agent {
-    @GetMapping("/Agent/start")
-    public String start(String name, Model model) {
+    @GetMapping(value="/Agent/start")
+    public String start(Model model, ExchangeServiceObjectView exchangeServiceObjectView) {
 
         Repository repository = new Repository();
         Timer timer = new Timer();
@@ -31,9 +32,12 @@ public class Agent {
                 dateTime.setLocalTime(serviceDateTime.getLocalTimeStatic());
                 dateTime.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
 
+
+
                 SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject();
                 Thread thread = new Thread(setNodeBaseObject);
                 thread.start();
+
                 repository.setObT(dateTime);
                 repository.save();
 
@@ -46,15 +50,11 @@ public class Agent {
 
             }
 
-
         };
 
-
         timer.scheduleAtFixedRate(task, 1000, 20000);
-        model.addAttribute("name", name = "Cбор статистики системы Megatrans-4");
-
-
-        return "main";
+        model.addAttribute("name",  "Cбор статистики системы Megatrans-4");
+        return "menu";
     }
 
 

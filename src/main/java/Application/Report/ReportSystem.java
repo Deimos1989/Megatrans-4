@@ -48,7 +48,7 @@ public class ReportSystem {
     public Object reportSystem() {
 
         Workbook wb = new HSSFWorkbook();
-        Sheet sheet = wb.createSheet("Application/Report");
+        Sheet sheet = wb.createSheet("Report");
 
         Row row1 = sheet.createRow(1);
         Row row2 = sheet.createRow(2);

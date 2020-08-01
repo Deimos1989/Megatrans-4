@@ -31,9 +31,8 @@
 
         <h2>Анализ статистики системы</h2>
 
-        <form action="/Agent/start/">
+        <form action="#" th:action="@{/Agent/start}" th:object="${exchangeServiceObjectView}"   method="get">
             <td>
-                 Survey:<input type="text" cols="40" th:name="name" size="20" id="quantity">
                 <input type="submit" name="submit_button" value="Start">
             </td>
         </form>
@@ -54,10 +53,21 @@
 
         <form action="#" th:action="@{/ControllerOne/save}" th:object="${exchangeServiceObjectView}"   method="post">
             NumSystem:<input type="text" size="1" th:field="*{number}"/>
-            saveIp:<input type="text" size="15" th:field="*{ipAddress}"/>
-            <input type="submit" value="Report" />
+            SaveUrl:<input type="text" size="15" th:field="*{url}"/>
+            <input type="submit" value="Add" />
         </form>
 
+
+        <form action="#" th:action="@{/ControllerOne/deleteId}" th:object="${exchangeServiceObjectView}"   method="post">
+            NumSystem:<input type="text" size="1" th:field="*{id}"/>
+            <input type="submit" value="Delete" />
+        </form>
+
+
+        <form action="#" th:action="@{/ControllerOne/deleteHash}" th:object="${exchangeServiceObjectView}"   method="post">
+            Hash:<input type="text" size="20" th:field="*{hash}"/>
+            <input type="submit" value="Delete" />
+        </form>
 
 
     </div>
@@ -71,8 +81,8 @@
         </form>
 
 
-        <form action="#" th:action="@{/ControllerOne/analizNodeDateTimeReport}" th:object="${exchangeServiceObjectView}"  method="post">
-            System: <input type="text" size="20" th:field="*{dateTime}" />
+        <form action="#" th:action="@{/ControllerOne/analizNodeHashReport}" th:object="${exchangeServiceObjectView}"  method="post">
+            System: <input type="text" size="20" th:field="*{hash}" />
             <input type="submit" value="Report" />
         </form>
 

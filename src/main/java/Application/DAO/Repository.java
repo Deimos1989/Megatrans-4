@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -18,6 +19,9 @@ private String dateTime;
 private String hash;
 private T obT;
 private V obV;
+
+
+
 
 
 
@@ -55,8 +59,22 @@ private V obV;
     public List<NodeBase> localDateTimeReport() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-       /* DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse(getHash(), formatter);*/
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(getDateTime(), formatter);
+        Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
+        query1.setParameter("paramName", dateTime);
+        List<NodeBase>nodeList=query1.list();
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+        return nodeList;
+    }
+
+
+    public List<NodeBase> hashReport() {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
         Query query1 = session.createQuery("FROM  NodeBase nb where nb.hash =:paramName");
         query1.setParameter("paramName", hash);
         List<NodeBase>nodeList=query1.list();
@@ -67,6 +85,29 @@ private V obV;
         return nodeList;
     }
 
+    public void deleteHash(){
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        Query query1 = session.createQuery("delete from NodeBase nb where nb.hash =:paramName");
+        query1.setParameter("paramName", getObV()).executeUpdate();
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+
+    }
+
+    public void deleteId(){
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        Query query1 = session.createQuery("delete from NodeUrl nb where nb.id =:paramName");
+        query1.setParameter("paramName", getObV()).executeUpdate();
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+
+    }
 
 
 
@@ -82,6 +123,7 @@ private V obV;
         session.getSessionFactory().close();
 
     }
+
 
 
 

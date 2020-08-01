@@ -13,8 +13,8 @@ public class NodeUrl {
     @Column(name = "number")
     private String number;
 
-    @Column(name = "ip")
-    private String ip;
+    @Column(name = "url")
+    private String url;
 
     public NodeUrl(){
 
@@ -37,11 +37,11 @@ public class NodeUrl {
         this.number = number;
     }
 
-    public String getIp() {
-        return ip;
+    public String getUrl() {
+        return url;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

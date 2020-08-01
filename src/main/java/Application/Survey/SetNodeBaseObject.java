@@ -29,6 +29,7 @@ public class SetNodeBaseObject implements Runnable {
        DslStatisticsNode dslStatisticsNode = new DslStatisticsNode();
 
 
+
         /*
         входной файл содержит URLки через точку с запятой как в CSV файле
         пример:

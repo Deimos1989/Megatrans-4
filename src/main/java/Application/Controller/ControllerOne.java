@@ -28,7 +28,7 @@ public class ControllerOne {
     public String main(Model model) {
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
-        return "main";
+        return "TITLE";
     }
 
     @RequestMapping(value="/ControllerOne/analizNodeData", method=RequestMethod.POST)
@@ -44,16 +44,30 @@ public class ControllerOne {
             model.addAttribute("maps", maps);
         }
 
-        return "main";
+        return "menu";
     }
 
     @RequestMapping(value="/ControllerOne/save", method=RequestMethod.POST)
     public String save(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository, NodeUrl nodeUrl) {
         nodeUrl.setNumber(exchangeServiceObjectView.getNumber());
-        nodeUrl.setIp(exchangeServiceObjectView.getIpAddress());
+        nodeUrl.setUrl(exchangeServiceObjectView.getUrl());
         repository.setObT(nodeUrl);
         repository.save();
-        return "main";
+        return "menu";
+    }
+
+    @RequestMapping(value="/ControllerOne/deleteHash", method=RequestMethod.POST)
+    public String deleteHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository ) {
+        repository.setObV(exchangeServiceObjectView.getHash());
+        repository.deleteHash();
+        return "menu";
+    }
+
+    @RequestMapping(value="/ControllerOne/deleteId", method=RequestMethod.POST)
+    public String deleteId(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository ) {
+        repository.setObV(exchangeServiceObjectView.getId());
+        repository.deleteId();
+        return "menu";
     }
 
 
@@ -71,7 +85,7 @@ public class ControllerOne {
             model.addAttribute("maps", maps);
         }
 
-        return "main";
+        return "menu";
     }
 
 
@@ -82,6 +96,21 @@ public class ControllerOne {
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<NodeBase> nodeBases = repository.localDateTimeReport();
+        for (int i = 0; i<nodeBases.size(); i++) {
+            Long id = nodeBases.get(i).getId();
+            Object node = nodeBases.get(i);
+            maps.put(id, node);
+            model.addAttribute("maps", maps);
+        }
+        return "reportSystem";
+    }
+
+    @RequestMapping(value = "/ControllerOne/analizNodeHashReport" , method=RequestMethod.POST)
+    public String analizNodeHashReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, ExchangeSetNodeBaseObjectView ExchangeSetNodeBaseObjectView, Repository repository, Model model) {
+        repository.setHash(exchangeServiceObjectView.getHash());
+
+        LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
+        List<NodeBase> nodeBases = repository.hashReport();
         for (int i = 0; i<nodeBases.size(); i++) {
             Long id = nodeBases.get(i).getId();
             Object node = nodeBases.get(i);
