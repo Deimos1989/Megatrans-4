@@ -1,10 +1,11 @@
-package Application.exchangeObject;
+package Application.Survey;
 
 import Application.Entity.NodeBase;
+import Application.exchangeObject.ExchangeNodeBaseObjectView;
 
 import java.util.List;
 
-public class ExchangeSetNodeBaseObjectView {
+public class SetNodeBaseObjectView {
 
     public List<NodeBase> getNodeBases() {
         return nodeBases;

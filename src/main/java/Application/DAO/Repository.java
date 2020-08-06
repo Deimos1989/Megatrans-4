@@ -2,6 +2,7 @@ package Application.DAO;
 
 
 import Application.Entity.NodeBase;
+import Application.Entity.NodeUrl;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -37,6 +38,37 @@ private V obV;
         session.getSessionFactory().close();
         return nodeBaseList;
     }
+
+
+    public List<NodeUrl> findByIpNodeUrl() {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        Query query1 = session.createQuery("FROM NodeUrl where ipUrl=:paramName");
+        query1.setParameter("paramName",obV);
+        List<NodeUrl>nodeUrlList=query1.list();
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+        return nodeUrlList;
+    }
+
+
+    public List<NodeUrl> findByNodeUrl() {
+        Session session = SessionFactory.getSessionFactory();
+        session.beginTransaction();
+        Query query1 = session.createQuery("FROM NodeUrl where number=:paramName");
+        query1.setParameter("paramName",obT);
+        List<NodeUrl>nodeUrlList=query1.list();
+
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        session.getSessionFactory().close();
+        return nodeUrlList;
+    }
+
+
 
 
     public List<NodeBase> selectDate() {

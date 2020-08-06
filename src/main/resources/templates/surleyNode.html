@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+</head>
+<body>
+
+<div id="header">
+    <h2>Опрос узлов</h2>
+</div>
+
+
+
+
+<div id="sidebar1">
+
+    <form action="#" th:action="@{/Agent/start}" th:object="${exchangeServiceObjectView}"   method="get">
+        <td>
+            ip:<input type="text" size="20" th:field="*{hash}"/>
+            <input type="submit" name="submit_button" value="Start">
+        </td>
+    </form>
+
+</div>
+</body>
+</html>
+
+
+

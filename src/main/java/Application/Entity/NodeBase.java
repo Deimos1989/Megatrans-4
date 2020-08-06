@@ -17,11 +17,6 @@ public class NodeBase {
     private Long id;
 
 
-   /* @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="hash1", referencedColumnName = "hash1")
-    private DateTime dateTime =new DateTime();*/
-
-
     @Column(name = "Date",columnDefinition = "DATE")
     private LocalDate localDate;
 
@@ -33,7 +28,7 @@ public class NodeBase {
 
 
 
-    @Column(name = "hash")
+    @Column(name = "hashNodeBase")
     private String hash;
 
     public String getHash() {

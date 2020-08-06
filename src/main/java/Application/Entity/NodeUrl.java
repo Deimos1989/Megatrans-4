@@ -13,6 +13,9 @@ public class NodeUrl {
     @Column(name = "number")
     private String number;
 
+    @Column(name = "ip")
+    private String ipUrl;
+
     @Column(name = "url")
     private String url;
 
@@ -43,5 +46,13 @@ public class NodeUrl {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getIpUrl() {
+        return ipUrl;
+    }
+
+    public void setIpUrl(String ipUrl) {
+        this.ipUrl = ipUrl;
     }
 }

@@ -4,9 +4,8 @@
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/styleReportSystem.css}" rel="stylesheet" media="screen" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/reportSystem.css}" rel="stylesheet" media="screen" />
 </head>
 
 <body>
@@ -14,40 +13,40 @@
 <div id="container">
 
     <div id="header">
-        <h2>Система передачи данных Megatrans-4</h2>
+        <h2>Отчеты</h2>
     </div>
 
-    <div id="sidebar1">
+    <div id="sidebar0">
 
-        <h2>Анализ статистики системы</h2>
-
-
-
-            <td>
-                <input type="button" name="submit_button1" value="StartEX" id="ReportEX">
-            </td>
+        <form action="#" th:action="@{/ControllerReport/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
+            SaveEx: <input type="text" size="20" th:field="*{dateTime}" />
+            <input type="submit" value="Report" />
+        </form>
 
 
+        <form action="#" th:action="@{/ControllerReport/analizNodeHashReport}" th:object="${exchangeServiceObjectView}"  method="post">
+            System: <input type="text" size="20" th:field="*{hash}" />
+            <input type="submit" value="Report" />
+        </form>
+
+        <form action="#" th:action="@{/ControllerReport/analizNodeData}" th:object="${exchangeServiceObjectView}"   method="post">
+            NodeIp: <input type="text" size="20" th:field="*{ipAddress}"/>
+            <input type="submit" value="Report" />
+        </form>
 
     </div>
 
-    <div id="content">
-        <h2>Анализ данных Трассы</h2>
 
-
-
-
-
-        <div>
 
             <table border="1" cellpadding="4" cellspacing="0" width="100%" id="stq" class='pq-grid-summary' >
                 <caption>System №5</caption>
 
                 <tr>
-                    <th >Id</th>
-                    <th width="8%">Date</th>
+                    <th width="3%">Id</th>
 
-                    <th>IpNode</th>
+                    <th width="6%">Date</th>
+
+                    <th width="6%">IpNode</th>
 
                     <th colspan="2">
                         errored

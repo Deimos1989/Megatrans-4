@@ -54,7 +54,7 @@ public class Agent {
 
         timer.scheduleAtFixedRate(task, 1000, 20000);
         model.addAttribute("name",  "Cбор статистики системы Megatrans-4");
-        return "menu";
+        return "surleyNode";
     }
 
 

@@ -3,111 +3,53 @@
 <head>
     <title>Megatrans-4 System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" media="screen" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
     <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
-    <script src="bower_components\jquery\dist\jquery.min.js"></script>
-    <script src="bower_components\jquery-table2excel\dist\jquery.table2excel.min.js"></script>
+
+
+
 </head>
 
 <body>
 
 
+<div id="header">
+    <h2>Система передачи данных Megatrans-4</h2>
+</div>
+
+
+<div id="sidebar0">
+    <h2>Отчеты</h2>
+</div>
+
+
+
+<div id="sidebar1">
+
+    <form action="#" th:action="@{/ControllerReport/analizNodeDataToDay}" th:object="${exchangeServiceObjectView}"  method="post">
+        Date:<input type="text" size="20" th:field="*{date}"/>
+        <input type="submit" value="Report" />
+    </form>
+
+</div>
+
+
 <div id="container">
 
-    <div id="header">
-        <h2>Система передачи данных Megatrans-4</h2>
-    </div>
-
-
-    <div id="navigation", >
-
-
-    </div>
-
-
-
-    <div id="sidebar1">
-
-        <h2>Анализ статистики системы</h2>
-
-        <form action="#" th:action="@{/Agent/start}" th:object="${exchangeServiceObjectView}"   method="get">
-            <td>
-                <input type="submit" name="submit_button" value="Start">
-            </td>
-        </form>
-
-
-            <form action="#" th:action="@{/ControllerOne/analizNodeData}" th:object="${exchangeServiceObjectView}"   method="post">
-                Node_Ip:<input type="text" size="20" th:field="*{ipAddress}"/>
-                <input type="submit" value="Report" />
-            </form>
-
-
-
-        <form action="#" th:action="@{/ControllerOne/analizNodeDataToDay}" th:object="${exchangeServiceObjectView}"  method="post">
-            Date:<input type="text" size="20" th:field="*{date}"/>
-            <input type="submit" value="Report" />
-        </form>
-
-
-        <form action="#" th:action="@{/ControllerOne/save}" th:object="${exchangeServiceObjectView}"   method="post">
-            NumSystem:<input type="text" size="1" th:field="*{number}"/>
-            SaveUrl:<input type="text" size="15" th:field="*{url}"/>
-            <input type="submit" value="Add" />
-        </form>
-
-
-        <form action="#" th:action="@{/ControllerOne/deleteId}" th:object="${exchangeServiceObjectView}"   method="post">
-            NumSystem:<input type="text" size="1" th:field="*{id}"/>
-            <input type="submit" value="Delete" />
-        </form>
-
-
-        <form action="#" th:action="@{/ControllerOne/deleteHash}" th:object="${exchangeServiceObjectView}"   method="post">
-            Hash:<input type="text" size="20" th:field="*{hash}"/>
-            <input type="submit" value="Delete" />
-        </form>
-
-
-    </div>
-
-    <div id="sidebar2">
-
-
-        <form action="#" th:action="@{/ControllerOne/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
-            SaveEx: <input type="text" size="20" th:field="*{dateTime}" />
-            <input type="submit" value="Report" />
-        </form>
-
-
-        <form action="#" th:action="@{/ControllerOne/analizNodeHashReport}" th:object="${exchangeServiceObjectView}"  method="post">
-            System: <input type="text" size="20" th:field="*{hash}" />
-            <input type="submit" value="Report" />
-        </form>
-
-
-
-
-    </div>
-
-
-
-
     <div id="content">
-        <h2>Анализ данных</h2>
 
         <table border="1">
             <tr>
-                <th width="2%">Id</th>
+                <th width="5%">Id</th>
 
-                <th>Date</th>
+                <th width="15%">Date</th>
 
-                <th>DateTime</th>
+                <th width="20%">DateTime</th>
 
-                <th>IpNode</th>
+                <th width="20%">IpNode</th>
 
-                <th>Hash</th>
+                <th width="35%">Hash</th>
 
 
 

@@ -35,10 +35,12 @@ public class DateTime {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
+   /* @OneToMany(cascade =CascadeType.ALL )
+    @JoinColumn (name="hash", referencedColumnName = "hash")
+    NodeBase nodeBase =new NodeBase();*/
 
-    @Column(name = "hash1")
+    @Column(name = "hash")
     private String hash;
-
 
     public Long getId() {
         return id;
