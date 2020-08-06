@@ -88,7 +88,7 @@ public class ReportSystem {
         cell01.setCellStyle(style);
 
         Cell cell02 = row2.createCell(0);
-        cell02.setCellValue("DateTime");
+        cell02.setCellValue("LocalDateTime");
         cell02.setCellStyle(style);
 
         Cell cell03 = row3.createCell(0);

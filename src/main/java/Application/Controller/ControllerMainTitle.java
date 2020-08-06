@@ -23,12 +23,20 @@ public class ControllerMainTitle {
         return "menu";
     }
 
-    @GetMapping(value="/reportSystem")
+    /*@GetMapping(value="/reportSystem")
     public String reportSystem(Model model) {
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
         return "reportSystem";
+    }*/
+
+    @GetMapping(value="/reportSystem")
+    public String reportSystem(Model model) {
+        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
+        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        return "test";
     }
+
 
     @GetMapping(value="/addUrl")
     public String addUrl(Model model) {

@@ -1,4 +1,4 @@
-package Application.Service;
+package Application.exchangeObject;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
-public class ServiceDateTime {
+public class ExchangeDateTime {
 
 
    private static Timestamp timestampStatic = new Timestamp(System.currentTimeMillis());
@@ -43,7 +43,7 @@ public class ServiceDateTime {
     }
 
     public void setHashStatic(String hashStatic) {
-        ServiceDateTime.hashStatic = hashStatic;
+        ExchangeDateTime.hashStatic = hashStatic;
     }
 
 
@@ -53,7 +53,7 @@ public class ServiceDateTime {
     }
 
     public void setTimestampStatic(Timestamp timestampStatic) {
-        ServiceDateTime.timestampStatic = timestampStatic;
+        ExchangeDateTime.timestampStatic = timestampStatic;
     }
 
     public Timestamp getTimestampDinamic() {
@@ -69,7 +69,7 @@ public class ServiceDateTime {
     }
 
     public  void setLocalDateStatic(LocalDate localDateStatic) {
-        ServiceDateTime.localDateStatic = localDateStatic;
+        ExchangeDateTime.localDateStatic = localDateStatic;
     }
 
     public  LocalTime getLocalTimeStatic() {
@@ -77,7 +77,7 @@ public class ServiceDateTime {
     }
 
     public  void setLocalTimeStatic(LocalTime localTimeStatic) {
-        ServiceDateTime.localTimeStatic = localTimeStatic;
+        ExchangeDateTime.localTimeStatic = localTimeStatic;
     }
 
     public  LocalDateTime getLocalDateTimeStatic() {
@@ -85,7 +85,7 @@ public class ServiceDateTime {
     }
 
     public  void setLocalDateTimeStatic(LocalDateTime localDateTimeStatic) {
-        ServiceDateTime.localDateTimeStatic = localDateTimeStatic;
+        ExchangeDateTime.localDateTimeStatic = localDateTimeStatic;
     }
 
     public LocalDate getLocalDateDinamic() {

@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 
 @Entity
-@Table(name = "nodeBase")
+@Table(name = "Node_Base")
 public class NodeBase {
 
     @Id
@@ -23,12 +23,12 @@ public class NodeBase {
     @Column(name = "Time", columnDefinition = "TIME")
     private LocalTime localTime;
 
-    @Column(name = "DateTime", columnDefinition = "DATETIME")
+    @Column(name = "local_Date_Time", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
 
 
 
-    @Column(name = "hashNodeBase")
+    @Column(name = "hash_Node_Base")
     private String hash;
 
     public String getHash() {
@@ -44,191 +44,191 @@ public class NodeBase {
 
 
 
-        @Column(name="ipNode")
+        @Column(name="ip_Node")
         private String ipNode;
 
 
-    @Column(name = "modeName")
+    @Column(name = "mode_Name")
     private String modeName;
-    @Column(name = "modeValue")
+    @Column(name = "mode_Value")
     private String modeValue;
 
 
-        @Column (name = "syncName")
+        @Column (name = "sync_Name")
         private String syncName;
-        @Column (name = "syncValueSide1")
+        @Column (name = "sync_Value_Side1")
         private Integer syncValueSide1;
-        @Column (name = "syncValueSide2")
+        @Column (name = "sync_Value_Side2")
         private Integer syncValueSide2;
 
-        @Column (name = "segdName")
+        @Column (name = "segd_Name")
         private String segdName;
-        @Column (name = "segdValueSide1")
+        @Column (name = "segd_Value_Side1")
         private Integer segdValueSide1;
-        @Column (name = "segdValueSide2")
+        @Column (name = "segd_Value_Side2")
         private Integer segdValueSide2;
 
-    @Column(name = "powerBackOffName")
+    @Column(name = "power_Back_Off_Name")
     private String powerBackOffName;
-    @Column(name = "powerBackOffValue")
+    @Column(name = "power_Back_Off_Value")
     private Double powerBackOffValue;
-    @Column(name = "powerBackOffParametr")
+    @Column(name = "power_Back_Off_Parametr")
     private String powerBackOffParametr;
 
-    @Column(name = "farEndPowerBackOffName")
+    @Column(name = "far_End_Power_Back_Off_Name")
     private String farEndPowerBackOffName;
-    @Column(name = "farEndPowerBackOffValue")
+    @Column(name = "far_End_Power_Back_Off_Value")
     private Double farEndPowerBackOffValue;
-    @Column(name = "farEndPowerBackOffParametr")
+    @Column(name = "far_End_Power_Back_Off_Parametr")
     private String farEndPowerBackOffParametr;
 
-        @Column (name = "txPowerName")
+        @Column (name = "tx_Power_Name")
         private String txPowerName;
-        @Column (name = "txPowerValueSide1")
+        @Column (name = "tx_Power_Value_Side1")
         private Double txPowerValueSide1;
-        @Column (name = "txPowerValueSide2")
+        @Column (name = "tx_Power_Value_Side2")
         private Double txPowerValueSide2;
-        @Column (name = "txPowerParametr")
+        @Column (name = "tx_Power_Parametr")
         private String txPowerParametr;
 
-        @Column (name = "rxPowerName")
+        @Column (name = "rx_Power_Name")
         private String rxPowerName;
-        @Column (name = "rxPowerValueSide1")
+        @Column (name = "rx_Power_Value_Side1")
         private Double rxPowerValueSide1;
-        @Column (name = "rxPowerValueSide2")
+        @Column (name = "rx_Power_Value_Side2")
         private Double rxPowerValueSide2;
-        @Column (name = "rxPowerParametr")
+        @Column (name = "rx_Power_Parametr")
         private String rxPowerParametr;
 
-        @Column (name = "loopAttenuationName")
+        @Column (name = "loop_Attenuation_Name")
         private String loopAttenuationName;
-        @Column (name = "loopAttenuationValueSide1")
+        @Column (name = "loop_Attenuation_Value_Side1")
         private Double loopAttenuationValueSide1;
-        @Column (name = "loopAttenuationValueSide2")
+        @Column (name = "loop_Attenuation_Value_Side2")
         private Double loopAttenuationValueSide2;
-        @Column (name = "loopAttenuationParametr")
+        @Column (name = "loop_Attenuation_Parametr")
         private String loopAttenuationParametr="dB";
 
-        @Column (name = "nmrName")
+        @Column (name = "nmr_Name")
         private String nmrName;
-        @Column (name = "nmrValueSide1")
+        @Column (name = "nmr_Value_Side1")
         private Double nmrValueSide1;
-        @Column (name = "nmrValueSide2")
+        @Column (name = "nmr_Value_Side2")
         private Double nmrValueSide2;
-        @Column (name = "nmrParametr")
+        @Column (name = "nmr_Parametr")
         private String nmrParametr="dB";
 
-        @Column (name = "bitrateName")
+        @Column (name = "bitrate_Name")
         private String bitrateName;
-        @Column (name = "bitrateValueSide1")
+        @Column (name = "bitrate_Value_Side1")
         private Integer bitrateValueSide1;
-        @Column (name = "bitrateValueSide2")
+        @Column (name = "bitrate_Value_Side2")
         private Integer bitrateValueSide2;
-        @Column (name = "bitrateParametr")
+        @Column (name = "bitrate_Parametr")
         private String bitrateParametr="kbit/s";
 
-    @Column(name = "sruName")
+    @Column(name = "sru_Name")
     private String sruName;
-    @Column(name = "sruValue")
+    @Column(name = "sru_Value")
     private Integer sruValue;
 
 
-        @Column (name = "activeSyncSourceName")
+        @Column (name = "active_Sync_Source_Name")
         private String activeSyncSourceName;
-        @Column (name = "activeSyncSourceValueSide1")
+        @Column (name = "active_Sync_Source_Value_Side1")
         private String activeSyncSourceValueSide1;
-        @Column (name = "activeSyncSourceValueSide2")
+        @Column (name = "active_Sync_Source_Value_Side2")
         private String activeSyncSourceValueSide2;
 
-        @Column (name = "rpVoltageName")
+        @Column (name = "rp_Voltage_Name")
         private  String rpVoltageName;
-        @Column(name = "rpVoltageValueSide1")
+        @Column(name = "rp_Voltage_Value_Side1")
         private Integer rpVoltageValueSide1;
-        @Column(name = "rpVoltageValueSide2")
+        @Column(name = "rp_Voltage_Value_Side2")
         private Integer rpVoltageValueSide2;
-        @Column(name = "rpVoltageParametr")
+        @Column(name = "rp_Voltage_Parametr")
         private String rpVoltageParametr;
 
-        @Column(name = "rpStatusName")
+        @Column(name = "rp_Status_Name")
         private String rpStatusName;
-        @Column(name = "rpStatusValue")
+        @Column(name = "rp_Status_Value")
         private String rpStatusValue;
 
-        @Column (name = "temperatureName")
+        @Column (name = "temperature_Name")
         private String temperatureName;
-        @Column (name = "temperatureValue")
+        @Column (name = "temperature_Value")
         private Double temperatureValue;
-        @Column (name = "temperatureParametr")
+        @Column (name = "temperature_Parametr")
         private String temperatureParametr;
 
 
 
-    @Column(name = "bertName")
+    @Column(name = "bert_Name")
     private String bertName;
-    @Column(name = "bertValue")
+    @Column(name = "bert_Value")
     private String bertValue;
 
-    @Column(name = "erroredBlocksName")
+    @Column(name = "errored_Blocks_Name")
     private String erroredBlocksName;
-    @Column(name = "erroredBlocksValueSide1")
+    @Column(name = "errored_Blocks_Value_Side1")
     private Long erroredBlocksValueSide1;
-    @Column(name = "erroredBlocksValueSide2")
+    @Column(name = "errored_Blocks_Value_Side2")
     private Long erroredBlocksValueSide2;
 
-    @Column(name = "erroredSecondsName")
+    @Column(name = "errored_Seconds_Name")
     private String erroredSecondsName;
-    @Column(name = "erroredSecondValueSide1")
+    @Column(name = "errored_Second_Value_Side1")
     private Long erroredSecondValueSide1;
-    @Column(name = "erroredSecondValueSide2")
+    @Column(name = "errored_Second_Value_Side2")
     private Long erroredSecondValueSide2;
 
-    @Column(name = "severelyErroredSecondsName")
+    @Column(name = "severely_Errored_Seconds_Name")
     private String severelyErroredSecondsName;
-    @Column(name = "severelyErroredSecondsValueSide1")
+    @Column(name = "severely_Errored_Seconds_Value_Side1")
     private Long severelyErroredSecondsValueSide1;
-    @Column(name = "severelyErroredSecondsValueSide2")
+    @Column(name = "severely_Errored_Seconds_Value_Side2")
     private Long severelyErroredSecondsValueSide2;
 
-    @Column(name = "backgroundBlockErrorsName")
+    @Column(name = "background_Block_Errors_Name")
     private String backgroundBlockErrorsName;
-    @Column(name = "backgroundBlockErrorsValueSide1")
+    @Column(name = "background_Block_Errors_Value_Side1")
     private Long backgroundBlockErrorsValueSide1;
-    @Column(name = "backgroundBlockErrorsValueSide2")
+    @Column(name = "background_Block_Errors_Value_Side2")
     private Long backgroundBlockErrorsValueSide2;
 
-    @Column(name = "esrName")
+    @Column(name = "esr_Name")
     private String esrName;
-    @Column(name = "esrValueSide1")
+    @Column(name = "esr_Value_Side1")
     private Double esrValueSide1;
-    @Column(name = "esrValueSide2")
+    @Column(name = "esr_Value_Side2")
     private Double esrValueSide2;
 
-    @Column(name = "sesrName")
+    @Column(name = "sesr_Name")
     private String sesrName;
-    @Column(name = "sesrValueSide1")
+    @Column(name = "sesr_Value_Side1")
     private Double sesrValueSide1;
-    @Column(name = "sesrValueSide2")
+    @Column(name = "sesr_Value_Side2")
     private Double sesrValueSide2;
 
-    @Column(name = "bberName")
+    @Column(name = "bber_Name")
     private String bberName;
-    @Column(name = "bberValueSide1")
+    @Column(name = "bber_Value_Side1")
     private Double bberValueSide1;
-    @Column(name = "bberValueSide2")
+    @Column(name = "bber_Value_Side2")
     private Double bberValueSide2;
 
-    @Column(name = "availableTimeName")
+    @Column(name = "available_Time_Name")
     private String availableTimeName;
-    @Column(name = "availableTimeValueSide1")
+    @Column(name = "available_Time_Value_Side1")
     private Long availableTimeValueSide1;
-    @Column(name = "availableTimeValueSide2")
+    @Column(name = "available_Time_Value_Side2")
     private Long availableTimeValueSide2;
 
-    @Column(name = "unavailableTimeName")
+    @Column(name = "unavailable_Time_Name")
     private String unavailableTimeName;
-    @Column(name = "unavailableTimeValueSide1")
+    @Column(name = "unavailable_Time_Value_Side1")
     private Long unavailableTimeValueSide1;
-    @Column(name = "unavailableTimeValueSide2")
+    @Column(name = "unavailable_Time_Value_Side2")
     private Long unavailableTimeValueSide2;
 
 

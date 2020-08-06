@@ -1,9 +1,10 @@
 package Application.Survey;
 
-import Application.DAO.Repository;
 import Application.Entity.DateTime;
-import Application.Service.ServiceDateTime;
+import Application.exchangeObject.ExchangeDateTime;
 import Application.exchangeObject.ExchangeServiceObjectView;
+import Application.service.LocalDateTimeImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,15 @@ import java.util.TimerTask;
 
 @Controller
 public class Agent {
+
+    @Autowired
+    LocalDateTimeImpl nodeBaseService;
+
+
     @GetMapping(value="/Agent/start")
     public String start(Model model, ExchangeServiceObjectView exchangeServiceObjectView) {
 
-        Repository repository = new Repository();
+       // Repository repository = new Repository();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
@@ -23,14 +29,14 @@ public class Agent {
             public void run() {
 
                 DateTime dateTime = new DateTime();
-                ServiceDateTime serviceDateTime = new ServiceDateTime();
+                ExchangeDateTime exchangeDateTime = new ExchangeDateTime();
 
-                dateTime.setHash(serviceDateTime.getHashStatic());
-                dateTime.setTimestamp(serviceDateTime.getTimestampStatic());
+                dateTime.setHash(exchangeDateTime.getHashStatic());
+                dateTime.setTimestamp(exchangeDateTime.getTimestampStatic());
 
-                dateTime.setLocalDate(serviceDateTime.getLocalDateStatic());
-                dateTime.setLocalTime(serviceDateTime.getLocalTimeStatic());
-                dateTime.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+                dateTime.setLocalDate(exchangeDateTime.getLocalDateStatic());
+                dateTime.setLocalTime(exchangeDateTime.getLocalTimeStatic());
+                dateTime.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
 
 
 
@@ -38,15 +44,17 @@ public class Agent {
                 Thread thread = new Thread(setNodeBaseObject);
                 thread.start();
 
-                repository.setObT(dateTime);
-                repository.save();
+                nodeBaseService.save(dateTime);
 
-                serviceDateTime.setHashStatic(serviceDateTime.getHashDinamic());
-                serviceDateTime.setTimestampStatic(serviceDateTime.getTimestampDinamic());
+                /*repository.setObT(dateTime);
+                repository.save();*/
 
-                serviceDateTime.setLocalDateStatic(serviceDateTime.getLocalDateDinamic());
-                serviceDateTime.setLocalTimeStatic(serviceDateTime.getLocalTimeDinamic());
-                serviceDateTime.setLocalDateTimeStatic(serviceDateTime.getLocalDateTimeDinamic());
+                exchangeDateTime.setHashStatic(exchangeDateTime.getHashDinamic());
+                exchangeDateTime.setTimestampStatic(exchangeDateTime.getTimestampDinamic());
+
+                exchangeDateTime.setLocalDateStatic(exchangeDateTime.getLocalDateDinamic());
+                exchangeDateTime.setLocalTimeStatic(exchangeDateTime.getLocalTimeDinamic());
+                exchangeDateTime.setLocalDateTimeStatic(exchangeDateTime.getLocalDateTimeDinamic());
 
             }
 

@@ -2,7 +2,7 @@ package Application.Survey;
 
 import Application.DAO.Repository;
 import Application.Entity.NodeBase;
-import Application.Service.ServiceDateTime;
+import Application.exchangeObject.ExchangeDateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import Application.processing.DslStatisticsNode;
@@ -37,7 +37,7 @@ public class SetNodeBaseObject implements Runnable {
         url статуса;url статистики
          */
        try {
-           scanner = new Scanner(new File("C:\\Users\\Denis\\IdeaProjects\\test\\src\\main\\resources\\Url.txt"), "UTF-8");
+           scanner = new Scanner(new File("C:\\Users\\Deimos\\IdeaProjects\\test\\src\\main\\resources\\Url.txt"), "UTF-8");
        } catch (FileNotFoundException e) {
            JOptionPane.showMessageDialog(null, "Фаил не найден");
        }
@@ -78,7 +78,7 @@ public class SetNodeBaseObject implements Runnable {
 
 
 
-           ServiceDateTime serviceDateTime =new ServiceDateTime();
+           ExchangeDateTime exchangeDateTime =new ExchangeDateTime();
 
 
            if (dslStatusNode.modeName("") != "") {
@@ -86,13 +86,13 @@ public class SetNodeBaseObject implements Runnable {
 
                NodeBase nodeBase = new NodeBase();
 
-               nodeBase.setLocalDate(serviceDateTime.getLocalDateStatic());
-               nodeBase.setLocalTime(serviceDateTime.getLocalTimeStatic());
-               nodeBase.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+               nodeBase.setLocalDate(exchangeDateTime.getLocalDateStatic());
+               nodeBase.setLocalTime(exchangeDateTime.getLocalTimeStatic());
+               nodeBase.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
 
 
-               nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
-               nodeBase.setHash(serviceDateTime.getHashStatic());
+               nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
+               nodeBase.setHash(exchangeDateTime.getHashStatic());
 
 
                nodeBase.setModeName(dslStatusNode.modeName(""));
@@ -176,13 +176,13 @@ public class SetNodeBaseObject implements Runnable {
 
                NodeBase nodeBase = new NodeBase();
 
-               nodeBase.setLocalDate(serviceDateTime.getLocalDateStatic());
-               nodeBase.setLocalTime(serviceDateTime.getLocalTimeStatic());
-               nodeBase.setLocalDateTime(serviceDateTime.getLocalDateTimeStatic());
+               nodeBase.setLocalDate(exchangeDateTime.getLocalDateStatic());
+               nodeBase.setLocalTime(exchangeDateTime.getLocalTimeStatic());
+               nodeBase.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
 
 
-               nodeBase.setTimestamp(serviceDateTime.getTimestampStatic());
-               nodeBase.setHash(serviceDateTime.getHashStatic());
+               nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
+               nodeBase.setHash(exchangeDateTime.getHashStatic());
 
                nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
 

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "dateTime")
+@Table(name = "Date_Time")
 public class DateTime {
 
 
@@ -28,7 +28,7 @@ public class DateTime {
     @Column(name = "Time")
     private LocalTime localTime;
 
-    @Column(name = "DateTime")
+    @Column(name = "local_Date_Time")
     private LocalDateTime localDateTime;
 
 

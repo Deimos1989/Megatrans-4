@@ -2,7 +2,7 @@ package Application.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="nodeUrl")
+@Table(name="Node_Url")
 public class NodeUrl {
 
     @Id
