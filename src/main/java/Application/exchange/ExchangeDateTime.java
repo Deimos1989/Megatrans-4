@@ -1,4 +1,4 @@
-package Application.exchangeObject;
+package Application.exchange;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

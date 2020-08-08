@@ -1,6 +1,6 @@
 package Application.Controller;
 
-import Application.exchangeObject.ExchangeServiceObjectView;
+import Application.exchange.ExchangeServiceObjectView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,19 +23,13 @@ public class ControllerMainTitle {
         return "menu";
     }
 
-    /*@GetMapping(value="/reportSystem")
-    public String reportSystem(Model model) {
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
-        return "reportSystem";
-    }*/
-
     @GetMapping(value="/reportSystem")
     public String reportSystem(Model model) {
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
-        return "test";
+        return "reportSystem";
     }
+
 
 
     @GetMapping(value="/addUrl")

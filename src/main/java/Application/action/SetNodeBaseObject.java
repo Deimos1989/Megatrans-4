@@ -1,8 +1,8 @@
-package Application.Survey;
+package Application.action;
 
-import Application.DAO.Repository;
 import Application.Entity.NodeBase;
-import Application.exchangeObject.ExchangeDateTime;
+import Application.exchange.ExchangeDateTime;
+import Application.service.NodeBaseServiceInterfaceImplement;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import Application.processing.DslStatisticsNode;
@@ -16,15 +16,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
+
 public class SetNodeBaseObject implements Runnable {
 
+    NodeBaseServiceInterfaceImplement nodeBaseService;
 
+    public  SetNodeBaseObject(NodeBaseServiceInterfaceImplement nodeBaseService){
+        this.nodeBaseService=nodeBaseService;
+    }
 
     private static Scanner scanner;
 
+
+
    public void run() {
 
-       Repository repository = new Repository();
+
        DslStatusNode dslStatusNode = new DslStatusNode();
        DslStatisticsNode dslStatisticsNode = new DslStatisticsNode();
 
@@ -167,8 +175,7 @@ public class SetNodeBaseObject implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
 
-               repository.setObT(nodeBase);
-               repository.save();
+               nodeBaseService.save(nodeBase);
 
 
            } else {
@@ -269,8 +276,7 @@ public class SetNodeBaseObject implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
                nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
-               repository.setObT(nodeBase);
-               repository.save();
+               nodeBaseService.save(nodeBase);
 
            }
 

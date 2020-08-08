@@ -1,0 +1,93 @@
+body {
+    background: #FFF;
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-indent: 1em;
+
+}
+
+
+#header {
+    background: #8B0000;
+    color:#FFFFFF;
+    border-radius: 8px;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+
+}
+
+#sidebar {
+    background: #c4c4c4;
+
+    border-radius: 8px;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+}
+
+#sidebar1 {
+    background: #c4c4c4;
+    width: 30%;
+    height: 20%;
+    border-radius: 8px;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+}
+
+#sidebar2 {
+    background: #c4c4c4;
+    width: 65%;
+    height: 100%;
+    float: right;
+    border-radius: 8px;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+}
+
+#container {
+    margin: 0px auto;
+    padding: 5px 5px 5px 5px;
+    background: #e4f0f7;
+    text-align: left;
+    width: 99%;
+    height: 100%;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+    border-radius: 8px;
+}
+
+#content {
+    background: #F5F5F5;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    margin-bottom: 5px; /*нижний внешний отступ*/
+    width: 100%;
+    border-radius: 8px;
+
+
+}
+
+
+#content1 {
+    background: #F5F5F5;
+    margin-top: 5px; /*верхний внешний отступ*/
+    margin-left: 5px; /*левый внешний отступ*/
+    margin-right: 5px; /*правый внешний отступ*/
+    top:135px;
+    right:10px;
+    width: 650px;
+    position:absolute;
+    border-radius: 8px;
+
+}

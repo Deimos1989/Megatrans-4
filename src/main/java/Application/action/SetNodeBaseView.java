@@ -1,23 +1,15 @@
-package Application.Survey;
+/*
+package Application.action;
 
 import Application.Entity.NodeBase;
-import Application.exchangeObject.ExchangeNodeBaseObjectView;
+import Application.exchange.ExchangeNodeBaseObjectView;
 
 import java.util.List;
 
-public class SetNodeBaseObjectView {
+public class SetNodeBaseView {
 
-    public List<NodeBase> getNodeBases() {
-        return nodeBases;
-    }
-
-    public void setNodeBases(List<NodeBase> nodeBases) {
-        this.nodeBases = nodeBases;
-    }
 
     List<NodeBase>nodeBases;
-
-
 
     public ExchangeNodeBaseObjectView setTable() {
 
@@ -81,3 +73,4 @@ public class SetNodeBaseObjectView {
         return exchangeNodeBaseObjectView;
     }
 }
+*/

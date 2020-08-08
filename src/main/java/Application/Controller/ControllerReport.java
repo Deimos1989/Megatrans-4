@@ -4,8 +4,8 @@ import Application.DAO.Repository;
 
 import Application.Entity.NodeBase;
 import Application.Report.ReportSystem;
-import Application.exchangeObject.ExchangeServiceObjectView;
-import Application.Survey.SetNodeBaseObjectView;
+import Application.exchange.ExchangeServiceObjectView;
+
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -58,7 +58,7 @@ public class ControllerReport {
     }
 
     @RequestMapping(value = "/ControllerReport/analizNodeDateTimeReport" , method=RequestMethod.POST)
-    public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, SetNodeBaseObjectView SetNodeBaseObjectView, Repository repository, Model model) {
+    public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView,  Repository repository, Model model) {
         repository.setHash(exchangeServiceObjectView.getDateTime());
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -73,7 +73,7 @@ public class ControllerReport {
     }
 
     @RequestMapping(value = "/ControllerReport/analizNodeHashReport" , method=RequestMethod.POST)
-    public String analizNodeHashReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, SetNodeBaseObjectView SetNodeBaseObjectView, Repository repository, Model model) {
+    public String analizNodeHashReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView,  Repository repository, Model model) {
         repository.setHash(exchangeServiceObjectView.getHash());
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -98,7 +98,7 @@ public class ControllerReport {
         reportSystem.setDataTime(exchangeServiceObjectView.getDateTime());
         reportSystem.reportSystem();
         
-        String DIRECTORY = "C:/Users/Denis/IdeaProjects/Test";
+        String DIRECTORY = "C:/Users/Deimos/IdeaProjects/Test";
         String DEFAULT_FILE_NAME = reportSystem.getDataTime().replace(':','-')+".xls";
 
         File file = new File(DIRECTORY + "/" +DEFAULT_FILE_NAME);

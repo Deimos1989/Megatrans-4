@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
     <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/reportSystem.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/Interface.css}" rel="stylesheet" media="screen" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <h2>Отчеты</h2>
     </div>
 
-    <div id="sidebar0">
+    <div id="sidebar">
 
         <form action="#" th:action="@{/ControllerReport/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
             SaveEx: <input type="text" size="20" th:field="*{dateTime}" />
@@ -34,6 +34,10 @@
             <input type="submit" value="Report" />
         </form>
 
+        <form action="#" th:action="@{/ControllerDelete/deleteHash}" th:object="${exchangeServiceObjectView}"   method="post">
+            Hash:<input type="text" size="20" th:field="*{hash}"/>
+            <input type="submit" value="Delete" />
+        </form>
 
     </div>
 
@@ -140,12 +144,7 @@
 
             </table>
 
-        </div>
-    </div>
-
-    <div id="clear">
-
-    </div>
+</div>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

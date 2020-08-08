@@ -1,9 +1,12 @@
-package Application.Survey;
+package Application.Controller;
 
 import Application.Entity.DateTime;
-import Application.exchangeObject.ExchangeDateTime;
-import Application.exchangeObject.ExchangeServiceObjectView;
-import Application.service.LocalDateTimeImpl;
+import Application.action.SetNodeBaseObject;
+import Application.exchange.ExchangeDateTime;
+import Application.exchange.ExchangeServiceObjectView;
+import Application.service.DateTimeServiceInterfaceImplement;
+
+import Application.service.NodeBaseServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +15,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Controller
-public class Agent {
+public class ControllerAgent {
 
     @Autowired
-    LocalDateTimeImpl nodeBaseService;
+    DateTimeServiceInterfaceImplement dateTimeService;
+
+    @Autowired
+    NodeBaseServiceInterfaceImplement nodeBaseService;
+
 
 
     @GetMapping(value="/Agent/start")
     public String start(Model model, ExchangeServiceObjectView exchangeServiceObjectView) {
 
-       // Repository repository = new Repository();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
@@ -40,14 +46,13 @@ public class Agent {
 
 
 
-                SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject();
+                SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject(nodeBaseService);
                 Thread thread = new Thread(setNodeBaseObject);
                 thread.start();
 
-                nodeBaseService.save(dateTime);
+                dateTimeService.save(dateTime);
 
-                /*repository.setObT(dateTime);
-                repository.save();*/
+
 
                 exchangeDateTime.setHashStatic(exchangeDateTime.getHashDinamic());
                 exchangeDateTime.setTimestampStatic(exchangeDateTime.getTimestampDinamic());

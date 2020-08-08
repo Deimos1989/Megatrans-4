@@ -2,7 +2,7 @@ package Application.Controller;
 
 import Application.DAO.Repository;
 import Application.Entity.NodeUrl;
-import Application.exchangeObject.ExchangeServiceObjectView;
+import Application.exchange.ExchangeServiceObjectView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +18,8 @@ public class ControllerWrite {
             nodeUrl.setNumber(exchangeServiceObjectView.getNumber());
             nodeUrl.setIpUrl(exchangeServiceObjectView.getIpAddress());
             nodeUrl.setUrl(exchangeServiceObjectView.getUrl());
+            repository.setObT(nodeUrl);
+            repository.save();
 
         } else {
             return "messageError";

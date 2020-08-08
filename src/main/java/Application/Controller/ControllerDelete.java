@@ -1,7 +1,7 @@
 package Application.Controller;
 
 import Application.DAO.Repository;
-import Application.exchangeObject.ExchangeServiceObjectView;
+import Application.exchange.ExchangeServiceObjectView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +15,7 @@ public class ControllerDelete {
     public String deleteHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository ) {
         repository.setObV(exchangeServiceObjectView.getHash());
         repository.deleteHash();
-        return "menu";
+        return "reportSystem";
     }
 
     @RequestMapping(value="/ControllerDelete/deleteId", method=RequestMethod.POST)
