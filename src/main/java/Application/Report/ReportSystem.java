@@ -191,7 +191,7 @@ public class ReportSystem {
             cell2.setCellStyle(style);
 
             Cell cell3 = row3.createCell(i+1);
-            cell3.setCellValue(nodeBaseList.get(i).getIpNode());
+            cell3.setCellValue(nodeBaseList.get(i).getIp());
             cell3.setCellStyle(style);
 
 

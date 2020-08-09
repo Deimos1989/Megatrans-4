@@ -27,7 +27,7 @@ public class ControllerReport {
 
     @RequestMapping(value="/ControllerReport/analizNodeData", method=RequestMethod.POST)
     public String analizNodeData(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository) {
-        repository.setIp(exchangeServiceObjectView.getIpAddress());
+        repository.setIp(exchangeServiceObjectView.getIp());
 
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeBase> nodeBaseList= repository.findByIpNode();
@@ -41,7 +41,7 @@ public class ControllerReport {
         return "reportSystem";
     }
 
-    @RequestMapping(value="/ControllerReport/analizNodeDataToDay", method=RequestMethod.POST)
+    /*@RequestMapping(value="/ControllerReport/analizNodeDataToDay", method=RequestMethod.POST)
     public String analizNodeDataToDay(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, Repository repository) {
         repository.setDate(exchangeServiceObjectView.getDate());
 
@@ -55,7 +55,7 @@ public class ControllerReport {
         }
 
         return "menu";
-    }
+    }*/
 
     @RequestMapping(value = "/ControllerReport/analizNodeDateTimeReport" , method=RequestMethod.POST)
     public String analizNodeDateTimeReport(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView,  Repository repository, Model model) {

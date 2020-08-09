@@ -45,7 +45,7 @@ public class NodeBase {
 
 
         @Column(name="ip_Node")
-        private String ipNode;
+        private String ip;
 
 
     @Column(name = "mode_Name")
@@ -278,12 +278,12 @@ public NodeBase(){
         this.timestamp = timestamp;
     }
 
-    public String getIpNode() {
-        return ipNode;
+    public String getIp() {
+        return ip;
     }
 
-    public void setIpNode(String ipNode) {
-        this.ipNode = ipNode;
+    public void setIp(String ipNode) {
+        this.ip = ipNode;
     }
 
     public String getModeName() {

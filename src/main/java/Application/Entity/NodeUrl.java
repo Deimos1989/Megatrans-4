@@ -14,7 +14,7 @@ public class NodeUrl {
     private String number;
 
     @Column(name = "ip")
-    private String ipUrl;
+    private String ip;
 
     @Column(name = "url")
     private String url;
@@ -23,12 +23,11 @@ public class NodeUrl {
 
     }
 
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -40,19 +39,19 @@ public class NodeUrl {
         this.number = number;
     }
 
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getIpUrl() {
-        return ipUrl;
-    }
-
-    public void setIpUrl(String ipUrl) {
-        this.ipUrl = ipUrl;
     }
 }

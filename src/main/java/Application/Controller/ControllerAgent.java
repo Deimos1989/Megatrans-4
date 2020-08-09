@@ -18,10 +18,9 @@ import java.util.TimerTask;
 public class ControllerAgent {
 
     @Autowired
-    DateTimeServiceInterfaceImplement dateTimeService;
-
+    DateTimeServiceInterfaceImplement dateTimeServiceInterfaceImplement;
     @Autowired
-    NodeBaseServiceInterfaceImplement nodeBaseService;
+   NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
 
 
 
@@ -46,11 +45,11 @@ public class ControllerAgent {
 
 
 
-                SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject(nodeBaseService);
+                SetNodeBaseObject setNodeBaseObject = new SetNodeBaseObject(nodeBaseServiceInterfaceImplement);
                 Thread thread = new Thread(setNodeBaseObject);
                 thread.start();
 
-                dateTimeService.save(dateTime);
+                dateTimeServiceInterfaceImplement.save(dateTime);
 
 
 

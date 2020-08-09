@@ -20,14 +20,13 @@ import java.util.Scanner;
 
 public class SetNodeBaseObject implements Runnable {
 
-    NodeBaseServiceInterfaceImplement nodeBaseService;
+    NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
 
-    public  SetNodeBaseObject(NodeBaseServiceInterfaceImplement nodeBaseService){
-        this.nodeBaseService=nodeBaseService;
+    public  SetNodeBaseObject(NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement){
+        this.nodeBaseServiceInterfaceImplement=nodeBaseServiceInterfaceImplement;
     }
 
     private static Scanner scanner;
-
 
 
    public void run() {
@@ -105,7 +104,7 @@ public class SetNodeBaseObject implements Runnable {
 
                nodeBase.setModeName(dslStatusNode.modeName(""));
 
-               nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
+               nodeBase.setIp(dslStatusNode.nameNode(url[0]));
 
 
                nodeBase.setModeValue(dslStatusNode.modeValue(""));
@@ -175,7 +174,7 @@ public class SetNodeBaseObject implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
 
 
-               nodeBaseService.save(nodeBase);
+               nodeBaseServiceInterfaceImplement.save(nodeBase);
 
 
            } else {
@@ -191,7 +190,7 @@ public class SetNodeBaseObject implements Runnable {
                nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
                nodeBase.setHash(exchangeDateTime.getHashStatic());
 
-               nodeBase.setIpNode(dslStatusNode.nameNode(url[0]));
+               nodeBase.setIp(dslStatusNode.nameNode(url[0]));
 
                nodeBase.setSyncName(dslStatusNode.syncName(""));
                nodeBase.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
@@ -276,7 +275,7 @@ public class SetNodeBaseObject implements Runnable {
                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
                nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
-               nodeBaseService.save(nodeBase);
+               nodeBaseServiceInterfaceImplement.save(nodeBase);
 
            }
 

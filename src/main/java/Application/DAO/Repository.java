@@ -29,7 +29,7 @@ private V obV;
     public List<NodeBase> findByIpNode() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
-        Query query1 = session.createQuery("FROM NodeBase where ipNode=:paramName");
+        Query query1 = session.createQuery("FROM NodeBase where ip=:paramName");
         query1.setParameter("paramName",ip);
         List<NodeBase>nodeBaseList=query1.list();
         session.getTransaction().commit();

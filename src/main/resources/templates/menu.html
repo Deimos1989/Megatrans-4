@@ -24,15 +24,15 @@
 
 <div id="sidebar">
 
-    <form action="#" th:action="@{/ControllerReport/analizNodeDataToDay}" th:object="${exchangeServiceObjectView}"  method="post">
-        Date:<input type="text" size="20" th:field="*{date}"/>
+    <form action="#" th:action="@{/DateTimeController/local-date}" th:object="${exchangeServiceObjectView}"  method="get">
+        Date:<input type="text" size="20" th:field="*{localDate}"/>
         <input type="submit" value="Report" />
     </form>
 
 </div>
 
 
-    <div id="content">
+    <div id="content0">
 
         <table border="1">
             <tr>
@@ -59,7 +59,7 @@
 
                 <td th:utext="${map.getValue().localDateTime}">DateTime</td>
 
-                <td th:utext="${map.getValue().ipNode}">IpNode</td>
+                <td th:utext="${map.getValue().ip}">IpNode</td>
 
                 <td th:utext="${map.getValue().hash}">Hash</td>
 
@@ -71,7 +71,7 @@
         </table>
 
     </div>
-</div>>
+</div>
 
 
 </body>

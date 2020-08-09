@@ -24,20 +24,21 @@
         </form>
 
 
-        <form action="#" th:action="@{/ControllerReport/analizNodeHashReport}" th:object="${exchangeServiceObjectView}"  method="post">
+        <form action="#" th:action="@{/ControllerNodeBase/findByHashNodeBase}" th:object="${exchangeServiceObjectView}"  method="post">
             System: <input type="text" size="20" th:field="*{hash}" />
             <input type="submit" value="Report" />
         </form>
 
-        <form action="#" th:action="@{/ControllerReport/analizNodeData}" th:object="${exchangeServiceObjectView}"   method="post">
-            NodeIp: <input type="text" size="20" th:field="*{ipAddress}"/>
+        <form action="#" th:action="@{/ControllerNodeBase/findByIpNodeBase}" th:object="${exchangeServiceObjectView}"   method="post">
+            NodeIp: <input type="text" size="20" th:field="*{ip}"/>
             <input type="submit" value="Report" />
         </form>
 
-        <form action="#" th:action="@{/ControllerDelete/deleteHash}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" th:action="@{/ControllerNodeBase/deleteByHash}" th:object="${exchangeServiceObjectView}"   method="post">
             Hash:<input type="text" size="20" th:field="*{hash}"/>
             <input type="submit" value="Delete" />
         </form>
+
 
     </div>
 
@@ -96,7 +97,7 @@
 
                     <td th:utext="${map.getKey()}">Id</td>
                     <td th:utext="${map.getValue().localDateTime}"></td>
-                    <td th:utext="${map.getValue().ipNode}"></td>
+                    <td th:utext="${map.getValue().ip}"></td>
 
 
                     <td th:utext="${map.getValue().erroredBlocksValueSide1}"></td>
