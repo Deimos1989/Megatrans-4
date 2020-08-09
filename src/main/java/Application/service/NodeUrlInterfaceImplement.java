@@ -37,17 +37,10 @@ this.nodeUrlInterfaceRepository.save(nodeUrl);
     }
 
     @Override
-    public void update(NodeUrl nodeUrl) {
-
-    }
-
-    @Override
     public void delete(NodeUrl nodeUrl) {
 this.nodeUrlInterfaceRepository.delete(nodeUrl);
     }
-
-
-
+    
     @Override
     public void deleteAll(NodeUrl nodeUrle) {
 this.nodeUrlInterfaceRepository.deleteAll();

@@ -11,9 +11,7 @@ public interface NodeUrlInterface {
     List<NodeUrl> findByNumber(String number);
 
     void save(NodeUrl nodeUrl);
-    void update(NodeUrl nodeUrl);
     void delete(NodeUrl nodeUrl);
-
     void deleteAll(NodeUrl nodeUrl);
 
 

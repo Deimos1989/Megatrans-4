@@ -20,22 +20,7 @@ public class ControllerNodeUrl {
     NodeUrlInterfaceImplement nodeUrlInterfaceImplement;
 
 
-
-   /* @RequestMapping(value="/ControllerNodeUrl/findAllDateTime", method=RequestMethod.GET)
-    public String findAllDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
-        LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
-        List<DateTime> dateTimeList = dateTimeServiceInterfaceImplement.findAll();
-        for (int i = 0; i != dateTimeList.size(); i++) {
-            Long id = dateTimeList.get(i).getId();
-            Object node = dateTimeList.get(i);
-            maps.put(id, node);
-            model.addAttribute("maps", maps);
-        }
-        return "test";
-    }
-*/
-
-    @RequestMapping(value="/ControllerNodeUrl/findAllNodeUrl", method=RequestMethod.GET)
+       @RequestMapping(value="/ControllerNodeUrl/findAll", method=RequestMethod.GET)
     public String findAllNodeUrl(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeUrl> nodeUrlList = nodeUrlInterfaceImplement.findAll();
@@ -47,10 +32,6 @@ public class ControllerNodeUrl {
         }
         return "addUrl";
     }
-
-
-
-
 
 
     @RequestMapping(value="/ControllerNodeUrl/save", method=RequestMethod.POST)
@@ -71,9 +52,8 @@ public class ControllerNodeUrl {
     }
 
 
-
-    @RequestMapping(value="/ControllerNodeUrl/nodeUrlIp", method=RequestMethod.GET)
-    public String nodeUrlIp(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl) {
+    @RequestMapping(value="/ControllerNodeUrl/findByIp", method=RequestMethod.GET)
+    public String findByIp(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl) {
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeUrl> nodeUrlList= nodeUrlInterfaceImplement.findByIp(exchangeServiceObjectView.getIp());
         for (int i = 0; i != nodeUrlList.size(); i++) {
@@ -85,8 +65,9 @@ public class ControllerNodeUrl {
         return "addUrl";
     }
 
-    @RequestMapping(value="/ControllerNodeUrl/nodeUrlNumber", method=RequestMethod.GET)
-    public String nodeUrlNumber(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl) {
+
+    @RequestMapping(value="/ControllerNodeUrl/findByNumber", method=RequestMethod.GET)
+    public String findByNumber(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl) {
         LinkedHashMap< Long , Object> maps =new LinkedHashMap<Long, Object>();
         List<NodeUrl> nodeUrlList= nodeUrlInterfaceImplement.findByNumber(exchangeServiceObjectView.getNumber());
         for (int i = 0; i != nodeUrlList.size(); i++) {
@@ -99,11 +80,8 @@ public class ControllerNodeUrl {
     }
 
 
-
-
-
-    @RequestMapping(value="/ControllerNodeUrl/deleteNodeUrlId", method=RequestMethod.POST)
-    public String deleteNodeUrlId(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl ) {
+    @RequestMapping(value="/ControllerNodeUrl/deleteId", method=RequestMethod.POST)
+    public String deleteId(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl ) {
         if (exchangeServiceObjectView.getId()!=null){
             nodeUrl.setId(exchangeServiceObjectView.getId());
             nodeUrlInterfaceImplement.delete(nodeUrl);
@@ -114,9 +92,8 @@ public class ControllerNodeUrl {
     }
 
 
-
-    @RequestMapping(value="/ControllerNodeUrl/deleteNodeUrlAll", method=RequestMethod.POST)
-    public String deleteNodeUrlAll(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl ) {
+    @RequestMapping(value="/ControllerNodeUrl/deleteAll", method=RequestMethod.POST)
+    public String deleteAll(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model,NodeUrl nodeUrl ) {
             nodeUrlInterfaceImplement.deleteAll(nodeUrl);
         return "addUrl";
     }

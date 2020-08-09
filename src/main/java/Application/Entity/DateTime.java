@@ -42,6 +42,7 @@ public class DateTime {
     @Column(name = "hash")
     private String hash;
 
+
     public Long getId() {
         return id;
     }
@@ -81,7 +82,6 @@ public class DateTime {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
-
 
     public String getHash() {
         return hash;

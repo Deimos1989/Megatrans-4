@@ -3,6 +3,8 @@ package Application.repository;
 import Application.Entity.NodeBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface NodeBaseInterfaceRepository extends JpaRepository<NodeBase, Long> {
@@ -10,8 +12,10 @@ public interface NodeBaseInterfaceRepository extends JpaRepository<NodeBase, Lon
 
     List<NodeBase> findByHash(String hash);
 
-    List<NodeBase> findByLocalDateTime(String localDateTime);
-    
     void deleteByHash(String hash);
+
+    List<NodeBase> findByLocalDate(LocalDate localDate);
+
+    List<NodeBase> findByLocalDateTime(LocalDateTime localDateTime);
 }
 

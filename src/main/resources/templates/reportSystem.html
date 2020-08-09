@@ -19,24 +19,28 @@
     <div id="sidebar">
 
         <form action="#" th:action="@{/ControllerReport/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
-            SaveEx: <input type="text" size="20" th:field="*{dateTime}" />
-            <input type="submit" value="Report" />
+            SaveEx: <input type="text" size="20" th:field="*{localDateTime}" />
+            <input type="submit" value="Report" />:System report on LocalDateTime.
         </form>
 
+        <form action="#" th:action="@{/ControllerNodeBase/findByLocalDateTime}" th:object="${exchangeServiceObjectView}"  method="post">
+            System: <input type="text" size="20" th:field="*{localDateTime}" />
+            <input type="submit" value="Report" />:System report on LocalDateTime.
+        </form>
 
-        <form action="#" th:action="@{/ControllerNodeBase/findByHashNodeBase}" th:object="${exchangeServiceObjectView}"  method="post">
+        <form action="#" th:action="@{/ControllerNodeBase/findByHash}" th:object="${exchangeServiceObjectView}"  method="post">
             System: <input type="text" size="20" th:field="*{hash}" />
-            <input type="submit" value="Report" />
+            <input type="submit" value="Report" />:System report on hash.
         </form>
 
-        <form action="#" th:action="@{/ControllerNodeBase/findByIpNodeBase}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" th:action="@{/ControllerNodeBase/findByIp}" th:object="${exchangeServiceObjectView}"   method="post">
             NodeIp: <input type="text" size="20" th:field="*{ip}"/>
-            <input type="submit" value="Report" />
+            <input type="submit" value="Report" />:System report on ipAddress.
         </form>
 
         <form action="#" th:action="@{/ControllerNodeBase/deleteByHash}" th:object="${exchangeServiceObjectView}"   method="post">
-            Hash:<input type="text" size="20" th:field="*{hash}"/>
-            <input type="submit" value="Delete" />
+            Hash:   <input type="text" size="20" th:field="*{hash}"/>
+            <input type="submit" value="Delete" />:System report on hash.
         </form>
 
 

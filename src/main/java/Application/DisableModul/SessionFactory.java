@@ -1,4 +1,4 @@
-package Application.DAO;
+package Application.DisableModul;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 

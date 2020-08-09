@@ -24,7 +24,7 @@
 
 <div id="sidebar">
 
-    <form action="#" th:action="@{/DateTimeController/local-date}" th:object="${exchangeServiceObjectView}"  method="get">
+    <form action="#" th:action="@{/ControllerNodeBase/findByLocalDate}" th:object="${exchangeServiceObjectView}"  method="post">
         Date:<input type="text" size="20" th:field="*{localDate}"/>
         <input type="submit" value="Report" />
     </form>
@@ -38,13 +38,11 @@
             <tr>
                 <th width="10%">Id</th>
 
-                <th width="15%">Date</th>
-
                 <th width="20%">DateTime</th>
 
                 <th width="20%">IpNode</th>
 
-                <th width="35%">Hash</th>
+                <th width="50%">Hash</th>
 
 
 
@@ -54,8 +52,6 @@
             <tr th:block th:each="map:${maps}">
 
                 <td th:utext="${map.getKey()}">Id</td>
-
-                <td th:utext="${map.getValue().localDate}">Date</td>
 
                 <td th:utext="${map.getValue().localDateTime}">DateTime</td>
 
