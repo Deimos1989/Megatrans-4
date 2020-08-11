@@ -16,8 +16,14 @@ public class NodeUrl {
     @Column(name = "ip")
     private String ip;
 
-    @Column(name = "url")
-    private String url;
+
+    @Column(name = "url_Dsl_status")
+    private String urlDslStatus;
+
+    @Column(name = "url_Dsl_statistics")
+    private String urlDslStatistics;
+
+
 
     public NodeUrl(){
 
@@ -47,11 +53,20 @@ public class NodeUrl {
         this.ip = ip;
     }
 
-    public String getUrl() {
-        return url;
+
+    public String getUrlDslStatus() {
+        return urlDslStatus;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlDslStatus(String urlDslStatus) {
+        this.urlDslStatus = urlDslStatus;
+    }
+
+    public String getUrlDslStatistics() {
+        return urlDslStatistics;
+    }
+
+    public void setUrlDslStatistics(String urlDslStatistics) {
+        this.urlDslStatistics = urlDslStatistics;
     }
 }

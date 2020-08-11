@@ -1,10 +1,12 @@
 package Application.processing;
 
 
+import org.springframework.stereotype.Component;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+@Component
 public class DslStatisticsNode{
 
     public void setTable(String table) {

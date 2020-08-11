@@ -17,12 +17,19 @@
 
 <div id="sidebar1">
 
-    <form action="#" th:action="@{/Agent/start}" th:object="${exchangeServiceObjectView}"   method="get">
+    <form action="#" th:action="@{/Agent/start}" th:object="${exchangeAgent}"   method="get">
         <td>
             ip:<input type="text" size="20" th:field="*{hash}"/>
             <input type="submit" name="submit_button" value="Start">
         </td>
     </form>
+
+    <form action="#" th:action="@{/ControllerAgent/readUrl}"  th:object="${exchangeAgent}"  method="post">
+        <td>
+            <input type="submit" name="submit_button" value="read">
+        </td>
+    </form>
+
 
 </div>
 </body>

@@ -12,5 +12,4 @@ public interface NodeUrlInterfaceRepository extends JpaRepository<NodeUrl, Long>
 
     List<NodeUrl> findByNumber(String number);
 
-
 }

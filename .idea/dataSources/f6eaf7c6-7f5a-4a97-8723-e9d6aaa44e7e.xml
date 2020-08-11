@@ -1602,12 +1602,17 @@
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="283" name="url">
+    <column id="379" parent="283" name="url_dsl_statistics">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="380" parent="283" name="PRIMARY">
+    <column id="380" parent="283" name="url_dsl_status">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="381" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

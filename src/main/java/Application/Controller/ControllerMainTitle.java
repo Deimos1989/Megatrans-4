@@ -1,5 +1,7 @@
 package Application.Controller;
 
+import Application.exchange.ExchangeAgent;
+import Application.exchange.ExchangeNodeUrl;
 import Application.exchange.ExchangeServiceObjectView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,15 +36,15 @@ public class ControllerMainTitle {
 
     @GetMapping(value="/addUrl")
     public String addUrl(Model model) {
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        ExchangeNodeUrl exchangeNodeUrl =new ExchangeNodeUrl();
+        model.addAttribute("exchangeNodeUrl", exchangeNodeUrl );
         return "addUrl";
     }
 
     @GetMapping(value="/surleyNode")
     public String surleyNode(Model model) {
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        ExchangeAgent exchangeAgent = new ExchangeAgent();
+        model.addAttribute("exchangeAgent", exchangeAgent );
         return "surleyNode";
     }
 

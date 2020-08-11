@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class NodeUrlInterfaceImplement implements NodeUrlInterface {
+public class NodeUrlServiceInterfaceImplement implements NodeUrlInterface {
 
     @Autowired
     NodeUrlInterfaceRepository nodeUrlInterfaceRepository;
@@ -36,11 +36,13 @@ public class NodeUrlInterfaceImplement implements NodeUrlInterface {
 this.nodeUrlInterfaceRepository.save(nodeUrl);
     }
 
+
+
     @Override
     public void delete(NodeUrl nodeUrl) {
 this.nodeUrlInterfaceRepository.delete(nodeUrl);
     }
-    
+
     @Override
     public void deleteAll(NodeUrl nodeUrle) {
 this.nodeUrlInterfaceRepository.deleteAll();
