@@ -26,9 +26,7 @@ public class NodeBase {
     @Column(name = "local_Date_Time", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
 
-
-
-    @Column(name = "hash_Node_Base")
+    @Column(name = "hash")
     private String hash;
 
     public String getHash() {

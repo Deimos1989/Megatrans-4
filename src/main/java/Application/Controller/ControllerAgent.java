@@ -43,14 +43,21 @@ public class ControllerAgent {
     @Autowired
     ControllerNodeUrl controllerNodeUrl;
 
+    public Boolean getBool() {
+        return bool;
+    }
+
+    public void setBool(Boolean bool) {
+        this.bool = bool;
+    }
+
+    private  Boolean bool;
 
 
+    @GetMapping(value="/ControllerAgent/taskStart")
+    public String taskStart(@ModelAttribute ExchangeAgent exchangeAgent, Model model) {
 
-
-    @GetMapping(value="/Agent/start")
-    public String start(@ModelAttribute ExchangeAgent exchangeAgent, Model model) {
-
-
+        setBool(true);
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -58,33 +65,45 @@ public class ControllerAgent {
             @Override
             public void run() {
 
+                if (bool == true) {
 
-              /*  SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
-                Thread thread1=new Thread(setDateTime);
-                thread1.start();*/
+                    SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
+                    Thread thread1 = new Thread(setDateTime);
+                    thread1.start();
 
-                SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement,nodeUrlServiceInterfaceImplement,dslStatusNode,dslStatisticsNode);
-                Thread thread2 = new Thread(setNodeBase);
-                thread2.start();
+                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, nodeUrlServiceInterfaceImplement, dslStatusNode, dslStatisticsNode);
+                    Thread thread2 = new Thread(setNodeBase);
+                    thread2.start();
 
-
+                }else {
+                    timer.cancel();
+                    timer.purge();
+                }
 
             }
 
         };
+        timer.scheduleAtFixedRate(task,1000,20000);
+        return"surleyNode";
+        }
 
-        timer.scheduleAtFixedRate(task, 1000, 20000);
-        model.addAttribute("name",  exchangeAgent.getHash());
+
+    @RequestMapping(value="/ControllerAgent/taskStop", method=RequestMethod.POST)
+    public String taskStop() {
+       setBool(false);
         return "surleyNode";
     }
 
 
-    @RequestMapping(value="/ControllerAgent/readUrl", method=RequestMethod.POST)
+
+
+
+   /* @RequestMapping(value="/ControllerAgent/readUrl", method=RequestMethod.POST)
     public String readUrl(@ModelAttribute ExchangeAgent exchangeAgent, Model model) {
 
         controllerNodeUrl.setNodeUrlList(nodeUrlServiceInterfaceImplement.findAll());
 
         return "surleyNode";
-    }
+    }*/
 
 }

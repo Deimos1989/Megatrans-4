@@ -10,10 +10,11 @@ import java.time.LocalTime;
 public class DateTime {
 
 
-
     public DateTime(){
 
+
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +36,13 @@ public class DateTime {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-   /* @OneToMany(cascade =CascadeType.ALL )
-    @JoinColumn (name="hash", referencedColumnName = "hash")
-    NodeBase nodeBase =new NodeBase();*/
+    @ManyToOne(cascade =CascadeType.ALL )
+    @JoinColumn (name="hash")
+    NodeBase nodeBase =new NodeBase();
 
-    @Column(name = "hash")
-    private String hash;
 
+/*@Column(name = "hash")
+    private String hash;*/
 
     public Long getId() {
         return id;
@@ -83,11 +84,11 @@ public class DateTime {
         this.timestamp = timestamp;
     }
 
-    public String getHash() {
+   /* public String getHash() {
         return hash;
     }
 
     public void setHash(String hash) {
         this.hash = hash;
-    }
+    }*/
 }
