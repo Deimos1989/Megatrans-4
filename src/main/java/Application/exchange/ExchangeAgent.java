@@ -4,7 +4,6 @@ public class ExchangeAgent {
 
 
     private String hash;
-  //  private Boolean boll;
 
     public String getHash() {
         return hash;
@@ -14,11 +13,5 @@ public class ExchangeAgent {
         this.hash = hash;
     }
 
-   /* public Boolean getBoll() {
-        return boll;
-    }
 
-    public void setBoll(Boolean boll) {
-        this.boll = boll;
-    }*/
 }

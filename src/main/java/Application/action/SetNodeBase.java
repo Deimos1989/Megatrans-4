@@ -2,9 +2,11 @@ package Application.action;
 
 import Application.Entity.NodeBase;
 import Application.Entity.NodeUrl;
+import Application.Entity.NumberSystem;
 import Application.exchange.ExchangeDateTime;
 import Application.service.NodeBaseServiceInterfaceImplement;
 import Application.service.NodeUrlServiceInterfaceImplement;
+import Application.service.NumberSystemServiceInterfaceImplement;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import Application.processing.DslStatisticsNode;
@@ -25,13 +27,17 @@ public class SetNodeBase implements Runnable {
 
     NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
+    NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement;
+
 
     DslStatusNode dslStatusNode;
     DslStatisticsNode dslStatisticsNode;
 
-    public SetNodeBase(NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement, NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode) {
+
+    public SetNodeBase(NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement, NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement, NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode) {
         this.nodeBaseServiceInterfaceImplement = nodeBaseServiceInterfaceImplement;
         this.nodeUrlServiceInterfaceImplement = nodeUrlServiceInterfaceImplement;
+        this.numberSystemServiceInterfaceImplement=numberSystemServiceInterfaceImplement;
         this.dslStatusNode = dslStatusNode;
         this.dslStatisticsNode = dslStatisticsNode;
     }
@@ -39,45 +45,45 @@ public class SetNodeBase implements Runnable {
 
     public void run() {
 
-        List<NodeUrl> urlsDate = nodeUrlServiceInterfaceImplement.findAll();
+        List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
+        List<NumberSystem>numberSystems =numberSystemServiceInterfaceImplement.findAll();
 
 
         ArrayList<String> url = new ArrayList<>();
 
-        for(int i =0; i!=urlsDate.size(); i++){
-            url.add(urlsDate.get(i).getUrlDslStatus()+";"+urlsDate.get(i).getUrlDslStatistics());
-            System.out.println(Arrays.asList(url.get(i)));
-        }
+
+        for (int k = 0; k != nodeUrls.size(); k++) {
+
+                    url.add(nodeUrls.get(k).getUrlDslStatus() + ";" + nodeUrls.get(k).getUrlDslStatistics());
+
+            }
 
 
+            for (int c = 0; c != url.size(); c++) {
+                String[] urlSum = url.get(c).split(";");
+                {
+                    System.out.println(Arrays.asList(url.get(c)));
 
 
+                    for (int d = 0; d != urlSum.length; d++) {
 
-        for (int c = 0; c != url.size(); c++) {
-            String[] url2 = url.get(c).split(";");
-            {
-                System.out.println(Arrays.asList(url.get(c)));
+                        {
 
+                            try {
 
-                for (int d = 0; d != url2.length; d++) {
-
-                    {
-
-                        try {
-
-                            Document resultStatus = Jsoup.connect(url2[d]).get();
-                            String status = resultStatus.body().getElementsByTag("td").text();
-                            if (d == 0) {
-                                dslStatusNode.setTable(status);
-                            } else {
-                                dslStatisticsNode.setTable(status);
+                                Document resultStatus = Jsoup.connect(urlSum[d]).get();
+                                String status = resultStatus.body().getElementsByTag("td").text();
+                                if (d == 0) {
+                                    dslStatusNode.setTable(status);
+                                } else {
+                                    dslStatisticsNode.setTable(status);
+                                }
+                            } catch (IOException e) {
+                                System.out.println("Ответ от узла не получен");
                             }
-                        } catch (IOException e) {
-                            JOptionPane.showMessageDialog(null, "Ответ от узла не получен");
                         }
                     }
                 }
-            }
 
                 ExchangeDateTime exchangeDateTime = new ExchangeDateTime();
 
@@ -97,7 +103,7 @@ public class SetNodeBase implements Runnable {
 
                     nodeBase.setModeName(dslStatusNode.modeName(""));
 
-                    nodeBase.setIp(dslStatusNode.nameNode(url2[0]));
+                    nodeBase.setIp(dslStatusNode.nameNode(urlSum[0]));
 
 
                     nodeBase.setModeValue(dslStatusNode.modeValue(""));
@@ -181,7 +187,7 @@ public class SetNodeBase implements Runnable {
                     nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
                     nodeBase.setHash(exchangeDateTime.getHashStatic());
 
-                    nodeBase.setIp(dslStatusNode.nameNode(url2[0]));
+                    nodeBase.setIp(dslStatusNode.nameNode(urlSum[0]));
 
                     nodeBase.setSyncName(dslStatusNode.syncName(""));
                     nodeBase.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
@@ -232,7 +238,7 @@ public class SetNodeBase implements Runnable {
 
                     nodeBase.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
                     nodeBase.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
-                   nodeBase.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
+                    nodeBase.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
 
                     nodeBase.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
                     nodeBase.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));

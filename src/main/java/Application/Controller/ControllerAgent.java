@@ -11,6 +11,7 @@ import Application.service.DateTimeServiceInterfaceImplement;
 
 import Application.service.NodeBaseServiceInterfaceImplement;
 import Application.service.NodeUrlServiceInterfaceImplement;
+import Application.service.NumberSystemServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,9 @@ public class ControllerAgent {
 
     @Autowired
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
+
+    @Autowired
+    NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement;
 
     @Autowired
     DslStatusNode dslStatusNode;
@@ -71,7 +75,7 @@ public class ControllerAgent {
                     Thread thread1 = new Thread(setDateTime);
                     thread1.start();
 
-                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, nodeUrlServiceInterfaceImplement, dslStatusNode, dslStatisticsNode);
+                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, nodeUrlServiceInterfaceImplement,numberSystemServiceInterfaceImplement, dslStatusNode, dslStatisticsNode);
                     Thread thread2 = new Thread(setNodeBase);
                     thread2.start();
 

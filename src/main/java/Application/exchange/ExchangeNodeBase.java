@@ -3,7 +3,7 @@ package Application.exchange;
 
 
 
-public class ExchangeNodeBaseObjectView {
+public class ExchangeNodeBase {
 
     private String name = "IP_Address";
 

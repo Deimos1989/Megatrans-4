@@ -40,7 +40,7 @@ public class ControllerNodeUrl {
             maps.put(id, node);
             model.addAttribute("maps", maps);
         }
-        return "addUrl";
+        return "addUrls";
     }
 
 
@@ -84,7 +84,7 @@ public class ControllerNodeUrl {
         }
 
 
-        return "addUrl";
+        return "addUrls";
     }
 
         @RequestMapping(value = "/ControllerNodeUrl/findByIp", method = RequestMethod.GET)
@@ -98,7 +98,7 @@ public class ControllerNodeUrl {
                 maps.put(id, node);
                 model.addAttribute("maps", maps);
             }
-            return "addUrl";
+            return "addUrls";
         }
 
 
@@ -113,7 +113,7 @@ public class ControllerNodeUrl {
                 maps.put(id, node);
                 model.addAttribute("maps", maps);
             }
-            return "addUrl";
+            return "addUrls";
         }
 
 
@@ -126,7 +126,7 @@ public class ControllerNodeUrl {
             } else {
                 return "messageError";
             }
-            return "addUrl";
+            return "addUrls";
         }
 
 
@@ -134,7 +134,7 @@ public class ControllerNodeUrl {
         public String deleteAll (@ModelAttribute ExchangeNodeUrl exchangeNodeUrl, Model
         model, NodeUrl nodeUrl ){
             nodeUrlServiceInterfaceImplement.deleteAll(nodeUrl);
-            return "addUrl";
+            return "addUrls";
         }
 
     }

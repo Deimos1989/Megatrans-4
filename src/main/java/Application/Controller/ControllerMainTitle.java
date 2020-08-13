@@ -12,16 +12,29 @@ public class ControllerMainTitle {
 
     @GetMapping(value="/")
     public String main(Model model) {
+        ExchangeNodeUrl exchangeNodeUrl =new ExchangeNodeUrl();
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        model.addAttribute("exchangeNodeUrl", exchangeNodeUrl );
         return "TITLE";
     }
 
 
-    @GetMapping(value="/menu")
-    public String menu(Model model) {
+    @GetMapping(value="/ControllerMainTitle/addUrls")
+    public String addUrls(Model model) {
+        ExchangeNodeUrl exchangeNodeUrl =new ExchangeNodeUrl();
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        model.addAttribute("exchangeNodeUrl", exchangeNodeUrl );
+        return "addUrls";
+    }
+
+    @GetMapping(value="/menu")
+    public String menu(Model model) {
+        ExchangeAgent exchangeAgent = new ExchangeAgent();
+        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
+        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        model.addAttribute("exchangeAgent", exchangeAgent );
         return "menu";
     }
 
@@ -32,21 +45,6 @@ public class ControllerMainTitle {
         return "reportSystem";
     }
 
-
-
-    @GetMapping(value="/addUrl")
-    public String addUrl(Model model) {
-        ExchangeNodeUrl exchangeNodeUrl =new ExchangeNodeUrl();
-        model.addAttribute("exchangeNodeUrl", exchangeNodeUrl );
-        return "addUrl";
-    }
-
-    @GetMapping(value="/surleyNode")
-    public String surleyNode(Model model) {
-        ExchangeAgent exchangeAgent = new ExchangeAgent();
-        model.addAttribute("exchangeAgent", exchangeAgent );
-        return "surleyNode";
-    }
 
     @GetMapping(value="/reportUrl")
     public String reportUrl(Model model) {

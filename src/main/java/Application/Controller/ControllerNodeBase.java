@@ -52,8 +52,8 @@ public class ControllerNodeBase {
     }
 
 
-    @RequestMapping(value = "/ControllerNodeBase/findByLocalDate", method = RequestMethod.POST )
-    public String findByLocalDate(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
+    @RequestMapping(value = "/ControllerNodeBase/findByDate", method = RequestMethod.POST )
+    public String findByDate(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
@@ -64,7 +64,7 @@ public class ControllerNodeBase {
             maps.put(id,node);
             model.addAttribute("maps", maps);
         }
-        return "menu";
+        return "menu";//menu
     }
 
     @RequestMapping(value = "/ControllerNodeBase/findByLocalDateTime", method = RequestMethod.POST )
@@ -79,7 +79,7 @@ public class ControllerNodeBase {
             maps.put(id,node);
             model.addAttribute("maps", maps);
         }
-        return "reportSystem";
+        return "addUrls";
     }
 
 

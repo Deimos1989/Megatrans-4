@@ -36,13 +36,13 @@ public class DateTime {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @ManyToOne(cascade =CascadeType.ALL )
-    @JoinColumn (name="hash")
+  /*  @ManyToOne(cascade =CascadeType.ALL )
+    @JoinColumn (name="hash_link")
     NodeBase nodeBase =new NodeBase();
+*/
 
-
-/*@Column(name = "hash")
-    private String hash;*/
+@Column(name = "hash")
+    private String hash;
 
     public Long getId() {
         return id;
@@ -84,11 +84,11 @@ public class DateTime {
         this.timestamp = timestamp;
     }
 
-   /* public String getHash() {
+    public String getHash() {
         return hash;
     }
 
     public void setHash(String hash) {
         this.hash = hash;
-    }*/
+    }
 }

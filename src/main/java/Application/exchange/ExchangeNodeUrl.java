@@ -5,6 +5,7 @@ public class ExchangeNodeUrl {
     private Long id;
     private String ip;
     private String number;
+    private String date;
     private String dslStatus;
     private String dslStatistics;
     private String dslAlarm;
@@ -55,5 +56,13 @@ public class ExchangeNodeUrl {
 
     public void setDslAlarm(String dslAlarm) {
         this.dslAlarm = dslAlarm;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

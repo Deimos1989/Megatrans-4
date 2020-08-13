@@ -2,7 +2,7 @@
 package Application.action;
 
 import Application.Entity.NodeBase;
-import Application.exchange.ExchangeNodeBaseObjectView;
+import Application.exchange.ExchangeNodeBase;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public class SetNodeBaseView {
 
     List<NodeBase>nodeBases;
 
-    public ExchangeNodeBaseObjectView setTable() {
+    public ExchangeNodeBase setTable() {
 
-    ExchangeNodeBaseObjectView exchangeNodeBaseObjectView = new ExchangeNodeBaseObjectView();
+    ExchangeNodeBase exchangeNodeBaseObjectView = new ExchangeNodeBase();
 
         exchangeNodeBaseObjectView.getName();
 

@@ -1,4 +1,4 @@
-package Application.exchange;
+package Application.DisableModul;
 
 public class ExchangeErrorMessage {
 }

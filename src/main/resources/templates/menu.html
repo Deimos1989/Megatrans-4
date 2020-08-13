@@ -11,6 +11,9 @@
 
 <body>
 
+
+
+
 <div id="container">
 
 
@@ -24,10 +27,28 @@
 
 <div id="sidebar">
 
-    <form action="#" th:action="@{/ControllerNodeBase/findByLocalDate}" th:object="${exchangeServiceObjectView}"  method="post">
+    <form action="#" th:action="@{/ControllerNodeBase/findByDate}" th:object="${exchangeServiceObjectView}"  method="post">
         Date:<input type="text" size="20" th:field="*{localDate}"/>
         <input type="submit" value="Report" />
     </form>
+
+
+    <form action="#" th:action="@{/ControllerAgent/taskStart}" th:object="${exchangeAgent}"   method="get">
+        <td>
+            <input type="submit" name="submit_button" value="Start">
+        </td>
+    </form>
+
+
+    <form action="#" th:action="@{/ControllerAgent/taskStop}"  th:object="${exchangeAgent}"  method="post">
+        <td>
+            <input type="submit" name="submit_button" value="stop">
+        </td>
+    </form>
+
+
+
+
 
 </div>
 
