@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test</title>
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/Interface.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/table1.css}" rel="stylesheet" media="screen" />
+
+</head>
+
+
+<body>
+
+<div id="container">
+<div id="header">
+    <h2>Создание объекта опроса</h2>
+</div>
+
+<div id="sidebar">
+    <div>
+
+        <form action="#" th:action="@{/ControllerNodeUrl/save}" th:object="${exchangeNodeUrl}"   method="post">
+
+            id:<input type="text" size="1" th:field="*{id}"/>
+            NumSystem:<input type="text" size="1" th:field="*{number}"/>
+            ip:<input type="text" size="10" th:field="*{ip}"/>
+            <input type="text" size="50" th:field="*{dslStatus}"/>: UrlDslStatus
+            <input type="text" size="50" th:field="*{dslStatistics}"/>: UrlDslStatistics
+            <input type="text" size="50" th:field="*{dslAlarm}"/>: UrlAlarm
+            <input type="submit" value="Add" />
+
+        </form>
+    </div>
+
+
+
+
+<div>
+
+    <form action="#" th:action="@{/ControllerNumberSystem/save}" th:object="${exchangeNodeUrl}"   method="post">
+        NumSystem:<input type="text" size="1" th:field="*{number}"/>
+        <input type="submit" value="save" />
+    </form>
+
+    <form action="#" th:action="@{/ControllerNumberSystem/delete}" th:object="${exchangeNodeUrl}"   method="post">
+        NumSystem:<input type="text" size="1" th:field="*{id}"/>
+        <input type="submit" value="delete" />
+    </form>
+
+</div>
+
+
+    <div>
+        <div>
+            <form action="#" th:action="@{/ControllerNumberSystem/findAll}" th:object="${exchangeNodeUrl}"   method="get">
+                NumSysAll:<input type="submit" value="Find" />
+            </form>
+
+
+            <form action="#" th:action="@{/ControllerNodeUrl/findByNumber}" th:object="${exchangeNodeUrl}"   method="get">
+                NumSysUrl:<input type="text" size="1" th:field="*{number}"/>
+                <input type="submit" value="read" />
+            </form>
+
+
+            <form action="#" th:action="@{/ControllerNodeUrl/findByIp}" th:object="${exchangeNodeUrl}"   method="get">
+                Ip:<input type="text" size="10" th:field="*{ip}"/>
+                <input type="submit" value="read" />
+            </form>
+
+
+            <form action="#" th:action="@{/ControllerNodeUrl/findAll}" th:object="${exchangeNodeUrl}"   method="get">
+                UrlAll:<input type="submit" value="Find" />
+            </form>
+
+
+            <form action="#" th:action="@{/ControllerNodeUrl/deleteId}" th:object="${exchangeNodeUrl}"   method="post">
+                UrlId:<input type="text" size="1" th:field="*{id}"/>
+                <input type="submit" value="Delete" />
+            </form>
+
+
+            <form action="#" th:action="@{/ControllerNodeUrl/deleteAll}" th:object="${exchangeNodeUrl}"   method="post">
+                UrlAll:<input type="submit" value="Delete" />
+            </form>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+    <div id="content1" size="">
+
+
+    <table border="1" >
+        <tr>
+            <th width="5%">Id</th>
+
+            <th width="10%">Num</th>
+
+            <th width="15%">IpNode</th>
+
+            <th width="35%">UrlDslStatus</th>
+
+            <th width="35%">UrlDslStatistics</th>
+
+            </tr>
+
+                <tr th:block th:each="map:${maps}">
+
+                     <td th:utext="${map.getKey()}">Id</td>
+
+                     <td th:utext="${map.getValue().number}">Number</td>
+
+                     <td th:utext="${map.getValue().ip}">Number</td>
+
+                     <td th:utext="${map.getValue().urlDslStatus}">Ip</td>
+
+                     <td th:utext="${map.getValue().urlDslStatistics}">Url</td>
+
+                </tr>
+    </table>
+</div>
+</div>
+</div>
+</body>
+</html>

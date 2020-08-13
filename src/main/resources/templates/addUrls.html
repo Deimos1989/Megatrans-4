@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <title>Title</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+</head>
+
+
+<body>
+<nav class="navbar-brand">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand" >Система передачи данных Megatrans-4</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row" style="width: 90%">
+
+    <div class="col-md-4" >
+
+        <form action="#"  th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}" method="post">
+
+            <div class="form-group">
+            <div class="row">
+             <!--   <label for="id" class="col-xs-2 control-label">Id</label>-->
+                <div class="col">
+                    <input type="text" class="form-control" id="id" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                </div>
+
+                <div class="col">
+                    <!--<label for="numberSystem">Enter number system"</label>-->
+                    <input type="text" class="form-control"  id="numberSystem" th:field="*{number}" placeholder="num" style="width: 60px"/>
+                </div>
+
+                <div class="col" >
+                    <!--   <label for="ip">IP</label>-->
+                    <input type="text" class="form-control" size="10" id="ip" th:field="*{ip}" placeholder="Enter ip address" style="width: 150px" />
+                </div>
+
+            </div>
+
+            </div>
+
+
+
+                <div class="form-group">
+                  <!--  <label for="urlDslStatus">Url_Dsl_Status</label>-->
+                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}" placeholder="Enter url dsl status"/>
+                </div>
+
+                <div class="form-group">
+                   <!-- <label for="urlDslStatistics">Url_Dsl_Statistics</label>-->
+                    <input type="text" class="form-control" size="30" id="urlDslStatistics" th:field="*{dslStatistics}" placeholder="Enter url dsl statistics"/>
+                </div>
+
+            <div class="form-group">
+                <!--  <label for="urlAlarm">Url_Alarm</label>-->
+                <input type="text" class="form-control" size="30" id="urlAlarm" th:field="*{dslAlarm}"
+                       placeholder="Enter url dsl Alarm"/>
+            </div>
+
+            <div class="btn">
+                <input type="submit" id="add" class="btn btn-primary" value="Add"/>
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+    <div class="col-md-2">
+
+        <div class="form-group">
+
+            <div class="col">
+                <label for="numberSystemSave">Введите номер системы</label>
+                <form action="#" class="form-inline" th:action="@{/ControllerNumberSystem/save}"
+                      th:object="${exchangeNodeUrl}"
+                      method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="numberSystemSave" size="3" th:field="*{number}"
+                               style="width: 60px"/>
+                    </div>
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="save"/>
+                    </div>
+                </form>
+            </div>
+
+
+                <label for="numberSystemDelete">Удалите номер системы</label>
+
+                <form action="#" class="form-inline" th:action="@{/ControllerNumberSystem/delete}"
+                      th:object="${exchangeNodeUrl}"
+                      method="post">
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="numberSystemDelete" size="3" th:field="*{id}"
+                               style="width: 60px"/>
+                    </div>
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="delete"/>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+    <div class="col-md-2">
+
+        <div class="col">
+
+            <label for="numSysUrl">Введите номер системы</label>
+            <form action="#" class="form-inline" id="numSysUrl" th:action="@{/ControllerNodeUrl/findByNumber}"
+                  th:object="${exchangeNodeUrl}" method="get">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" size="1" th:field="*{number}"
+                           style="width: 60px"/>
+                </div>
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="read"/>
+                </div>
+            </form>
+
+
+            <label for="numSysUrl">Вывести все ссылки</label>
+            <form action="#" class="form-inline" id="test" th:action="@{/ControllerNodeUrl/findAll}"
+                  th:object="${exchangeNodeUrl}" method="get">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Find"/>
+                </div>
+            </form>
+
+            <label for="findByIp">Введите ip address</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/findByIp}"
+                  th:object="${exchangeNodeUrl}" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="findByIp" size="10" th:field="*{ip}" style="width: 110px"/>
+                </div>
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="read"/>
+                </div>
+
+            </form>
+
+
+    </div>
+
+    </div>
+
+
+    <div class="col-md-2">
+        <div class="col">
+
+            <label for="deleteUrlField">Удалить ссылку</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteId}"
+                  th:object="${exchangeNodeUrl}" method="post">
+                <div class="form-group">
+                    UrlId:<input type="text" id="deleteUrlField" class="form-control" size="1" th:field="*{id}"
+                                 style="width: 60px"/>
+                </div>
+
+                <div class="btn">
+                    <input type="submit" id="deleteUrlbtn" class="btn btn-primary" value="Delete"/>
+                </div>
+
+
+            </form>
+
+
+            <label for="deleteAllUrlbtn">Удалить все ссылки</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
+                  th:object="${exchangeNodeUrl}" method="post">
+
+                <div class="btn">
+                    UrlAll:<input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Delete"/>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+    <div class="col-md-2">
+
+    </div>
+
+</div>
+
+
+<a href="https://yandex.ru/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Главная ссылка</a>
+
+
+<div class="form-group">
+
+    <table border="1" class="table-active" >
+        <tr>
+            <th width="3%">Id</th>
+
+            <th width="3%">Num</th>
+
+            <th width="9%">IpNode</th>
+
+            <th width="25%">UrlDslStatus</th>
+
+            <th width="25%">UrlDslStatistics</th>
+
+            <th width="25%">UrlAlarm</th>
+
+        </tr>
+
+        <tr th:block th:each="map:${maps}">
+
+            <td th:utext="${map.getKey()}">Id</td>
+
+            <td th:utext="${map.getValue().number}">Number</td>
+
+            <td th:utext="${map.getValue().ip}">Number</td>
+
+            <td th:utext="${map.getValue().urlDslStatus}">Ip</td>
+
+            <td th:utext="${map.getValue().urlDslStatistics}">Url</td>
+
+        </tr>
+    </table>
+</div>
+
+    </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
