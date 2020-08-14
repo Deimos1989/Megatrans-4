@@ -50,7 +50,7 @@
     <label for="taskStart">Опрос системы</label>
     <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
           th:object="${exchangeNodeUrl}"
-          method="post">
+          method="get">
 
         <div class="btn">
             <input type="submit" class="btn btn-primary" value="start"/>
@@ -61,7 +61,7 @@
 <div class="col">
     <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
     th:object="${exchangeNodeUrl}"
-    method="post">
+    method="get">
 
     <div class="btn">
         <input type="submit" class="btn btn-primary" value="stop"/>
@@ -83,17 +83,17 @@
                     $("#chart").shieldChart({
                         theme: "light",
                         primaryHeader: {
-                            text: "Продажи автомобилей система сравнения цен на нефть"
+                            text: "Параметры опроса узла"
                         },
                         exportOptions: {
                             image: false,
                             print: false
                         },
                         axisY: [{
-                            min: 1,
-                            max: 60,
+                            min: -20,
+                            max: 20,
                             title: {
-                                text: 'Средняя заработная плата (тысяч долларов США)',
+                                text: 'Уровень NMR',
                                 style: {
                                     color: '#4DB0F5'
                                 }
@@ -103,28 +103,13 @@
                                     color: '#4DB0F5'
                                 }
                             }
-                        }, {
-                            min: 1,
-                            max: 5,
+                        },  {
+                            min: -20,
+                            max: 20,
                             title: {
-                                text: 'Цены на газ (долл./галлон)',
+                                text: 'Уровень NMR',
                                 style: {
-                                    color: '#FFC500'
-                                }
-                            },
-                            swapLocation: true,
-                            axisTickText: {
-                                style: {
-                                    color: '#FFC500'
-                                }
-                            }
-                        }, {
-                            min: 1,
-                            max: 40,
-                            title: {
-                                text: 'Проданных Автомобилей (В Миллионах)',
-                                style: {
-                                    color: '#FF1800'
+                                    color: '#4DB0F5'
                                 }
                             },
                             swapLocation: true,
@@ -138,18 +123,8 @@
                             seriesType: 'line',
                             axis: 0,
                             collectionAlias: "NMR",
-                            data: [42.7, 52.8, 63.1, 23.5, 53, 55.8, 57.7]
-                        }, {
-                            seriesType: 'line',
-                            axisY: 1,
-                            collectionAlias: "Цены на газ (долл./галлон)",
-                            data: [2.75, 2.80, 2, 2.55, 2.60, 2.90, 3.05]
-                        }, {
-                            seriesType: 'line',
-                            axisY: 2,
-                            collectionAlias: "Продажи Автомобилей",
-                            data: [20, 22.9, 32.1, 31, 22.8, 22.4, 32.10]
-                        }]
+                            data: [10.7, 15.8, 8.1, 5.5, 12, 9.8, 12.7]
+                        },]
                     });
                 });
             </script><!-- /.График -->

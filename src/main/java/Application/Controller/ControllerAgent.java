@@ -88,14 +88,14 @@ public class ControllerAgent {
 
         };
         timer.scheduleAtFixedRate(task,1000,20000);
-        return"surleyNode";
+        return"TITLE";
         }
 
 
-    @RequestMapping(value="/ControllerAgent/taskStop", method=RequestMethod.POST)
+    @GetMapping(value="/ControllerAgent/taskStop")
     public String taskStop() {
        setBool(false);
-        return "surleyNode";
+        return "TITLE";
     }
 
 

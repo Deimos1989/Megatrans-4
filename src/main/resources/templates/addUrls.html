@@ -40,7 +40,7 @@
 
 <div class="row" style="width: 100%">
 
-    <div class="col-md-4" >
+    <div class="col-md-3" >
 
         <form action="#"  th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}" method="post">
 
@@ -69,18 +69,18 @@
 
                 <div class="form-group">
                   <!--  <label for="urlDslStatus">Url_Dsl_Status</label>-->
-                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}" placeholder="Enter url dsl status"/>
+                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}" placeholder="Enter url dsl status" style="font-size: 14px"/>
                 </div>
 
                 <div class="form-group">
                    <!-- <label for="urlDslStatistics">Url_Dsl_Statistics</label>-->
-                    <input type="text" class="form-control" size="30" id="urlDslStatistics" th:field="*{dslStatistics}" placeholder="Enter url dsl statistics"/>
+                    <input type="text" class="form-control" size="30" id="urlDslStatistics" th:field="*{dslStatistics}" placeholder="Enter url dsl statistics"  style="font-size: 14px"/>
                 </div>
 
             <div class="form-group">
                 <!--  <label for="urlAlarm">Url_Alarm</label>-->
                 <input type="text" class="form-control" size="30" id="urlAlarm" th:field="*{dslAlarm}"
-                       placeholder="Enter url dsl Alarm"/>
+                       placeholder="Enter url dsl Alarm"  style="font-size: 14px"/>
             </div>
 
             <div class="btn">
@@ -224,12 +224,9 @@
 </div>
 
 
-<a href="https://yandex.ru/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Главная ссылка</a>
-
-
 <div class="form-group">
 
-    <table border="1" class="table-active" >
+    <table border="1" class="table-active" style="font-size: 16px" >
         <tr>
             <th width="3%">Id</th>
 
@@ -245,7 +242,7 @@
 
         </tr>
 
-        <tr th:block th:each="map:${maps}">
+        <tr th:block th:each="map:${maps}" style="font-size: 16px">
 
             <td th:utext="${map.getKey()}">Id</td>
 

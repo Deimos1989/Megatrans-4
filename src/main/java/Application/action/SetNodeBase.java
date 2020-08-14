@@ -61,6 +61,7 @@ public class SetNodeBase implements Runnable {
 
             for (int c = 0; c != url.size(); c++) {
                 String[] urlSum = url.get(c).split(";");
+                url.clear();
                 {
                     System.out.println(Arrays.asList(url.get(c)));
 
