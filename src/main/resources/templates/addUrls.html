@@ -116,7 +116,6 @@
 
 
                 <label for="numberSystemDelete">Удалите номер системы</label>
-
                 <form action="#" class="form-inline" th:action="@{/ControllerNumberSystem/delete}"
                       th:object="${exchangeNodeUrl}"
                       method="post">
@@ -191,7 +190,7 @@
             <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteId}"
                   th:object="${exchangeNodeUrl}" method="post">
                 <div class="form-group">
-                    UrlId:<input type="text" id="deleteUrlField" class="form-control" size="1" th:field="*{id}"
+                    <input type="text" id="deleteUrlField" class="form-control" size="1" th:field="*{id}"
                                  style="width: 60px"/>
                 </div>
 
@@ -208,7 +207,7 @@
                   th:object="${exchangeNodeUrl}" method="post">
 
                 <div class="btn">
-                    UrlAll:<input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Delete"/>
+                    <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Delete"/>
                 </div>
 
             </form>
@@ -218,6 +217,27 @@
     </div>
 
     <div class="col-md-2">
+
+        <div class="form-group">
+
+            <table border="1" class="table-active" style="font-size: 16px" >
+                <tr>
+                    <th width="3%">Id</th>
+
+                    <th width="3%">Num</th>
+
+                </tr>
+
+                <tr th:block th:each="map:${maps}" style="font-size: 16px">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().number}">Number</td>
+
+
+                </tr>
+            </table>
+        </div>
 
     </div>
 
@@ -242,7 +262,7 @@
 
         </tr>
 
-        <tr th:block th:each="map:${maps}" style="font-size: 16px">
+        <tr th:block th:each="map:${maps0}" style="font-size: 16px">
 
             <td th:utext="${map.getKey()}">Id</td>
 

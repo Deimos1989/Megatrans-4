@@ -33,21 +33,21 @@ public class ControllerNumberSystem {
             maps.put(id, node);
             model.addAttribute("maps", maps);
         }
-        return "addUrl";
+        return "addUrls";
     }
 
     @RequestMapping(value="/ControllerNumberSystem/save", method=RequestMethod.POST)
     public String save(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,NumberSystem numberSystem) {
         numberSystem.setNumber(exchangeNodeUrl.getNumber());
         numberSystemServiceInterfaceImplement.save(numberSystem);
-        return "addUrl";
+        return "addUrls";
     }
 
     @RequestMapping(value="/ControllerNumberSystem/delete", method=RequestMethod.POST)
     public String delete(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,NumberSystem numberSystem) {
         numberSystem.setId(exchangeNodeUrl.getId());
         numberSystemServiceInterfaceImplement.delete(numberSystem);
-        return "addUrl";
+        return "addUrls";
     }
 
 

@@ -38,7 +38,7 @@ public class ControllerNodeUrl {
             Long id = nodeUrlList.get(i).getId();
             Object node = nodeUrlList.get(i);
             maps.put(id, node);
-            model.addAttribute("maps", maps);
+            model.addAttribute("maps0", maps);
         }
         return "addUrls";
     }
@@ -96,7 +96,7 @@ public class ControllerNodeUrl {
                 Long id = nodeUrlList.get(i).getId();
                 Object node = nodeUrlList.get(i);
                 maps.put(id, node);
-                model.addAttribute("maps", maps);
+                model.addAttribute("maps0", maps);
             }
             return "addUrls";
         }
@@ -111,7 +111,7 @@ public class ControllerNodeUrl {
                 Long id = nodeUrlList.get(i).getId();
                 Object node = nodeUrlList.get(i);
                 maps.put(id, node);
-                model.addAttribute("maps", maps);
+                model.addAttribute("maps0", maps);
             }
             return "addUrls";
         }

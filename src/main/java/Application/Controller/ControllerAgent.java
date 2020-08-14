@@ -1,6 +1,8 @@
 package Application.Controller;
 
 import Application.Entity.DateTime;
+import Application.Entity.NodeUrl;
+import Application.Entity.NumberSystem;
 import Application.action.SetDateTime;
 import Application.action.SetNodeBase;
 import Application.exchange.ExchangeAgent;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -71,20 +75,37 @@ public class ControllerAgent {
 
                 if (bool == true) {
 
+
+                    List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
+                    List<NumberSystem> numberSystems = numberSystemServiceInterfaceImplement.findAll();
+
+
+                    ArrayList<String> urls = new ArrayList<>();
+
+                    for (int i = 0; i != nodeUrls.size(); i++) {
+                        urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
+
+                    }
+
+
                     SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
                     Thread thread1 = new Thread(setDateTime);
                     thread1.start();
 
-                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, nodeUrlServiceInterfaceImplement,numberSystemServiceInterfaceImplement, dslStatusNode, dslStatisticsNode);
+                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls);
                     Thread thread2 = new Thread(setNodeBase);
                     thread2.start();
 
-                }else {
-                    timer.cancel();
-                    timer.purge();
-                }
 
+
+
+            }else
+
+            {
+                timer.cancel();
+                timer.purge();
             }
+        }
 
         };
         timer.scheduleAtFixedRate(task,1000,20000);
