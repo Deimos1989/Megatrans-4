@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Megatrans-4 System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/Interface.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/button.css}" rel="stylesheet" media="screen" />
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+        <h2>Отчеты</h2>
+    </div>
+
+    <div id="sidebar">
+
+
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+        buttonex=document.getElementById('ReportEX');
+        buttonex.addEventListener('click', function ()
+        {
+            let blob = new Blob( [ $stq.innerhtml()], { type: "text/html"} );
+
+            window.navigator.msSaveOrOpenBlob( blob, "output.xls" );
+        });
+
+
+
+</script>
+
+</body>
+</html>

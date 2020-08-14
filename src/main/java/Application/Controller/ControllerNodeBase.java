@@ -62,9 +62,9 @@ public class ControllerNodeBase {
             Long id = nodeBaseList.get(i).getId();
             Object node= nodeBaseList.get(i);
             maps.put(id,node);
-            model.addAttribute("maps", maps);
+            model.addAttribute("maps0", maps);
         }
-        return "menu";//menu
+        return "reportSystem";//menu
     }
 
     @RequestMapping(value = "/ControllerNodeBase/findByLocalDateTime", method = RequestMethod.POST )
@@ -79,7 +79,7 @@ public class ControllerNodeBase {
             maps.put(id,node);
             model.addAttribute("maps", maps);
         }
-        return "addUrls";
+        return "reportSystem";
     }
 
 
