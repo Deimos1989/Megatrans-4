@@ -1,6 +1,6 @@
 package Application.Controller;
 
-import Application.DisableModul.Repository;
+
 
 import Application.Entity.NodeBase;
 import Application.Report.ReportSystem;
@@ -28,7 +28,7 @@ public class ControllerReport {
     NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
 
     @RequestMapping(value = "/ControllerReport/reportSystem" , method=RequestMethod.POST)
-    public ResponseEntity<Object> reportSystem(ExchangeServiceObjectView exchangeServiceObjectView, Repository repository, ReportSystem reportSystem) {
+    public ResponseEntity<Object> reportSystem(ExchangeServiceObjectView exchangeServiceObjectView,ReportSystem reportSystem) {
 
 
 

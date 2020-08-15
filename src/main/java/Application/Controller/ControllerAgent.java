@@ -1,26 +1,22 @@
 package Application.Controller;
 
-import Application.Entity.DateTime;
 import Application.Entity.NodeUrl;
-import Application.Entity.NumberSystem;
+import Application.Entity.SystemGroup;
 import Application.action.SetDateTime;
 import Application.action.SetNodeBase;
 import Application.exchange.ExchangeAgent;
-import Application.exchange.ExchangeDateTime;
 import Application.processing.DslStatisticsNode;
 import Application.processing.DslStatusNode;
 import Application.service.DateTimeServiceInterfaceImplement;
 
 import Application.service.NodeBaseServiceInterfaceImplement;
 import Application.service.NodeUrlServiceInterfaceImplement;
-import Application.service.NumberSystemServiceInterfaceImplement;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +35,9 @@ public class ControllerAgent {
     @Autowired
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
 
-    @Autowired
+  /*  @Autowired
     NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement;
-
+*/
     @Autowired
     DslStatusNode dslStatusNode;
 
@@ -77,7 +73,7 @@ public class ControllerAgent {
 
 
                     List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
-                    List<NumberSystem> numberSystems = numberSystemServiceInterfaceImplement.findAll();
+                //    List<SystemGroup> systemGroups = numberSystemServiceInterfaceImplement.findAll();
 
 
                     ArrayList<String> urls = new ArrayList<>();

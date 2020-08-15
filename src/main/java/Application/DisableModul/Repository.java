@@ -1,7 +1,9 @@
+/*
 package Application.DisableModul;
 
 
 import Application.Entity.NodeBase;
+import Application.Entity.SystemGroup;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import java.time.LocalDateTime;
@@ -31,5 +33,45 @@ public class Repository {
     }
 
 
+    class ResultDto{
+        String systemName;
+        String dateCreate;
+        String ip;
+        String data;
+    }
+
+    public List<Double> getGraph(){
+        List<Double> finalResult =  new ArrayList<>();
+        finalResult.add(1.3);
+        finalResult.add(15.5);
+        finalResult.add(163.9);
+        finalResult.add(4.0);
+        String.join(",", finalResult);//'1.3,15.5,////'
+        return finalResult;
+    }
+
+
+    public void get(long systemGroupId, String dateStart, String dateEnd){
+        List<ResultDto> finalResult =  new ArrayList<>();
+        SystemGroup sg = repositorySystemGroup.getByID(systemGroupId);
+
+        List<Surlay> surlays = repositoryNodeBase.getBySystemGroupAndBettwenDateCrate(sg, dateStart, dateEnd);
+        for (Surlay surlay:surlays) {
+            List<NodeBase> result = repositoryNodeBase.getBySurlay(surlay);
+            for(NodeBase nb :result){
+                ResultDto rd = new ResultDto();
+                rd.systemName = sg.getName();
+                rd.dateCreate = surlay.dateCreate.toString();
+                logn id = nb.getNodeUrlID();
+                repositoryNodeUrld
+                rd.ip = nb.getNodeUrl().getIp();
+                rd.data = nb.getActiveSyncSourceName();
+                finalResult.add(rd);
+            }
+        }
+        return finalResult;
+
+    }
 }
 
+*/

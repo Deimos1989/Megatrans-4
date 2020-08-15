@@ -26,6 +26,20 @@ public class NodeBase {
     @Column(name = "local_Date_Time", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
 
+
+    @ManyToOne(cascade =CascadeType.ALL )
+    @JoinColumn (name="surley_id")
+    Surley surley;
+
+    @ManyToOne(cascade =CascadeType.ALL )
+    @JoinColumn (name="node_id")
+    NodeUrl nodeUrl;
+
+
+
+
+
+
     @Column(name = "hash")
     private String hash;
 
@@ -898,6 +912,22 @@ public NodeBase(){
 
     public void setUnavailableTimeValueSide2(Long unavailableTimeValueSide2) {
         this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
+    }
+
+    public Surley getSurley() {
+        return surley;
+    }
+
+    public void setSurley(Surley surley) {
+        this.surley = surley;
+    }
+
+    public NodeUrl getNodeUrl() {
+        return nodeUrl;
+    }
+
+    public void setNodeUrl(NodeUrl nodeUrl) {
+        this.nodeUrl = nodeUrl;
     }
 }
 

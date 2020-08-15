@@ -2,7 +2,7 @@ package Application.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Node_Url")
+@Table(name="nodes_urls")
 public class NodeUrl {
 
     @Id
@@ -16,7 +16,6 @@ public class NodeUrl {
     @Column(name = "ip")
     private String ip;
 
-
     @Column(name = "url_Dsl_status")
     private String urlDslStatus;
 
@@ -24,6 +23,18 @@ public class NodeUrl {
     private String urlDslStatistics;
 
 
+    @ManyToOne
+    @JoinColumn (name="system_group_id")
+    private SystemGroup systemGroup;
+
+
+    public SystemGroup getSystemGroup() {
+        return systemGroup;
+    }
+
+    public void setSystemGroup(SystemGroup systemGroup) {
+        this.systemGroup = systemGroup;
+    }
 
     public NodeUrl(){
 
