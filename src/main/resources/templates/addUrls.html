@@ -98,13 +98,13 @@
         <div class="form-group">
 
             <div class="col">
-                <label for="numberSystemSave">Введите номер системы</label>
-                <form action="#" class="form-inline" th:action="@{/ControllerNumberSystem/save}"
+                <label for="systemGroupSave">Введите номер системы</label>
+                <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/save}"
                       th:object="${exchangeNodeUrl}"
                       method="post">
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="numberSystemSave" size="3" th:field="*{number}"
+                        <input type="text" class="form-control" id="systemGroupSave" size="3" th:field="*{number}"
                                style="width: 60px"/>
                     </div>
 
@@ -115,14 +115,14 @@
             </div>
 
 
-                <label for="numberSystemDelete">Удалите номер системы</label>
-                <form action="#" class="form-inline" th:action="@{/ControllerNumberSystem/delete}"
+                <label for="systemGroupDelete">Удалите номер системы</label>
+                <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
                       th:object="${exchangeNodeUrl}"
                       method="post">
 
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="numberSystemDelete" size="3" th:field="*{id}"
+                        <input type="text" class="form-control" id="systemGroupDelete" size="3" th:field="*{id}"
                                style="width: 60px"/>
                     </div>
 
