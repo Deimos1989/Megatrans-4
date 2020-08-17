@@ -40,105 +40,116 @@
 
 <div class="row" style="width: 100%">
 
-    <div class="col-md-3" >
+    <div class="col-md-3">
 
-        <form action="#"  th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}" method="post">
+        <form action="#" th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}"
+              method="post">
 
             <div class="form-group">
-            <div class="row">
-             <!--   <label for="id" class="col-xs-2 control-label">Id</label>-->
-                <div class="col">
-                    <input type="text" class="form-control" id="id" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                <div class="row">
+                    <!--   <label for="id" class="col-xs-2 control-label">Id</label>-->
+                    <div class="col">
+                        <input type="text" class="form-control" id="id" th:field="*{id}" placeholder="id"
+                               style="width: 60px"/>
+                    </div>
+
+                    <div class="col">
+                        <!--<label for="systemGroup">Enter number system"</label>-->
+                        <input type="text" class="form-control" id="systemGroup" th:field="*{number}" placeholder="num"
+                               style="width: 60px"/>
+                    </div>
+
+                    <div class="col">
+                        <!--   <label for="ip">IP</label>-->
+                        <input type="text" class="form-control" size="10" id="ip" th:field="*{ip}"
+                               placeholder="Enter ip address" style="width: 150px"/>
+                    </div>
                 </div>
-
-                <div class="col">
-                    <!--<label for="systemGroup">Enter number system"</label>-->
-                    <input type="text" class="form-control"  id="systemGroup" th:field="*{number}" placeholder="num" style="width: 60px"/>
-                </div>
-
-                <div class="col" >
-                    <!--   <label for="ip">IP</label>-->
-                    <input type="text" class="form-control" size="10" id="ip" th:field="*{ip}" placeholder="Enter ip address" style="width: 150px" />
-                </div>
-
-            </div>
-
-            </div>
-
 
 
                 <div class="form-group">
-                  <!--  <label for="urlDslStatus">Url_Dsl_Status</label>-->
-                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}" placeholder="Enter url dsl status" style="font-size: 14px"/>
+                    <!--  <label for="urlDslStatus">Url_Dsl_Status</label>-->
+                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}"
+                           placeholder="Enter url dsl status" style="font-size: 14px"/>
                 </div>
 
                 <div class="form-group">
-                   <!-- <label for="urlDslStatistics">Url_Dsl_Statistics</label>-->
-                    <input type="text" class="form-control" size="30" id="urlDslStatistics" th:field="*{dslStatistics}" placeholder="Enter url dsl statistics"  style="font-size: 14px"/>
+                    <!-- <label for="urlDslStatistics">Url_Dsl_Statistics</label>-->
+                    <input type="text" class="form-control" size="30" id="urlDslStatistics" th:field="*{dslStatistics}"
+                           placeholder="Enter url dsl statistics" style="font-size: 14px"/>
                 </div>
 
-            <div class="form-group">
-                <!--  <label for="urlAlarm">Url_Alarm</label>-->
-                <input type="text" class="form-control" size="30" id="urlAlarm" th:field="*{dslAlarm}"
-                       placeholder="Enter url dsl Alarm"  style="font-size: 14px"/>
-            </div>
+                <div class="form-group">
+                    <!--  <label for="urlAlarm">Url_Alarm</label>-->
+                    <input type="text" class="form-control" size="30" id="urlAlarm" th:field="*{dslAlarm}"
+                           placeholder="Enter url dsl Alarm" style="font-size: 14px"/>
+                </div>
 
-            <div class="btn">
-                <input type="submit" id="add" class="btn btn-primary" value="Add"/>
+                <div class="btn">
+                    <input type="submit" id="add" class="btn btn-primary" value="Add"/>
+                </div>
             </div>
-
         </form>
-
-
     </div>
 
 
-    <div class="col-md-2">
-
-        <div class="form-group">
-
-            <div class="col">
-                <label for="systemGroupSave">Введите номер системы</label>
-                <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/save}"
-                      th:object="${exchangeNodeUrl}"
-                      method="post">
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="systemGroupSave" size="3" th:field="*{number}"
-                               style="width: 60px"/>
-                    </div>
-
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="save"/>
-                    </div>
-                </form>
-            </div>
 
 
-                <label for="systemGroupDelete">Удалите номер системы</label>
-                <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
-                      th:object="${exchangeNodeUrl}"
-                      method="post">
+<div class="col-md-2">
 
+    <div class="form-group">
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="systemGroupDelete" size="3" th:field="*{id}"
-                               style="width: 60px"/>
-                    </div>
+        <div class="col">
+            <label for="systemGroupSave">Введите номер системы</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/save}"
+                  th:object="${exchangeNodeUrl}"
+                  method="post">
 
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="delete"/>
-                    </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="systemGroupSave" size="3" th:field="*{number}"
+                           style="width: 60px"/>
+                </div>
 
-                </form>
-            </div>
-
-
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="save"/>
+                </div>
+            </form>
         </div>
 
 
+        <label for="systemGroupDelete">Удалите номер системы</label>
+        <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
+              th:object="${exchangeNodeUrl}"
+              method="post">
 
-    <div class="col-md-2">
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="systemGroupDelete" size="3" th:field="*{id}"
+                       style="width: 60px"/>
+            </div>
+
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="delete"/>
+            </div>
+
+        </form>
+    </div>
+
+    <label>Вывести все номера</label>
+    <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/findAll}"
+          method="post">
+
+        <div class="btn">
+            <input type="submit" class="btn btn-primary" value="all"/>
+        </div>
+
+    </form>
+
+
+</div>
+
+
+<div class="col-md-2">
 
         <div class="col">
 
@@ -176,11 +187,10 @@
                 </div>
 
             </form>
-
-
-    </div>
+        </div>
 
     </div>
+
 
 
     <div class="col-md-2">
@@ -216,7 +226,7 @@
         </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-1">
 
         <div class="form-group">
 
@@ -241,7 +251,6 @@
 
     </div>
 
-</div>
 
 
 <div class="form-group">
@@ -277,14 +286,7 @@
         </tr>
     </table>
 </div>
-
-    </div>
-
-    </div>
-
 </div>
-
-
-
+    </div>
 </body>
 </html>

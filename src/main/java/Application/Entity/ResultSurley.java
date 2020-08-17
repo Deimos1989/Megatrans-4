@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 
 @Entity
-@Table(name = "Node_Base")
+@Table(name = "result_surley")
 public class ResultSurley {
 
     @Id
