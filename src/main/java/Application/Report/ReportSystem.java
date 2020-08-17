@@ -1,6 +1,6 @@
 package Application.Report;
 
-import Application.Entity.NodeBase;
+import Application.Entity.ResultSurley;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -31,15 +31,15 @@ public class ReportSystem {
         this.dataTime = dataTime;
     }
 
-    public List<NodeBase> getNodeBaseList() {
-        return nodeBaseList;
+    public List<ResultSurley> getResultSurleyList() {
+        return resultSurleyList;
     }
 
-    public void setNodeBaseList(List<NodeBase> nodeBaseList) {
-        this.nodeBaseList = nodeBaseList;
+    public void setResultSurleyList(List<ResultSurley> resultSurleyList) {
+        this.resultSurleyList = resultSurleyList;
     }
 
-    List<NodeBase> nodeBaseList;
+    List<ResultSurley> resultSurleyList;
 
     FileOutputStream fos;
 
@@ -180,169 +180,169 @@ public class ReportSystem {
 
 
 
-        for (int i = 0; i != nodeBaseList.size(); i++) {
+        for (int i = 0; i != resultSurleyList.size(); i++) {
 
             Cell cell1 = row1.createCell(i+1);
-            cell1.setCellValue(nodeBaseList.get(i).getId());
+            cell1.setCellValue(resultSurleyList.get(i).getId());
             cell1.setCellStyle(style);
 
             Cell cell2 = row2.createCell(i+1);
-            cell2.setCellValue(nodeBaseList.get(i).getLocalDateTime().toString());
+            cell2.setCellValue(resultSurleyList.get(i).getLocalDateTime().toString());
             cell2.setCellStyle(style);
 
             Cell cell3 = row3.createCell(i+1);
-            cell3.setCellValue(nodeBaseList.get(i).getIp());
+            cell3.setCellValue(resultSurleyList.get(i).getIp());
             cell3.setCellStyle(style);
 
 
             Cell cell4 = row4.createCell(i+1);
-            cell4.setCellValue(nodeBaseList.get(i).getErroredBlocksValueSide1());
+            cell4.setCellValue(resultSurleyList.get(i).getErroredBlocksValueSide1());
             cell4.setCellStyle(style);
 
 
             Cell cell5 = row5.createCell(i+1);
-            if(nodeBaseList.get(i).getErroredBlocksValueSide2()==null){
+            if(resultSurleyList.get(i).getErroredBlocksValueSide2()==null){
                 cell5.setCellValue("default");
                 cell5.setCellStyle(style);
             }else {
-                cell5.setCellValue(nodeBaseList.get(i).getErroredBlocksValueSide2());
+                cell5.setCellValue(resultSurleyList.get(i).getErroredBlocksValueSide2());
                 cell5.setCellStyle(style);
             }
 
 
 
             Cell cell6 = row6.createCell(i+1);
-            cell6.setCellValue(nodeBaseList.get(i).getErroredSecondValueSide1());
+            cell6.setCellValue(resultSurleyList.get(i).getErroredSecondValueSide1());
             cell6.setCellStyle(style);
 
 
             Cell cell7 = row7.createCell(i+1);
-            if(nodeBaseList.get(i).getErroredSecondValueSide2()==null){
+            if(resultSurleyList.get(i).getErroredSecondValueSide2()==null){
                 cell7.setCellValue("default");
                 cell7.setCellStyle(style);
             }else {
-                cell7.setCellValue(nodeBaseList.get(i).getErroredSecondValueSide2());
+                cell7.setCellValue(resultSurleyList.get(i).getErroredSecondValueSide2());
                 cell7.setCellStyle(style);
             }
 
 
             Cell cell8 = row8.createCell(i+1);
-            cell8.setCellValue(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide1());
+            cell8.setCellValue(resultSurleyList.get(i).getSeverelyErroredSecondsValueSide1());
             cell8.setCellStyle(style);
 
 
 
             Cell cell9 = row9.createCell(i+1);
-            if(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide2()==null){
+            if(resultSurleyList.get(i).getSeverelyErroredSecondsValueSide2()==null){
                 cell9.setCellValue("default");
                 cell9.setCellStyle(style);
             }else {
-                cell9.setCellValue(nodeBaseList.get(i).getSeverelyErroredSecondsValueSide2());
+                cell9.setCellValue(resultSurleyList.get(i).getSeverelyErroredSecondsValueSide2());
                 cell9.setCellStyle(style);
             }
 
 
             Cell cell10 = row10.createCell(i+1);
-            cell10.setCellValue(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide1());
+            cell10.setCellValue(resultSurleyList.get(i).getBackgroundBlockErrorsValueSide1());
             cell10.setCellStyle(style);
 
 
             Cell cell11 = row11.createCell(i+1);
-            if(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide2()==null){
+            if(resultSurleyList.get(i).getBackgroundBlockErrorsValueSide2()==null){
                 cell11.setCellValue("default");
                 cell11.setCellStyle(style);
             }else {
-                cell11.setCellValue(nodeBaseList.get(i).getBackgroundBlockErrorsValueSide2());
+                cell11.setCellValue(resultSurleyList.get(i).getBackgroundBlockErrorsValueSide2());
                 cell11.setCellStyle(style);
             }
 
 
             Cell cell12 = row12.createCell(i+1);
-            cell12.setCellValue(nodeBaseList.get(i).getEsrValueSide1());
+            cell12.setCellValue(resultSurleyList.get(i).getEsrValueSide1());
             cell12.setCellStyle(style);
 
 
             Cell cell13 = row13.createCell(i+1);
-            if(nodeBaseList.get(i).getEsrValueSide2()==null){
+            if(resultSurleyList.get(i).getEsrValueSide2()==null){
                 cell13.setCellValue("default");
                 cell13.setCellStyle(style);
             }else {
-                cell13.setCellValue(nodeBaseList.get(i).getEsrValueSide2());
+                cell13.setCellValue(resultSurleyList.get(i).getEsrValueSide2());
                 cell13.setCellStyle(style);
             }
 
 
             Cell cell14 = row14.createCell(i+1);
-            if(nodeBaseList.get(i).getSesrValueSide1()==null) {
+            if(resultSurleyList.get(i).getSesrValueSide1()==null) {
                 cell14.setCellValue("default");
                 cell14.setCellStyle(style);
 
             }else {
-                cell14.setCellValue(nodeBaseList.get(i).getSesrValueSide1());
+                cell14.setCellValue(resultSurleyList.get(i).getSesrValueSide1());
                 cell14.setCellStyle(style);
             }
 
 
             Cell cell15 = row15.createCell(i+1);
-            if(nodeBaseList.get(i).getSesrValueSide2()==null){
+            if(resultSurleyList.get(i).getSesrValueSide2()==null){
                 cell15.setCellValue("default");
                 cell15.setCellStyle(style);
             }else {
-                cell15.setCellValue(nodeBaseList.get(i).getSesrValueSide2());
+                cell15.setCellValue(resultSurleyList.get(i).getSesrValueSide2());
                 cell15.setCellStyle(style);
             }
 
 
             Cell cell16 = row16.createCell(i+1);
-            cell16.setCellValue(nodeBaseList.get(i).getBberValueSide1());
+            cell16.setCellValue(resultSurleyList.get(i).getBberValueSide1());
             cell16.setCellStyle(style);
 
 
             Cell cell17 = row17.createCell(i+1);
-            if(nodeBaseList.get(i).getBberValueSide2()==null){
+            if(resultSurleyList.get(i).getBberValueSide2()==null){
                 cell17.setCellValue("default");
                 cell17.setCellStyle(style);
             }else {
-                cell17.setCellValue(nodeBaseList.get(i).getBberValueSide2());
+                cell17.setCellValue(resultSurleyList.get(i).getBberValueSide2());
                 cell17.setCellStyle(style);
             }
 
             Cell cell18 = row18.createCell(i+1);
-            cell18.setCellValue(nodeBaseList.get(i).getAvailableTimeValueSide1());
+            cell18.setCellValue(resultSurleyList.get(i).getAvailableTimeValueSide1());
             cell18.setCellStyle(style);
 
             Cell cell19 = row19.createCell(i+1);
-            if(nodeBaseList.get(i).getAvailableTimeValueSide2()==null){
+            if(resultSurleyList.get(i).getAvailableTimeValueSide2()==null){
                 cell19.setCellValue("default");
                 cell19.setCellStyle(style);
             }else {
-                cell19.setCellValue(nodeBaseList.get(i).getAvailableTimeValueSide2());
+                cell19.setCellValue(resultSurleyList.get(i).getAvailableTimeValueSide2());
                 cell19.setCellStyle(style);
             }
 
             Cell cell20 = row20.createCell(i+1);
-            cell20.setCellValue(nodeBaseList.get(i).getUnavailableTimeValueSide1());
+            cell20.setCellValue(resultSurleyList.get(i).getUnavailableTimeValueSide1());
             cell20.setCellStyle(style);
 
             Cell cell21 = row21.createCell(i+1);
-            if(nodeBaseList.get(i).getUnavailableTimeValueSide2()==null){
+            if(resultSurleyList.get(i).getUnavailableTimeValueSide2()==null){
                 cell21.setCellValue("default");
                 cell21.setCellStyle(style);
             }else {
-                cell21.setCellValue(nodeBaseList.get(i).getUnavailableTimeValueSide2());
+                cell21.setCellValue(resultSurleyList.get(i).getUnavailableTimeValueSide2());
                 cell21.setCellStyle(style);
             }
 
             Cell cell22 = row22.createCell(i+1);
-            cell22.setCellValue(nodeBaseList.get(i).getNmrValueSide1());
+            cell22.setCellValue(resultSurleyList.get(i).getNmrValueSide1());
             cell22.setCellStyle(style);
 
             Cell cell23 = row23.createCell(i+1);
-            if(nodeBaseList.get(i).getNmrValueSide2()==null){
+            if(resultSurleyList.get(i).getNmrValueSide2()==null){
                 cell23.setCellValue("default");
                 cell23.setCellStyle(style);
             }else {
-                cell23.setCellValue(nodeBaseList.get(i).getNmrValueSide2());
+                cell23.setCellValue(resultSurleyList.get(i).getNmrValueSide2());
                 cell23.setCellStyle(style);
             }
 

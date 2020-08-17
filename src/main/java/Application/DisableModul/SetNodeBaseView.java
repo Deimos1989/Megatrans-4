@@ -1,7 +1,7 @@
 /*
 package Application.action;
 
-import Application.Entity.NodeBase;
+import Application.Entity.ResultSurley;
 import Application.exchange.ExchangeNodeBase;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class SetNodeBaseView {
 
 
-    List<NodeBase>nodeBases;
+    List<ResultSurley>nodeBases;
 
     public ExchangeNodeBase setTable() {
 

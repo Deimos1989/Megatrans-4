@@ -38,7 +38,7 @@ public class DateTime {
 
   /*  @ManyToOne(cascade =CascadeType.ALL )
     @JoinColumn (name="hash_link")
-    NodeBase nodeBase =new NodeBase();
+    ResultSurley nodeBase =new ResultSurley();
 */
 
 @Column(name = "hash")

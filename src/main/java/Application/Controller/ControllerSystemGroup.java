@@ -3,6 +3,7 @@ package Application.Controller;
 import Application.Entity.SystemGroup;
 import Application.exchange.ExchangeNodeUrl;
 
+import Application.service.SystemGroupServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,15 @@ import java.util.List;
 
 
 @Controller
-public class ControllerNumberSystem {
+public class ControllerSystemGroup {
 
-    /*@Autowired
-    NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement;
-*/
-/*
-    @RequestMapping(value = "/ControllerNumberSystem/findAll", method = RequestMethod.GET)
+    @Autowired
+    SystemGroupServiceInterfaceImplement systemGroupServiceInterfaceImplement;
+    @RequestMapping(value = "/ControllerSystemGroup/findAll", method = RequestMethod.GET)
     public String findAll (@ModelAttribute ExchangeNodeUrl exchangeNodeUrl, Model
             model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        List<SystemGroup> systemGroups = numberSystemServiceInterfaceImplement.findAll();
+        List<SystemGroup> systemGroups = systemGroupServiceInterfaceImplement.findAll();
         for (int i = 0; i != systemGroups.size(); i++) {
             Long id = systemGroups.get(i).getId();
             Object node = systemGroups.get(i);
@@ -34,21 +33,21 @@ public class ControllerNumberSystem {
             model.addAttribute("maps", maps);
         }
         return "addUrls";
-    }*/
+    }
 
-  /*  @RequestMapping(value="/ControllerNumberSystem/save", method=RequestMethod.POST)
+    @RequestMapping(value="/ControllerSystemGroup/save", method=RequestMethod.POST)
     public String save(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,SystemGroup systemGroup) {
         //systemGroup.setNumber(exchangeNodeUrl.getNumber());
-        numberSystemServiceInterfaceImplement.save(systemGroup);
+        systemGroupServiceInterfaceImplement.save(systemGroup);
         return "addUrls";
     }
 
-    @RequestMapping(value="/ControllerNumberSystem/delete", method=RequestMethod.POST)
+    @RequestMapping(value="/ControllerSystemGroup/delete", method=RequestMethod.POST)
     public String delete(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,SystemGroup systemGroup) {
         systemGroup.setId(exchangeNodeUrl.getId());
-        numberSystemServiceInterfaceImplement.delete(systemGroup);
+        systemGroupServiceInterfaceImplement.delete(systemGroup);
         return "addUrls";
-    }*/
+    }
 
 
 }

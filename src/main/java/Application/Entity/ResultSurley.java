@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "Node_Base")
-public class NodeBase {
+public class ResultSurley {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -245,7 +245,7 @@ public class NodeBase {
 
 
 
-public NodeBase(){
+public ResultSurley(){
 
     }
 

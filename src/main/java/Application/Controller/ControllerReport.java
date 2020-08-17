@@ -2,10 +2,10 @@ package Application.Controller;
 
 
 
-import Application.Entity.NodeBase;
+import Application.Entity.ResultSurley;
 import Application.Report.ReportSystem;
 import Application.exchange.ExchangeServiceObjectView;
-import Application.service.NodeBaseServiceInterfaceImplement;
+import Application.service.ResultSurleyServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ import java.util.*;
 public class ControllerReport {
 
     @Autowired
-    NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
+    ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
 
     @RequestMapping(value = "/ControllerReport/reportSystem" , method=RequestMethod.POST)
     public ResponseEntity<Object> reportSystem(ExchangeServiceObjectView exchangeServiceObjectView,ReportSystem reportSystem) {
@@ -35,9 +35,9 @@ public class ControllerReport {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime(), formatter);
 
-        List<NodeBase> nodeBases = nodeBaseServiceInterfaceImplement.findByLocalDateTime(localDateTime);
+        List<ResultSurley> resultSurleys = nodeBaseServiceInterfaceImplement.findByLocalDateTime(localDateTime);
 
-        reportSystem.setNodeBaseList(nodeBases);
+        reportSystem.setResultSurleyList(resultSurleys);
         reportSystem.setDataTime(exchangeServiceObjectView.getLocalDateTime());
         reportSystem.reportSystem();
         

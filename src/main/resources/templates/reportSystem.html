@@ -44,7 +44,7 @@
 
         <div class="form-group" style="background-color: #c4c4c4">
 
-        <form action="#" class="form-inline" th:action="@{/ControllerNodeBase/findByDate}" th:object="${exchangeServiceObjectView}"
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDate}" th:object="${exchangeServiceObjectView}"
               method="post">
             <div class="form-group">
             <input type="text" class="form-control" size="15" th:field="*{localDate}" placeholder="Report on date." />
@@ -64,7 +64,7 @@
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerNodeBase/findByLocalDateTime}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByLocalDateTime}" th:object="${exchangeServiceObjectView}"   method="post">
 
             <div class="form-group">
             <input type="text" class="form-control" size="15" th:field="*{localDateTime}" placeholder="Report on DateTime." />
@@ -74,7 +74,7 @@
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerNodeBase/findByHash}" th:object="${exchangeServiceObjectView}"  method="post">
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByHash}" th:object="${exchangeServiceObjectView}"  method="post">
             <div class="form-group">
             <input type="text" class="form-control" size="15" th:field="*{hash}" placeholder="Report on hash." />
                 </div>
@@ -83,7 +83,7 @@
                 </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerNodeBase/findByIp}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByIp}" th:object="${exchangeServiceObjectView}"   method="post">
             <div class="form-group">
             <input type="text" class="form-control" size="15" th:field="*{ip}" placeholder="Report on ip."/>
             </div>
@@ -92,7 +92,7 @@
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerNodeBase/deleteByHash}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}" th:object="${exchangeServiceObjectView}"   method="post">
             <div class="form-group">
             <input type="text" class="form-control"size="15" th:field="*{hash}" placeholder="Report on hash."/>
             </div>

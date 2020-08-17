@@ -1,8 +1,8 @@
 package Application.action;
 
-import Application.Entity.NodeBase;
+import Application.Entity.ResultSurley;
 import Application.exchange.ExchangeDateTime;
-import Application.service.NodeBaseServiceInterfaceImplement;
+import Application.service.ResultSurleyServiceInterfaceImplement;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import Application.processing.DslStatisticsNode;
@@ -15,12 +15,12 @@ import java.util.Arrays;
 public class SetNodeBase implements Runnable {
 
 
-    NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
+    ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
     DslStatusNode dslStatusNode;
     DslStatisticsNode dslStatisticsNode;
     ArrayList<String> url;
 
-    public SetNodeBase(NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls) {
+    public SetNodeBase(ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls) {
         this.nodeBaseServiceInterfaceImplement = nodeBaseServiceInterfaceImplement;
         this.dslStatusNode = dslStatusNode;
         this.dslStatisticsNode = dslStatisticsNode;
@@ -67,189 +67,189 @@ public class SetNodeBase implements Runnable {
             if (dslStatusNode.modeName("") != "") {
 
 
-                NodeBase nodeBase = new NodeBase();
+                ResultSurley resultSurley = new ResultSurley();
 
-                nodeBase.setLocalDate(exchangeDateTime.getLocalDateStatic());
-                nodeBase.setLocalTime(exchangeDateTime.getLocalTimeStatic());
-                nodeBase.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
-
-
-                nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
-                nodeBase.setHash(exchangeDateTime.getHashStatic());
+                resultSurley.setLocalDate(exchangeDateTime.getLocalDateStatic());
+                resultSurley.setLocalTime(exchangeDateTime.getLocalTimeStatic());
+                resultSurley.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
 
 
-                nodeBase.setModeName(dslStatusNode.modeName(""));
-
-                nodeBase.setIp(dslStatusNode.nameNode(urlSum[0]));
-
-
-                nodeBase.setModeValue(dslStatusNode.modeValue(""));
-
-                nodeBase.setSyncName(dslStatusNode.syncName(""));
-                nodeBase.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
-
-                nodeBase.setSegdName(dslStatusNode.segdName(""));
-                nodeBase.setSegdValueSide1(dslStatusNode.segdValueSide1(0));
-
-                nodeBase.setPowerBackOffName(dslStatusNode.powerBackOffName(""));
-                nodeBase.setPowerBackOffValue(dslStatusNode.powerBackOffValue(0.0));
-                nodeBase.setPowerBackOffParametr(dslStatusNode.powerBackOffParametr(""));
-
-                nodeBase.setFarEndPowerBackOffName(dslStatusNode.farEndPowerBackOffName(""));
-                nodeBase.setFarEndPowerBackOffValue(dslStatusNode.farEndPowerBackOffValue(0.0));
-                nodeBase.setFarEndPowerBackOffParametr(dslStatusNode.farEndPowerBackOffParametr(""));
-
-                nodeBase.setLoopAttenuationName(dslStatusNode.loopAttenuationName(""));
-                nodeBase.setLoopAttenuationValueSide1(dslStatusNode.loopAttenuationValueSide1(0.0));
-
-                nodeBase.setNmrName(dslStatusNode.nmrName(""));
-                nodeBase.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
-
-                nodeBase.setBitrateName(dslStatusNode.bitrateName(""));
-                nodeBase.setBitrateValueSide1(dslStatusNode.bitrateValueSide1(0));
+                resultSurley.setTimestamp(exchangeDateTime.getTimestampStatic());
+                resultSurley.setHash(exchangeDateTime.getHashStatic());
 
 
-                nodeBase.setSruName(dslStatusNode.sruName(""));
-                nodeBase.setSruValue(dslStatusNode.sruValue(0));
+                resultSurley.setModeName(dslStatusNode.modeName(""));
 
-                nodeBase.setActiveSyncSourceName(dslStatusNode.activeSyncSourceName(""));
-                nodeBase.setActiveSyncSourceValueSide1(dslStatusNode.activeSyncSourceValueSide1(""));
+                resultSurley.setIp(dslStatusNode.nameNode(urlSum[0]));
 
-                nodeBase.setTemperatureName(dslStatusNode.temperatureName(""));
-                nodeBase.setTemperatureValue(dslStatusNode.temperatureValue(0.0));
-                nodeBase.setTemperatureParametr(dslStatusNode.temperatureParametr(""));
 
-                nodeBase.setBertName(dslStatusNode.bertName(""));
-                nodeBase.setBertValue(dslStatusNode.bertValue(""));
+                resultSurley.setModeValue(dslStatusNode.modeValue(""));
 
-                nodeBase.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-                nodeBase.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+                resultSurley.setSyncName(dslStatusNode.syncName(""));
+                resultSurley.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
 
-                nodeBase.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-                nodeBase.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+                resultSurley.setSegdName(dslStatusNode.segdName(""));
+                resultSurley.setSegdValueSide1(dslStatusNode.segdValueSide1(0));
 
-                nodeBase.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-                nodeBase.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+                resultSurley.setPowerBackOffName(dslStatusNode.powerBackOffName(""));
+                resultSurley.setPowerBackOffValue(dslStatusNode.powerBackOffValue(0.0));
+                resultSurley.setPowerBackOffParametr(dslStatusNode.powerBackOffParametr(""));
 
-                nodeBase.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-                nodeBase.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+                resultSurley.setFarEndPowerBackOffName(dslStatusNode.farEndPowerBackOffName(""));
+                resultSurley.setFarEndPowerBackOffValue(dslStatusNode.farEndPowerBackOffValue(0.0));
+                resultSurley.setFarEndPowerBackOffParametr(dslStatusNode.farEndPowerBackOffParametr(""));
 
-                nodeBase.setEsrName(dslStatisticsNode.esrName(""));
-                nodeBase.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+                resultSurley.setLoopAttenuationName(dslStatusNode.loopAttenuationName(""));
+                resultSurley.setLoopAttenuationValueSide1(dslStatusNode.loopAttenuationValueSide1(0.0));
 
-                nodeBase.setSesrName(dslStatisticsNode.sersName(""));
-                nodeBase.setSesrValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+                resultSurley.setNmrName(dslStatusNode.nmrName(""));
+                resultSurley.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
 
-                nodeBase.setBberName(dslStatisticsNode.bberName(""));
-                nodeBase.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+                resultSurley.setBitrateName(dslStatusNode.bitrateName(""));
+                resultSurley.setBitrateValueSide1(dslStatusNode.bitrateValueSide1(0));
 
-                nodeBase.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-                nodeBase.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
 
-                nodeBase.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+                resultSurley.setSruName(dslStatusNode.sruName(""));
+                resultSurley.setSruValue(dslStatusNode.sruValue(0));
 
-                nodeBaseServiceInterfaceImplement.save(nodeBase);
+                resultSurley.setActiveSyncSourceName(dslStatusNode.activeSyncSourceName(""));
+                resultSurley.setActiveSyncSourceValueSide1(dslStatusNode.activeSyncSourceValueSide1(""));
+
+                resultSurley.setTemperatureName(dslStatusNode.temperatureName(""));
+                resultSurley.setTemperatureValue(dslStatusNode.temperatureValue(0.0));
+                resultSurley.setTemperatureParametr(dslStatusNode.temperatureParametr(""));
+
+                resultSurley.setBertName(dslStatusNode.bertName(""));
+                resultSurley.setBertValue(dslStatusNode.bertValue(""));
+
+                resultSurley.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+                resultSurley.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+
+                resultSurley.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+                resultSurley.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+
+                resultSurley.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+                resultSurley.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+
+                resultSurley.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+                resultSurley.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+
+                resultSurley.setEsrName(dslStatisticsNode.esrName(""));
+                resultSurley.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+
+                resultSurley.setSesrName(dslStatisticsNode.sersName(""));
+                resultSurley.setSesrValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+
+                resultSurley.setBberName(dslStatisticsNode.bberName(""));
+                resultSurley.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+
+                resultSurley.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+                resultSurley.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
+
+                resultSurley.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+                resultSurley.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+
+                nodeBaseServiceInterfaceImplement.save(resultSurley);
 
             } else {
 
 
-                NodeBase nodeBase = new NodeBase();
+                ResultSurley resultSurley = new ResultSurley();
 
-                nodeBase.setLocalDate(exchangeDateTime.getLocalDateStatic());
-                nodeBase.setLocalTime(exchangeDateTime.getLocalTimeStatic());
-                nodeBase.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
-
-
-                nodeBase.setTimestamp(exchangeDateTime.getTimestampStatic());
-                nodeBase.setHash(exchangeDateTime.getHashStatic());
-
-                nodeBase.setIp(dslStatusNode.nameNode(urlSum[0]));
-
-                nodeBase.setSyncName(dslStatusNode.syncName(""));
-                nodeBase.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
-                nodeBase.setSyncValueSide2(dslStatusNode.syncValueSide2(0));
-
-                nodeBase.setSegdName(dslStatusNode.segdName(""));
-                nodeBase.setSegdValueSide1(dslStatusNode.segdValueSide1(0));
-                nodeBase.setSegdValueSide2(dslStatusNode.segdValueSide2(0));
-
-                nodeBase.setTxPowerName(dslStatusNode.txPowerName(""));
-                nodeBase.setTxPowerValueSide1(dslStatusNode.txPowerValueSide1(0.0));
-                nodeBase.setTxPowerValueSide2(dslStatusNode.txPowerValueSide2(0.0));
-                nodeBase.setTxPowerParametr(dslStatusNode.txPowerParametr(""));
-
-                nodeBase.setRxPowerName(dslStatusNode.rxPowerName(""));
-                nodeBase.setRxPowerValueSide1(dslStatusNode.rxPowerValueSide1(0.0));
-                nodeBase.setRxPowerValueSide2(dslStatusNode.rxPowerValueSide2(0.0));
-                nodeBase.setRxPowerParametr(dslStatusNode.rxPowerParametr(""));
-
-                nodeBase.setLoopAttenuationName(dslStatusNode.loopAttenuationName(""));
-                nodeBase.setLoopAttenuationValueSide1(dslStatusNode.loopAttenuationValueSide1(0.0));
-                nodeBase.setLoopAttenuationValueSide2(dslStatusNode.loopAttenuationValueSide2(0.0));
-
-                nodeBase.setNmrName(dslStatusNode.nmrName(""));
-                nodeBase.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
-                nodeBase.setNmrValueSide2(dslStatusNode.nmrValueSide2(0.0));
-
-                nodeBase.setBitrateName(dslStatusNode.bitrateName(""));
-                nodeBase.setBitrateValueSide1(dslStatusNode.bitrateValueSide1(0));
-                nodeBase.setBitrateValueSide2(dslStatusNode.bitrateValueSide2(0));
-
-                nodeBase.setActiveSyncSourceName(dslStatusNode.activeSyncSourceName(""));
-                nodeBase.setActiveSyncSourceValueSide1(dslStatusNode.activeSyncSourceValueSide1(""));
-                nodeBase.setActiveSyncSourceValueSide2(dslStatusNode.activeSyncSourceValueSide2(""));
-
-                nodeBase.setRpVoltageName(dslStatusNode.rpVoltageName(""));
-                nodeBase.setRpVoltageValueSide1(dslStatusNode.rpVoltageValueSide1(0));
-                nodeBase.setRpVoltageValueSide2(dslStatusNode.rpVoltageValueSide2(0));
-                nodeBase.setRpVoltageParametr(dslStatusNode.rpVoltageParametr(""));
-
-                nodeBase.setRpStatusName(dslStatusNode.rpStatusName(""));
-                nodeBase.setRpStatusValue(dslStatusNode.rpStatusValue(""));
-
-                nodeBase.setTemperatureName(dslStatusNode.temperatureName(""));
-                nodeBase.setTemperatureValue(dslStatusNode.temperatureValue(0.0));
-                nodeBase.setTemperatureParametr(dslStatusNode.temperatureParametr(""));
+                resultSurley.setLocalDate(exchangeDateTime.getLocalDateStatic());
+                resultSurley.setLocalTime(exchangeDateTime.getLocalTimeStatic());
+                resultSurley.setLocalDateTime(exchangeDateTime.getLocalDateTimeStatic());
 
 
-                nodeBase.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
-                nodeBase.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
-                nodeBase.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
+                resultSurley.setTimestamp(exchangeDateTime.getTimestampStatic());
+                resultSurley.setHash(exchangeDateTime.getHashStatic());
 
-                nodeBase.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
-                nodeBase.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
-                nodeBase.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
+                resultSurley.setIp(dslStatusNode.nameNode(urlSum[0]));
 
-                nodeBase.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
-                nodeBase.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
-                nodeBase.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
+                resultSurley.setSyncName(dslStatusNode.syncName(""));
+                resultSurley.setSyncValueSide1(dslStatusNode.syncValueSide1(0));
+                resultSurley.setSyncValueSide2(dslStatusNode.syncValueSide2(0));
 
-                nodeBase.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
-                nodeBase.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
-                nodeBase.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
+                resultSurley.setSegdName(dslStatusNode.segdName(""));
+                resultSurley.setSegdValueSide1(dslStatusNode.segdValueSide1(0));
+                resultSurley.setSegdValueSide2(dslStatusNode.segdValueSide2(0));
 
-                nodeBase.setEsrName(dslStatisticsNode.esrName(""));
-                nodeBase.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
-                nodeBase.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
+                resultSurley.setTxPowerName(dslStatusNode.txPowerName(""));
+                resultSurley.setTxPowerValueSide1(dslStatusNode.txPowerValueSide1(0.0));
+                resultSurley.setTxPowerValueSide2(dslStatusNode.txPowerValueSide2(0.0));
+                resultSurley.setTxPowerParametr(dslStatusNode.txPowerParametr(""));
 
-                nodeBase.setSesrName(dslStatisticsNode.sersName(""));
-                nodeBase.setSesrValueSide1(dslStatisticsNode.sersValueSide1(0.0));
-                nodeBase.setSesrValueSide2(dslStatisticsNode.sersValueSide2(0.0));
+                resultSurley.setRxPowerName(dslStatusNode.rxPowerName(""));
+                resultSurley.setRxPowerValueSide1(dslStatusNode.rxPowerValueSide1(0.0));
+                resultSurley.setRxPowerValueSide2(dslStatusNode.rxPowerValueSide2(0.0));
+                resultSurley.setRxPowerParametr(dslStatusNode.rxPowerParametr(""));
 
-                nodeBase.setBberName(dslStatisticsNode.bberName(""));
-                nodeBase.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
-                nodeBase.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
+                resultSurley.setLoopAttenuationName(dslStatusNode.loopAttenuationName(""));
+                resultSurley.setLoopAttenuationValueSide1(dslStatusNode.loopAttenuationValueSide1(0.0));
+                resultSurley.setLoopAttenuationValueSide2(dslStatusNode.loopAttenuationValueSide2(0.0));
 
-                nodeBase.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
-                nodeBase.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
-                nodeBase.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
+                resultSurley.setNmrName(dslStatusNode.nmrName(""));
+                resultSurley.setNmrValueSide1(dslStatusNode.nmrValueSide1(0.0));
+                resultSurley.setNmrValueSide2(dslStatusNode.nmrValueSide2(0.0));
 
-                nodeBase.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
-                nodeBase.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
-                nodeBase.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
+                resultSurley.setBitrateName(dslStatusNode.bitrateName(""));
+                resultSurley.setBitrateValueSide1(dslStatusNode.bitrateValueSide1(0));
+                resultSurley.setBitrateValueSide2(dslStatusNode.bitrateValueSide2(0));
 
-                nodeBaseServiceInterfaceImplement.save(nodeBase);
+                resultSurley.setActiveSyncSourceName(dslStatusNode.activeSyncSourceName(""));
+                resultSurley.setActiveSyncSourceValueSide1(dslStatusNode.activeSyncSourceValueSide1(""));
+                resultSurley.setActiveSyncSourceValueSide2(dslStatusNode.activeSyncSourceValueSide2(""));
+
+                resultSurley.setRpVoltageName(dslStatusNode.rpVoltageName(""));
+                resultSurley.setRpVoltageValueSide1(dslStatusNode.rpVoltageValueSide1(0));
+                resultSurley.setRpVoltageValueSide2(dslStatusNode.rpVoltageValueSide2(0));
+                resultSurley.setRpVoltageParametr(dslStatusNode.rpVoltageParametr(""));
+
+                resultSurley.setRpStatusName(dslStatusNode.rpStatusName(""));
+                resultSurley.setRpStatusValue(dslStatusNode.rpStatusValue(""));
+
+                resultSurley.setTemperatureName(dslStatusNode.temperatureName(""));
+                resultSurley.setTemperatureValue(dslStatusNode.temperatureValue(0.0));
+                resultSurley.setTemperatureParametr(dslStatusNode.temperatureParametr(""));
+
+
+                resultSurley.setErroredBlocksName(dslStatisticsNode.erroredBlocksName(""));
+                resultSurley.setErroredBlocksValueSide1(dslStatisticsNode.erroredBlocksValueSide1(0L));
+                resultSurley.setErroredBlocksValueSide2(dslStatisticsNode.erroredBlocksValueSide2(0L));
+
+                resultSurley.setErroredSecondsName(dslStatisticsNode.erroredSecondsName(""));
+                resultSurley.setErroredSecondValueSide1(dslStatisticsNode.erroredSecondValueSide1(0L));
+                resultSurley.setErroredSecondValueSide2(dslStatisticsNode.erroredSecondValueSide2(0L));
+
+                resultSurley.setSeverelyErroredSecondsName(dslStatisticsNode.severelyErroredSecondsName(""));
+                resultSurley.setSeverelyErroredSecondsValueSide1(dslStatisticsNode.severelyErroredSecondsValueSide1(0L));
+                resultSurley.setSeverelyErroredSecondsValueSide2(dslStatisticsNode.severelyErroredSecondsValueSide2(0L));
+
+                resultSurley.setBackgroundBlockErrorsName(dslStatisticsNode.backgroundBlockErrorsName(""));
+                resultSurley.setBackgroundBlockErrorsValueSide1(dslStatisticsNode.backgroundBlockErrorsValueSide1(0L));
+                resultSurley.setBackgroundBlockErrorsValueSide2(dslStatisticsNode.backgroundBlockErrorsValueSide2(0L));
+
+                resultSurley.setEsrName(dslStatisticsNode.esrName(""));
+                resultSurley.setEsrValueSide1(dslStatisticsNode.esrValueSide1(0.0));
+                resultSurley.setEsrValueSide2(dslStatisticsNode.esrValueSide2(0.0));
+
+                resultSurley.setSesrName(dslStatisticsNode.sersName(""));
+                resultSurley.setSesrValueSide1(dslStatisticsNode.sersValueSide1(0.0));
+                resultSurley.setSesrValueSide2(dslStatisticsNode.sersValueSide2(0.0));
+
+                resultSurley.setBberName(dslStatisticsNode.bberName(""));
+                resultSurley.setBberValueSide1(dslStatisticsNode.bberValueSide1(0.0));
+                resultSurley.setBberValueSide2(dslStatisticsNode.bberValueSide2(0.0));
+
+                resultSurley.setAvailableTimeName(dslStatisticsNode.availableTimeName(""));
+                resultSurley.setAvailableTimeValueSide1(dslStatisticsNode.availableTimeValueSide1(0L));
+                resultSurley.setAvailableTimeValueSide2(dslStatisticsNode.availableTimeValueSide2(0L));
+
+                resultSurley.setUnavailableTimeName(dslStatisticsNode.unavailableTimeName(""));
+                resultSurley.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
+                resultSurley.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
+
+                nodeBaseServiceInterfaceImplement.save(resultSurley);
 
             }
 

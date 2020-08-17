@@ -2,7 +2,7 @@
 package Application.DisableModul;
 
 
-import Application.Entity.NodeBase;
+import Application.Entity.ResultSurley;
 import Application.Entity.SystemGroup;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,14 +17,14 @@ public class Repository {
 
 
 
-    public List<NodeBase> localDateTimeReport() {
+    public List<ResultSurley> localDateTimeReport() {
         Session session = SessionFactory.getSessionFactory();
         session.beginTransaction();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse("Test", formatter);
-        Query query1 = session.createQuery("FROM  NodeBase nb where nb.localDateTime =:paramName");
+        Query query1 = session.createQuery("FROM  ResultSurley nb where nb.localDateTime =:paramName");
         query1.setParameter("paramName", dateTime);
-        List<NodeBase>nodeList=query1.list();
+        List<ResultSurley>nodeList=query1.list();
         session.getTransaction().commit();
         session.clear();
         session.close();
@@ -57,8 +57,8 @@ public class Repository {
 
         List<Surlay> surlays = repositoryNodeBase.getBySystemGroupAndBettwenDateCrate(sg, dateStart, dateEnd);
         for (Surlay surlay:surlays) {
-            List<NodeBase> result = repositoryNodeBase.getBySurlay(surlay);
-            for(NodeBase nb :result){
+            List<ResultSurley> result = repositoryNodeBase.getBySurlay(surlay);
+            for(ResultSurley nb :result){
                 ResultDto rd = new ResultDto();
                 rd.systemName = sg.getName();
                 rd.dateCreate = surlay.dateCreate.toString();

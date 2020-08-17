@@ -13,7 +13,7 @@
         <!-- DB schema will be updated if needed -->
 
 
-        <mapping class="Application.Entity.NodeBase"></mapping>
+        <mapping class="Application.Entity.ResultSurley"></mapping>
         <mapping class="Application.Entity.DateTime"></mapping>
         <mapping class="Application.Entity.NodeUrl"></mapping>
         <mapping class="Application.Entity.SystemGroup"></mapping>

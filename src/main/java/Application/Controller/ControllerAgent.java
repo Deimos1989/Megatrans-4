@@ -1,7 +1,6 @@
 package Application.Controller;
 
 import Application.Entity.NodeUrl;
-import Application.Entity.SystemGroup;
 import Application.action.SetDateTime;
 import Application.action.SetNodeBase;
 import Application.exchange.ExchangeAgent;
@@ -9,7 +8,7 @@ import Application.processing.DslStatisticsNode;
 import Application.processing.DslStatusNode;
 import Application.service.DateTimeServiceInterfaceImplement;
 
-import Application.service.NodeBaseServiceInterfaceImplement;
+import Application.service.ResultSurleyServiceInterfaceImplement;
 import Application.service.NodeUrlServiceInterfaceImplement;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class ControllerAgent {
     DateTimeServiceInterfaceImplement dateTimeServiceInterfaceImplement;
 
     @Autowired
-    NodeBaseServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
+    ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
 
     @Autowired
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
