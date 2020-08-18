@@ -2,7 +2,7 @@
 package Application.action;
 
 import Application.Entity.ResultSurley;
-import Application.exchange.ExchangeNodeBase;
+import Application.exchange.ExchangeResultSurley;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public class SetNodeBaseView {
 
     List<ResultSurley>nodeBases;
 
-    public ExchangeNodeBase setTable() {
+    public ExchangeResultSurley setTable() {
 
-    ExchangeNodeBase exchangeNodeBaseObjectView = new ExchangeNodeBase();
+    ExchangeResultSurley exchangeNodeBaseObjectView = new ExchangeResultSurley();
 
         exchangeNodeBaseObjectView.getName();
 

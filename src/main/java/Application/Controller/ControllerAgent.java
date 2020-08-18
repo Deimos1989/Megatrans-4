@@ -34,9 +34,6 @@ public class ControllerAgent {
     @Autowired
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
 
-  /*  @Autowired
-    NumberSystemServiceInterfaceImplement numberSystemServiceInterfaceImplement;
-*/
     @Autowired
     DslStatusNode dslStatusNode;
 

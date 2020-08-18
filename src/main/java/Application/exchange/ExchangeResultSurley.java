@@ -3,7 +3,7 @@ package Application.exchange;
 
 
 
-public class ExchangeNodeBase {
+public class ExchangeResultSurley {
 
     private String name = "IP_Address";
 

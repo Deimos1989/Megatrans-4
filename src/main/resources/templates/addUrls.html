@@ -65,6 +65,8 @@
                                placeholder="Enter ip address" style="width: 150px"/>
                     </div>
                 </div>
+            </div>
+
 
 
                 <div class="form-group">
@@ -88,7 +90,8 @@
                 <div class="btn">
                     <input type="submit" id="add" class="btn btn-primary" value="Add"/>
                 </div>
-            </div>
+
+
         </form>
     </div>
 
@@ -128,16 +131,16 @@
                        style="width: 60px"/>
             </div>
 
-            <div class="btn">
-                <input type="submit" class="btn btn-primary" value="delete"/>
+            <div class="btn" >
+                <input type="submit"  class="btn btn-primary" value="delete"/>
             </div>
 
         </form>
     </div>
 
     <label>Вывести все номера</label>
-    <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/findAll}"
-          method="post">
+    <form action="#"  class="form-inline" th:action="@{/ControllerSystemGroup/findAll}"
+          method="get">
 
         <div class="btn">
             <input type="submit" class="btn btn-primary" value="all"/>

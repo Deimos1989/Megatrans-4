@@ -49,7 +49,7 @@
 <div class="col">
     <label for="taskStart">Опрос системы</label>
     <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
-          th:object="${exchangeNodeUrl}"
+
           method="get">
 
         <div class="btn">
@@ -60,7 +60,6 @@
 
 <div class="col">
     <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
-    th:object="${exchangeNodeUrl}"
     method="get">
 
     <div class="btn">
@@ -69,16 +68,38 @@
     </form>
 </div>
 
+<div class="col">
+    <form action="#" class="form-inline"   th:action=" @{/ControllerChart/findByIp}"
+          th:object="${exchangeChart}"
+          method="get" >
+
+        <div class="form-group">
+            <input type="text" class="form-control" size="15" th:field="*{ip}"   placeholder="Report on ip."/>
+        </div>
+
+        <div class="btn">
+            <input type="submit"  class="btn btn-primary" value="ip"/>
+        </div>
+    </form>
+</div>
+
 
 <br><br><br>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div  class="col-md-8 col-md-offset-2">
+
+
 
             <!-- График --><div id="chart"></div>
 
-            <script>
+            <script th:inline="javascript">
+
+
+
+
+
                 $(function () {
                     $("#chart").shieldChart({
                         theme: "light",
@@ -123,12 +144,7 @@
                             seriesType: 'line',
                             axis: 0,
                             collectionAlias: "NMR",
-                            data: [
-                              /*  {{ result }}
-                                1.3,15.5,*/
-
-
-                            ]
+                            data: [arr]
                         },]
                     });
                 });

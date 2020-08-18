@@ -12,8 +12,13 @@ public class SystemGroup {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "number_system")
+    private String number;
+
     @Column(name = "name")
     private String name;
+
+
 
     public String getName() {
         return name;
@@ -31,5 +36,11 @@ public class SystemGroup {
         this.id = id;
     }
 
+    public String getNumber() {
+        return number;
+    }
 
+    public void setNumber(String number) {
+        this.number = number;
+    }
 }
