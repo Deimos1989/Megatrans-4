@@ -36,16 +36,22 @@ public class ControllerSystemGroup {
     }
 
     @RequestMapping(value="/ControllerSystemGroup/save", method=RequestMethod.POST)
-    public String save(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,SystemGroup systemGroup) {
-        //systemGroup.setNumber(exchangeNodeUrl.getNumber());
+    public String save(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl,SystemGroup systemGroup) {
+        systemGroup.setNumber(exchangeNodeUrl.getNumber());
         systemGroupServiceInterfaceImplement.save(systemGroup);
         return "addUrls";
     }
 
-    @RequestMapping(value="/ControllerSystemGroup/delete", method=RequestMethod.POST)
-    public String delete(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl , Model model,SystemGroup systemGroup) {
+    @RequestMapping(value="/ControllerSystemGroup/delete", method=RequestMethod.GET)
+    public String delete(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl,SystemGroup systemGroup) {
         systemGroup.setId(exchangeNodeUrl.getId());
         systemGroupServiceInterfaceImplement.delete(systemGroup);
+        return "addUrls";
+    }
+
+    @RequestMapping(value="/ControllerSystemGroup/deleteAll", method=RequestMethod.GET)
+    public String deleteAll(@ModelAttribute ExchangeNodeUrl exchangeNodeUrl, SystemGroup systemGroup) {
+        systemGroupServiceInterfaceImplement.deleteAll(systemGroup);
         return "addUrls";
     }
 

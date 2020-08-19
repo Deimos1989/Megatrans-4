@@ -38,7 +38,7 @@
     </div>
 </nav>
 
-<div class="row" style="width: 100%">
+<div class="row" style="background-color: #c4c4c4">
 
     <div class="col-md-3">
 
@@ -49,19 +49,19 @@
                 <div class="row">
                     <!--   <label for="id" class="col-xs-2 control-label">Id</label>-->
                     <div class="col">
-                        <input type="text" class="form-control" id="id" th:field="*{id}" placeholder="id"
+                        <input type="text" class="form-control" th:field="*{id}" placeholder="id"
                                style="width: 60px"/>
                     </div>
 
                     <div class="col">
                         <!--<label for="systemGroup">Enter number system"</label>-->
-                        <input type="text" class="form-control" id="systemGroup" th:field="*{number}" placeholder="num"
+                        <input type="text" class="form-control" th:field="*{number}" placeholder="num"
                                style="width: 60px"/>
                     </div>
 
                     <div class="col">
                         <!--   <label for="ip">IP</label>-->
-                        <input type="text" class="form-control" size="10" id="ip" th:field="*{ip}"
+                        <input type="text" class="form-control" size="10"  th:field="*{ip}"
                                placeholder="Enter ip address" style="width: 150px"/>
                     </div>
                 </div>
@@ -100,10 +100,10 @@
 
 <div class="col-md-2">
 
-    <div class="form-group">
-
         <div class="col">
+
             <label for="systemGroupSave">Введите номер системы</label>
+
             <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/save}"
                   th:object="${exchangeNodeUrl}"
                   method="post">
@@ -119,11 +119,12 @@
             </form>
         </div>
 
+    <div class="col">
 
         <label for="systemGroupDelete">Удалите номер системы</label>
-        <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
+        <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/Delete}"
               th:object="${exchangeNodeUrl}"
-              method="post">
+              method="get">
 
 
             <div class="form-group">
@@ -132,23 +133,41 @@
             </div>
 
             <div class="btn" >
-                <input type="submit"  class="btn btn-primary" value="delete"/>
+                <input type="submit"  class="btn btn-primary" value="Delete"/>
             </div>
 
         </form>
     </div>
 
-    <label>Вывести все номера</label>
+
+    <div class="col">
+
+    <label>Вывести/удалить все номера</label>
+
+
     <form action="#"  class="form-inline" th:action="@{/ControllerSystemGroup/findAll}"
           method="get">
-
+        <div class="form-group">
         <div class="btn">
-            <input type="submit" class="btn btn-primary" value="all"/>
+            <input type="submit" class="btn btn-primary" value="All"/>
         </div>
 
+        </div>
     </form>
 
+        <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/deleteAll}"
+              method="get">
+            <div class="form-group">
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="Del"/>
+            </div>
+            </div>
+        </form>
 
+
+
+
+    </div>
 </div>
 
 
@@ -166,7 +185,7 @@
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="read"/>
+                    <input type="submit" class="btn btn-primary" value="Read"/>
                 </div>
             </form>
 
@@ -175,7 +194,7 @@
             <form action="#" class="form-inline" id="test" th:action="@{/ControllerNodeUrl/findAll}"
                   th:object="${exchangeNodeUrl}" method="get">
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Find"/>
+                    <input type="submit" class="btn btn-primary" value="All"/>
                 </div>
             </form>
 

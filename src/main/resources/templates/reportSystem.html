@@ -47,64 +47,64 @@
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDate}" th:object="${exchangeServiceObjectView}"
               method="post">
             <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{localDate}" placeholder="Report on date." />
+            <input type="text" class="form-control" size="22" th:field="*{localDate}"  style="font-size: 12px" placeholder="Report on date." />
             </div>
             <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Report"/>
+            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
             </div>
         </form>
 
 
         <form action="#" class="form-inline" th:action="@{/ControllerReport/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
             <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{localDateTime}" placeholder="Report save exel." />
+            <input type="text" class="form-control" size="22" th:field="*{localDateTime}"  style="font-size: 12px" placeholder="Report save exel." />
             </div>
             <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Report" />
+            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report" />
             </div>
         </form>
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByLocalDateTime}" th:object="${exchangeServiceObjectView}"   method="post">
 
             <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{localDateTime}" placeholder="Report on DateTime." />
+            <input type="text" class="form-control" size="22" th:field="*{localDateTime}"  style="font-size: 12px" placeholder="Report on DateTime." />
             </div>
             <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Report" />
+            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report" />
             </div>
         </form>
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByHash}" th:object="${exchangeServiceObjectView}"  method="post">
             <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{hash}" placeholder="Report on hash." />
+            <input type="text" class="form-control" size="22" th:field="*{hash}"  style="font-size: 12px" placeholder="Report on hash." />
                 </div>
                 <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Report" />
+            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report" />
                 </div>
         </form>
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByIp}" th:object="${exchangeServiceObjectView}"   method="post">
             <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{ip}" placeholder="Report on ip."/>
+            <input type="text" class="form-control" size="22" th:field="*{ip}"  style="font-size: 12px" placeholder="Report on ip."/>
             </div>
             <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Report" />
+            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report" />
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}" th:object="${exchangeServiceObjectView}"   method="post">
+        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}"  th:object="${exchangeServiceObjectView}"   method="post">
             <div class="form-group">
-            <input type="text" class="form-control"size="15" th:field="*{hash}" placeholder="Report on hash."/>
+            <input type="text" class="form-control" size="22" th:field="*{hash}"  style="font-size: 12px" placeholder="Delete on hash."/>
             </div>
-            <div class="btn">
-            <input type="submit" class="btn btn-primary" value="Delete" />
+            <div class="btn" >
+            <input type="submit"  class="btn btn-primary" style="font-size: 14px" value="Delete" />
             </div>
         </form>
 
         </div>
 
 
-            <table border="1" style="background-color: #c4c4c4"  >
+            <table border="1" style="background-color: #c4c4c4" >
                 <tr style="font-size: 12px">
 
                     <th width="10%">Id</th>

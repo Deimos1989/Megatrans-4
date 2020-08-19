@@ -26,7 +26,7 @@ public class ControllerChart {
     public String findByIpNodeBase(@ModelAttribute ExchangeChart exchangeChart, Model model) {
 
 
-        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByIp(exchangeChart.getIp());
+     //   List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByIp(exchangeChart.getIp());
 /*
         System.out.println(Arrays.asList(resultSurleyList));
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -38,13 +38,15 @@ public class ControllerChart {
 
         }*/
 
-        String[] str ={"1","2","2","2"};
+     //   String[] str ={"1","2","2","2"};
 
 
 
+/*
 
             System.out.println(Arrays.asList(str));
             model.addAttribute("maps", str);
+*/
 
             return "TITLE";
         }

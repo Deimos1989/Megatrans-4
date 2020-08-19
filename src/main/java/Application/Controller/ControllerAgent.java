@@ -1,6 +1,7 @@
 package Application.Controller;
 
 import Application.Entity.NodeUrl;
+import Application.Entity.SystemGroup;
 import Application.action.SetDateTime;
 import Application.action.SetNodeBase;
 import Application.exchange.ExchangeAgent;
@@ -11,16 +12,14 @@ import Application.service.DateTimeServiceInterfaceImplement;
 import Application.service.ResultSurleyServiceInterfaceImplement;
 import Application.service.NodeUrlServiceInterfaceImplement;
 
+import Application.service.SystemGroupServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 @Controller
 public class ControllerAgent {
@@ -29,10 +28,13 @@ public class ControllerAgent {
     DateTimeServiceInterfaceImplement dateTimeServiceInterfaceImplement;
 
     @Autowired
-    ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
+    ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 
     @Autowired
     NodeUrlServiceInterfaceImplement nodeUrlServiceInterfaceImplement;
+
+    @Autowired
+    SystemGroupServiceInterfaceImplement systemGroupServiceInterfaceImplement;
 
     @Autowired
     DslStatusNode dslStatusNode;
@@ -69,22 +71,24 @@ public class ControllerAgent {
 
 
                     List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
-                //    List<SystemGroup> systemGroups = numberSystemServiceInterfaceImplement.findAll();
+                    List<SystemGroup> systemGroups = systemGroupServiceInterfaceImplement.findAll();
 
 
                     ArrayList<String> urls = new ArrayList<>();
-
-                    for (int i = 0; i != nodeUrls.size(); i++) {
-                        urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
-
+                    for (int k = 0; k != systemGroups.size(); k++) {
+                        for (int i = 0; i != nodeUrls.size(); i++) {
+                            if (systemGroups.get(k).getNumber().equals(nodeUrls.get(i).getNumber())) {
+                                urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
+                            }
+                        }
                     }
-
+                    System.out.println(Arrays.asList(urls));
 
                     SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
                     Thread thread1 = new Thread(setDateTime);
                     thread1.start();
 
-                    SetNodeBase setNodeBase = new SetNodeBase(nodeBaseServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls);
+                    SetNodeBase setNodeBase = new SetNodeBase(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls);
                     Thread thread2 = new Thread(setNodeBase);
                     thread2.start();
 
