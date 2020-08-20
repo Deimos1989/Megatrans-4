@@ -64,13 +64,13 @@ public class ControllerResultSurley {
             maps.put(id, node);
             model.addAttribute("maps0", maps);
         }
-        return "reportSystem";//menu
+        return "reportSystem";
     }
 
     @RequestMapping(value = "/ControllerResultSurley/findByDateAndIpAndHash", method = RequestMethod.POST)
     public String findByDateAndIpAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String ip,String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != "") {
+        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != ""&exchangeServiceObjectView.getHash()!="") {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
             List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIpAndHash(localDate, ip,hash);
@@ -89,7 +89,7 @@ public class ControllerResultSurley {
     @RequestMapping(value = "/ControllerResultSurley/findByDateAndNumberAndHash", method = RequestMethod.POST)
     public String findByDateAndNumberAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String number,String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getNumber() != "") {
+        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getNumber() != "" &exchangeServiceObjectView.getHash()!="") {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
             List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndNumberAndHash(localDate, number,hash);
