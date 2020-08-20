@@ -18,7 +18,7 @@ public SetDateTime(DateTimeServiceInterfaceImplement dateTimeServiceInterfaceImp
         DateTime dateTime = new DateTime();
         ExchangeDateTime exchangeDateTime = new ExchangeDateTime();
 
-      //  dateTime.setHash(exchangeDateTime.getHashStatic());
+        dateTime.setHash(exchangeDateTime.getHashStatic());
         dateTime.setTimestamp(exchangeDateTime.getTimestampStatic());
 
         dateTime.setLocalDate(exchangeDateTime.getLocalDateStatic());

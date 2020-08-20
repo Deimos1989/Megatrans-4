@@ -17,13 +17,13 @@ public class ResultSurley {
     private Long id;
 
 
-    @Column(name = "Date",columnDefinition = "DATE")
+    @Column(name = "date",columnDefinition = "DATE")
     private LocalDate localDate;
 
-    @Column(name = "Time", columnDefinition = "TIME")
+    @Column(name = "time", columnDefinition = "TIME")
     private LocalTime localTime;
 
-    @Column(name = "local_Date_Time", columnDefinition = "DATETIME")
+    @Column(name = "local_date_time", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
 
 
@@ -37,7 +37,8 @@ public class ResultSurley {
 
 
 
-
+    @Column(name = "number_system")
+    private String number;
 
 
     @Column(name = "hash")
@@ -928,6 +929,14 @@ public ResultSurley(){
 
     public void setNodeUrl(NodeUrl nodeUrl) {
         this.nodeUrl = nodeUrl;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }
 

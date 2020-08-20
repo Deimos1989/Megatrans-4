@@ -19,12 +19,14 @@ public class SetNodeBase implements Runnable {
     DslStatusNode dslStatusNode;
     DslStatisticsNode dslStatisticsNode;
     ArrayList<String> url;
+    ArrayList<String> numberSystem;
 
-    public SetNodeBase(ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls) {
+    public SetNodeBase(ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls,ArrayList<String> numberSystem) {
         this.nodeBaseServiceInterfaceImplement = nodeBaseServiceInterfaceImplement;
         this.dslStatusNode = dslStatusNode;
         this.dslStatisticsNode = dslStatisticsNode;
         this.url = urls;
+        this.numberSystem=numberSystem;
     }
 
 
@@ -82,6 +84,7 @@ public class SetNodeBase implements Runnable {
 
                 resultSurley.setIp(dslStatusNode.nameNode(urlSum[0]));
 
+                resultSurley.setNumber(numberSystem.get(c));
 
                 resultSurley.setModeValue(dslStatusNode.modeValue(""));
 
@@ -165,6 +168,8 @@ public class SetNodeBase implements Runnable {
                 resultSurley.setHash(exchangeDateTime.getHashStatic());
 
                 resultSurley.setIp(dslStatusNode.nameNode(urlSum[0]));
+
+                resultSurley.setNumber(numberSystem.get(c));
 
                 resultSurley.setSyncName(dslStatusNode.syncName(""));
                 resultSurley.setSyncValueSide1(dslStatusNode.syncValueSide1(0));

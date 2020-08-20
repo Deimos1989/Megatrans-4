@@ -17,5 +17,9 @@ public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSur
     List<ResultSurley> findByLocalDate(LocalDate localDate);
 
     List<ResultSurley> findByLocalDateTime(LocalDateTime localDateTime);
+
+    List<ResultSurley> findByLocalDateAndIpAndHash(LocalDate localDate, String ip,String hash);
+
+    List<ResultSurley> findByLocalDateAndNumberAndHash(LocalDate localDate, String number,String hash);
 }
 

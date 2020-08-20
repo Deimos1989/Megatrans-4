@@ -29,6 +29,18 @@ public class ResultSurleyServiceInterfaceImplement implements ResultSurleyInterf
         return this.resultSurleyInterfaceRepository.findByIp(ip);
     }
 
+    public List<ResultSurley> findByLocalDateAndIpAndHash(LocalDate localDate,String ip,String hash) {
+        return resultSurleyInterfaceRepository.findByLocalDateAndIpAndHash(localDate,ip,hash);
+    }
+
+
+
+    public List<ResultSurley> findByLocalDateAndNumberAndHash(LocalDate localDate,String number,String hash) {
+        return resultSurleyInterfaceRepository.findByLocalDateAndNumberAndHash(localDate,number,hash);
+    }
+
+
+
     @Override
     public List<ResultSurley> findByHash(String hash) {
         return this.resultSurleyInterfaceRepository.findByHash(hash);

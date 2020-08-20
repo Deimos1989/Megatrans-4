@@ -75,20 +75,26 @@ public class ControllerAgent {
 
 
                     ArrayList<String> urls = new ArrayList<>();
+                    ArrayList<String> numberSystem = new ArrayList<>();
+
                     for (int k = 0; k != systemGroups.size(); k++) {
                         for (int i = 0; i != nodeUrls.size(); i++) {
                             if (systemGroups.get(k).getNumber().equals(nodeUrls.get(i).getNumber())) {
                                 urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
+                                numberSystem.add(systemGroups.get(k).getNumber());
                             }
                         }
                     }
-                    System.out.println(Arrays.asList(urls));
+
+
+
+                    System.out.println(Arrays.asList(numberSystem));
 
                     SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
                     Thread thread1 = new Thread(setDateTime);
                     thread1.start();
 
-                    SetNodeBase setNodeBase = new SetNodeBase(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls);
+                    SetNodeBase setNodeBase = new SetNodeBase(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls,numberSystem);
                     Thread thread2 = new Thread(setNodeBase);
                     thread2.start();
 
