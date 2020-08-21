@@ -25,7 +25,7 @@ import java.util.*;
 public class ControllerReport {
 
     @Autowired
-    ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
+    ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 
     @RequestMapping(value = "/ControllerReport/reportSystem" , method=RequestMethod.POST)
     public ResponseEntity<Object> reportSystem(ExchangeServiceObjectView exchangeServiceObjectView,ReportSystem reportSystem) {
@@ -34,8 +34,7 @@ public class ControllerReport {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime(), formatter);
-
-        List<ResultSurley> resultSurleys = nodeBaseServiceInterfaceImplement.findByLocalDateTime(localDateTime);
+        List<ResultSurley> resultSurleys = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
 
         reportSystem.setResultSurleyList(resultSurleys);
         reportSystem.setDataTime(exchangeServiceObjectView.getLocalDateTime());

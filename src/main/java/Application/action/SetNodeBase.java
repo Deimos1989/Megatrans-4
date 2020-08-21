@@ -58,6 +58,7 @@ public class SetNodeBase implements Runnable {
                                 dslStatisticsNode.setTable(status);
                             }
                         } catch (IOException e) {
+
                             System.out.println("Ответ от узла не получен");
                         }
                     }
