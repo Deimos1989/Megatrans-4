@@ -3,6 +3,7 @@ package Application.service;
 import Application.Entity.ResultSurley;
 import Application.repository.ResultSurleyInterfaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,10 @@ public class ResultSurleyServiceInterfaceImplement implements ResultSurleyInterf
         return resultSurleyInterfaceRepository.findByLocalDateAndNumberAndHash(localDate,number,hash);
     }
 
+
+    public List<ResultSurley> findTop50ByOrderByIdDesc(){
+     return resultSurleyInterfaceRepository.findTop50ByOrderByIdDesc();
+    }
 
 
     @Override

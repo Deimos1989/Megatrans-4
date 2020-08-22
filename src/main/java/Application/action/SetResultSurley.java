@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class SetNodeBase implements Runnable {
+public class SetResultSurley implements Runnable {
 
 
     ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement;
@@ -21,7 +21,7 @@ public class SetNodeBase implements Runnable {
     ArrayList<String> url;
     ArrayList<String> numberSystem;
 
-    public SetNodeBase(ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls,ArrayList<String> numberSystem) {
+    public SetResultSurley(ResultSurleyServiceInterfaceImplement nodeBaseServiceInterfaceImplement, DslStatusNode dslStatusNode, DslStatisticsNode dslStatisticsNode, ArrayList<String> urls, ArrayList<String> numberSystem) {
         this.nodeBaseServiceInterfaceImplement = nodeBaseServiceInterfaceImplement;
         this.dslStatusNode = dslStatusNode;
         this.dslStatisticsNode = dslStatisticsNode;

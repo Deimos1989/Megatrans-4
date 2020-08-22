@@ -1,6 +1,8 @@
 package Application.repository;
 
 import Application.Entity.ResultSurley;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
@@ -21,5 +23,7 @@ public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSur
     List<ResultSurley> findByLocalDateAndIpAndHash(LocalDate localDate, String ip,String hash);
 
     List<ResultSurley> findByLocalDateAndNumberAndHash(LocalDate localDate, String number,String hash);
+
+    List<ResultSurley> findTop50ByOrderByIdDesc();
 }
 

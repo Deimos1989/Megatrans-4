@@ -23,13 +23,13 @@ public class DateTime {
 
 
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private LocalDate localDate;
 
-    @Column(name = "Time")
+    @Column(name = "time")
     private LocalTime localTime;
 
-    @Column(name = "local_Date_Time")
+    @Column(name = "local_date_time")
     private LocalDateTime localDateTime;
 
 

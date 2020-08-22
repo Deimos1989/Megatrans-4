@@ -1,4 +1,6 @@
 package Application.exchange;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+
 import java.time.LocalDate;
 public class ExchangeServiceObjectView {
     private Long id;
@@ -8,6 +10,7 @@ public class ExchangeServiceObjectView {
     private String localDateTime;
     private String hash;
     private String number;
+    private SpringDataWebProperties.Sort sort;
 
     public String getIp() {
         return ip;
@@ -64,5 +67,13 @@ public class ExchangeServiceObjectView {
 
     public void setLocalDateTime(String localDateTime) {
         this.localDateTime = localDateTime;
+    }
+
+    public SpringDataWebProperties.Sort getSort() {
+        return sort;
+    }
+
+    public void setSort(SpringDataWebProperties.Sort sort) {
+        this.sort = sort;
     }
 }

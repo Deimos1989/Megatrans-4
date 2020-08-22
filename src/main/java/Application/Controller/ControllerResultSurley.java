@@ -4,6 +4,7 @@ import Application.Entity.ResultSurley;
 import Application.exchange.ExchangeServiceObjectView;
 import Application.service.ResultSurleyServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +27,7 @@ public class ControllerResultSurley {
     ControllerReport controllerReport;
 
     @RequestMapping(value = "/ControllerResultSurley/findByIp", method = RequestMethod.POST)
-    public String findByIpNodeBase(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
+    public String findByIpResultSurley(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByIp(exchangeServiceObjectView.getIp());
@@ -70,6 +71,21 @@ public class ControllerResultSurley {
             maps.put(id, node);
             model.addAttribute("maps0", maps);
         }
+        return "reportSystem";
+    }
+
+    @RequestMapping(value = "/ControllerResultSurley/findTop50ById", method = RequestMethod.POST)
+    public String findTopBy50Id(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
+        LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
+        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findTop50ByOrderByIdDesc();
+        controllerReport.setResultSurleys(resultSurleyList);
+        for (int i = 0; i != resultSurleyList.size(); i++) {
+            Long id = resultSurleyList.get(i).getId();
+            Object node = resultSurleyList.get(i);
+            maps.put(id, node);
+            model.addAttribute("maps", maps);
+        }
+
         return "reportSystem";
     }
 
@@ -118,7 +134,7 @@ public class ControllerResultSurley {
     public String findByLocalDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime(), formatter);
+        LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T',' '), formatter);
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
         controllerReport.setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {

@@ -3,7 +3,7 @@ package Application.Controller;
 import Application.Entity.NodeUrl;
 import Application.Entity.SystemGroup;
 import Application.action.SetDateTime;
-import Application.action.SetNodeBase;
+import Application.action.SetResultSurley;
 import Application.exchange.ExchangeAgent;
 import Application.processing.DslStatisticsNode;
 import Application.processing.DslStatusNode;
@@ -94,8 +94,8 @@ public class ControllerAgent {
                     Thread thread1 = new Thread(setDateTime);
                     thread1.start();
 
-                    SetNodeBase setNodeBase = new SetNodeBase(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls,numberSystem);
-                    Thread thread2 = new Thread(setNodeBase);
+                    SetResultSurley setResultSurley = new SetResultSurley(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls,numberSystem);
+                    Thread thread2 = new Thread(setResultSurley);
                     thread2.start();
 
 

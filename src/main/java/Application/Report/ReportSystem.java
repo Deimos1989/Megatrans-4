@@ -4,22 +4,16 @@ import Application.Entity.ResultSurley;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.springframework.stereotype.Component;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 
-
 public class ReportSystem {
 
-    public FileOutputStream getFos() {
-        return fos;
-    }
-
-    public void setFos(FileOutputStream fos) {
-        this.fos = fos;
-    }
 
     String dataTime;
 
@@ -366,7 +360,7 @@ public class ReportSystem {
 
 
             try {
-                fos = new FileOutputStream(dataTime.replace(':', '-').replace('T',' ') + ".xls");
+                fos = new FileOutputStream(dataTime.replace(':', '-') + ".xls");
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }

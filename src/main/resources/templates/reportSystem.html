@@ -98,14 +98,7 @@
 
 
 
-        <form action="#" class="form-inline" th:action="@{/ControllerReport/reportSystem}" th:object="${exchangeServiceObjectView}"   method="post">
-            <div class="form-group">
-            <input type="text" class="form-control" size="22" th:field="*{localDateTime}"  style="font-size: 12px" placeholder="Report save exel." />
-            </div>
-            <div class="btn">
-            <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report" />
-            </div>
-        </form>
+
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByLocalDateTime}" th:object="${exchangeServiceObjectView}"   method="post">
 
@@ -135,15 +128,34 @@
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}"  th:object="${exchangeServiceObjectView}"   method="post">
-            <div class="form-group">
-            <input type="text" class="form-control" size="22" th:field="*{hash}"  style="font-size: 12px" placeholder="Delete on hash."/>
-            </div>
-            <div class="btn" >
-            <input type="submit"  class="btn btn-primary" style="font-size: 14px" value="Delete" />
-            </div>
-        </form>
+            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}"
+                  th:object="${exchangeServiceObjectView}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 12px"
+                           placeholder="Delete on hash."/>
+                </div>
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Delete"/>
+                </div>
+            </form>
 
+            <div class="row">
+                <form action="#" class="form-inline" th:action="@{/ControllerReport/reportSystem}"
+                      th:object="${exchangeServiceObjectView}" method="post">
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report_save_exel"/>
+                    </div>
+                </form>
+
+                <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findTop50ById}"
+                      th:object="${exchangeServiceObjectView}" method="post">
+
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Last_50_entries"/>
+                    </div>
+                </form>
+            </div>
         </div>
 
 
