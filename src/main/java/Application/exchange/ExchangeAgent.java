@@ -3,15 +3,13 @@ package Application.exchange;
 public class ExchangeAgent {
 
 
-    private String hash;
+    Long time;
 
-    public String getHash() {
-        return hash;
+    public Long getTime() {
+        return time;
     }
 
-    public void setHash(String hash) {
-        this.hash = hash;
+    public void setTime(Long time) {
+        this.time = time;
     }
-
-
 }

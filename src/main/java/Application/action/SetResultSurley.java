@@ -255,6 +255,7 @@ public class SetResultSurley implements Runnable {
                 resultSurley.setUnavailableTimeValueSide1(dslStatisticsNode.unavailableTimeValueSide1(0L));
                 resultSurley.setUnavailableTimeValueSide2(dslStatisticsNode.unavailableTimeValueSide2(0L));
 
+
                 nodeBaseServiceInterfaceImplement.save(resultSurley);
 
             }

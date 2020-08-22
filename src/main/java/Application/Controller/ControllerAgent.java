@@ -53,13 +53,15 @@ public class ControllerAgent {
         this.bool = bool;
     }
 
-    private  Boolean bool;
+    private volatile Boolean bool;
 
+   private volatile static long time = 10000;
 
     @GetMapping(value="/ControllerAgent/taskStart")
-    public String taskStart(@ModelAttribute ExchangeAgent exchangeAgent, Model model) {
-
+    public String taskStart(@ModelAttribute ExchangeAgent exchangeAgent) {
+        exchangeAgent.setTime(getTime());
         setBool(true);
+
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -68,7 +70,7 @@ public class ControllerAgent {
             public void run() {
 
                 if (bool == true) {
-
+                 
 
                     List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
                     List<SystemGroup> systemGroups = systemGroupServiceInterfaceImplement.findAll();
@@ -110,13 +112,13 @@ public class ControllerAgent {
         }
 
         };
-        timer.scheduleAtFixedRate(task,1000,20000);
+        timer.scheduleAtFixedRate(task,1000,getTime());
         return"TITLE";
         }
 
 
     @GetMapping(value="/ControllerAgent/taskStop")
-    public String taskStop() {
+    public String taskStop(@ModelAttribute ExchangeAgent exchangeAgent) {
        setBool(false);
         return "TITLE";
     }
@@ -125,12 +127,17 @@ public class ControllerAgent {
 
 
 
-   /* @RequestMapping(value="/ControllerAgent/readUrl", method=RequestMethod.POST)
-    public String readUrl(@ModelAttribute ExchangeAgent exchangeAgent, Model model) {
+   @GetMapping(value="/ControllerAgent/setTime")
+    public String setTime(@ModelAttribute ExchangeAgent exchangeAgent) {
+        setTime(exchangeAgent.getTime());
+        return "TITLE";
+    }
 
-        controllerNodeUrl.setNodeUrlList(nodeUrlServiceInterfaceImplement.findAll());
+    public static long getTime() {
+        return time;
+    }
 
-        return "surleyNode";
-    }*/
-
+    public static void setTime(long time) {
+        ControllerAgent.time = time;
+    }
 }

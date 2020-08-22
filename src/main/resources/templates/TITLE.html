@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen" />
-    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen"/>
     <script src="/js/bootstrap.bundle.js"></script>
     <script src="/js/bootstrap.js"></script>
 
 
-    <link type="text/css" rel="StyleSheet" href="https://bootstraptema.ru/plugins/2016/shieldui/style.css" />
+    <link type="text/css" rel="StyleSheet" href="https://bootstraptema.ru/plugins/2016/shieldui/style.css"/>
     <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
     <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
-
-
 
 
 </head>
 <body>
 
-<div class = "page-header">
+<div class="page-header">
     <h1>
         <small>Subtext for header</small>
     </h1>
@@ -30,7 +28,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -52,27 +51,49 @@
 </nav>
 
 
-<div class="col">
-    <label for="taskStart">Опрос системы</label>
-    <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
+    <div class="col-md-3">
+        <div class="col">
+            <label>Периодичность опроса</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
+                  th:object="${exchangeAgent}"
+                  method="get">
 
-          method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" size="20" th:field="*{time}"
+                           style="width: 200px"/>
+                </div>
 
-        <div class="btn">
-            <input type="submit" class="btn btn-primary" value="start"/>
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="change"/>
+                </div>
+
+            </form>
+
         </div>
-    </form>
-</div>
 
-<div class="col">
-    <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
-    method="get">
 
-    <div class="btn">
-        <input type="submit" class="btn btn-primary" value="stop"/>
+        <div class="col">
+            <label>Опрос системы</label>
+            <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
+
+                  method="get">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="start"/>
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+            <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
+                  method="get">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="stop"/>
+                </div>
+            </form>
+        </div>
     </div>
-    </form>
-</div>
 
 <!--<div class="col">
     <form action="#" class="form-inline"   th:action=" @{/ControllerChart/findByIp}"
@@ -92,75 +113,68 @@
 
 <br><br><br>
 
-<div class="container">
-    <div class="row">
-        <div  class="col-md-8 col-md-offset-2">
+
+<div class="col-md-8 col-md-offset-2">
 
 
+    <!-- График -->
+    <div id="chart"></div>
 
-            <!-- График --><div id="chart"></div>
-
-            <script th:inline="javascript">
-
-
+    <script th:inline="javascript">
 
 
+        $(function () {
+            $("#chart").shieldChart({
+                theme: "light",
+                primaryHeader: {
+                    text: "Параметры опроса узла"
+                },
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                axisY: [{
+                    min: -20,
+                    max: 20,
+                    title: {
+                        text: 'Уровень NMR',
+                        style: {
+                            color: '#4DB0F5'
+                        }
+                    },
+                    axisTickText: {
+                        style: {
+                            color: '#4DB0F5'
+                        }
+                    }
+                }, {
+                    min: -20,
+                    max: 20,
+                    title: {
+                        text: 'Уровень NMR',
+                        style: {
+                            color: '#4DB0F5'
+                        }
+                    },
+                    swapLocation: true,
+                    axisTickText: {
+                        style: {
+                            color: '#FF1800'
+                        }
+                    }
+                }],
+                dataSeries: [{
+                    seriesType: 'line',
+                    axis: 0,
+                    collectionAlias: "NMR",
+                    data: [arr]
+                },]
+            });
+        });
+    </script><!-- /.График -->
 
-                $(function () {
-                    $("#chart").shieldChart({
-                        theme: "light",
-                        primaryHeader: {
-                            text: "Параметры опроса узла"
-                        },
-                        exportOptions: {
-                            image: false,
-                            print: false
-                        },
-                        axisY: [{
-                            min: -20,
-                            max: 20,
-                            title: {
-                                text: 'Уровень NMR',
-                                style: {
-                                    color: '#4DB0F5'
-                                }
-                            },
-                            axisTickText: {
-                                style: {
-                                    color: '#4DB0F5'
-                                }
-                            }
-                        },  {
-                            min: -20,
-                            max: 20,
-                            title: {
-                                text: 'Уровень NMR',
-                                style: {
-                                    color: '#4DB0F5'
-                                }
-                            },
-                            swapLocation: true,
-                            axisTickText: {
-                                style: {
-                                    color: '#FF1800'
-                                }
-                            }
-                        }],
-                        dataSeries: [{
-                            seriesType: 'line',
-                            axis: 0,
-                            collectionAlias: "NMR",
-                            data: [arr]
-                        },]
-                    });
-                });
-            </script><!-- /.График -->
-
-        </div><!-- /.col-md-8 col-md-offset-2 -->
-    </div><!-- /.row -->
-</div><!-- /.container -->
-
-
+</div><!-- /.col-md-8 col-md-offset-2 -->
+<!-- /.row -->
 
 
 </body>
