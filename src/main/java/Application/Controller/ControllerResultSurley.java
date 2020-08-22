@@ -22,11 +22,15 @@ public class ControllerResultSurley {
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 
+    @Autowired
+    ControllerReport controllerReport;
+
     @RequestMapping(value = "/ControllerResultSurley/findByIp", method = RequestMethod.POST)
     public String findByIpNodeBase(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
 
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByIp(exchangeServiceObjectView.getIp());
+        controllerReport.setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {
             Long id = resultSurleyList.get(i).getId();
             Object node = resultSurleyList.get(i);
@@ -41,6 +45,7 @@ public class ControllerResultSurley {
     public String findByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByHash(exchangeServiceObjectView.getHash());
+        controllerReport.setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {
             Long id = resultSurleyList.get(i).getId();
             Object node = resultSurleyList.get(i);
@@ -58,6 +63,7 @@ public class ControllerResultSurley {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDate(localDate);
+        controllerReport.setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {
             Long id = resultSurleyList.get(i).getId();
             Object node = resultSurleyList.get(i);
@@ -74,6 +80,7 @@ public class ControllerResultSurley {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
             List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIpAndHash(localDate, ip,hash);
+            controllerReport.setResultSurleys(resultSurleyList);
             for (int i = 0; i != resultSurleyList.size(); i++) {
                 Long id = resultSurleyList.get(i).getId();
                 Object node = resultSurleyList.get(i);
@@ -93,6 +100,7 @@ public class ControllerResultSurley {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
             List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndNumberAndHash(localDate, number,hash);
+            controllerReport.setResultSurleys(resultSurleyList);
             for (int i = 0; i != resultSurleyList.size(); i++) {
                 Long id = resultSurleyList.get(i).getId();
                 Object node = resultSurleyList.get(i);
@@ -112,6 +120,7 @@ public class ControllerResultSurley {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime(), formatter);
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
+        controllerReport.setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {
             Long id = resultSurleyList.get(i).getId();
             Object node = resultSurleyList.get(i);

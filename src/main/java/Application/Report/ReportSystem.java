@@ -366,7 +366,7 @@ public class ReportSystem {
 
 
             try {
-                fos = new FileOutputStream(dataTime.replace(':', '-') + ".xls");
+                fos = new FileOutputStream(dataTime.replace(':', '-').replace('T',' ') + ".xls");
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }
