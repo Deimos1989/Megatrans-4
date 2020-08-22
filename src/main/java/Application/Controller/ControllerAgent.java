@@ -70,7 +70,7 @@ public class ControllerAgent {
             public void run() {
 
                 if (bool == true) {
-                 
+
 
                     List<NodeUrl> nodeUrls = nodeUrlServiceInterfaceImplement.findAll();
                     List<SystemGroup> systemGroups = systemGroupServiceInterfaceImplement.findAll();

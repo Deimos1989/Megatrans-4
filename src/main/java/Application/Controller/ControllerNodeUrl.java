@@ -59,10 +59,7 @@ public class ControllerNodeUrl {
 
                 } else {
 
-
-                for (int i = 0; i != nodeUrlList.size(); i++) {
-                    if (nodeUrlList.get(i).getId() == exchangeNodeUrl.getId()) {
-                        nodeUrl.setId(exchangeNodeUrl.getId());
+                    if (exchangeNodeUrl.getId()==null) {
                         nodeUrl.setNumber(exchangeNodeUrl.getNumber());
                         nodeUrl.setIp(exchangeNodeUrl.getIp());
                         nodeUrl.setUrlDslStatus(exchangeNodeUrl.getDslStatus());
@@ -70,13 +67,22 @@ public class ControllerNodeUrl {
                         nodeUrlServiceInterfaceImplement.save(nodeUrl);
 
                     } else {
+                        for (int i = 0; i != nodeUrlList.size(); i++) {
+                        if (nodeUrlList.get(i).getId().equals(exchangeNodeUrl.getId())){
+                            nodeUrl.setId(exchangeNodeUrl.getId());
+                            nodeUrl.setNumber(exchangeNodeUrl.getNumber());
+                            nodeUrl.setIp(exchangeNodeUrl.getIp());
+                            nodeUrl.setUrlDslStatus(exchangeNodeUrl.getDslStatus());
+                            nodeUrl.setUrlDslStatistics(exchangeNodeUrl.getDslStatistics());
 
-                        nodeUrl.setNumber(exchangeNodeUrl.getNumber());
-                        nodeUrl.setIp(exchangeNodeUrl.getIp());
-                        nodeUrl.setUrlDslStatus(exchangeNodeUrl.getDslStatus());
-                        nodeUrl.setUrlDslStatistics(exchangeNodeUrl.getDslStatistics());
-                        nodeUrlServiceInterfaceImplement.save(nodeUrl);
-                    }
+
+
+                    }else {
+
+                            exchangeNodeUrl.setDslStatus("Совпадения с вашим id не обнаружены");
+                            exchangeNodeUrl.setDslStatistics("Совпадения с вашим id не обнаружены");
+                        }
+                        }
                 }
             }
 
