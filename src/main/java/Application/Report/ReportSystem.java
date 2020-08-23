@@ -17,6 +17,16 @@ public class ReportSystem {
 
     String dataTime;
 
+    String pathServerDirectory;
+
+    public String getPathServerDirectory() {
+        return pathServerDirectory;
+    }
+
+    public void setPathServerDirectory(String pathServerDirectory) {
+        this.pathServerDirectory = pathServerDirectory;
+    }
+
     public String getDataTime() {
         return dataTime;
     }
@@ -360,7 +370,7 @@ public class ReportSystem {
 
 
             try {
-                fos = new FileOutputStream(dataTime.replace(':', '-') + ".xls");
+                fos = new FileOutputStream(getPathServerDirectory()+dataTime.replace(':', '-') + ".xls");
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }

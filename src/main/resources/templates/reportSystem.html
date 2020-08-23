@@ -57,15 +57,15 @@
             <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDateAndIpAndHash}" th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{localDate}"  style="font-size: 10px" placeholder="Date." />
+                    <input type="text" class="form-control" size="8" th:field="*{localDate}"  style="font-size: 12px" placeholder="Date." />
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="10" th:field="*{ip}"  style="font-size: 10px" placeholder="ip." />
+                    <input type="text" class="form-control" size="10" th:field="*{ip}"  style="font-size: 12px" placeholder="ip." />
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="27" th:field="*{hash}"  style="font-size: 10px" placeholder="Hash." />
+                    <input type="text" class="form-control" size="22" th:field="*{hash}"  style="font-size: 12px" placeholder="Hash." />
                 </div>
 
 
@@ -79,15 +79,15 @@
             <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDateAndNumberAndHash}" th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{localDate}"  style="font-size: 10px" placeholder="Date." />
+                    <input type="text" class="form-control" size="8" th:field="*{localDate}"  style="font-size: 12px" placeholder="Date." />
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="1" th:field="*{number}"  style="font-size: 10px" placeholder="№" />
+                    <input type="text" class="form-control" size="1" th:field="*{number}"  style="font-size: 12px" placeholder="№" />
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="27" th:field="*{hash}"  style="font-size: 10px" placeholder="Hash." />
+                    <input type="text" class="form-control" size="22" th:field="*{hash}"  style="font-size: 12px" placeholder="Hash." />
                 </div>
 
 
@@ -140,7 +140,7 @@
             </form>
 
             <div class="row">
-                <form action="#" class="form-inline" th:action="@{/ControllerReport/reportSystem}"
+                <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/reportSystem}"
                       th:object="${exchangeServiceObjectView}" method="post">
                     <div class="btn">
                         <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report_save_exel"/>

@@ -10,7 +10,8 @@ public class ExchangeServiceObjectView {
     private String localDateTime;
     private String hash;
     private String number;
-    private SpringDataWebProperties.Sort sort;
+    private String clientDirectory;
+    private String serverDirectory;
 
     public String getIp() {
         return ip;
@@ -69,11 +70,19 @@ public class ExchangeServiceObjectView {
         this.localDateTime = localDateTime;
     }
 
-    public SpringDataWebProperties.Sort getSort() {
-        return sort;
+    public String getClientDirectory() {
+        return clientDirectory;
     }
 
-    public void setSort(SpringDataWebProperties.Sort sort) {
-        this.sort = sort;
+    public void setClientDirectory(String clientDirectory) {
+        this.clientDirectory = clientDirectory;
+    }
+
+    public String getServerDirectory() {
+        return serverDirectory;
+    }
+
+    public void setServerDirectory(String serverDirectory) {
+        this.serverDirectory = serverDirectory;
     }
 }

@@ -52,6 +52,45 @@
 
 
     <div class="col-md-3">
+
+        <div class="col">
+            <label>Указать путь загрузки exel файла с сервера</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/setDownloadDirectoty}"
+                  th:object="${exchangeServiceObjectView}"
+                  method="get">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" size="20" th:field="*{clientDirectory}" placeholder="C:/Windows/Temp/"
+                           style="width: 300px"/>
+                </div>
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="ClientPath"/>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col">
+            <label>Указать путь выгрузки exel файла на сервере</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/setUnloadDirectoty}"
+                  th:object="${exchangeServiceObjectView}"
+                  method="get">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" size="20" th:field="*{serverDirectory}" placeholder="C:/Windows/Temp/"
+                           style="width: 300px"/>
+                </div>
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="ServerPath"/>
+                </div>
+
+            </form>
+
+        </div>
+
         <div class="col">
             <label>Периодичность опроса</label>
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
