@@ -13,6 +13,7 @@ public class Surley {
     @Column(name = "id")
     private Long id;
 
+
     @ManyToOne
     @JoinColumn (name="system_group_id")
     private SystemGroup systemGroup;

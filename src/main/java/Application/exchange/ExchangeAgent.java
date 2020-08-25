@@ -3,14 +3,27 @@ package Application.exchange;
 public class ExchangeAgent {
 
 
-    Long time;
+    Long id;
+    Long timeS;
+    private String description;
+    private String clientDirectory;
+    private String serverDirectory;
 
-    public Long getTime() {
-        return time;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setTime(Long time) {
-        this.time = time;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getTimeS() {
+        return timeS;
+    }
+
+    public void setTimeS(Long timeS) {
+        this.timeS = timeS;
     }
 
     private String directory;
@@ -21,5 +34,29 @@ public class ExchangeAgent {
 
     public void setDirectory(String directory) {
         this.directory = directory;
+    }
+
+    public String getClientDirectory() {
+        return clientDirectory;
+    }
+
+    public void setClientDirectory(String clientDirectory) {
+        this.clientDirectory = clientDirectory;
+    }
+
+    public String getServerDirectory() {
+        return serverDirectory;
+    }
+
+    public void setServerDirectory(String serverDirectory) {
+        this.serverDirectory = serverDirectory;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

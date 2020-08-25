@@ -2,17 +2,14 @@ package Application.Controller;
 
 import Application.Entity.ResultSurley;
 import Application.Report.ReportSystem;
-import Application.exchange.ExchangeAgent;
 import Application.exchange.ExchangeServiceObjectView;
 import Application.service.ResultSurleyServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +28,7 @@ public class ControllerResultSurley {
 
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
+
 
 
     @RequestMapping(value = "/ControllerResultSurley/findByIp", method = RequestMethod.POST)
@@ -97,12 +95,12 @@ public class ControllerResultSurley {
     }
 
     @RequestMapping(value = "/ControllerResultSurley/findByDateAndIpAndHash", method = RequestMethod.POST)
-    public String findByDateAndIpAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String ip,String hash) {
+    public String findByDateAndIpAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String ip, String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != ""&exchangeServiceObjectView.getHash()!="") {
+        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != "" & exchangeServiceObjectView.getHash() != "") {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
-            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIpAndHash(localDate, ip,hash);
+            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIpAndHash(localDate, ip, hash);
             setResultSurleys(resultSurleyList);
             for (int i = 0; i != resultSurleyList.size(); i++) {
                 Long id = resultSurleyList.get(i).getId();
@@ -110,19 +108,19 @@ public class ControllerResultSurley {
                 maps.put(id, node);
                 model.addAttribute("maps", maps);
             }
-        }else {
+        } else {
             System.out.println("Error");
         }
         return "reportSystem";
     }
 
     @RequestMapping(value = "/ControllerResultSurley/findByDateAndNumberAndHash", method = RequestMethod.POST)
-    public String findByDateAndNumberAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String number,String hash) {
+    public String findByDateAndNumberAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String number, String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getNumber() != "" &exchangeServiceObjectView.getHash()!="") {
+        if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getNumber() != "" & exchangeServiceObjectView.getHash() != "") {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
-            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndNumberAndHash(localDate, number,hash);
+            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndNumberAndHash(localDate, number, hash);
             setResultSurleys(resultSurleyList);
             for (int i = 0; i != resultSurleyList.size(); i++) {
                 Long id = resultSurleyList.get(i).getId();
@@ -130,7 +128,7 @@ public class ControllerResultSurley {
                 maps.put(id, node);
                 model.addAttribute("maps", maps);
             }
-        }else {
+        } else {
             System.out.println("Error");
         }
         return "reportSystem";
@@ -141,7 +139,7 @@ public class ControllerResultSurley {
     public String findByLocalDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T',' '), formatter);
+        LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T', ' '), formatter);
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
         setResultSurleys(resultSurleyList);
         for (int i = 0; i != resultSurleyList.size(); i++) {
@@ -190,14 +188,12 @@ public class ControllerResultSurley {
     }
 
 
-
-    @RequestMapping(value = "/ControllerResultSurley/reportSystem" , method=RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResultSurley/reportSystem", method = RequestMethod.POST)
     public ResponseEntity<Object> reportSystem(ReportSystem reportSystem) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(resultSurleys.get(0).getLocalDateTime()).substring(0,19).replace('T',' '), formatter);
-        String localDateTimeStringFormat1=String.valueOf(localDateTime);
-
+        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(resultSurleys.get(0).getLocalDateTime()).substring(0, 19).replace('T', ' '), formatter);
+        String localDateTimeStringFormat1 = String.valueOf(localDateTime);
 
 
         reportSystem.setResultSurleyList(getResultSurleys());
@@ -206,9 +202,9 @@ public class ControllerResultSurley {
         reportSystem.reportSystem();
 
 
-        String DEFAULT_FILE_NAME = localDateTimeStringFormat1.replace(':','-')+".xls";
+        String DEFAULT_FILE_NAME = localDateTimeStringFormat1.replace(':', '-') + ".xls";
 
-        File file = new File(getClientDirectory() + "/" +DEFAULT_FILE_NAME);
+        File file = new File(getClientDirectory() + "/" + DEFAULT_FILE_NAME);
         InputStreamResource resource = null;
         try {
             resource = new InputStreamResource(new FileInputStream(file));
@@ -216,23 +212,15 @@ public class ControllerResultSurley {
             e.printStackTrace();
         }
 
-        return  ResponseEntity.ok()
+        return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
                 .body(resource);
 
 
     }
 
-    @RequestMapping(value="/ControllerResultSurley/setDownloadDirectoty", method=RequestMethod.GET)
-    public String setDownloadDirectoty(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView,ExchangeAgent exchangeAgent) {
-       setClientDirectory(exchangeServiceObjectView.getClientDirectory());
-        return "TITLE";
-    }
 
-    @RequestMapping(value="/ControllerResultSurley/setUnloadDirectoty", method=RequestMethod.GET)
-    public String setUnloadDirectoty(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView,ExchangeAgent exchangeAgent) {
-       setServerDirectory(exchangeServiceObjectView.getServerDirectory());
-        return "TITLE";
-    }
+
+
 
 }

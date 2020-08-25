@@ -15,8 +15,6 @@ public class ControllerMainTitle {
     public String main(Model model) {
         ExchangeChart exchangeChart =new ExchangeChart();
         ExchangeAgent exchangeAgent = new ExchangeAgent();
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
         model.addAttribute("exchangeAgent", exchangeAgent );
         model.addAttribute("exchangeChart", exchangeChart );
         return "TITLE";
@@ -26,8 +24,6 @@ public class ControllerMainTitle {
     public String backTitle(Model model) {
         ExchangeChart exchangeChart =new ExchangeChart();
         ExchangeAgent exchangeAgent = new ExchangeAgent();
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
         model.addAttribute("exchangeAgent", exchangeAgent );
         model.addAttribute("exchangeChart", exchangeChart );
         return "TITLE";

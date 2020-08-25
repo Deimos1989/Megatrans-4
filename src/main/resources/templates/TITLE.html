@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<div class="page-header"  style="background-color:#800000">
+<div class="page-header" style="background-color:#800000">
     <h1 style=color:#FFFFFF>
         <small>Megatrans-4</small>
     </h1>
@@ -50,64 +50,140 @@
     </div>
 </nav>
 
+<div class="row">
 
     <div class="col-md-3">
 
         <div class="col">
-            <label>Указать путь загрузки exel файла с сервера</label>
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/setDownloadDirectoty}"
-                  th:object="${exchangeServiceObjectView}"
+
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/savePathConfiguration}"
+                  th:object="${exchangeAgent}"
                   method="get">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="20" th:field="*{clientDirectory}" placeholder="C:/Windows/Temp/"
+                    <label>Указать путь загрузки exel файла с сервера</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" size="20" th:field="*{clientDirectory}"
+                           placeholder="C:/Windows/Temp/"
                            style="width: 300px"/>
                 </div>
 
-                <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="ClientPath"/>
+
+                <div class="form-group">
+                    <label>Указать путь выгрузки exel файла на сервере</label>
                 </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" size="20" th:field="*{serverDirectory}"
+                           placeholder="C:/Windows/Temp/"
+                           style="width: 300px"/>
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="add"/>
+                    </div>
+
+                </div>
+
+
 
             </form>
 
         </div>
+    </div>
 
+
+    <div class="col-md-2">
         <div class="col">
-            <label>Указать путь выгрузки exel файла на сервере</label>
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/setUnloadDirectoty}"
-                  th:object="${exchangeServiceObjectView}"
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPathConfiguration}"
+                  th:object="${exchangeAgent}"
                   method="get">
 
-                <div class="form-group">
-                    <input type="text" class="form-control" size="20" th:field="*{serverDirectory}" placeholder="C:/Windows/Temp/"
-                           style="width: 300px"/>
-                </div>
-
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="ServerPath"/>
+                    <input type="submit" class="btn btn-primary" value="all"/>
                 </div>
 
             </form>
-
         </div>
 
         <div class="col">
-            <label>Периодичность опроса</label>
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="delete"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col">
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="deleteAll"/>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="col-md-5">
+        <table border="1" style="background-color: #c4c4c4">
+            <tr style="font-size: 16px">
+
+                <th width="10%">Id</th>
+
+                <th width="40%">path_client_directory</th>
+
+                <th width="50%">path_server_directory</th>
+
+            </tr>
+
+
+            <tr th:block th:each="map:${maps}" style="font-size: 16px">
+
+                <td th:utext="${map.getKey()}">Id</td>
+
+                <td th:utext="${map.getValue().pathClientDirectory}">path_client_directory</td>
+
+                <td th:utext="${map.getValue().pathServerDirectory}">path_server_directory</td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="col">
+            <label>Периодичность опроса в миллисекундах</label>
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
                   th:object="${exchangeAgent}"
                   method="get">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="20" th:field="*{time}"
-                           style="width: 200px"/>
+                    <input type="text" class="form-control" size="20" th:field="*{timeS}"
+                           style="width: 150px" placeholder="20000"/>
                 </div>
 
                 <div class="btn">
                     <input type="submit" class="btn btn-primary" value="change"/>
                 </div>
-
             </form>
-
         </div>
 
 
@@ -134,6 +210,138 @@
         </div>
     </div>
 
+
+    <div class="col-md-3">
+
+        <div class="col">
+
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/saveTimePeriod}"
+                  th:object="${exchangeAgent}"
+                  method="get">
+
+
+                <div class="form-group">
+                    <div class="col">
+                    <div class="form-group">
+                        <label>Время опроса в миллисекундах</label>
+                    </div>
+
+                    <input type="text" class="form-control" size="20" th:field="*{timeS}"
+                           placeholder="Mm"
+                           style="width: 150px"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col">
+                    <div class="form-group">
+                        <label>Описание</label>
+                    </div>
+                    <input type="text" class="form-control" size="20" th:field="*{description}"
+                           placeholder="Text"
+                           style="width: 150px"/>
+
+                        <div class="btn">
+                            <input type="submit" class="btn btn-primary" value="add"/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+        <div class="col-md-2">
+            <div class="col">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPeriodS}"
+                      th:object="${exchangeAgent}"
+                      method="get">
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="all"/>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/findPeriodS}"
+                      th:object="${exchangeAgent}"
+                      method="post">
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="change"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePeriodS}"
+                      th:object="${exchangeAgent}"
+                      method="post">
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="delete"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPeriodS}"
+                      th:object="${exchangeAgent}"
+                      method="post">
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="deleteAll"/>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    <div class="col-md-3">
+        <table border="1" style="background-color: #c4c4c4">
+            <tr style="font-size: 16px">
+
+                <th width="10%">Id</th>
+
+                <th width="30%">period</th>
+
+                <th width="60%">description</th>
+
+
+
+            </tr>
+
+
+            <tr th:block th:each="map:${maps0}" style="font-size: 16px">
+                <td th:utext="${map.getKey()}">Id</td>
+                <td th:utext="${map.getValue().period}">period</td>
+                <td th:utext="${map.getValue().description}">description</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
+
 <!--<div class="col">
     <form action="#" class="form-inline"   th:action=" @{/ControllerChart/findByIp}"
           th:object="${exchangeChart}"
@@ -150,13 +358,15 @@
 </div>-->
 
 
+<!--
+
 <br><br><br>
 
 
 <div class="col-md-8 col-md-offset-2">
 
 
-    <!-- График -->
+    &lt;!&ndash; График &ndash;&gt;
     <div id="chart"></div>
 
     <script th:inline="javascript">
@@ -210,11 +420,10 @@
                 },]
             });
         });
-    </script><!-- /.График -->
+    </script>&lt;!&ndash; /.График &ndash;&gt;
 
-</div><!-- /.col-md-8 col-md-offset-2 -->
-<!-- /.row -->
+</div>&lt;!&ndash; /.col-md-8 col-md-offset-2 &ndash;&gt;
+&lt;!&ndash; /.row &ndash;&gt;
+-->
 
 
-</body>
-</html>

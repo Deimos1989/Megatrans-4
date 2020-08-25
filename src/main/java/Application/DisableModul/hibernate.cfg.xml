@@ -19,7 +19,7 @@
         <mapping class="Application.Entity.NodeUrl"></mapping>
         <mapping class="Application.Entity.SystemGroup"></mapping>
         <mapping class="Application.Entity.Surley"></mapping>
-        <mapping class="Application.Entity.SurleyConfiguration"></mapping>
+        <mapping class="Application.Entity.PathConfiguration</mapping>
 
 
 

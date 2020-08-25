@@ -1,7 +1,6 @@
 package Application.exchange;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 
-import java.time.LocalDate;
+
 public class ExchangeServiceObjectView {
     private Long id;
     private String url;
@@ -10,8 +9,7 @@ public class ExchangeServiceObjectView {
     private String localDateTime;
     private String hash;
     private String number;
-    private String clientDirectory;
-    private String serverDirectory;
+
 
     public String getIp() {
         return ip;
@@ -70,19 +68,5 @@ public class ExchangeServiceObjectView {
         this.localDateTime = localDateTime;
     }
 
-    public String getClientDirectory() {
-        return clientDirectory;
-    }
 
-    public void setClientDirectory(String clientDirectory) {
-        this.clientDirectory = clientDirectory;
-    }
-
-    public String getServerDirectory() {
-        return serverDirectory;
-    }
-
-    public void setServerDirectory(String serverDirectory) {
-        this.serverDirectory = serverDirectory;
-    }
 }
