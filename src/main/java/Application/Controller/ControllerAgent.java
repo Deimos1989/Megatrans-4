@@ -57,7 +57,7 @@ public class ControllerAgent {
 
     @GetMapping(value = "/ControllerAgent/taskStart")
     public String taskStart(@ModelAttribute ExchangeAgent exchangeAgent) {
-        exchangeAgent.setTimeS(getTime());
+        exchangeAgent.setTimeSurley(getTime());
         setBool(true);
 
 
@@ -121,8 +121,8 @@ public class ControllerAgent {
 
     @GetMapping(value = "/ControllerAgent/setTime")
     public String setTime(@ModelAttribute ExchangeAgent exchangeAgent, PeriodSurley periodSurley) {
-        setTime(exchangeAgent.getTimeS());
-        periodSurley.setPeriod(exchangeAgent.getTimeS());
+        setTime(exchangeAgent.getTimeSurley());
+        periodSurley.setPeriodSurley(exchangeAgent.getTimeSurley());
         periodSurleyServiceInterfaceImplement.save(periodSurley);
         return "TITLE";
     }
@@ -138,7 +138,7 @@ public class ControllerAgent {
         } else {
             exchangeAgent.setClientDirectory("Не указан путь");
             exchangeAgent.setServerDirectory("Не указан путь");
-            exchangeAgent.setTimeS(0L);
+            exchangeAgent.setTimeSurley(0L);
         }
         return "TITLE";
     }
@@ -173,14 +173,14 @@ public class ControllerAgent {
 
     @GetMapping(value = "/ControllerAgent/saveTimePeriod")
     public String saveTimePeriod(@ModelAttribute ExchangeAgent exchangeAgent, PeriodSurley periodSurley) {
-        periodSurley.setPeriod(exchangeAgent.getTimeS());
+        periodSurley.setPeriodSurley(exchangeAgent.getTimeSurley());
         periodSurley.setDescription(exchangeAgent.getDescription());
         periodSurleyServiceInterfaceImplement.save(periodSurley);
         return "TITLE";
     }
 
 
-    @RequestMapping(value = "/ControllerAgent/findAllPeriodS", method = RequestMethod.GET)
+    @RequestMapping(value = "/ControllerAgent/findAllPeriodSurley", method = RequestMethod.GET)
     public String findAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
         List<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findAll();
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -194,24 +194,24 @@ public class ControllerAgent {
         return "TITLE";
     }
 
-    @RequestMapping(value = "/ControllerAgent/findPeriodS", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerAgent/findPeriodSurley", method = RequestMethod.POST)
     public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
         Optional<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
-        setTime(periodSurleyList.get().getPeriod());
+        setTime(periodSurleyList.get().getPeriodSurley());
         return "TITLE";
     }
 
 
-    @RequestMapping(value = "/ControllerAgent/deletePeriodS", method = RequestMethod.POST)
-    public String deletePeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, PathConfiguration pathConfiguration) {
-        pathConfiguration.setId(exchangeAgent.getId());
-        surleyConfigurationServiceInterfaceImplement.delete(pathConfiguration);
+    @RequestMapping(value = "/ControllerAgent/deletePeriodSurley", method = RequestMethod.POST)
+    public String deletePeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent,PeriodSurley periodSurley) {
+        periodSurley.setId(exchangeAgent.getId());
+        periodSurleyServiceInterfaceImplement.delete(periodSurley);
         return "TITLE";
     }
 
-    @RequestMapping(value = "/ControllerAgent/deleteAllPeriodS", method = RequestMethod.POST)
-    public String deleteAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, PathConfiguration pathConfiguration) {
-        surleyConfigurationServiceInterfaceImplement.deleteAll(pathConfiguration);
+    @RequestMapping(value = "/ControllerAgent/deleteAllPeriodSurley", method = RequestMethod.POST)
+    public String deleteAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent) {
+        periodSurleyServiceInterfaceImplement.deleteAll();
         return "TITLE";
     }
 

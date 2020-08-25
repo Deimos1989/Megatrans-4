@@ -12,7 +12,7 @@ public class PeriodSurley {
     private Long id;
 
     @Column(name = "period")
-    private Long period;
+    private Long periodSurley;
 
     @Column(name="description")
     private String description;
@@ -34,11 +34,11 @@ public class PeriodSurley {
     }
 
 
-    public Long getPeriod() {
-        return period;
+    public Long getPeriodSurley() {
+        return periodSurley;
     }
 
-    public void setPeriod(Long period) {
-        this.period = period;
+    public void setPeriodSurley(Long periodSurley) {
+        this.periodSurley = periodSurley;
     }
 }

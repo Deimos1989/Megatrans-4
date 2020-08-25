@@ -4,7 +4,7 @@ public class ExchangeAgent {
 
 
     Long id;
-    Long timeS;
+    Long timeSurley;
     private String description;
     private String clientDirectory;
     private String serverDirectory;
@@ -18,12 +18,12 @@ public class ExchangeAgent {
         this.description = description;
     }
 
-    public Long getTimeS() {
-        return timeS;
+    public Long getTimeSurley() {
+        return timeSurley;
     }
 
-    public void setTimeS(Long timeS) {
-        this.timeS = timeS;
+    public void setTimeSurley(Long timeSurley) {
+        this.timeSurley = timeSurley;
     }
 
     private String directory;
