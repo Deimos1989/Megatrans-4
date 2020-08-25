@@ -1,8 +1,11 @@
 package Application.Controller;
 
+import Application.Entity.PathConfiguration;
 import Application.Entity.ResultSurley;
 import Application.Report.ReportSystem;
+import Application.exchange.ExchangeAgent;
 import Application.exchange.ExchangeServiceObjectView;
+import Application.service.PathConfigurationServiceInterfaceImplement;
 import Application.service.ResultSurleyServiceInterfaceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -22,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ControllerResultSurley {
@@ -29,6 +33,8 @@ public class ControllerResultSurley {
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 
+    @Autowired
+    PathConfigurationServiceInterfaceImplement pathConfigurationServiceInterfaceImplement;
 
 
     @RequestMapping(value = "/ControllerResultSurley/findByIp", method = RequestMethod.POST)
@@ -219,7 +225,35 @@ public class ControllerResultSurley {
 
     }
 
+    @RequestMapping(value = "/ControllerResultSurley/findPathConfiguration", method = RequestMethod.POST)
+    public String findPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
 
+        if (exchangeAgent.getId()!=null) {
+        Optional<PathConfiguration> pathConfigurationList=pathConfigurationServiceInterfaceImplement.findById(exchangeAgent.getId());
+        if (pathConfigurationList.isPresent()) {
+            if (pathConfigurationList.get().getPathClientDirectory()!=null& pathConfigurationList.get().getPathServerDirectory()!=null){
+            setClientDirectory(pathConfigurationList.get().getPathClientDirectory());
+            setServerDirectory(pathConfigurationList.get().getPathServerDirectory());
+        }else {
+                exchangeAgent.setId(0L);
+            }
+
+        }else {
+            exchangeAgent.setId(0L);
+        }
+
+        }else {
+            exchangeAgent.setId(0L);
+        }
+        return "TITLE";
+    }
+
+    @RequestMapping(value = "/ControllerResultSurley/viewPathConfiguration", method = RequestMethod.GET)
+    public String viewPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
+        exchangeAgent.setClientDirectory(getClientDirectory());
+        exchangeAgent.setServerDirectory(getServerDirectory());
+        return "TITLE";
+    }
 
 
 

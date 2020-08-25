@@ -37,7 +37,7 @@ public class ControllerAgent {
     SystemGroupServiceInterfaceImplement systemGroupServiceInterfaceImplement;
 
     @Autowired
-    PathConfigurationServiceInterfaceImplement surleyConfigurationServiceInterfaceImplement;
+    PathConfigurationServiceInterfaceImplement pathConfigurationServiceInterfaceImplement;
 
     @Autowired
     PeriodSurleyServiceInterfaceImplement periodSurleyServiceInterfaceImplement;
@@ -134,7 +134,7 @@ public class ControllerAgent {
         if (exchangeAgent.getClientDirectory() != "" & exchangeAgent.getServerDirectory() != "") {
             pathConfiguration.setPathClientDirectory(exchangeAgent.getClientDirectory());
             pathConfiguration.setPathServerDirectory(exchangeAgent.getServerDirectory());
-            surleyConfigurationServiceInterfaceImplement.save(pathConfiguration);
+            pathConfigurationServiceInterfaceImplement.save(pathConfiguration);
         } else {
             exchangeAgent.setClientDirectory("Не указан путь");
             exchangeAgent.setServerDirectory("Не указан путь");
@@ -145,7 +145,7 @@ public class ControllerAgent {
 
     @RequestMapping(value = "/ControllerAgent/findAllPathConfiguration", method = RequestMethod.GET)
     public String findAllPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PathConfiguration pathConfiguration) {
-        List<PathConfiguration> pathConfigurationlist = surleyConfigurationServiceInterfaceImplement.findAll(pathConfiguration);
+        List<PathConfiguration> pathConfigurationlist = pathConfigurationServiceInterfaceImplement.findAll(pathConfiguration);
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         for (int i = 0; i != pathConfigurationlist.size(); i++) {
             Long id = pathConfigurationlist.get(i).getId();
@@ -157,25 +157,35 @@ public class ControllerAgent {
         return "TITLE";
     }
 
+
+
+
+
+
     @RequestMapping(value = "/ControllerAgent/deletePathConfiguration", method = RequestMethod.POST)
     public String deletePathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent, PathConfiguration pathConfiguration) {
         pathConfiguration.setId(exchangeAgent.getId());
-        surleyConfigurationServiceInterfaceImplement.delete(pathConfiguration);
+        pathConfigurationServiceInterfaceImplement.delete(pathConfiguration);
         return "TITLE";
     }
 
     @RequestMapping(value = "/ControllerAgent/deleteAllPathConfiguration", method = RequestMethod.POST)
     public String deleteAllPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent, PathConfiguration pathConfiguration) {
-        surleyConfigurationServiceInterfaceImplement.deleteAll(pathConfiguration);
+        pathConfigurationServiceInterfaceImplement.deleteAll(pathConfiguration);
         return "TITLE";
     }
 
 
     @GetMapping(value = "/ControllerAgent/saveTimePeriod")
     public String saveTimePeriod(@ModelAttribute ExchangeAgent exchangeAgent, PeriodSurley periodSurley) {
-        periodSurley.setPeriodSurley(exchangeAgent.getTimeSurley());
-        periodSurley.setDescription(exchangeAgent.getDescription());
-        periodSurleyServiceInterfaceImplement.save(periodSurley);
+        if(exchangeAgent.getTimeSurley()!=null&exchangeAgent.getDescription()!=null){
+            periodSurley.setPeriodSurley(exchangeAgent.getTimeSurley());
+            periodSurley.setDescription(exchangeAgent.getDescription());
+            periodSurleyServiceInterfaceImplement.save(periodSurley);
+        }else {
+            exchangeAgent.setTimeSurley(0L);
+            exchangeAgent.setDescription("Введите текст");
+        }
         return "TITLE";
     }
 
@@ -197,7 +207,11 @@ public class ControllerAgent {
     @RequestMapping(value = "/ControllerAgent/findPeriodSurley", method = RequestMethod.POST)
     public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
         Optional<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
-        setTime(periodSurleyList.get().getPeriodSurley());
+        if (periodSurleyList.get().getPeriodSurley()!=null) {
+            setTime(periodSurleyList.get().getPeriodSurley());
+        }else {
+            exchangeAgent.setId(0L);
+        }
         return "TITLE";
     }
 

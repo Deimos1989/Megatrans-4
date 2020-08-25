@@ -50,7 +50,7 @@
     </div>
 </nav>
 
-<div class="row">
+<div class="row" style="background-color: #c4c4c4">
 
     <div class="col-md-3">
 
@@ -85,12 +85,21 @@
                     </div>
 
                 </div>
+            </form>
+        </div>
 
+        <div class="col">
+            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/viewPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="get">
 
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="view"/>
+                </div>
 
             </form>
-
         </div>
+
     </div>
 
 
@@ -101,11 +110,28 @@
                   method="get">
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="all"/>
+                    <input type="submit" class="btn btn-primary" value="findAll"/>
                 </div>
 
             </form>
         </div>
+
+        <div class="col">
+            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="change"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+                </div>
+            </form>
+        </div>
+
+
 
         <div class="col">
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePathConfiguration}"
@@ -166,7 +192,7 @@
 </div>
 
 
-<div class="row">
+<div class="row" style="background-color: #c4c4c4">
     <div class="col-md-3">
 
         <div class="col">
@@ -262,7 +288,7 @@
                       method="get">
 
                     <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="all"/>
+                        <input type="submit" class="btn btn-primary" value="findAll"/>
                     </div>
 
                 </form>

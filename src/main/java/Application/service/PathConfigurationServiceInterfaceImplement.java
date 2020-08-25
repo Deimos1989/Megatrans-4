@@ -1,12 +1,14 @@
 package Application.service;
 
 import Application.Entity.PathConfiguration;
+import Application.Entity.PeriodSurley;
 import Application.repository.PathConfigurationInterfaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -18,6 +20,9 @@ public class PathConfigurationServiceInterfaceImplement implements PathConfigura
 
 
 
+    public Optional<PathConfiguration> findById(Long id) {
+        return this.pathConfigurationInterfaceRepository.findById(id);
+    }
 
     @Override
     public void save(PathConfiguration pathConfiguration) {
