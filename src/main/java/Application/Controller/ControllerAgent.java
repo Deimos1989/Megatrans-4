@@ -206,9 +206,17 @@ public class ControllerAgent {
 
     @RequestMapping(value = "/ControllerAgent/findPeriodSurley", method = RequestMethod.POST)
     public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
+        if (exchangeAgent.getId()!=null) {
         Optional<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
-        if (periodSurleyList.get().getPeriodSurley()!=null) {
-            setTime(periodSurleyList.get().getPeriodSurley());
+        if (periodSurleyList.isPresent()) {
+            if (periodSurleyList.get().getPeriodSurley()!=null & periodSurleyList.get().getDescription()!=null){
+                setTime(periodSurleyList.get().getPeriodSurley());
+            }else {
+                exchangeAgent.setId(0L);
+            }
+        }else {
+            exchangeAgent.setId(0L);
+        }
         }else {
             exchangeAgent.setId(0L);
         }

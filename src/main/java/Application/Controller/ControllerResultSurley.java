@@ -143,16 +143,20 @@ public class ControllerResultSurley {
 
     @RequestMapping(value = "/ControllerResultSurley/findByLocalDateTime", method = RequestMethod.POST)
     public String findByLocalDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
-        LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T', ' '), formatter);
-        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
-        setResultSurleys(resultSurleyList);
-        for (int i = 0; i != resultSurleyList.size(); i++) {
-            Long id = resultSurleyList.get(i).getId();
-            Object node = resultSurleyList.get(i);
-            maps.put(id, node);
-            model.addAttribute("maps", maps);
+        if(exchangeServiceObjectView.getLocalDateTime()!="") {
+            LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T', ' '), formatter);
+            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateTime(localDateTime);
+            setResultSurleys(resultSurleyList);
+            for (int i = 0; i != resultSurleyList.size(); i++) {
+                Long id = resultSurleyList.get(i).getId();
+                Object node = resultSurleyList.get(i);
+                maps.put(id, node);
+                model.addAttribute("maps", maps);
+            }
+        }else {
+            exchangeServiceObjectView.setLocalDate("Error");
         }
         return "reportSystem";
     }
