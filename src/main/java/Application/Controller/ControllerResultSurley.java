@@ -71,6 +71,7 @@ public class ControllerResultSurley {
 
     @RequestMapping(value = "/ControllerResultSurley/findByDate", method = RequestMethod.POST)
     public String findByDate(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
+        if(exchangeServiceObjectView.getLocalDate()!=null) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
@@ -82,6 +83,9 @@ public class ControllerResultSurley {
             maps.put(id, node);
             model.addAttribute("maps0", maps);
         }
+    }else {
+        exchangeServiceObjectView.setLocalDate("Error");
+    }
         return "reportSystem";
     }
 
@@ -156,7 +160,7 @@ public class ControllerResultSurley {
                 model.addAttribute("maps", maps);
             }
         }else {
-            exchangeServiceObjectView.setLocalDate("Error");
+            exchangeServiceObjectView.setLocalDateTime("Error");
         }
         return "reportSystem";
     }
