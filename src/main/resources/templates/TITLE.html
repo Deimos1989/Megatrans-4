@@ -132,7 +132,6 @@
         </div>
 
 
-
         <div class="col">
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePathConfiguration}"
                   th:object="${exchangeAgent}"
@@ -237,41 +236,34 @@
     </div>
 
 
-    <div class="col-md-3">
+    <div class="col-md-2">
 
         <div class="col">
-
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/saveTimePeriod}"
                   th:object="${exchangeAgent}"
                   method="get">
 
-
                 <div class="form-group">
-                    <div class="col">
-                    <div class="form-group">
-                        <label>Время опроса в миллисекундах</label>
-                    </div>
-
-                    <input type="text" class="form-control" size="20" th:field="*{timeSurley}"
-                           placeholder="Mm"
-                           style="width: 150px"/>
-                    </div>
+                    <label>Время в миллисекундах и описание</label>
                 </div>
 
                 <div class="form-group">
-                    <div class="col">
-                    <div class="form-group">
-                        <label>Описание</label>
-                    </div>
-                    <input type="text" class="form-control" size="20" th:field="*{description}"
-                           placeholder="Text"
+                    <input type="text" class="form-control" size="20" th:field="*{timeSurley}"
+                           placeholder="Mm"
                            style="width: 150px"/>
+                </div>
 
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" size="20" th:field="*{description}"
+                               placeholder="Text"
+                               style="width: 150px"/>
                         <div class="btn">
                             <input type="submit" class="btn btn-primary" value="add"/>
                         </div>
                     </div>
-                </div>
+
 
 
 
@@ -281,85 +273,84 @@
     </div>
 
 
-        <div class="col-md-2">
-            <div class="col">
-                <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPeriodSurley}"
-                      th:object="${exchangeAgent}"
-                      method="get">
+<div class="col-md-2">
+    <div class="col">
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPeriodSurley}"
+              th:object="${exchangeAgent}"
+              method="get">
 
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="findAll"/>
-                    </div>
-
-                </form>
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="findAll"/>
             </div>
 
-            <div class="col">
-                <form action="#" class="form-inline" th:action="@{/ControllerAgent/findPeriodSurley}"
-                      th:object="${exchangeAgent}"
-                      method="post">
-
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="change"/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col">
-                <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePeriodSurley}"
-                      th:object="${exchangeAgent}"
-                      method="post">
-
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="delete"/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
-                    </div>
-                </form>
-            </div>
-
-
-            <div class="col">
-                <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPeriodSurley}"
-                      th:object="${exchangeAgent}"
-                      method="post">
-
-                    <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="deleteAll"/>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-
-    <div class="col-md-3">
-        <table border="1" style="background-color: #c4c4c4">
-            <tr style="font-size: 16px">
-
-                <th width="10%">Id</th>
-
-                <th width="30%">periodSurley</th>
-
-                <th width="60%">description</th>
-
-
-
-            </tr>
-
-
-            <tr th:block th:each="map:${maps0}" style="font-size: 16px">
-                <td th:utext="${map.getKey()}">Id</td>
-                <td th:utext="${map.getValue().periodSurley}">periodSurley</td>
-                <td th:utext="${map.getValue().description}">description</td>
-            </tr>
-        </table>
+        </form>
     </div>
+
+    <div class="col">
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findPeriodSurley}"
+              th:object="${exchangeAgent}"
+              method="post">
+
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="change"/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="col">
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePeriodSurley}"
+              th:object="${exchangeAgent}"
+              method="post">
+
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="delete"/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{id}" placeholder="id" style="width: 60px"/>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col">
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPeriodSurley}"
+              th:object="${exchangeAgent}"
+              method="post">
+
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="deleteAll"/>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="col-md-3">
+    <table border="1" style="background-color: #c4c4c4">
+        <tr style="font-size: 16px">
+
+            <th width="10%">Id</th>
+
+            <th width="30%">periodSurley</th>
+
+            <th width="60%">description</th>
+
+
+        </tr>
+
+
+        <tr th:block th:each="map:${maps0}" style="font-size: 16px">
+            <td th:utext="${map.getKey()}">Id</td>
+            <td th:utext="${map.getValue().periodSurley}">periodSurley</td>
+            <td th:utext="${map.getValue().description}">description</td>
+        </tr>
+    </table>
+</div>
 
 </div>
 

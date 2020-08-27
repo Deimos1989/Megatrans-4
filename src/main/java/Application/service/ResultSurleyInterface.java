@@ -9,7 +9,7 @@ import java.util.List;
 public interface ResultSurleyInterface {
 
     List<ResultSurley> findAll(ResultSurley resultSurley);
-    List<ResultSurley> findByIp(String ip);
+    List<ResultSurley> findByLocalDateAndIp(LocalDate localDate,String ip);
     List<ResultSurley> findByHash(String hash);
     List<ResultSurley> findByLocalDate(LocalDate localDate);
     List<ResultSurley> findByLocalDateTime(LocalDateTime localDateTime);

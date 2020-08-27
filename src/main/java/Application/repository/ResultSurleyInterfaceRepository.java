@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSurley, Long> {
-    List<ResultSurley> findByIp(String ip);
 
     List<ResultSurley> findByHash(String hash);
 
@@ -25,5 +24,7 @@ public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSur
     List<ResultSurley> findByLocalDateAndNumberAndHash(LocalDate localDate, String number,String hash);
 
     List<ResultSurley> findTop50ByOrderByIdDesc();
+
+    List<ResultSurley> findByLocalDateAndIp(LocalDate localDate, String ip);
 }
 

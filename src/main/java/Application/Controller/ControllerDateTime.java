@@ -34,7 +34,7 @@ public class ControllerDateTime {
             Long id = dateTimeList.get(i).getId();
             Object node = dateTimeList.get(i);
             maps.put(id, node);
-            model.addAttribute("maps0", maps);
+            model.addAttribute("maps", maps);
         }
         return "reportSystem";
     }
