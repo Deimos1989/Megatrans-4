@@ -49,11 +49,11 @@
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" size="22" th:field="*{localDate}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="22" th:field="*{localDate}" style="font-size: 16px"
                            placeholder="Report on date."/>
                 </div>
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
                 </div>
             </form>
 
@@ -61,23 +61,23 @@
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 16px"
                            placeholder="Date."/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{ip}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="8" th:field="*{ip}" style="font-size: 16px"
                            placeholder="ip."/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
                            placeholder="Hash."/>
                 </div>
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
                 </div>
             </form>
 
@@ -86,23 +86,23 @@
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 16px"
                            placeholder="Date."/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="1" th:field="*{number}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="1" th:field="*{number}" style="font-size: 16px"
                            placeholder="№"/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
                            placeholder="Hash."/>
                 </div>
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
                 </div>
             </form>
 
@@ -110,17 +110,17 @@
                   th:object="${exchangeServiceObjectView}" method="post">
                 <div class="form-group">
 
-                    <input type="text" class="form-control" size="7" th:field="*{localDate}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="7" th:field="*{localDate}" style="font-size: 16px"
                            placeholder="Date."/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="8" th:field="*{ip}" style="font-size: 12px"
+                    <input type="text" class="form-control" size="8" th:field="*{ip}" style="font-size: 16px"
                            placeholder="ip."/>
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
                 </div>
             </form>
 
@@ -133,11 +133,11 @@
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByHash}"
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 12px"
+                <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
                        placeholder="Report on hash."/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
             </div>
         </form>
 
@@ -148,22 +148,22 @@
               th:object="${exchangeServiceObjectView}" method="post">
 
             <div class="form-group">
-                <input type="text" class="form-control" size="22" th:field="*{localDateTime}" style="font-size: 12px"
+                <input type="text" class="form-control" size="22" th:field="*{localDateTime}" style="font-size: 16px"
                        placeholder="Report on DateTime."/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
             </div>
         </form>
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}"
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 12px"
+                <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
                        placeholder="Delete on hash."/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Delete"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Delete"/>
             </div>
         </form>
 
@@ -171,7 +171,7 @@
             <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/reportSystem}"
                   th:object="${exchangeServiceObjectView}" method="post">
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Report_save_exel"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report_save_exel"/>
                 </div>
             </form>
 
@@ -180,7 +180,7 @@
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 14px" value="Last_50_entries"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Last_50_entries"/>
                 </div>
             </form>
         </div>

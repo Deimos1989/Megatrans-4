@@ -194,8 +194,8 @@
 <div class="row" style="background-color: #c4c4c4">
     <div class="col-md-3">
 
+        <label>Периодичность опроса в миллисекундах</label>
         <div class="col">
-            <label>Периодичность опроса в миллисекундах</label>
             <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
                   th:object="${exchangeAgent}"
                   method="get">
@@ -209,11 +209,13 @@
                     <input type="submit" class="btn btn-primary" value="change"/>
                 </div>
             </form>
+
+
         </div>
 
 
-        <div class="col">
-            <label>Опрос системы</label>
+        <label>Опрос системы</label>
+        <div class="row">
             <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
 
                   method="get">
@@ -222,9 +224,8 @@
                     <input type="submit" class="btn btn-primary" value="start"/>
                 </div>
             </form>
-        </div>
 
-        <div class="col">
+
             <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
                   method="get">
 
@@ -232,6 +233,16 @@
                     <input type="submit" class="btn btn-primary" value="stop"/>
                 </div>
             </form>
+
+
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTimeView}"
+              th:object="${exchangeAgent}"
+              method="get">
+
+            <div class="btn">
+                <input type="submit" class="btn btn-primary" value="view"/>
+            </div>
+        </form>
         </div>
     </div>
 
