@@ -90,54 +90,39 @@
             <div class="btn">
                 <input type="submit" id="add" class="btn btn-primary" value="Add"/>
             </div>
-
-
         </form>
     </div>
 
 
     <div class="col-md-2">
-
         <div class="col">
-
-            <label for="systemGroupSave">Введите № системы</label>
+            <label>Введите № и описание системы</label>
 
             <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/save}"
                   th:object="${exchangeNodeUrl}"
                   method="post">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="systemGroupSave" size="3" th:field="*{number}"
-                           style="width: 60px"/>
+                    <input type="text" class="form-control" th:field="*{id}" placeholder="id"
+                           style="width: 50px"/>
+
+                    <input type="text" class="form-control" th:field="*{number}" placeholder="№"
+                           style="width: 50px"/>
+
+                    <input type="text" class="form-control" th:field="*{description}" placeholder="description"
+                           style="width: 200px"/>
                 </div>
 
                 <div class="btn">
                     <input type="submit" class="btn btn-primary" value="save"/>
                 </div>
-            </form>
-        </div>
-
-
-
-        <div class="col">
-
-            <label for="systemGroupDelete">Удалите № системы</label>
-            <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
-                  th:object="${exchangeNodeUrl}"
-                  method="get">
-
-
-                <div class="form-group">
-                    <input type="text" class="form-control" id="systemGroupDelete" size="3" th:field="*{id}"
-                           style="width: 60px"/>
-                </div>
-
-                <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="Delete"/>
-                </div>
 
             </form>
         </div>
+
+
+
+
 
 
         <label>Вывести/удалить все №</label>
@@ -169,21 +154,36 @@
 
     <div class="col-md-2">
 
-        <div class="col">
-
-            <label for="numSysUrl">Введите № системы</label>
+        <label for="numSysUrl">Введите № системы</label>
+        <div class="row">
             <form action="#" class="form-inline" id="numSysUrl" th:action="@{/ControllerNodeUrl/findByNumber}"
                   th:object="${exchangeNodeUrl}" method="get">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" size="1" th:field="*{number}"
-                           style="width: 60px"/>
+                    <input type="text" class="form-control" th:field="*{number}"
+                           style="width: 50px"/>
                 </div>
 
                 <div class="btn">
                     <input type="submit" class="btn btn-primary" value="Read"/>
                 </div>
             </form>
+        </div>
+
+
+        <label for="findByIp">Введите ip</label>
+        <div class="row">
+            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/findByIp}"
+                  th:object="${exchangeNodeUrl}" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="findByIp" th:field="*{ip}"
+                           style="width: 100px"/>
+                </div>
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="read"/>
+                </div>
+            </form>
+        </div>
 
 
             <label for="numSysUrl">Вывести все ссылки</label>
@@ -193,45 +193,50 @@
                     <input type="submit" class="btn btn-primary" value="All"/>
                 </div>
             </form>
+        </div>
 
-            <label for="findByIp">Введите ip</label>
-            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/findByIp}"
-                  th:object="${exchangeNodeUrl}" method="get">
+
+
+    <div class="col-md-1">
+
+        <label>Удалить ссылку</label>
+        <div class="row">
+            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteId}"
+                  th:object="${exchangeNodeUrl}" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="findByIp" size="10" th:field="*{ip}"
-                           style="width: 110px"/>
+                    <input type="text" id="deleteUrlField" class="form-control" th:field="*{id}"
+                           style="width: 50px"/>
                 </div>
+
+                <div class="btn-sm">
+                    <input type="submit" class="btn btn-primary" value="Delete"/>
+                </div>
+            </form>
+        </div>
+
+        <label>Удалите № системы</label>
+        <div class="row">
+            <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/delete}"
+                  th:object="${exchangeNodeUrl}"
+                  method="get">
+
+
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{id}"
+                           style="width: 50px"/>
+                </div>
+
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="read"/>
+                    <input type="submit" class="btn btn-primary" value="Delete"/>
                 </div>
 
             </form>
         </div>
 
-    </div>
-
-
-    <div class="col-md-2">
-
-            <label for="deleteUrlField">Удалить ссылку</label>
-            <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteId}"
-                  th:object="${exchangeNodeUrl}" method="post">
-                <div class="form-group">
-                    <input type="text" id="deleteUrlField" class="form-control" size="1" th:field="*{id}"
-                           style="width: 60px"/>
-                </div>
-
-                <div class="btn">
-                    <input type="submit" id="deleteUrlbtn" class="btn btn-primary" value="Delete"/>
-                </div>
-            </form>
-
 
             <label for="deleteAllUrlbtn">Удалить все ссылки</label>
-
             <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
                   th:object="${exchangeNodeUrl}" method="post">
-
                 <div class="form-group">
                     <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Delete"/>
                 </div>
@@ -239,15 +244,17 @@
 
     </div>
 
-    <div class="col-md-1">
+    <div class="col-md-3">
 
         <div class="form-group">
 
             <table border="1" class="table-active" style="font-size: 16px">
                 <tr>
-                    <th width="3%">Id</th>
+                    <th width="10%">Id</th>
 
-                    <th width="3%">Num</th>
+                    <th width="10%">num</th>
+
+                    <th>description</th>
 
                 </tr>
 
@@ -256,6 +263,8 @@
                     <td th:utext="${map.getKey()}">Id</td>
 
                     <td th:utext="${map.getValue().number}">Number</td>
+
+                    <td th:utext="${map.getValue().description}">description</td>
 
 
                 </tr>

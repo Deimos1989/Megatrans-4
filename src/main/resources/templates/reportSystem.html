@@ -200,6 +200,7 @@
                 <th width="3%">Num</th>
                 <th width="5%">Date</th>
                 <th width="4%">IpNode</th>
+                <th width="4%">Temp_C°</th>
 
                 <th colspan="2">
                     errored
@@ -253,6 +254,7 @@
                 <td th:utext="${map.getValue().number}"></td>
                 <td th:utext="${map.getValue().localDateTime}"></td>
                 <td th:utext="${map.getValue().ip}"></td>
+                <td th:utext="${map.getValue().temperatureValue}"></td>
 
 
                 <td th:utext="${map.getValue().erroredBlocksValueSide1}"></td>

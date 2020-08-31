@@ -78,6 +78,7 @@ public class ReportSystem {
         Row row22 = sheet.createRow(22);
         Row row23 = sheet.createRow(23);
         Row row24 = sheet.createRow(24);
+        Row row25 = sheet.createRow(25);
 
 
         HSSFCellStyle style = ((HSSFWorkbook) wb).createCellStyle();
@@ -105,84 +106,88 @@ public class ReportSystem {
         cell04.setCellStyle(style);
 
         Cell cell05 = row5.createCell(0);
-        cell05.setCellValue("Errored_Blocks_Side1");
+        cell05.setCellValue("Errored_Blocks_A");
         cell05.setCellStyle(style);
 
         Cell cell06 = row6.createCell(0);
-        cell06.setCellValue("Errored_Blocks_Side2");
+        cell06.setCellValue("Errored_Blocks_B");
         cell06.setCellStyle(style);
 
         Cell cell07 = row7.createCell(0);
-        cell07.setCellValue("Errored_Seconds_Side1");
+        cell07.setCellValue("Errored_Seconds_A");
         cell07.setCellStyle(style);
 
         Cell cell08 = row8.createCell(0);
-        cell08.setCellValue("Errored_Seconds_Side2");
+        cell08.setCellValue("Errored_Seconds_B");
         cell08.setCellStyle(style);
 
         Cell cell09 = row9.createCell(0);
-        cell09.setCellValue("Severely_Errored_Seconds_Side1");
+        cell09.setCellValue("Severely_Errored_Seconds_A");
         cell09.setCellStyle(style);
 
         Cell cell010 = row10.createCell(0);
-        cell010.setCellValue("Severely_Errored_Seconds_Side2");
+        cell010.setCellValue("Severely_Errored_Seconds_B");
         cell010.setCellStyle(style);
 
         Cell cell011 = row11.createCell(0);
-        cell011.setCellValue("Background_Block_Errors_Side1");
+        cell011.setCellValue("Background_Block_Errors_A");
         cell011.setCellStyle(style);
 
         Cell cell012 = row12.createCell(0);
-        cell012.setCellValue("Background_Block_Errors_Side2");
+        cell012.setCellValue("Background_Block_Errors_B");
         cell012.setCellStyle(style);
 
         Cell cell013 = row13.createCell(0);
-        cell013.setCellValue("esr[%]_Side1");
+        cell013.setCellValue("esr[%]_A");
         cell013.setCellStyle(style);
 
         Cell cell014 = row14.createCell(0);
-        cell014.setCellValue("esr[%]_Side2");
+        cell014.setCellValue("esr[%]_B");
         cell014.setCellStyle(style);
 
         Cell cell015 = row15.createCell(0);
-        cell015.setCellValue("sers[%]_Side1");
+        cell015.setCellValue("sers[%]_A");
         cell015.setCellStyle(style);
 
         Cell cell016 = row16.createCell(0);
-        cell016.setCellValue("sers[%]_Side2");
+        cell016.setCellValue("sers[%]_B");
         cell016.setCellStyle(style);
 
         Cell cell017 = row17.createCell(0);
-        cell017.setCellValue("bber[%]_Side1");
+        cell017.setCellValue("bber[%]_A");
         cell017.setCellStyle(style);
 
         Cell cell018 = row18.createCell(0);
-        cell018.setCellValue("bber[%]_Side2");
+        cell018.setCellValue("bber[%]_B");
         cell018.setCellStyle(style);
 
         Cell cell019 = row19.createCell(0);
-        cell019.setCellValue("Available_Time_Side1");
+        cell019.setCellValue("Available_Time_A");
         cell019.setCellStyle(style);
 
         Cell cell020 = row20.createCell(0);
-        cell020.setCellValue("Available_Time_Side2");
+        cell020.setCellValue("Available_Time_B");
         cell020.setCellStyle(style);
 
         Cell cell021 = row21.createCell(0);
-        cell021.setCellValue("Unavailable_Time_Side1");
+        cell021.setCellValue("Unavailable_Time_A");
         cell021.setCellStyle(style);
 
         Cell cell022 = row22.createCell(0);
-        cell022.setCellValue("Unavailable_Time_Side2");
+        cell022.setCellValue("Unavailable_Time_B");
         cell022.setCellStyle(style);
 
         Cell cell023 = row23.createCell(0);
-        cell023.setCellValue("Nmr_dB_Side1");
+        cell023.setCellValue("Nmr_dB_A");
         cell023.setCellStyle(style);
 
         Cell cell024 = row24.createCell(0);
-        cell024.setCellValue("Nmr_dB_Side2");
+        cell024.setCellValue("Nmr_dB_B");
         cell024.setCellStyle(style);
+
+        Cell cell025 = row25.createCell(0);
+        cell025.setCellValue("Temperature");
+        cell025.setCellStyle(style);
 
 
 
@@ -358,6 +363,10 @@ public class ReportSystem {
                 cell24.setCellValue(resultSurleyList.get(i).getNmrValueSide2());
                 cell24.setCellStyle(style);
             }
+
+            Cell cell25 = row25.createCell(i+1);
+            cell25.setCellValue(resultSurleyList.get(i).getTemperatureValue());
+            cell25.setCellStyle(style);
 
         }
 

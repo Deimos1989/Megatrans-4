@@ -9,6 +9,8 @@ public class ExchangeNodeUrl {
     private String dslStatus;
     private String dslStatistics;
     private String dslAlarm;
+    private String description;
+
 
     public Long getId() {
         return id;
@@ -64,5 +66,13 @@ public class ExchangeNodeUrl {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

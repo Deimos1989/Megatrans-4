@@ -21,8 +21,8 @@ public class SystemGroupServiceInterfaceImplement implements SystemGroupInterfac
     }
 
     @Override
-    public List<SystemGroup> findByName(String name) {
-        return this.numberInterfaceRepository.findByName(name);
+    public List<SystemGroup> findByName(String description) {
+        return this.numberInterfaceRepository.findByDescription(description);
     }
 
 
