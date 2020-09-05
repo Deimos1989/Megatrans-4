@@ -31,7 +31,7 @@
                 <a class="nav-link" href="/ControllerMainTitle/reportSystem">Отчеты</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="/ControllerMainTitle/guide">Справочник</a>
             </li>
         </ul>
     </div>
@@ -50,10 +50,10 @@
                   method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" size="22" th:field="*{localDate}" style="font-size: 16px"
-                           placeholder="Report on date."/>
+                           placeholder="2020-08-23"/>
                 </div>
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
                 </div>
             </form>
 
@@ -62,7 +62,7 @@
                   method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 16px"
-                           placeholder="Date."/>
+                           placeholder="2020-08-23"/>
                 </div>
 
                 <div class="form-group">
@@ -77,7 +77,7 @@
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
                 </div>
             </form>
 
@@ -87,7 +87,7 @@
                   method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" size="8" th:field="*{localDate}" style="font-size: 16px"
-                           placeholder="Date."/>
+                           placeholder="2020-08-23"/>
                 </div>
 
                 <div class="form-group">
@@ -97,12 +97,12 @@
 
                 <div class="form-group">
                     <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
-                           placeholder="Hash."/>
+                           placeholder="№_опроса -hash."/>
                 </div>
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
                 </div>
             </form>
 
@@ -111,7 +111,7 @@
                 <div class="form-group">
 
                     <input type="text" class="form-control" size="7" th:field="*{localDate}" style="font-size: 16px"
-                           placeholder="Date."/>
+                           placeholder="2020-08-23"/>
                 </div>
 
                 <div class="form-group">
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
                 </div>
             </form>
 
@@ -128,20 +128,20 @@
         </div>
 
     </div>
+
+
     <div class="col-md-2" style="background-color: #c4c4c4">
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByHash}"
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
-                       placeholder="Report on hash."/>
+                       placeholder="Отчёт по номеру -hash."/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
             </div>
         </form>
-
-
 
 
         <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByLocalDateTime}"
@@ -149,10 +149,10 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" size="22" th:field="*{localDateTime}" style="font-size: 16px"
-                       placeholder="Report on DateTime."/>
+                       placeholder="2020-08-23T12:05:44"/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
             </div>
         </form>
 
@@ -160,10 +160,10 @@
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
-                       placeholder="Delete on hash."/>
+                       placeholder="Удалить опрос -hash."/>
             </div>
             <div class="btn">
-                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Delete"/>
+                <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Удалить"/>
             </div>
         </form>
 
@@ -171,7 +171,7 @@
             <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/reportSystem}"
                   th:object="${exchangeServiceObjectView}" method="post">
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Report_save_exel"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Сохранить_отчёт_exel"/>
                 </div>
             </form>
 
@@ -180,7 +180,7 @@
 
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Last_50_entries"/>
+                    <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Последние_50_записей"/>
                 </div>
             </form>
         </div>
@@ -191,14 +191,14 @@
 <div class="row" style="width: 100%">
 
     <div class="col-md-12">
-        <table border="1" cellpadding="4" cellspacing="0" width="100%" style="background-color: #c4c4c4" id="stq"
+        <table border="1" cellpadding="4" cellspacing="0" width="100%" style="background-color: #c4c4c4"
                class='pq-grid-summary'>
 
             <tr style="font-size:15px">
-                <th width="2%">Id</th>
+                <th width="4%">Id</th>
                 <th width="8%">Hash</th>
                 <th width="3%">Num</th>
-                <th width="5%">Date</th>
+                <th width="5%">DateTime</th>
                 <th width="4%">IpNode</th>
                 <th width="4%">Temp_C°</th>
 
@@ -302,7 +302,6 @@
     </div>
 
 
-</div>
 </div>
 
 </body>

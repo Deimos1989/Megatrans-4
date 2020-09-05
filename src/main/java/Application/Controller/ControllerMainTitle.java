@@ -1,9 +1,6 @@
 package Application.Controller;
 
-import Application.exchange.ExchangeAgent;
-import Application.exchange.ExchangeChart;
-import Application.exchange.ExchangeNodeUrl;
-import Application.exchange.ExchangeServiceObjectView;
+import Application.exchange.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +40,13 @@ public class ControllerMainTitle {
         ExchangeNodeUrl exchangeNodeUrl =new ExchangeNodeUrl();
         model.addAttribute("exchangeNodeUrl", exchangeNodeUrl );
         return "addUrls";
+    }
+
+    @GetMapping(value="/ControllerMainTitle/guide")
+    public String guide(Model model) {
+        ExchangeGuide exchangeGuide =new ExchangeGuide();
+        model.addAttribute("exchangeGuide", exchangeGuide );
+        return "guide";
     }
 
 

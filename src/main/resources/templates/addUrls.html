@@ -33,7 +33,7 @@
                 <a class="nav-link" href="/ControllerMainTitle/reportSystem">Отчеты</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="/ControllerMainTitle/guide">Справочник</a>
             </li>
         </ul>
     </div>
@@ -88,7 +88,7 @@
             </div>
 
             <div class="btn">
-                <input type="submit" id="add" class="btn btn-primary" value="Add"/>
+                <input type="submit" id="add" class="btn btn-primary" value="Добавить"/>
             </div>
         </form>
     </div>
@@ -109,30 +109,27 @@
                     <input type="text" class="form-control" th:field="*{number}" placeholder="№"
                            style="width: 50px"/>
 
-                    <input type="text" class="form-control" th:field="*{description}" placeholder="description"
+                    <input type="text" class="form-control" th:field="*{description}" placeholder="Описание"
                            style="width: 200px"/>
                 </div>
 
+                <div class="form-group">
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="save"/>
+                    <input type="submit" class="btn btn-primary" value="Сохранить"/>
+                </div>
                 </div>
 
             </form>
         </div>
 
 
-
-
-
-
-        <label>Вывести/удалить все №</label>
         <div class="row">
 
             <form action="#" class="form-inline" th:action="@{/ControllerSystemGroup/findAll}"
                   method="get">
                 <div class="form-group">
                     <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="All"/>
+                        <input type="submit" class="btn btn-primary" value="Вывести_всё_№"/>
                     </div>
 
                 </div>
@@ -142,7 +139,7 @@
                   method="get">
                 <div class="form-group">
                     <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="Del"/>
+                        <input type="submit" class="btn btn-primary" value="Удалить_всё_№"/>
                     </div>
                 </div>
             </form>
@@ -165,7 +162,7 @@
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="Read"/>
+                    <input type="submit" class="btn btn-primary" value="Прочитать"/>
                 </div>
             </form>
         </div>
@@ -180,17 +177,17 @@
                            style="width: 100px"/>
                 </div>
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="read"/>
+                    <input type="submit" class="btn btn-primary" value="Прочитать"/>
                 </div>
             </form>
         </div>
 
 
-            <label for="numSysUrl">Вывести все ссылки</label>
+            <label>Вывести все ссылки</label>
             <form action="#" class="form-inline" id="test" th:action="@{/ControllerNodeUrl/findAll}"
                   th:object="${exchangeNodeUrl}" method="get">
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="All"/>
+                    <input type="submit" class="btn btn-primary" value="Вывести_всё"/>
                 </div>
             </form>
         </div>
@@ -209,7 +206,7 @@
                 </div>
 
                 <div class="btn-sm">
-                    <input type="submit" class="btn btn-primary" value="Delete"/>
+                    <input type="submit" class="btn btn-primary" value="Удалить"/>
                 </div>
             </form>
         </div>
@@ -227,7 +224,7 @@
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="Delete"/>
+                    <input type="submit" class="btn btn-primary" value="Удалить"/>
                 </div>
 
             </form>
@@ -238,7 +235,7 @@
             <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
                   th:object="${exchangeNodeUrl}" method="post">
                 <div class="form-group">
-                    <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Delete"/>
+                    <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Удалить"/>
                 </div>
             </form>
 
@@ -252,9 +249,9 @@
                 <tr>
                     <th width="10%">Id</th>
 
-                    <th width="10%">num</th>
+                    <th width="10%">№</th>
 
-                    <th>description</th>
+                    <th>Описание</th>
 
                 </tr>
 
@@ -262,9 +259,9 @@
 
                     <td th:utext="${map.getKey()}">Id</td>
 
-                    <td th:utext="${map.getValue().number}">Number</td>
+                    <td th:utext="${map.getValue().number}">№</td>
 
-                    <td th:utext="${map.getValue().description}">description</td>
+                    <td th:utext="${map.getValue().description}">Описание</td>
 
 
                 </tr>
@@ -298,11 +295,11 @@
 
                 <td th:utext="${map.getValue().number}">Number</td>
 
-                <td th:utext="${map.getValue().ip}">Number</td>
+                <td th:utext="${map.getValue().ip}">IpNode</td>
 
-                <td th:utext="${map.getValue().urlDslStatus}">Ip</td>
+                <td th:utext="${map.getValue().urlDslStatus}">UrlDslStatus</td>
 
-                <td th:utext="${map.getValue().urlDslStatistics}">Url</td>
+                <td th:utext="${map.getValue().urlDslStatistics}">UrlDslStatistics</td>
 
             </tr>
         </table>
