@@ -151,4 +151,11 @@ public class ControllerGuide {
     }
 
 
+    @RequestMapping(value="/ControllerSystemGroup/save", method=RequestMethod.POST)
+    public String save(@ModelAttribute ExchangeGuide exchangeGuide, Guide guide) {
+        guide.setId(exchangeGuide.getId());
+
+        return "guide";
+    }
+
 }
