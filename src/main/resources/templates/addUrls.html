@@ -199,7 +199,7 @@
         <label>Удалить ссылку</label>
         <div class="row">
             <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteId}"
-                  th:object="${exchangeNodeUrl}" method="post">
+                  th:object="${exchangeNodeUrl}" method="get">
                 <div class="form-group">
                     <input type="text" id="deleteUrlField" class="form-control" th:field="*{id}"
                            style="width: 50px"/>
@@ -233,7 +233,7 @@
 
             <label for="deleteAllUrlbtn">Удалить все ссылки</label>
             <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
-                  th:object="${exchangeNodeUrl}" method="post">
+                  th:object="${exchangeNodeUrl}" method="get">
                 <div class="form-group">
                     <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Удалить"/>
                 </div>

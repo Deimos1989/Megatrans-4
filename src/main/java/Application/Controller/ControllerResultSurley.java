@@ -37,22 +37,6 @@ public class ControllerResultSurley {
     PathConfigurationServiceInterfaceImplement pathConfigurationServiceInterfaceImplement;
 
 
-
-    /*@RequestMapping(value = "/ControllerResultSurley/findByDate", method = RequestMethod.POST)
-    public String findByDateResultSurley(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
-        LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
-        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDate(localDate);
-        for (int i = 0; i != resultSurleyList.size(); i++) {
-            Long id = resultSurleyList.get(i).getId();
-            Object node = resultSurleyList.get(i);
-            maps.put(id, node);
-            model.addAttribute("maps", maps);
-        }
-        return "reportSystem";
-    }*/
-
     @RequestMapping(value = "/ControllerResultSurley/findBylocalDateAndIp", method = RequestMethod.POST)
     public String findBylocalDateAndIp(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();

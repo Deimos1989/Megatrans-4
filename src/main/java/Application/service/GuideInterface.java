@@ -8,4 +8,7 @@ public interface GuideInterface {
 
     public List<Guide> findAll();
 
+    List<Guide> findByName(String name);
+
+
 }

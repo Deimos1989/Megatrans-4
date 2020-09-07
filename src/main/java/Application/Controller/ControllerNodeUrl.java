@@ -123,7 +123,7 @@ public class ControllerNodeUrl {
         }
 
 
-        @RequestMapping(value = "/ControllerNodeUrl/deleteId", method = RequestMethod.POST)
+        @RequestMapping(value = "/ControllerNodeUrl/deleteId", method = RequestMethod.GET)
         public String deleteId (@ModelAttribute ExchangeNodeUrl exchangeNodeUrl, Model
         model, NodeUrl nodeUrl ){
             if (exchangeNodeUrl.getId() != null) {
@@ -136,7 +136,7 @@ public class ControllerNodeUrl {
         }
 
 
-        @RequestMapping(value = "/ControllerNodeUrl/deleteAll", method = RequestMethod.POST)
+        @RequestMapping(value = "/ControllerNodeUrl/deleteAll", method = RequestMethod.GET)
         public String deleteAll (@ModelAttribute ExchangeNodeUrl exchangeNodeUrl, Model
         model, NodeUrl nodeUrl ){
             nodeUrlServiceInterfaceImplement.deleteAll(nodeUrl);

@@ -21,4 +21,13 @@ public class GuideServiceInterfaceImplement implements GuideInterface {
         return guideInterfaceRepository.findAll();
     }
 
+    @Override
+    public List<Guide> findByName(String name) {
+        return guideInterfaceRepository.findByName(name);
+    }
+
+    public void save(Guide guide){
+        this.guideInterfaceRepository.save(guide);
+    }
+
 }
