@@ -6,7 +6,7 @@ public class ExchangeGuide {
     private String description;
 
 
-    private String erroredBlocks="erroredBlocks";
+    private String erroredBlocks="Errored_Blocks";
     private String erroredSeconds="erroredSeconds";
     private String severelyErroredSeconds="severelyErroredSeconds";
     private String backgroundBlockErrors="backgroundBlockErrors";

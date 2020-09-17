@@ -50,11 +50,11 @@ public class ControllerMainTitle {
     }
 
 
-    /*@GetMapping(value="/reportSystem")
-    public String reportSystem(Model model) {
+    @GetMapping(value="/ControllerMainTitle/chart")
+    public String chart(Model model) {
         ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
         model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
-        return "reportSystem";
-    }*/
+        return "chart";
+    }
 
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/table.css}" rel="stylesheet" media="screen"/>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
+</head>
+
+
+<body>
+<br><br><br>
+
+<div class="container">
+
+    <form action="#" class="form-inline" th:action="@{/ControllerChart/findByIp}"
+          th:object="${exchangeServiceObjectView}" method="get">
+        <div class="btn">
+            <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Отчёт"/>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <ul  th:each="map : ${maps.}">
+                <li id="date" th:text="${map}"></li>
+
+            </ul>
+
+
+            <!-- График --><div id="chart">
+
+            <script>
+
+                for (int i=0;i!=${maps.le})
+
+                var iframe  = document.getElementById("date").innerHTML;
+                alert(iframe);
+
+
+                $(function () {
+                    $("#chart").shieldChart({
+                        theme: "light",
+                        exportOptions: {
+                            image: false,
+                            print: false
+                        },
+                        axisX: {
+                            categoricalValues: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
+                        },
+                        axisY: {
+                            axisTickText: {
+                                format: "{text:c}"
+                            },
+                            title: {
+                                text: "Цена (EUR в kWh)"
+                            }
+                        },
+                        tooltipSettings: {
+                            chartBound: true
+                        },
+                        seriesSettings: {
+                            line: {
+                                enablePointSelection: true,
+                                pointMark: {
+                                    activeSettings: {
+                                        pointSelectedState: {
+                                            drawWidth: 4,
+                                            drawRadius: 4
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        primaryHeader: {
+                            text: "Цены на электроэнергию"
+                        },
+                        dataSeries: [{
+                            seriesType: 'line',
+                            collectionAlias: 'Домохозяйства',
+                            data: []=iframe
+                        }, {
+                            seriesType: 'line',
+                            collectionAlias: 'Промышленность',
+                            data: [0.103, 0.105, 0.112, 0.111, 0.102, 0.099, 0.110, 0.113, 0.117, 0.119, 0.123, 0.117]
+                        }]
+                    });
+                });
+                updateDisplay('Verse 1');
+                verseChoose.value = 'Verse 1';
+            </script><!-- /.График -->
+
+        </div><!-- /.col-md-8 col-md-offset-2 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div><!-- /.container -->
+
+</body>
+</html>

@@ -45,6 +45,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/ControllerMainTitle/guide">Справочник</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ControllerMainTitle/chart">Графики</a>
+            </li>
+
         </ul>
     </div>
 </nav>
@@ -367,90 +371,3 @@
 
 </body>
 </html>
-
-
-<!--<div class="col">
-    <form action="#" class="form-inline"   th:action=" @{/ControllerChart/findByIp}"
-          th:object="${exchangeChart}"
-          method="get" >
-
-        <div class="form-group">
-            <input type="text" class="form-control" size="15" th:field="*{ip}"   placeholder="Report on ip."/>
-        </div>
-
-        <div class="btn">
-            <input type="submit"  class="btn btn-primary" value="ip"/>
-        </div>
-    </form>
-</div>-->
-
-
-<!--
-
-<br><br><br>
-
-
-<div class="col-md-8 col-md-offset-2">
-
-
-    &lt;!&ndash; График &ndash;&gt;
-    <div id="chart"></div>
-
-    <script th:inline="javascript">
-
-
-        $(function () {
-            $("#chart").shieldChart({
-                theme: "light",
-                primaryHeader: {
-                    text: "Параметры опроса узла"
-                },
-                exportOptions: {
-                    image: false,
-                    print: false
-                },
-                axisY: [{
-                    min: -20,
-                    max: 20,
-                    title: {
-                        text: 'Уровень NMR',
-                        style: {
-                            color: '#4DB0F5'
-                        }
-                    },
-                    axisTickText: {
-                        style: {
-                            color: '#4DB0F5'
-                        }
-                    }
-                }, {
-                    min: -20,
-                    max: 20,
-                    title: {
-                        text: 'Уровень NMR',
-                        style: {
-                            color: '#4DB0F5'
-                        }
-                    },
-                    swapLocation: true,
-                    axisTickText: {
-                        style: {
-                            color: '#FF1800'
-                        }
-                    }
-                }],
-                dataSeries: [{
-                    seriesType: 'line',
-                    axis: 0,
-                    collectionAlias: "NMR",
-                    data: [arr]
-                },]
-            });
-        });
-    </script>&lt;!&ndash; /.График &ndash;&gt;
-
-</div>&lt;!&ndash; /.col-md-8 col-md-offset-2 &ndash;&gt;
-&lt;!&ndash; /.row &ndash;&gt;
--->
-
-

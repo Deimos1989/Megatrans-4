@@ -19,8 +19,8 @@ public class ControllerGuide {
     @Autowired
     GuideServiceInterfaceImplement guideServiceInterfaceImplement;
 
-    @RequestMapping(value = "/ControllerGuide/ErroredBlocks", method = RequestMethod.GET)
-    public String ErroredBlocks(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/ErrorBlocks", method = RequestMethod.GET)
+    public String ErrorBlocks(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getErroredBlocks());
         for (int i = 0; i != guideList.size(); i++) {
@@ -32,8 +32,8 @@ public class ControllerGuide {
         return "guide";
     }
 
-    @RequestMapping(value = "/ControllerGuide/ErroredSeconds", method = RequestMethod.GET)
-    public String findAllErroredSeconds(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/ErrorSeconds", method = RequestMethod.GET)
+    public String findAllErrorSeconds(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getErroredSeconds());
         for (int i = 0; i != guideList.size(); i++) {
@@ -45,8 +45,8 @@ public class ControllerGuide {
         return "guide";
     }
 
-    @RequestMapping(value = "/ControllerGuide/SeverelyErroredSeconds", method = RequestMethod.GET)
-    public String findAllSeverelyErroredSeconds(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/SeverelyErrorSeconds", method = RequestMethod.GET)
+    public String findAllSeverelyErrorSeconds(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getSeverelyErroredSeconds());
         for (int i = 0; i != guideList.size(); i++) {
@@ -72,8 +72,8 @@ public class ControllerGuide {
         return "guide";
     }
 
-    @RequestMapping(value = "/ControllerGuide/Esr", method = RequestMethod.GET)
-    public String findAllEsr(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/ErrorSecondRatio", method = RequestMethod.GET)
+    public String findAllErrorSecondRatio(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getEsr());
         for (int i = 0; i != guideList.size(); i++) {
@@ -85,8 +85,8 @@ public class ControllerGuide {
         return "guide";
     }
 
-    @RequestMapping(value = "/ControllerGuide/Sesr", method = RequestMethod.GET)
-    public String findAllSers(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/SeverelyErrorSecondRatio", method = RequestMethod.GET)
+    public String findAllSeverelyErrorSecondRatio(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getSesr());
         for (int i = 0; i != guideList.size(); i++) {
@@ -98,8 +98,8 @@ public class ControllerGuide {
         return "guide";
     }
 
-    @RequestMapping(value = "/ControllerGuide/Bber", method = RequestMethod.GET)
-    public String findAllBber(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
+    @RequestMapping(value = "/ControllerGuide/BackgroundBlockErrorRatio", method = RequestMethod.GET)
+    public String findAllBackgroundBlockErrorRatio(@ModelAttribute ExchangeGuide exchangeGuide, Model model){
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<Guide> guideList = guideServiceInterfaceImplement.findByName(exchangeGuide.getBber());
         for (int i = 0; i != guideList.size(); i++) {
