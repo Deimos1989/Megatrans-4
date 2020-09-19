@@ -4,6 +4,7 @@ import Application.Entity.ResultSurley;
 import Application.exchange.ExchangeChart;
 import Application.exchange.ExchangeServiceObjectView;
 import Application.service.ResultSurleyServiceInterfaceImplement;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,11 +40,15 @@ public class ControllerChart {
 
         }*/
 
-        String[] str = {"0.120","0.5","0.9","0.9"};
+       double[] str = {0.120,0.5,3.9,5.9};
+
+       Gson gson =new Gson();
+
+       String gs =gson.toJson(str);
 
 
           //  System.out.println(Arrays.asList(resultSurleyList));
-            model.addAttribute("maps", str);
+            model.addAttribute("maps", gs);
 
             return "chart";
         }

@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen"/>
     <script src="/js/bootstrap.bundle.js"></script>
     <script src="/js/bootstrap.js"></script>
-
-    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
     <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
 </head>
 
@@ -31,21 +30,29 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            <ul  th:each="map : ${maps.}">
-                <li id="date" th:text="${map}"></li>
-
-            </ul>
-
+           <!-- <ul  th:each="map:${maps}">
+                <ul id="date" style="display: none;"   th:utext="${map}"></ul>
+            </ul>-->
 
             <!-- График --><div id="chart">
 
-            <script>
+            <script th:inline="javascript">
 
-                for (int i=0;i!=${maps.le})
+                /*<![CDATA[*/
+                console.log([[${maps}]]);
+                var array = JSON.parse([[${maps}]]);
 
-                var iframe  = document.getElementById("date").innerHTML;
-                alert(iframe);
+                /*]]>*/
 
+                // var  array = JSON.parse(document.getElementById("date").innerHTML)
+
+
+
+               /* console.log(typeof array);
+                for (i=0; i!=array.length; i++)
+                {
+                    alert(array[i])
+                }*/
 
                 $(function () {
                     $("#chart").shieldChart({
@@ -55,14 +62,16 @@
                             print: false
                         },
                         axisX: {
-                            categoricalValues: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
+                            categoricalValues: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15']
                         },
                         axisY: {
-                            axisTickText: {
-                                format: "{text:c}"
-                            },
+                            categoricalValues: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15']
+
+                           /* axisTickText: {
+                                        format: "{text:c}"
+                            }*/,
                             title: {
-                                text: "Цена (EUR в kWh)"
+                                text: "единица измерения (dB)"
                             }
                         },
                         tooltipSettings: {
@@ -87,7 +96,7 @@
                         dataSeries: [{
                             seriesType: 'line',
                             collectionAlias: 'Домохозяйства',
-                            data: []=iframe
+                            data: []=array
                         }, {
                             seriesType: 'line',
                             collectionAlias: 'Промышленность',
@@ -95,8 +104,7 @@
                         }]
                     });
                 });
-                updateDisplay('Verse 1');
-                verseChoose.value = 'Verse 1';
+
             </script><!-- /.График -->
 
         </div><!-- /.col-md-8 col-md-offset-2 -->
