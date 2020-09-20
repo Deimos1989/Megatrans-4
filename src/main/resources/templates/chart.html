@@ -16,17 +16,20 @@
 
 
 <body>
+<div class="page-header" style="background-color:#800000">
+    <h1 style=color:#FFFFFF>
+        <small>Megatrans-4</small>
+    </h1>
+</div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-
+    <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-
             <li class="nav-item active">
                 <a class="nav-link" href="/ControllerMainTitle/backTitle">Главная<span class="sr-only">(current)</span></a>
             </li>
@@ -48,7 +51,7 @@
 </nav>
 
 
-<div class="container">
+
 
     <div class="row" style="background-color: #c4c4c4">
 
@@ -75,7 +78,7 @@
         </div>
 
 
-       <!-- <div class="row-md-2">
+       <div class="row-md-2">
 
             <form action="#" class="form-inline" th:action="@{/ControllerChart/findTop30ByOrderByIpDesc}"
                   th:object="${exchangeChart}" method="get">
@@ -100,13 +103,13 @@
                 </div>
             </form>
 
-        </div>-->
+        </div>
 
 
     </div>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
 
            <!-- <ul  th:each="map:${maps}">
                 <ul id="date" style="display: none;"   th:utext="${map}"></ul>
@@ -130,7 +133,7 @@
                         axisX: {
                             categoricalValues: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15']
                             , title: {
-                                text: "колличество (дни)"
+                                text: "Опросы (колличество)"
                             }
                         },
 
@@ -178,7 +181,7 @@
         </div><!-- /.col-md-8 col-md-offset-2 -->
         </div><!-- /.row -->
     </div><!-- /.container -->
-</div><!-- /.container -->
+
 
 </body>
 </html>

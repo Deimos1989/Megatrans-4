@@ -30,8 +30,8 @@ public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSur
 
 
 
-    /*@Query("select rs FROM  ResultSurley rs where rs.timestamp BETWEEN '2020-08-09' and '2020-08-23' ")
-    List<ResultSurley> getAllOfCurrentMonth();
-*/
+    @Query("select rs FROM  ResultSurley rs where rs.ip = ?1 and rs.localDate BETWEEN ?2 and ?3")
+    List<ResultSurley> getAllOfCurrentMonth(String ip, LocalDate localDate1,LocalDate localDate2);
+
 }
 

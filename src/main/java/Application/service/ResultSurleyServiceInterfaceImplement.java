@@ -90,5 +90,10 @@ public class ResultSurleyServiceInterfaceImplement implements ResultSurleyInterf
 
     }
 
+    @Override
+    public List<ResultSurley> getAllOfCurrentMonth(String ip, LocalDate localDate1, LocalDate localDate2) {
+        return resultSurleyInterfaceRepository.getAllOfCurrentMonth(ip,localDate1,localDate2);
+    }
+
 
 }

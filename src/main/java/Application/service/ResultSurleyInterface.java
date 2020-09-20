@@ -22,5 +22,7 @@ public interface ResultSurleyInterface {
     void delete(ResultSurley resultSurley);
     void deleteAll(ResultSurley resultSurley);
 
+    List<ResultSurley> getAllOfCurrentMonth(String ip, LocalDate localDate1, LocalDate localDate2);
+
 
 }

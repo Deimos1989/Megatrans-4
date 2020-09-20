@@ -56,14 +56,14 @@ public class ControllerChart {
 
 
     @RequestMapping(value = "/ControllerChart/findTop30ByOrderByIpDesc", method = RequestMethod.GET)
-    public String findTop30ByOrderByIpDesc(@ModelAttribute ExchangeChart exchangeChart, Model model, ResultSurley resultSurley) {
+    public String findTop30ByOrderByIpDesc(@ModelAttribute ExchangeChart exchangeChart, Model model) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate1 = LocalDate.parse(exchangeChart.getLocalDate1(), formatter);
         LocalDate localDate2 = LocalDate.parse(exchangeChart.getLocalDate2(), formatter);
 
 
-        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIp(localDate1,exchangeChart.getIp());
+        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.getAllOfCurrentMonth(exchangeChart.getIp(),localDate1,localDate2);
         ArrayList<Double> nmrValueSide1List = new ArrayList<>();
         ArrayList<Double> nmrValueSide2List = new ArrayList<>();
 
