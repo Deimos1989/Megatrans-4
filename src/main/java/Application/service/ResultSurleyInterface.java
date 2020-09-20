@@ -21,4 +21,6 @@ public interface ResultSurleyInterface {
     void deleteHash(String hash);
     void delete(ResultSurley resultSurley);
     void deleteAll(ResultSurley resultSurley);
+
+
 }

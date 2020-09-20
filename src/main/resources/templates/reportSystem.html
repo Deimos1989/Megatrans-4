@@ -47,7 +47,7 @@
 
         <div class="form-group" style="background-color: #c4c4c4">
 
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDate}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findByDate}"
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
@@ -59,7 +59,7 @@
                 </div>
             </form>
 
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDateAndIpAndHash}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findByDateAndIpAndHash}"
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
@@ -84,7 +84,7 @@
             </form>
 
 
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByDateAndNumberAndHash}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findByDateAndNumberAndHash}"
                   th:object="${exchangeServiceObjectView}"
                   method="post">
                 <div class="form-group">
@@ -108,7 +108,7 @@
                 </div>
             </form>
 
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findBylocalDateAndIp}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findByDateAndIp}"
                   th:object="${exchangeServiceObjectView}" method="post">
                 <div class="form-group">
 
@@ -134,7 +134,7 @@
 
     <div class="col-md-2" style="background-color: #c4c4c4">
 
-        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByHash}"
+        <form action="#" class="form-inline" th:action="@{/ControllerResult/findByHash}"
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
@@ -146,7 +146,7 @@
         </form>
 
 
-        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findByLocalDateTime}"
+        <form action="#" class="form-inline" th:action="@{/ControllerResult/findByLocalDateTime}"
               th:object="${exchangeServiceObjectView}" method="post">
 
             <div class="form-group">
@@ -158,7 +158,7 @@
             </div>
         </form>
 
-        <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/deleteByHash}"
+        <form action="#" class="form-inline" th:action="@{/ControllerResult/deleteByHash}"
               th:object="${exchangeServiceObjectView}" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" size="22" th:field="*{hash}" style="font-size: 16px"
@@ -170,14 +170,14 @@
         </form>
 
         <div class="row">
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/reportSystem}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/reportSystem}"
                   th:object="${exchangeServiceObjectView}" method="post">
                 <div class="btn">
                     <input type="submit" class="btn btn-primary" style="font-size: 16px" value="Сохранить_отчёт_exel"/>
                 </div>
             </form>
 
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findTop50ById}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findTop50ById}"
                   th:object="${exchangeServiceObjectView}" method="post">
 
 

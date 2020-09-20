@@ -37,7 +37,7 @@ public class ControllerResultSurley {
     PathConfigurationServiceInterfaceImplement pathConfigurationServiceInterfaceImplement;
 
 
-    @RequestMapping(value = "/ControllerResultSurley/findBylocalDateAndIp", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findByDateAndIp", method = RequestMethod.POST)
     public String findBylocalDateAndIp(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != "") {
@@ -57,7 +57,7 @@ public class ControllerResultSurley {
         return "reportSystem";
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/findByHash", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findByHash", method = RequestMethod.POST)
     public String findByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByHash(exchangeServiceObjectView.getHash());
@@ -73,7 +73,7 @@ public class ControllerResultSurley {
     }
 
 
-    @RequestMapping(value = "/ControllerResultSurley/findByDate", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findByDate", method = RequestMethod.POST)
     public String findByDate(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         if(exchangeServiceObjectView.getLocalDate()!=null) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -93,7 +93,7 @@ public class ControllerResultSurley {
         return "reportSystem";
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/findTop50ById", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findTop50ById", method = RequestMethod.POST)
     public String findTopBy50Id(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findTop50ByOrderByIdDesc();
@@ -108,7 +108,11 @@ public class ControllerResultSurley {
         return "reportSystem";
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/findByDateAndIpAndHash", method = RequestMethod.POST)
+
+
+
+
+    @RequestMapping(value = "/ControllerResult/findByDateAndIpAndHash", method = RequestMethod.POST)
     public String findByDateAndIpAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String ip, String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getIp() != "" & exchangeServiceObjectView.getHash() != "") {
@@ -128,7 +132,7 @@ public class ControllerResultSurley {
         return "reportSystem";
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/findByDateAndNumberAndHash", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findByDateAndNumberAndHash", method = RequestMethod.POST)
     public String findByDateAndNumberAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String number, String hash) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
         if (exchangeServiceObjectView.getLocalDate() != "" & exchangeServiceObjectView.getNumber() != "" & exchangeServiceObjectView.getHash() != "") {
@@ -149,7 +153,7 @@ public class ControllerResultSurley {
     }
 
 
-    @RequestMapping(value = "/ControllerResultSurley/findByLocalDateTime", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findByLocalDateTime", method = RequestMethod.POST)
     public String findByLocalDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
         if(exchangeServiceObjectView.getLocalDateTime()!="") {
             LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -170,7 +174,7 @@ public class ControllerResultSurley {
     }
 
 
-    @RequestMapping(value = "/ControllerResultSurley/deleteByHash", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/deleteByHash", method = RequestMethod.POST)
     public String deleteByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         resultSurleyServiceInterfaceImplement.deleteHash(exchangeServiceObjectView.getHash());
         return "reportSystem";
@@ -206,7 +210,7 @@ public class ControllerResultSurley {
     }
 
 
-    @RequestMapping(value = "/ControllerResultSurley/reportSystem", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/reportSystem", method = RequestMethod.POST)
     public ResponseEntity<Object> reportSystem(ReportSystem reportSystem) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -237,7 +241,7 @@ public class ControllerResultSurley {
 
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/findPathConfiguration", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerResult/findPathConfiguration", method = RequestMethod.POST)
     public String findPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
 
         if (exchangeAgent.getId()!=null) {
@@ -260,7 +264,7 @@ public class ControllerResultSurley {
         return "TITLE";
     }
 
-    @RequestMapping(value = "/ControllerResultSurley/viewPathConfiguration", method = RequestMethod.GET)
+    @RequestMapping(value = "/ControllerResult/viewPathConfiguration", method = RequestMethod.GET)
     public String viewPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
         exchangeAgent.setClientDirectory(getClientDirectory());
         exchangeAgent.setServerDirectory(getServerDirectory());

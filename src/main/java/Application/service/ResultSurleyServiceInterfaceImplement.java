@@ -89,4 +89,6 @@ public class ResultSurleyServiceInterfaceImplement implements ResultSurleyInterf
     public void deleteAll(ResultSurley resultSurley) {
 
     }
+
+
 }

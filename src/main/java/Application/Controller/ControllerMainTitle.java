@@ -52,8 +52,8 @@ public class ControllerMainTitle {
 
     @GetMapping(value="/ControllerMainTitle/chart")
     public String chart(Model model) {
-        ExchangeServiceObjectView exchangeServiceObjectView = new ExchangeServiceObjectView();
-        model.addAttribute("exchangeServiceObjectView", exchangeServiceObjectView );
+        ExchangeChart exchangeChart = new ExchangeChart();
+        model.addAttribute("exchangeChart", exchangeChart);
         return "chart";
     }
 

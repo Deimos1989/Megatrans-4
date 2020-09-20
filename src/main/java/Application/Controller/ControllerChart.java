@@ -2,7 +2,6 @@ package Application.Controller;
 
 import Application.Entity.ResultSurley;
 import Application.exchange.ExchangeChart;
-import Application.exchange.ExchangeServiceObjectView;
 import Application.service.ResultSurleyServiceInterfaceImplement;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 @Controller
@@ -24,33 +23,65 @@ public class ControllerChart {
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 
-    @RequestMapping(value="/ControllerChart/findByIp", method=RequestMethod.GET)
-    public String findByIpNodeBase(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
+    @RequestMapping(value = "/ControllerChart/findByLocalDateAndIp", method = RequestMethod.GET)
+    public String findByLocalDateAndIp(@ModelAttribute ExchangeChart exchangeChart, Model model) {
 
 
-    //   List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findTop50ByOrderByIdDesc();
+        if (exchangeChart.getLocalDate1() != "" & exchangeChart.getIp() != "") {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(exchangeChart.getLocalDate1(), formatter);
+            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIp(localDate, exchangeChart.getIp());
 
-       // System.out.println(Arrays.asList(resultSurleyList));
-        /*LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
+            ArrayList<Double> nmrValueSide1List = new ArrayList<>();
+            ArrayList<Double> nmrValueSide2List = new ArrayList<>();
 
-        for (int i = 0; i != resultSurleyList.size(); i++) {
-            Long id = resultSurleyList.get(i).getId();
-            Object st = resultSurleyList.get(i).getSesrValueSide1();
-            maps.put(id, st);
+            for (int i = 0; i != resultSurleyList.size(); i++) {
+                Double st1 = resultSurleyList.get(i).getNmrValueSide1();
+                Double st2 = resultSurleyList.get(i).getNmrValueSide2();
+                nmrValueSide1List.add(st1);
+                nmrValueSide2List.add(st2);
+            }
 
-        }*/
+            Gson gson = new Gson();
+            String gs1 = gson.toJson(nmrValueSide1List);
+            String gs2 = gson.toJson(nmrValueSide2List);
 
-       double[] str = {0.120,0.5,3.9,5.9};
+            model.addAttribute("nmrValueSide1List", gs1);
+            model.addAttribute("nmrValueSide2List", gs2);
+        } else {
+            System.out.println("Error");
+        }
+        return "chart";
+    }
 
-       Gson gson =new Gson();
 
-       String gs =gson.toJson(str);
+    @RequestMapping(value = "/ControllerChart/findTop30ByOrderByIpDesc", method = RequestMethod.GET)
+    public String findTop30ByOrderByIpDesc(@ModelAttribute ExchangeChart exchangeChart, Model model, ResultSurley resultSurley) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate1 = LocalDate.parse(exchangeChart.getLocalDate1(), formatter);
+        LocalDate localDate2 = LocalDate.parse(exchangeChart.getLocalDate2(), formatter);
 
 
-          //  System.out.println(Arrays.asList(resultSurleyList));
-            model.addAttribute("maps", gs);
+        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIp(localDate1,exchangeChart.getIp());
+        ArrayList<Double> nmrValueSide1List = new ArrayList<>();
+        ArrayList<Double> nmrValueSide2List = new ArrayList<>();
 
-            return "chart";
+        for (int k = 0; k != resultSurleyList.size(); k++) {
+            Double st1 = resultSurleyList.get(k).getNmrValueSide1();
+            Double st2 = resultSurleyList.get(k).getNmrValueSide2();
+            nmrValueSide1List.add(st1);
+            nmrValueSide2List.add(st2);
         }
 
+        Gson gson = new Gson();
+        String gs1 = gson.toJson(nmrValueSide1List);
+        String gs2 = gson.toJson(nmrValueSide2List);
+
+        model.addAttribute("nmrValueSide1List", gs1);
+        model.addAttribute("nmrValueSide2List", gs2);
+
+
+        return "chart";
     }
+}

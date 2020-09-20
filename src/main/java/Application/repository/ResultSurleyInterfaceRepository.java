@@ -4,6 +4,7 @@ import Application.Entity.ResultSurley;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,5 +27,11 @@ public interface ResultSurleyInterfaceRepository extends JpaRepository<ResultSur
     List<ResultSurley> findTop50ByOrderByIdDesc();
 
     List<ResultSurley> findByLocalDateAndIp(LocalDate localDate, String ip);
+
+
+
+    /*@Query("select rs FROM  ResultSurley rs where rs.timestamp BETWEEN '2020-08-09' and '2020-08-23' ")
+    List<ResultSurley> getAllOfCurrentMonth();
+*/
 }
 
