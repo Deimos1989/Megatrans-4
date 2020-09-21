@@ -28,8 +28,10 @@ public class ControllerChart {
 
 
         if (exchangeChart.getLocalDate1() != "" & exchangeChart.getIp() != "") {
+
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate localDate = LocalDate.parse(exchangeChart.getLocalDate1(), formatter);
+
             List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDateAndIp(localDate, exchangeChart.getIp());
 
             ArrayList<Double> nmrValueSide1List = new ArrayList<>();
