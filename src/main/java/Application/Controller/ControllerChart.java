@@ -57,8 +57,8 @@ public class ControllerChart {
     }
 
 
-    @RequestMapping(value = "/ControllerChart/findTop30ByOrderByIpDesc", method = RequestMethod.GET)
-    public String findTop30ByOrderByIpDesc(@ModelAttribute ExchangeChart exchangeChart, Model model) {
+    @RequestMapping(value = "/ControllerChart/findByDateAndIp", method = RequestMethod.GET)
+    public String findByDateAndIp(@ModelAttribute ExchangeChart exchangeChart, Model model) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate1 = LocalDate.parse(exchangeChart.getLocalDate1(), formatter);

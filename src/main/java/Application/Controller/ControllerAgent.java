@@ -121,13 +121,13 @@ public class ControllerAgent {
 
     @GetMapping(value = "/ControllerAgent/setTime")
     public String setTime(@ModelAttribute ExchangeAgent exchangeAgent, PeriodSurley periodSurley) {
-        setTime(exchangeAgent.getTimeSurley());
+        setTime(exchangeAgent.getTimeSurley()*60000);
         return "TITLE";
     }
 
     @GetMapping(value = "/ControllerAgent/setTimeView")
     public String setTimeView(@ModelAttribute ExchangeAgent exchangeAgent) {
-       exchangeAgent.setTimeSurley(getTime());
+       exchangeAgent.setTimeSurley(getTime()/60000);
         return "TITLE";
     }
 
