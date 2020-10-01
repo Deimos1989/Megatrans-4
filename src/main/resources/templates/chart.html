@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="/js/jquery-1.11.min.js"></script>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/bootstrap-grid.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/bootstrap-reboot.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/table.css}" rel="stylesheet" media="screen"/>
     <script src="/js/bootstrap.bundle.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
+    <script src="/js/bootstraptema.js"></script>
 </head>
 
 
-<body>
+<body >
 <div class="page-header" style="background-color:#800000">
     <h1 style=color:#FFFFFF>
         <small>Megatrans-4</small>
@@ -108,16 +108,16 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-md-12 col-md-offset-2">
+    <div class="row" >
+        <div   class="col-md-12 col-md-offset-2">
 
            <!-- <ul  th:each="map:${maps}">
                 <ul id="date" style="display: none;"   th:utext="${map}"></ul>
             </ul>-->
 
-            <!-- График --><div id="chart">
+            <!-- График --><div id="chart"  class="live__scroll">
 
-            <script th:inline="javascript">
+            <script th:inline="javascript" >
 
                 var array1 = JSON.parse([[${nmrValueSide1List}]]);
                 var array2 = JSON.parse([[${nmrValueSide2List}]]);
@@ -131,7 +131,7 @@
                             print: false
                         },
                         axisX: {
-                            categoricalValues: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15']
+                            categoricalValues: []
                             , title: {
                                 text: "Опросы (колличество)"
                             }
@@ -139,7 +139,7 @@
 
 
                         axisY: {
-                            categoricalValues: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15']
+                            categoricalValues: []
 
                             , title: {
                                 text: "единица измерения (dB)"
