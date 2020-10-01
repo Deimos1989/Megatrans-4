@@ -176,7 +176,7 @@ public class ControllerAgent {
     @GetMapping(value = "/ControllerAgent/saveTimePeriod")
     public String saveTimePeriod(@ModelAttribute ExchangeAgent exchangeAgent, PeriodSurley periodSurley) {
         if(exchangeAgent.getTimeSurley()!=null&exchangeAgent.getDescription()!=null){
-            periodSurley.setPeriodSurley(exchangeAgent.getTimeSurley());
+            periodSurley.setPeriod(exchangeAgent.getTimeSurley());
             periodSurley.setDescription(exchangeAgent.getDescription());
             periodSurleyServiceInterfaceImplement.save(periodSurley);
         }else {
@@ -189,11 +189,11 @@ public class ControllerAgent {
 
     @RequestMapping(value = "/ControllerAgent/findAllPeriod", method = RequestMethod.GET)
     public String findAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
-        List<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findAll();
+        List<PeriodSurley> periodList = periodSurleyServiceInterfaceImplement.findAll();
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        for (int i = 0; i != periodSurleyList.size(); i++) {
-            Long id = periodSurleyList.get(i).getId();
-            Object node = periodSurleyList.get(i);
+        for (int i = 0; i != periodList.size(); i++) {
+            Long id = periodList.get(i).getId();
+            Object node = periodList.get(i);
             maps.put(id, node);
             model.addAttribute("maps0", maps);
         }
@@ -202,12 +202,12 @@ public class ControllerAgent {
     }
 
     @RequestMapping(value = "/ControllerAgent/findPeriod", method = RequestMethod.GET)
-    public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent) {
+    public String findPeriod(@ModelAttribute ExchangeAgent exchangeAgent) {
         if (exchangeAgent.getId()!=null) {
-        Optional<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
-        if (periodSurleyList.isPresent()) {
-            if (periodSurleyList.get().getPeriodSurley()!=null & periodSurleyList.get().getDescription()!=null){
-                setTime(periodSurleyList.get().getPeriodSurley()*60000);
+        Optional<PeriodSurley> periodList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
+        if (periodList.isPresent()) {
+            if (periodList.get().getPeriod()!=null & periodList.get().getDescription()!=null){
+                setTime(periodList.get().getPeriod()*60000);
             }else {
                 exchangeAgent.setId(0L);
             }
@@ -222,14 +222,14 @@ public class ControllerAgent {
 
 
     @RequestMapping(value = "/ControllerAgent/deletePeriod", method = RequestMethod.POST)
-    public String deletePeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent,PeriodSurley periodSurley) {
+    public String deletePeriod(@ModelAttribute ExchangeAgent exchangeAgent,PeriodSurley periodSurley) {
         periodSurley.setId(exchangeAgent.getId());
         periodSurleyServiceInterfaceImplement.delete(periodSurley);
         return "TITLE";
     }
 
     @RequestMapping(value = "/ControllerAgent/deleteAllPeriod", method = RequestMethod.POST)
-    public String deleteAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent) {
+    public String deleteAllPeriod(@ModelAttribute ExchangeAgent exchangeAgent) {
         periodSurleyServiceInterfaceImplement.deleteAll();
         return "TITLE";
     }
