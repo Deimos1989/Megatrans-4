@@ -4,7 +4,6 @@ import Application.Entity.NodeUrl;
 import Application.Entity.PathConfiguration;
 import Application.Entity.PeriodSurley;
 import Application.Entity.SystemGroup;
-import Application.action.SetDateTime;
 import Application.action.SetResultSurley;
 import Application.exchange.ExchangeAgent;
 import Application.processing.DslStatisticsNode;
@@ -23,9 +22,6 @@ import java.util.*;
 
 @Controller
 public class ControllerAgent {
-
-    @Autowired
-    DateTimeServiceInterfaceImplement dateTimeServiceInterfaceImplement;
 
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
@@ -89,9 +85,6 @@ public class ControllerAgent {
 
                     System.out.println(Arrays.asList(numberSystem));
 
-                    SetDateTime setDateTime = new SetDateTime(dateTimeServiceInterfaceImplement);
-                    Thread thread1 = new Thread(setDateTime);
-                    thread1.start();
 
                     SetResultSurley setResultSurley = new SetResultSurley(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls, numberSystem);
                     Thread thread2 = new Thread(setResultSurley);
