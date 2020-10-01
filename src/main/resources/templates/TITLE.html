@@ -92,7 +92,7 @@
         </div>
 
         <div class="col">
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/viewPathConfiguration}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/viewPathConfiguration}"
                   th:object="${exchangeAgent}"
                   method="get">
 
@@ -120,7 +120,7 @@
         </div>
 
         <div class="col">
-            <form action="#" class="form-inline" th:action="@{/ControllerResultSurley/findPathConfiguration}"
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findPathConfiguration}"
                   th:object="${exchangeAgent}"
                   method="post">
 
@@ -289,7 +289,7 @@
 
 <div class="col-md-2">
     <div class="col">
-        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPeriodSurley}"
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findAllPeriod}"
               th:object="${exchangeAgent}"
               method="get">
 
@@ -301,9 +301,9 @@
     </div>
 
     <div class="col">
-        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findPeriodSurley}"
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/findPeriod}"
               th:object="${exchangeAgent}"
-              method="post">
+              method="get">
 
             <div class="btn">
                 <input type="submit" class="btn btn-primary" value="Установить"/>
@@ -316,7 +316,7 @@
     </div>
 
     <div class="col">
-        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePeriodSurley}"
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePeriod}"
               th:object="${exchangeAgent}"
               method="post">
 
@@ -332,7 +332,7 @@
 
 
     <div class="col">
-        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPeriodSurley}"
+        <form action="#" class="form-inline" th:action="@{/ControllerAgent/deleteAllPeriod}"
               th:object="${exchangeAgent}"
               method="post">
 

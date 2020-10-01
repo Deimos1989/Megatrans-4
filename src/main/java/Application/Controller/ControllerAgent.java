@@ -194,7 +194,7 @@ public class ControllerAgent {
     }
 
 
-    @RequestMapping(value = "/ControllerAgent/findAllPeriodSurley", method = RequestMethod.GET)
+    @RequestMapping(value = "/ControllerAgent/findAllPeriod", method = RequestMethod.GET)
     public String findAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
         List<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findAll();
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -208,13 +208,13 @@ public class ControllerAgent {
         return "TITLE";
     }
 
-    @RequestMapping(value = "/ControllerAgent/findPeriodSurley", method = RequestMethod.POST)
-    public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent, Model model, PeriodSurley periodSurley) {
+    @RequestMapping(value = "/ControllerAgent/findPeriod", method = RequestMethod.GET)
+    public String findPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent) {
         if (exchangeAgent.getId()!=null) {
         Optional<PeriodSurley> periodSurleyList = periodSurleyServiceInterfaceImplement.findById(exchangeAgent.getId());
         if (periodSurleyList.isPresent()) {
             if (periodSurleyList.get().getPeriodSurley()!=null & periodSurleyList.get().getDescription()!=null){
-                setTime(periodSurleyList.get().getPeriodSurley());
+                setTime(periodSurleyList.get().getPeriodSurley()*60000);
             }else {
                 exchangeAgent.setId(0L);
             }
@@ -228,14 +228,14 @@ public class ControllerAgent {
     }
 
 
-    @RequestMapping(value = "/ControllerAgent/deletePeriodSurley", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerAgent/deletePeriod", method = RequestMethod.POST)
     public String deletePeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent,PeriodSurley periodSurley) {
         periodSurley.setId(exchangeAgent.getId());
         periodSurleyServiceInterfaceImplement.delete(periodSurley);
         return "TITLE";
     }
 
-    @RequestMapping(value = "/ControllerAgent/deleteAllPeriodSurley", method = RequestMethod.POST)
+    @RequestMapping(value = "/ControllerAgent/deleteAllPeriod", method = RequestMethod.POST)
     public String deleteAllPeriodSurley(@ModelAttribute ExchangeAgent exchangeAgent) {
         periodSurleyServiceInterfaceImplement.deleteAll();
         return "TITLE";
