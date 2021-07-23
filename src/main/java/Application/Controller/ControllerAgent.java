@@ -76,15 +76,13 @@ public class ControllerAgent {
                     for (int k = 0; k != systemGroups.size(); k++) {
                         for (int i = 0; i != nodeUrls.size(); i++) {
                             if (systemGroups.get(k).getNumber().equals(nodeUrls.get(i).getNumber())) {
-                                urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
+                               urls.add(nodeUrls.get(i).getUrlDslStatus() + ";" + nodeUrls.get(i).getUrlDslStatistics());
                                 numberSystem.add(systemGroups.get(k).getNumber());
                             }
                         }
                     }
 
-
                     System.out.println(Arrays.asList(numberSystem));
-
 
                     SetResultSurley setResultSurley = new SetResultSurley(resultSurleyServiceInterfaceImplement, dslStatusNode, dslStatisticsNode, urls, numberSystem);
                     Thread thread2 = new Thread(setResultSurley);

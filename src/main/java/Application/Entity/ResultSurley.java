@@ -17,15 +17,15 @@ public class ResultSurley {
     private Long id;
 
 
-    @Column(name = "date",columnDefinition = "date")
+
+    @Column
     private LocalDate localDate;
 
-    @Column(name = "time", columnDefinition = "time")
+    @Column
     private LocalTime localTime;
 
-    @Column(name = "local_date_time", columnDefinition = "datetime")
+    @Column
     private LocalDateTime localDateTime;
-
 
     @ManyToOne(cascade =CascadeType.ALL )
     @JoinColumn (name="surley_id")
@@ -282,7 +282,6 @@ public ResultSurley(){
     public void setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
     }
-
     public Timestamp getTimestamp() {
         return timestamp;
     }
@@ -915,7 +914,7 @@ public ResultSurley(){
         this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
     }
 
-    public Surley getSurley() {
+   /* public Surley getSurley() {
         return surley;
     }
 
@@ -929,7 +928,7 @@ public ResultSurley(){
 
     public void setNodeUrl(NodeUrl nodeUrl) {
         this.nodeUrl = nodeUrl;
-    }
+    }*/
 
     public String getNumber() {
         return number;

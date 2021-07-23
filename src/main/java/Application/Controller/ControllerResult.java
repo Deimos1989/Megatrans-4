@@ -56,7 +56,6 @@ public class ControllerResult {
         }
         return "reportSystem";
     }
-
     @RequestMapping(value = "/ControllerResult/findByHash", method = RequestMethod.POST)
     public String findByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -71,6 +70,7 @@ public class ControllerResult {
 
         return "reportSystem";
     }
+
 
 
     @RequestMapping(value = "/ControllerResult/findByDate", method = RequestMethod.POST)
@@ -173,7 +173,6 @@ public class ControllerResult {
         return "reportSystem";
     }
 
-
     @RequestMapping(value = "/ControllerResult/deleteByHash", method = RequestMethod.POST)
     public String deleteByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         resultSurleyServiceInterfaceImplement.deleteHash(exchangeServiceObjectView.getHash());
@@ -214,7 +213,7 @@ public class ControllerResult {
     public ResponseEntity<Object> reportSystem(ReportSystem reportSystem) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(resultSurleys.get(0).getLocalDateTime()).substring(0, 19).replace('T', ' '), formatter);
+        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(resultSurleys.get(0).getTimestamp()).substring(0, 19).replace('T', ' '), formatter);
         String localDateTimeStringFormat1 = String.valueOf(localDateTime);
 
 

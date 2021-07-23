@@ -205,7 +205,7 @@ public class ReportSystem {
             cell2.setCellStyle(style);
 
             Cell cell3 = row3.createCell(i+1);
-            cell3.setCellValue(resultSurleyList.get(i).getLocalDateTime().toString());
+           // cell3.setCellValue(resultSurleyList.get(i).getLocalDateTime().toString());
             cell3.setCellStyle(style);
 
             Cell cell4 = row4.createCell(i+1);

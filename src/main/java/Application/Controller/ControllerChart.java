@@ -56,7 +56,6 @@ public class ControllerChart {
         return "chart";
     }
 
-
     @RequestMapping(value = "/ControllerChart/findByDateAndIp", method = RequestMethod.GET)
     public String findByDateAndIp(@ModelAttribute ExchangeChart exchangeChart, Model model) {
 

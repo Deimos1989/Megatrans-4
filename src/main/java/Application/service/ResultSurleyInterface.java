@@ -15,7 +15,6 @@ public interface ResultSurleyInterface {
     List<ResultSurley> findByLocalDateTime(LocalDateTime localDateTime);
     public List<ResultSurley> findByLocalDateAndIpAndHash(LocalDate localDate,String ip,String hash);
     public List<ResultSurley> findByLocalDateAndNumberAndHash(LocalDate localDate,String number,String hash);
-
     void save(ResultSurley resultSurley);
     void update(ResultSurley resultSurley);
     void deleteHash(String hash);
