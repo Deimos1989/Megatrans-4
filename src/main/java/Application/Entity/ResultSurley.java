@@ -914,22 +914,6 @@ public ResultSurley(){
         this.unavailableTimeValueSide2 = unavailableTimeValueSide2;
     }
 
-   /* public Surley getSurley() {
-        return surley;
-    }
-
-    public void setSurley(Surley surley) {
-        this.surley = surley;
-    }
-
-    public NodeUrl getNodeUrl() {
-        return nodeUrl;
-    }
-
-    public void setNodeUrl(NodeUrl nodeUrl) {
-        this.nodeUrl = nodeUrl;
-    }*/
-
     public String getNumber() {
         return number;
     }

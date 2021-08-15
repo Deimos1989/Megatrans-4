@@ -11,12 +11,11 @@ public class ExchangeDateTime {
 
 
    private static Timestamp timestampStatic = new Timestamp(System.currentTimeMillis());
-    private  Timestamp timestampDinamic = new Timestamp(System.currentTimeMillis());
+   private  Timestamp timestampDinamic = new Timestamp(System.currentTimeMillis());
 
         private static LocalDate localDateStatic=LocalDate.now();
         private static LocalTime localTimeStatic=LocalTime.now().withNano(0);
         private static LocalDateTime localDateTimeStatic=LocalDateTime.now().withNano(0);
-
 
          private LocalDate localDateDinamic=LocalDate.now();
          private LocalTime localTimeDinamic=LocalTime.now().withNano(0);
@@ -36,8 +35,6 @@ public class ExchangeDateTime {
         this.hashDinamic = hashDinamic;
     }
 
-
-
     public String getHashStatic() {
         return hashStatic;
     }
@@ -45,8 +42,6 @@ public class ExchangeDateTime {
     public void setHashStatic(String hashStatic) {
         ExchangeDateTime.hashStatic = hashStatic;
     }
-
-
 
     public Timestamp getTimestampStatic() {
         return timestampStatic;
