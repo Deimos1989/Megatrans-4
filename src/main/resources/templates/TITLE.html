@@ -57,189 +57,199 @@
 
     <div class="row">
         <div class="col-2">
-            <div class="p-3 border bg-light">
-                <form action="#" class="form-inline" th:action="@{/ControllerAgent/savePathConfiguration}"
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/savePathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="get">
+
+                <div class="mb-3">
+                    <label for="InputPathClientDirectory" class="form-label">Указать путь загрузки exel файла с
+                        сервера</label>
+
+                    <input type="text" class="form-control" id="InputPathClientDirectory"
+                           aria-describedby="test"
+                           th:field="*{clientDirectory}" placeholder="C:/Windows/Temp/">
+                </div>
+
+                <div class="mb-3">
+                    <label for="InputPathServerDirectory" class="form-label">Указать путь выгрузки exel файла на
+                        сервере</label>
+                    <input type="text" class="form-control" id="InputPathServerDirectory"
+                           th:field="*{serverDirectory}" placeholder="C:/Windows/Temp/">
+                </div>
+
+                <div class="btn">
+                    <button type="submit" class="btn btn-primary" style="width: 120px">Добавить</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <div class="col-2">
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/viewPathConfiguration}"
+                  th:object="${exchangeAgent}" method="get">
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="Просмотр" style="width: 120px"/>
+                </div>
+            </form>
+
+            <form action="#" class="form-inline" th:action="@{/ControllerResult/findPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="Установить"
+                           style="width: 120px"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{id}" placeholder="id"
+                           style="width: 60px"/>
+                </div>
+            </form>
+
+
+            <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="Удалить" style="width: 120px"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{id}" placeholder="id"
+                           style="width: 60px"/>
+                </div>
+            </form>
+
+
+            <form action="#" class="form-inline"
+                  th:action="@{/ControllerAgent/findAllPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="get">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="Вывести_всё"
+                           style="width: 120px"/>
+                </div>
+            </form>
+
+            <form action="#" class="form-inline"
+                  th:action="@{/ControllerAgent/deleteAllPathConfiguration}"
+                  th:object="${exchangeAgent}"
+                  method="post">
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="Удалить_всё"
+                           style="width: 120px"/>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-2">
+            <label>Периодичность опроса в минутах</label>
+            <div class="col">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
                       th:object="${exchangeAgent}"
                       method="get">
 
-                    <div class="mb-2">
-                        <label for="InputPathClientDirectory" class="form-label">Указать путь загрузки exel файла с
-                            сервера</label>
-                        <input type="text" class="form-control" id="InputPathClientDirectory"
-                               aria-describedby="test"
-                               th:field="*{clientDirectory}" placeholder="C:/Windows/Temp/" style="width: 300px">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputPathServerDirectory" class="form-label">Указать путь выгрузки exel файла на
-                            сервере</label>
-                        <input type="text" class="form-control" id="InputPathServerDirectory"
-                               th:field="*{serverDirectory}" placeholder="C:/Windows/Temp/" style="width: 300px">
+                    <div class="form-group">
+                        <input type="text" class="form-control" size="20" th:field="*{timeSurley}"
+                               style="width: 150px" placeholder="60"/>
                     </div>
 
                     <div class="btn">
-                        <button type="submit" class="btn btn-primary" style="width: 120px">Добавить</button>
+                        <input type="submit" class="btn btn-primary" value="Установить"/>
                     </div>
-
                 </form>
+            </div>
 
 
-                <form action="#" class="form-inline" th:action="@{/ControllerResult/viewPathConfiguration}"
-                      th:object="${exchangeAgent}" method="get">
+            <label>Опрос системы</label>
+            <div class="row">
+                <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
+                      method="get">
+
                     <div class="btn">
-                        <input type="submit" class="btn btn-primary" value="Просмотр" style="width: 120px"/>
+                        <input type="submit" class="btn btn-primary" value="Старт"/>
                     </div>
                 </form>
 
-            </div>
-        </div>
+
+                <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
+                      method="get">
+
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="Стоп"/>
+                    </div>
+                </form>
 
 
-        <div class="col-2">
+                <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTimeView}"
+                      th:object="${exchangeAgent}"
+                      method="get">
 
-            <div class="p-3 border bg-light">
-                <div class="col">
-                    <form action="#" class="form-inline"
-                          th:action="@{/ControllerAgent/findAllPathConfiguration}"
-                          th:object="${exchangeAgent}"
-                          method="get">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Вывести_всё"
-                                   style="width: 120px"/>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="col">
-                    <form action="#" class="form-inline" th:action="@{/ControllerResult/findPathConfiguration}"
-                          th:object="${exchangeAgent}"
-                          method="post">
-
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Установить"
-                                   style="width: 120px"/>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" th:field="*{id}" placeholder="id"
-                                   style="width: 60px"/>
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="col">
-                    <form action="#" class="form-inline" th:action="@{/ControllerAgent/deletePathConfiguration}"
-                          th:object="${exchangeAgent}"
-                          method="post">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Удалить" style="width: 120px"/>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" th:field="*{id}" placeholder="id"
-                                   style="width: 60px"/>
-                        </div>
-                    </form>
-                </div>
-
-
-                <div class="col">
-                    <form action="#" class="form-inline"
-                          th:action="@{/ControllerAgent/deleteAllPathConfiguration}"
-                          th:object="${exchangeAgent}"
-                          method="post">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Удалить_всё"
-                                   style="width: 120px"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col">
-            <table border="1" style="background-color: #c4c4c4">
-                <tr style="font-size: 16px">
-
-                    <th width="10%">Id</th>
-
-                    <th width="40%">path_client_directory</th>
-
-                    <th width="50%">path_server_directory</th>
-                </tr>
-
-
-                <tr th:block th:each="map:${maps}" style="font-size: 16px">
-
-                    <td th:utext="${map.getKey()}">Id</td>
-
-                    <td th:utext="${map.getValue().pathClientDirectory}">path_client_directory</td>
-
-                    <td th:utext="${map.getValue().pathServerDirectory}">path_server_directory</td>
-
-                </tr>
-
-            </table>
-        </div>
-
-
-        <div class="col-2">
-            <div class="p-3 border bg-light">
-                <label>Периодичность опроса в минутах</label>
-                <div class="col">
-                    <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTime}"
-                          th:object="${exchangeAgent}"
-                          method="get">
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" size="20" th:field="*{timeSurley}"
-                                   style="width: 150px" placeholder="60"/>
-                        </div>
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Установить"/>
-                        </div>
-                    </form>
-                </div>
-
-
-                <label>Опрос системы</label>
-                <div class="row">
-                    <form action="#" class="form-inline" id="taskStart" th:action="@{/ControllerAgent/taskStart}"
-                          method="get">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Старт"/>
-                        </div>
-                    </form>
-
-
-                    <form action="#" class="form-inline" id="taskStop" th:action=" @{/ControllerAgent/taskStop}"
-                          method="get">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Стоп"/>
-                        </div>
-                    </form>
-
-
-                    <form action="#" class="form-inline" th:action="@{/ControllerAgent/setTimeView}"
-                          th:object="${exchangeAgent}"
-                          method="get">
-
-                        <div class="btn">
-                            <input type="submit" class="btn btn-primary" value="Просмотр"/>
-                        </div>
-                    </form>
-                </div>
+                    <div class="btn">
+                        <input type="submit" class="btn btn-primary" value="Просмотр"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<!-- <div class="row">
+     <div class="p-3 border bg-light">
+         <div class="col">
+
+         </div>
+
+         <div class="col">
+
+         </div>
+
+         <div class="col">
+
+         </div>
+
+
+         <div class="col">
+
+         </div>
+     </div>
+ </div>-->
+
+
+<div class="col">
+    <table border="1" style="background-color: #c4c4c4">
+        <tr style="font-size: 16px">
+
+            <th width="10%">Id</th>
+
+            <th width="40%">path_client_directory</th>
+
+            <th width="50%">path_server_directory</th>
+        </tr>
+
+
+        <tr th:block th:each="map:${maps}" style="font-size: 16px">
+
+            <td th:utext="${map.getKey()}">Id</td>
+
+            <td th:utext="${map.getValue().pathClientDirectory}">path_client_directory</td>
+
+            <td th:utext="${map.getValue().pathServerDirectory}">path_server_directory</td>
+
+        </tr>
+
+    </table>
+</div>
+
+
+</div>
 </div>
 
 
