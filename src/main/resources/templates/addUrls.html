@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -51,55 +51,56 @@
 
 <div class="row">
 
-    <div class="col-2">
+    <form action="#" th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}"
+          method="post">
+        <div class="col">
+            <div class="col">
+                <label>Создание узла системы</label>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" th:field="*{id}" placeholder="id"
+                                   style="width: 60px"/>
+                        </div>
 
-        <label>Создание узла системы</label>
+                        <div class="col">
+                            <input type="text" class="form-control" th:field="*{number}" placeholder="num"
+                                   style="width: 60px"/>
+                        </div>
 
-        <form action="#" th:action="@{/ControllerNodeUrl/save}" class="form-horizontal" th:object="${exchangeNodeUrl}"
-              method="post">
+                        <div class="col">
+                            <input type="text" class="form-control" size="10" th:field="*{ip}"
+                                   placeholder="Enter ip address" style="width: 160px"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="col">
-
                 <div class="mb-3">
-                    <input type="text" class="form-control" th:field="*{id}" placeholder="id"
-                           style="width: 60px"/>
-                </div>
-
-                <div class="mb-3">
-                    <input type="text" class="form-control" th:field="*{number}" placeholder="num"
-                           style="width: 60px"/>
-                </div>
-
-                <div class="mb-3">
-                    <input type="text" class="form-control" size="10" th:field="*{ip}"
-                           placeholder="Enter ip address" style="width: 140px"/>
-                </div>
-
-
-                <div class="mb-3">
-                    <input type="text" class="form-control" size="30" id="urlDslStatus" th:field="*{dslStatus}"
+                    <input type="text" class="form-control" size="60" id="urlDslStatus" th:field="*{dslStatus}"
                            placeholder="Enter url dsl status" style="font-size: 14px"/>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control" size="30" id="urlDslStatistics"
+                    <input type="text" class="form-control"  size="60" id="urlDslStatistics"
                            th:field="*{dslStatistics}"
                            placeholder="Enter url dsl statistics" style="font-size: 14px"/>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control" size="30" id="urlAlarm" th:field="*{dslAlarm}"
+                    <input type="text" class="form-control" size="60" id="urlAlarm" th:field="*{dslAlarm}"
                            placeholder="Disable" style="font-size: 14px"/>
                 </div>
 
                 <div class="mb-3">
                     <input type="submit" id="add" class="btn btn-primary" style="width: 120px" value="Добавить"/>
                 </div>
-
             </div>
-        </form>
+        </div>
+    </form>
 
-    </div>
 
     <div class="col-1">
 
@@ -240,84 +241,84 @@
                 </div>
             </div>
 
-    </form>
+        </form>
 
 
-    <label for="deleteAllUrlbtn">Удалить все ссылки</label>
-    <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
-          th:object="${exchangeNodeUrl}" method="get">
-        <div class="row">
-            <div class="col">
-                <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Удалить"/>
+        <label for="deleteAllUrlbtn">Удалить все ссылки</label>
+        <form action="#" class="form-inline" th:action="@{/ControllerNodeUrl/deleteAll}"
+              th:object="${exchangeNodeUrl}" method="get">
+            <div class="row">
+                <div class="col">
+                    <input type="submit" id="deleteAllUrlbtn" class="btn btn-primary" value="Удалить"/>
+                </div>
             </div>
+        </form>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="form-group">
+
+            <table border="1" class="table-active" style="font-size: 16px">
+                <tr>
+                    <th width="10%">Id</th>
+
+                    <th width="10%">№</th>
+
+                    <th>Описание</th>
+
+                </tr>
+
+                <tr th:block th:each="map:${maps}" style="font-size: 16px">
+
+                    <td th:utext="${map.getKey()}">Id</td>
+
+                    <td th:utext="${map.getValue().number}">№</td>
+
+                    <td th:utext="${map.getValue().description}">Описание</td>
+
+
+                </tr>
+            </table>
         </div>
-    </form>
 
-</div>
+    </div>
 
-<div class="col-md-3">
 
     <div class="form-group">
 
         <table border="1" class="table-active" style="font-size: 16px">
             <tr>
-                <th width="10%">Id</th>
+                <th width="3%">Id</th>
 
-                <th width="10%">№</th>
+                <th width="3%">Num</th>
 
-                <th>Описание</th>
+                <th width="9%">IpNode</th>
+
+                <th width="25%">UrlDslStatus</th>
+
+                <th width="25%">UrlDslStatistics</th>
+
+                <th width="25%">UrlAlarm</th>
 
             </tr>
 
-            <tr th:block th:each="map:${maps}" style="font-size: 16px">
+            <tr th:block th:each="map:${maps0}" style="font-size: 16px">
 
                 <td th:utext="${map.getKey()}">Id</td>
 
-                <td th:utext="${map.getValue().number}">№</td>
+                <td th:utext="${map.getValue().number}">Number</td>
 
-                <td th:utext="${map.getValue().description}">Описание</td>
+                <td th:utext="${map.getValue().ip}">IpNode</td>
 
+                <td th:utext="${map.getValue().urlDslStatus}">UrlDslStatus</td>
+
+                <td th:utext="${map.getValue().urlDslStatistics}">UrlDslStatistics</td>
 
             </tr>
         </table>
     </div>
-
-</div>
-
-
-<div class="form-group">
-
-    <table border="1" class="table-active" style="font-size: 16px">
-        <tr>
-            <th width="3%">Id</th>
-
-            <th width="3%">Num</th>
-
-            <th width="9%">IpNode</th>
-
-            <th width="25%">UrlDslStatus</th>
-
-            <th width="25%">UrlDslStatistics</th>
-
-            <th width="25%">UrlAlarm</th>
-
-        </tr>
-
-        <tr th:block th:each="map:${maps0}" style="font-size: 16px">
-
-            <td th:utext="${map.getKey()}">Id</td>
-
-            <td th:utext="${map.getValue().number}">Number</td>
-
-            <td th:utext="${map.getValue().ip}">IpNode</td>
-
-            <td th:utext="${map.getValue().urlDslStatus}">UrlDslStatus</td>
-
-            <td th:utext="${map.getValue().urlDslStatistics}">UrlDslStatistics</td>
-
-        </tr>
-    </table>
-</div>
 </div>
 </div>
 </body>
