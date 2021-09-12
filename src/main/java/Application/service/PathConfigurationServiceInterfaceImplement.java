@@ -1,7 +1,6 @@
 package Application.service;
 
 import Application.Entity.PathConfiguration;
-import Application.Entity.PeriodSurley;
 import Application.repository.PathConfigurationInterfaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -16,7 +16,6 @@ public class DslStatusNode {
         this.table = table;
     }
 
-
     private    Pattern pattern1 = Pattern.compile("(I/F\\smode)\\s(\\w*)");
     private    Pattern pattern2 = Pattern.compile("(SYNC)\\s(\\d*)\\s(\\d*)");
     private    Pattern pattern3 = Pattern.compile("(SEGD)\\s(\\d*)\\s(\\d*)");
@@ -33,20 +32,6 @@ public class DslStatusNode {
     private    Pattern pattern14 = Pattern.compile("(RP\\sstatus)\\s(\\w*)");
     private    Pattern pattern15 = Pattern.compile("(Temperature)\\s(\\d*\\W\\d*)\\s(=B0C)");
     private    Pattern pattern16 = Pattern.compile("(BERT)\\s(\\w*)");
-    private    Pattern pattern17 = Pattern.compile("(http://)(\\d*\\W\\d*\\W\\d*\\W\\d*)");
-
-
-
-
-
-
-    public String nameNode(String name) {
-        Matcher matcher1 = pattern17.matcher(name);
-        while (matcher1.find()) {
-            name = (name.substring(matcher1.start(2), matcher1.end(2)));
-        }
-        return name;
-    }
 
 
     public String modeName(String name) {
@@ -57,7 +42,6 @@ public class DslStatusNode {
         return name;
     }
 
-
     public String modeValue(String value) {
         Matcher matcher1 = pattern1.matcher(table);
         while (matcher1.find()) {
@@ -67,7 +51,6 @@ public class DslStatusNode {
     }
 
 
-
     public String syncName(String name) {
         Matcher matcher = pattern2.matcher(table);
         while (matcher.find()) {
@@ -75,7 +58,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Integer syncValueSide1(Integer value) {
         Matcher matcher = pattern2.matcher(table);
@@ -95,9 +77,6 @@ public class DslStatusNode {
         return value;
     }
 
-
-
-
     public String segdName(String name) {
         Matcher matcher = pattern3.matcher(table);
         while (matcher.find()) {
@@ -105,7 +84,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Integer segdValueSide1(Integer value) {
         Matcher matcher = pattern3.matcher(table);
@@ -124,11 +102,6 @@ public class DslStatusNode {
         }
         return value;
     }
-
-
-
-
-
 
     public String txPowerName(String name) {
         Matcher matcher = pattern4.matcher(table);
@@ -167,10 +140,6 @@ public class DslStatusNode {
         return parametr;
     }
 
-
-
-
-
     public String rxPowerName(String name) {
         Matcher matcher = pattern5.matcher(table);
         while (matcher.find()) {
@@ -206,8 +175,6 @@ public class DslStatusNode {
         return parametr;
     }
 
-
-
     public String powerBackOffName(String name) {
         Matcher matcher = pattern6.matcher(table);
         while (matcher.find()) {
@@ -215,9 +182,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
-
-
 
     public Double powerBackOffValue(Double value) {
         Matcher matcher = pattern6.matcher(table);
@@ -228,7 +192,6 @@ public class DslStatusNode {
         return value;
     }
 
-
     public String powerBackOffParametr(String parametr) {
         Matcher matcher = pattern6.matcher(table);
         while (matcher.find()) {
@@ -237,8 +200,6 @@ public class DslStatusNode {
         return parametr;
 }
 
-
-
     public String farEndPowerBackOffName(String name) {
         Matcher matcher = pattern7.matcher(table);
         while (matcher.find()) {
@@ -246,7 +207,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Double farEndPowerBackOffValue(Double value) {
         Matcher matcher = pattern7.matcher(table);
@@ -257,7 +217,6 @@ public class DslStatusNode {
         return value;
     }
 
-
     public String farEndPowerBackOffParametr(String parametr) {
         Matcher matcher = pattern7.matcher(table);
         while (matcher.find()) {
@@ -266,11 +225,6 @@ public class DslStatusNode {
         return parametr;
     }
 
-
-
-
-
-
     public String loopAttenuationName(String name) {
         Matcher matcher = pattern8.matcher(table);
         while (matcher.find()) {
@@ -278,7 +232,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Double loopAttenuationValueSide1(Double value) {
         Matcher matcher = pattern8.matcher(table);
@@ -298,9 +251,6 @@ public class DslStatusNode {
         return value;
     }
 
-
-
-
     public String nmrName(String name) {
         Matcher matcher = pattern9.matcher(table);
         while (matcher.find()) {
@@ -308,7 +258,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Double nmrValueSide1(Double value) {
         Matcher matcher = pattern9.matcher(table);
@@ -328,9 +277,6 @@ public class DslStatusNode {
         return value;
     }
 
-
-
-
     public String bitrateName(String name) {
         Matcher matcher = pattern10.matcher(table);
         while (matcher.find()) {
@@ -338,7 +284,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Integer bitrateValueSide1(Integer value) {
         Matcher matcher = pattern10.matcher(table);
@@ -358,9 +303,6 @@ public class DslStatusNode {
         return value;
     }
 
-
-
-
     public String sruName(String name) {
         Matcher matcher = pattern11.matcher(table);
         while (matcher.find()) {
@@ -368,7 +310,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Integer sruValue(Integer value) {
         Matcher matcher = pattern11.matcher(table);
@@ -379,7 +320,6 @@ public class DslStatusNode {
         return value;
     }
 
-
     public String activeSyncSourceName(String name) {
         Matcher matcher = pattern12.matcher(table);
         while (matcher.find()) {
@@ -388,7 +328,6 @@ public class DslStatusNode {
 
         return name;
     }
-
 
     public String activeSyncSourceValueSide1(String value) {
             Matcher matcher = pattern12.matcher(table);
@@ -408,8 +347,6 @@ public class DslStatusNode {
         return value;
     }
 
-
-
     public String rpVoltageName(String name) {
         Matcher matcher = pattern13.matcher(table);
         while (matcher.find()) {
@@ -417,7 +354,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Integer rpVoltageValueSide1(Integer value) {
         Matcher matcher = pattern13.matcher(table);
@@ -445,8 +381,6 @@ public class DslStatusNode {
         return parametr;
     }
 
-
-
     public String rpStatusName(String name) {
         Matcher matcher1 = pattern14.matcher(table);
         while (matcher1.find()) {
@@ -463,7 +397,6 @@ public class DslStatusNode {
         return value;
     }
 
-
     public String temperatureName(String name) {
         Matcher matcher = pattern15.matcher(table);
         while (matcher.find()) {
@@ -471,7 +404,6 @@ public class DslStatusNode {
         }
         return name;
     }
-
 
     public Double temperatureValue(Double value) {
         Matcher matcher = pattern15.matcher(table);
@@ -482,7 +414,6 @@ public class DslStatusNode {
         return value;
     }
 
-
     public String temperatureParametr(String parametr) {
         Matcher matcher = pattern15.matcher(table);
         while (matcher.find()) {
@@ -490,7 +421,6 @@ public class DslStatusNode {
         }
         return parametr;
     }
-
 
     public String bertName(String name) {
         Matcher matcher = pattern16.matcher(table);
@@ -500,7 +430,6 @@ public class DslStatusNode {
         return name;
     }
 
-
     public String bertValue(String value) {
         Matcher matcher = pattern16.matcher(table);
         while (matcher.find()) {
@@ -508,7 +437,4 @@ public class DslStatusNode {
         }
         return value;
     }
-
-
-
 }
