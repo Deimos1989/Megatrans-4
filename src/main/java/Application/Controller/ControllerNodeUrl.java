@@ -75,8 +75,6 @@ public class ControllerNodeUrl {
                             nodeUrl.setUrlDslStatus(exchangeNodeUrl.getDslStatus());
                             nodeUrl.setUrlDslStatistics(exchangeNodeUrl.getDslStatistics());
 
-
-
                     }else {
 
                             exchangeNodeUrl.setDslStatus("Совпадения с вашим id не обнаружены");

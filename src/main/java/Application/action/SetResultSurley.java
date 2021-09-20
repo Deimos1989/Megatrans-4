@@ -45,8 +45,9 @@ public class SetResultSurley implements Runnable {
     private LocalDateTime localDateTimeDinamic = LocalDateTime.now().withNano(0);
     private String hashDinamic = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS").format(new java.util.Date());
 
-    public void run() {
+    public void run()
 
+    {
         for (int k = 0; k != systemGroups.size(); k++) {
             for (int i = 0; i != nodeUrls.size(); i++) {
                 if (systemGroups.get(k).getNumber().equals(nodeUrls.get(i).getNumber())) {
@@ -60,15 +61,11 @@ public class SetResultSurley implements Runnable {
         for (int c = 0; c != url.size(); c++) {
 
             String[] urlSum = url.get(c).split(";");
-
             {
-
                 System.out.println(Arrays.asList(url.get(c)));
 
                 for (int d = 0; d != urlSum.length; d++) {
-
                     {
-
                         try {
 
                             Document resultStatus = Jsoup.connect(urlSum[d]).get();
@@ -79,7 +76,6 @@ public class SetResultSurley implements Runnable {
                                 dslStatisticsNode.setTable(status);
                             }
                         } catch (IOException e) {
-
                             System.out.println("Ответ от узла не получен");
                         }
                     }
@@ -182,7 +178,7 @@ public class SetResultSurley implements Runnable {
                 resultSurley.setTimestamp(timestampDinamic);
                 resultSurley.setHash(hashDinamic);
 
-                resultSurley.setIp(dslStatusNode.ipNode(ipSystem.get(c)));
+                resultSurley.setIp(ipSystem.get(c));
 
                 resultSurley.setNumber(numberSystem.get(c));
 

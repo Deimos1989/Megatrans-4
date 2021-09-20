@@ -19,7 +19,6 @@ import java.util.List;
 @Controller
 public class ControllerChart {
 
-
     @Autowired
     ResultSurleyServiceInterfaceImplement resultSurleyServiceInterfaceImplement;
 

@@ -4,20 +4,35 @@ import Application.Entity.ResultSurley;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
 public class ReportSystem {
 
 
-    String dataTime;
-
     String pathServerDirectory;
+
+    List<ResultSurley> resultSurleyList;
+
+    FileOutputStream fos;
+
+    String dateTime;
+
+
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public String getPathServerDirectory() {
         return pathServerDirectory;
@@ -27,27 +42,9 @@ public class ReportSystem {
         this.pathServerDirectory = pathServerDirectory;
     }
 
-    public String getDataTime() {
-        return dataTime;
-    }
-
-    public void setDataTime(String dataTime) {
-        this.dataTime = dataTime;
-    }
-
-    public List<ResultSurley> getResultSurleyList() {
-        return resultSurleyList;
-    }
-
     public void setResultSurleyList(List<ResultSurley> resultSurleyList) {
         this.resultSurleyList = resultSurleyList;
     }
-
-    List<ResultSurley> resultSurleyList;
-
-    FileOutputStream fos;
-
-
 
     public Object reportSystem() {
 
@@ -377,9 +374,8 @@ public class ReportSystem {
             }
 
 
-
             try {
-                fos = new FileOutputStream(getPathServerDirectory()+dataTime.replace(':', '-') + ".xls");
+                fos = new FileOutputStream(getPathServerDirectory()+dateTime.replace(':', '-') + ".xls");
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }
@@ -394,8 +390,20 @@ public class ReportSystem {
                 e.printStackTrace();
             }
 
-
-            return fos;
+        File file = new File(getPathServerDirectory()+dateTime.replace(':', '-') + ".xls");
+        InputStreamResource resource = null;
+        try {
+            resource = new InputStreamResource(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+        return resource;
+
+
+        }
+
+
+
 
     }

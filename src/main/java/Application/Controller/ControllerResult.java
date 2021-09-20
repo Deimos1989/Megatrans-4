@@ -36,6 +36,9 @@ public class ControllerResult {
     @Autowired
     PathConfigurationServiceInterfaceImplement pathConfigurationServiceInterfaceImplement;
 
+    private List<ResultSurley> resultSurleys;
+    private String clientDirectory = "C:/Windows/Temp/";
+    private String serverDirectory = "C:/Windows/Temp/";
 
     @RequestMapping(value = "/ControllerResult/findByDateAndIp", method = RequestMethod.POST)
     public String findBylocalDateAndIp(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
@@ -56,6 +59,7 @@ public class ControllerResult {
         }
         return "reportSystem";
     }
+
     @RequestMapping(value = "/ControllerResult/findByHash", method = RequestMethod.POST)
     public String findByHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, ResultSurley resultSurley) {
         LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
@@ -71,25 +75,24 @@ public class ControllerResult {
         return "reportSystem";
     }
 
-
-
     @RequestMapping(value = "/ControllerResult/findByDate", method = RequestMethod.POST)
     public String findByDate(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
-        if(exchangeServiceObjectView.getLocalDate()!=null) {
-        LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
-        List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDate(localDate);
-        setResultSurleys(resultSurleyList);
-        for (int i = 0; i != resultSurleyList.size(); i++) {
-            Long id = resultSurleyList.get(i).getId();
-            Object node = resultSurleyList.get(i);
-            maps.put(id, node);
-            model.addAttribute("maps", maps);
+        if (exchangeServiceObjectView.getLocalDate() != null) {
+            LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(exchangeServiceObjectView.getLocalDate(), formatter);
+            List<ResultSurley> resultSurleyList = resultSurleyServiceInterfaceImplement.findByLocalDate(localDate);
+            setResultSurleys(resultSurleyList);
+            for (int i = 0; i != resultSurleyList.size(); i++) {
+                Long id = resultSurleyList.get(i).getId();
+                Object node = resultSurleyList.get(i);
+                maps.put(id, node);
+                model.addAttribute("maps", maps);
+            }
+
+        } else {
+            exchangeServiceObjectView.setLocalDate("Error");
         }
-    }else {
-        exchangeServiceObjectView.setLocalDate("Error");
-    }
         return "reportSystem";
     }
 
@@ -107,10 +110,6 @@ public class ControllerResult {
 
         return "reportSystem";
     }
-
-
-
-
 
     @RequestMapping(value = "/ControllerResult/findByDateAndIpAndHash", method = RequestMethod.POST)
     public String findByDateAndIpAndHash(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model, String ip, String hash) {
@@ -155,7 +154,7 @@ public class ControllerResult {
 
     @RequestMapping(value = "/ControllerResult/findByLocalDateTime", method = RequestMethod.POST)
     public String findByLocalDateTime(@ModelAttribute ExchangeServiceObjectView exchangeServiceObjectView, Model model) {
-        if(exchangeServiceObjectView.getLocalDateTime()!="") {
+        if (exchangeServiceObjectView.getLocalDateTime() != "") {
             LinkedHashMap<Long, Object> maps = new LinkedHashMap<Long, Object>();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime localDateTime = LocalDateTime.parse(exchangeServiceObjectView.getLocalDateTime().replace('T', ' '), formatter);
@@ -167,7 +166,7 @@ public class ControllerResult {
                 maps.put(id, node);
                 model.addAttribute("maps", maps);
             }
-        }else {
+        } else {
             exchangeServiceObjectView.setLocalDateTime("Error");
         }
         return "reportSystem";
@@ -180,9 +179,58 @@ public class ControllerResult {
     }
 
 
-    private List<ResultSurley> resultSurleys;
-    private String clientDirectory = "C:/Windows/Temp/";
-    private String serverDirectory = "C:/Windows/Temp/";
+
+    @RequestMapping(value = "/ControllerResult/reportSystem", method = RequestMethod.POST)
+    public ResponseEntity<Object> reportSystem(ReportSystem reportSystem) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(getResultSurleys().get(0).getTimestamp()).substring(0, 19).replace('T', ' '), formatter);
+        String dateTime = String.valueOf(localDateTime);
+
+        reportSystem.setDateTime(dateTime);
+        reportSystem.setResultSurleyList(getResultSurleys());
+        reportSystem.setPathServerDirectory(getServerDirectory());
+
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
+                .body(reportSystem.reportSystem());
+
+
+    }
+
+    @RequestMapping(value = "/ControllerResult/findPathConfiguration", method = RequestMethod.POST)
+    public String findPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
+
+        if (exchangeAgent.getId() != null) {
+            Optional<PathConfiguration> pathConfigurationList = pathConfigurationServiceInterfaceImplement.findById(exchangeAgent.getId());
+            if (pathConfigurationList.isPresent()) {
+                if (pathConfigurationList.get().getPathClientDirectory() != null & pathConfigurationList.get().getPathServerDirectory() != null) {
+                    setClientDirectory(pathConfigurationList.get().getPathClientDirectory());
+                    setServerDirectory(pathConfigurationList.get().getPathServerDirectory());
+                } else {
+                    exchangeAgent.setId(0L);
+                }
+            } else {
+                exchangeAgent.setId(0L);
+            }
+
+        } else {
+            exchangeAgent.setId(0L);
+        }
+        return "TITLE";
+    }
+
+    @RequestMapping(value = "/ControllerResult/viewPathConfiguration", method = RequestMethod.GET)
+    public String viewPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
+        exchangeAgent.setClientDirectory(getClientDirectory());
+        exchangeAgent.setServerDirectory(getServerDirectory());
+        return "TITLE";
+    }
+
+    public List<ResultSurley> getResultSurleys() {
+        return resultSurleys;
+    }
 
     public String getClientDirectory() {
         return clientDirectory;
@@ -200,76 +248,8 @@ public class ControllerResult {
         this.serverDirectory = serverDirectory;
     }
 
-    public List<ResultSurley> getResultSurleys() {
-        return resultSurleys;
-    }
-
     public void setResultSurleys(List<ResultSurley> resultSurleys) {
         this.resultSurleys = resultSurleys;
     }
-
-
-    @RequestMapping(value = "/ControllerResult/reportSystem", method = RequestMethod.POST)
-    public ResponseEntity<Object> reportSystem(ReportSystem reportSystem) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(String.valueOf(resultSurleys.get(0).getTimestamp()).substring(0, 19).replace('T', ' '), formatter);
-        String localDateTimeStringFormat1 = String.valueOf(localDateTime);
-
-
-        reportSystem.setResultSurleyList(getResultSurleys());
-        reportSystem.setDataTime(localDateTimeStringFormat1);
-        reportSystem.setPathServerDirectory(getServerDirectory());
-        reportSystem.reportSystem();
-
-
-        String DEFAULT_FILE_NAME = localDateTimeStringFormat1.replace(':', '-') + ".xls";
-
-        File file = new File(getClientDirectory() + "/" + DEFAULT_FILE_NAME);
-        InputStreamResource resource = null;
-        try {
-            resource = new InputStreamResource(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
-                .body(resource);
-
-
-    }
-
-    @RequestMapping(value = "/ControllerResult/findPathConfiguration", method = RequestMethod.POST)
-    public String findPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
-
-        if (exchangeAgent.getId()!=null) {
-        Optional<PathConfiguration> pathConfigurationList=pathConfigurationServiceInterfaceImplement.findById(exchangeAgent.getId());
-        if (pathConfigurationList.isPresent()) {
-            if (pathConfigurationList.get().getPathClientDirectory()!=null& pathConfigurationList.get().getPathServerDirectory()!=null){
-            setClientDirectory(pathConfigurationList.get().getPathClientDirectory());
-            setServerDirectory(pathConfigurationList.get().getPathServerDirectory());
-        }else {
-                exchangeAgent.setId(0L);
-            }
-
-        }else {
-            exchangeAgent.setId(0L);
-        }
-
-        }else {
-            exchangeAgent.setId(0L);
-        }
-        return "TITLE";
-    }
-
-    @RequestMapping(value = "/ControllerResult/viewPathConfiguration", method = RequestMethod.GET)
-    public String viewPathConfiguration(@ModelAttribute ExchangeAgent exchangeAgent) {
-        exchangeAgent.setClientDirectory(getClientDirectory());
-        exchangeAgent.setServerDirectory(getServerDirectory());
-        return "TITLE";
-    }
-
-
 
 }
